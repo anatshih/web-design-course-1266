@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الوحدة الثانية: HTML & CSS - جامعة القدس المفتوحة</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* تنسيقات خاصة للأمثلة والشروحات */
+        .try-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background-color: #28a745;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 15px;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+        .try-btn:hover {
+            background-color: #218838;
+            color: white;
+            transform: translateY(-2px);
+        }
+        /* صندوق شرح الكود الجديد */
+        .code-explanation {
+            background-color: #f1f8ff; /* خلفية زرقاء فاتحة جداً */
+            border-right: 4px solid #004d99;
+            padding: 15px;
+            margin-top: 0; /* ملتصق بالكود */
+            font-size: 0.95rem;
+            color: #444;
+            line-height: 1.7;
+            border-bottom-left-radius: 6px;
+            border-bottom-right-radius: 6px;
+        }
+        .code-explanation strong {
+            color: #004d99;
+        }
+        .code-explanation ul {
+            margin-right: 20px;
+            margin-top: 10px;
+        }
+        .code-box {
+            margin-bottom: 0; /* إزالة الهامش السفلي ليلتصق بالشرح */
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+        .example-section {
+            border: 1px solid #ddd;
+            padding: 25px;
+            margin: 30px 0;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+    </style>
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="container">
+            <div class="header-content">
+                <a href="../index.html" class="home-icon-header" title="العودة للرئيسية">
+                    <i class="fas fa-home"></i>
+                </a>
+                <div class="uni-info">
+                    <h1>جامعة القدس المفتوحة – فرع الخليل</h1>
+                    <h2>مقرر تقنية تصميم صفحات الويب (1266)</h2>
+                </div>
+                <div class="instructor-info">
+                    <p>الوحدة الثانية: لغة HTML وتصميم المواقع</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container" style="margin-top: 30px;">
+        <div class="note-box" style="width:100%; justify-content: space-between;">
+            <div>
+                <strong>ملفات الوحدة:</strong> يمكنك تحميل المحتوى للدراسة بدون إنترنت.
+            </div>
+            <div class="download-btns">
+                <a href="../downloads/unit2/الوحدة_2.pdf" class="btn-text" download><i class="fas fa-file-pdf"></i> تحميل PDF</a>
+                <span style="margin: 0 10px;">|</span>
+                <a href="../downloads/unit2/الوحدة_2.pptx" class="btn-text" download><i class="fas fa-file-powerpoint"></i> تحميل PPTX</a>
+            </div>
+        </div>
+    </div>
+
+    <main class="container unit-layout">
+        
+        <aside class="toc-sidebar">
+            <h4><i class="fas fa-list-ul"></i> محتويات الوحدة</h4>
+            <ul>
+                <li><a href="#intro">1. المقدمة والأهداف</a></li>
+                <li><a href="#markup">2. لغات التوسيم (Markup)</a></li>
+                <li><a href="#structure">3. الهيكل العام (Structure)</a></li>
+                <li><a href="#text">4. تنسيق النصوص</a></li>
+                <li><a href="#lists">5. القوائم (Lists)</a></li>
+                <li><a href="#media">6. الصور والروابط</a></li>
+                <li><a href="#tables">7. الجداول (Tables)</a></li>
+                <li><a href="#forms">8. النماذج (Forms)</a></li>
+                <li><a href="#css-intro">9. تنسيق CSS</a></li>
+                <li><a href="#exercises">10. التقويم والتدريبات</a></li>
+            </ul>
+        </aside>
+
+        <div class="unit-content">
+
+            <section id="intro">
+                <h2>1. المقدمة والأهداف</h2>
+                <p>تُعتبر لغة HTML (HyperText Markup Language) حجر الأساس في بناء صفحات الويب. هي ليست لغة برمجة معقدة، بل لغة وصفية تخبر المتصفح "كيف يعرض المحتوى".</p>
+                <div class="note-box">
+                    <i class="fas fa-info-circle"></i>
+                    <span><strong>الهدف العام:</strong> تمكين الطالب من إنشاء صفحة ويب متكاملة تحتوي على نصوص، صور، جداول، ونماذج تفاعلية.</span>
+                </div>
+            </section>
+
+            <section id="markup">
+                <h2>2. لغات التوسيم (Markup Languages)</h2>
+                <p>قبل الخوض في HTML، يجب أن نفهم عائلتها. لغات التوسيم هي نظام لترواح النصوص بعلامات خاصة.</p>
+                <table class="content-table">
+                    <thead>
+                        <tr><th>اللغة</th><th>الوصف والوظيفة</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>SGML</strong></td>
+                            <td>(Standard Generalized Markup Language): هي "اللغة الأم". لغة معقدة جداً استخدمت قديماً لتصنيف الوثائق الضخمة. HTML اشتقت منها.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>HTML</strong></td>
+                            <td>(HyperText Markup Language): لغة <strong>عرض (Presentation)</strong>. تهتم بكيفية ظهور النص والصور على الشاشة للمستخدم.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>XML</strong></td>
+                            <td>(Extensible Markup Language): لغة <strong>وصف (Description)</strong>. تهتم بمعنى البيانات وتخزينها ونقلها، ولا تهتم بكيفية عرضها (مثلاً نقل بيانات فاتورة بين برنامجين).</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <section id="structure">
+                <h2>3. الهيكل العام لصفحة HTML</h2>
+                <p>تعمل صفحة الويب مثل الشجرة (DOM Tree)، حيث يوجد جذر رئيسي تتفرع منه باقي العناصر.</p>
+                
+                
+
+                <div class="example-section">
+                    <h3>💡 الكود الهيكلي القياسي</h3>
+                    <p>أي صفحة ويب في العالم يجب أن تحتوي على هذا الهيكل لتعمل بشكل صحيح.</p>
+                    
+                    <div class="code-box">
+                        <div class="code-header"><span>HTML Skeleton</span><button class="copy-btn" onclick="copyCode(this)">نسخ الكود</button></div>
+<pre><code>&lt;!DOCTYPE html&gt;   &lt;!-- 1. تعريف نوع الوثيقة --&gt;
+&lt;html dir="rtl"&gt;    &lt;!-- 2. بداية الصفحة وتحديد الاتجاه --&gt;
+
+  &lt;head&gt;             &lt;!-- 3. رأس الصفحة (معلومات للمتصفح) --&gt;
+      &lt;meta charset="UTF-8"&gt;
+      &lt;title&gt;عنوان يظهر في الشريط العلوي&lt;/title&gt;
+  &lt;/head&gt;
+
+  &lt;body&gt;             &lt;!-- 4. جسم الصفحة (المحتوى المرئي) --&gt;
+      &lt;h1&gt;بسم الله الرحمن الرحيم&lt;/h1&gt;
+      &lt;p&gt;هذا هو المحتوى الذي يراه الزائر.&lt;/p&gt;
+  &lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+                    </div>
+                    
+                    <div class="code-explanation">
+                        <strong>تفكيك الكود (Code Explanation):</strong>
+                        <ul>
+                            <li><code>&lt;!DOCTYPE html&gt;</code>: سطر يخبر المتصفح أننا نستخدم الإصدار الحديث (HTML5). بدونه قد تظهر الصفحة بشكل مشوه.</li>
+                            <li><code>&lt;html dir="rtl"&gt;</code>: الوسم الجذري. الخاصية <code>dir="rtl"</code> ضرورية جداً للمواقع العربية لضبط اتجاه النص من اليمين لليسار.</li>
+                            <li><code>&lt;head&gt;</code>: يحتوي على الإعدادات الخلفية. الرمز <code>charset="UTF-8"</code> هو الأهم لدعم الحروف العربية ومنع ظهورها كرموز غريبة.</li>
+                            <li><code>&lt;body&gt;</code>: "المسرح" الذي نضع فيه كل النصوص والصور والأزرار التي يتفاعل معها المستخدم.</li>
+                        </ul>
+                    </div>
+                    
+                    <div style="text-align: center;"><a href="https://www.programiz.com/html/online-compiler/" target="_blank" class="try-btn"><i class="fas fa-play-circle"></i> طبق الكود عملياً</a></div>
+                </div>
+            </section>
+
+            <section id="text">
+                <h2>4. تنسيق النصوص (Text Formatting)</h2>
+                <p>توفر HTML نوعين من التنسيق: <strong>منطقي</strong> (يصف المعنى) و <strong>مادي</strong> (يصف الشكل).</p>
+                
+                <div class="example-section">
+                    <h3>💡 مثال: تنسيقات النصوص المختلفة</h3>
+                    <div class="code-box">
+                        <div class="code-header"><span>Text Tags</span><button class="copy-btn" onclick="copyCode(this)">نسخ الكود</button></div>
+<pre><code>&lt;!-- العناوين: من الأكبر للأصغر --&gt;
+&lt;h1&gt;العنوان الرئيسي (H1)&lt;/h1&gt;
+&lt;h2&gt;عنوان فرعي (H2)&lt;/h2&gt;
+
+&lt;!-- الفقرات والخطوط --&gt;
+&lt;p&gt;
+   هذا نص عادي، ولكن هذه الكلمة &lt;b&gt;غامقة (Bold)&lt;/b&gt;.<br>
+   وهذه الكلمة &lt;i&gt;مائلة (Italic)&lt;/i&gt;.<br>
+   وهذا النص &lt;u&gt;تحته خط (Underline)&lt;/u&gt;.
+&lt;/p&gt;
+
+&lt;!-- الرموز العلمية --&gt;
+&lt;p&gt;معادلة الماء: H&lt;sub&gt;2&lt;/sub&gt;O&lt;/p&gt;
+&lt;p&gt;الأسس الرياضية: 5&lt;sup&gt;2&lt;/sup&gt; = 25&lt;/p&gt;
+
+&lt;!-- الرموز الخاصة --&gt;
+&lt;p&gt;الحقوق محفوظة &amp;copy; 2023 | 5 &amp;lt; 10&lt;/p&gt;</code></pre>
+                    </div>
+
+                    <div class="code-explanation">
+                        <strong>شرح الوسوم والرموز:</strong>
+                        <ul>
+                            <li><code>&lt;h1&gt;</code> إلى <code>&lt;h6&gt;</code>: تستخدم للعناوين فقط. <strong>تنبيه:</strong> لا تستخدمها فقط لتكبير الخط، بل لهيكلة الموضوع، فمحركات البحث (Google) تعتمد عليها.</li>
+                            <li><code>&lt;sub&gt;</code>: (Subscript) ينزل النص قليلاً للأسفل (مفيد للكيمياء).</li>
+                            <li><code>&lt;sup&gt;</code>: (Superscript) يرفع النص للأعلى (مفيد للرياضيات).</li>
+                            <li><code>&amp;copy;</code> و <code>&amp;lt;</code>: رموز خاصة تسمى (Entities). نستخدمها لأن بعض الرموز (مثل <) محجوزة للغة HTML ولا يمكن كتابتها مباشرة.</li>
+                        </ul>
+                    </div>
+                    <div style="text-align: center;"><a href="https://www.programiz.com/html/online-compiler/" target="_blank" class="try-btn"><i class="fas fa-play-circle"></i> طبق الكود عملياً</a></div>
+                </div>
+            </section>
+
+            <section id="lists">
+                <h2>5. القوائم (Lists)</h2>
+                <p>تستخدم لتنظيم المعلومات في نقاط. هناك نوعان رئيسيان: مرتبة (أرقام) وغير مرتبة (رموز).</p>
+
+                <div class="example-section">
+                    <h3>💡 مثال: القوائم المتداخلة</h3>
+                    <div class="code-box">
+                        <div class="code-header"><span>Lists Example</span><button class="copy-btn" onclick="copyCode(this)">نسخ الكود</button></div>
+<pre><code>&lt;h3&gt;لغات برمجة الويب:&lt;/h3&gt;
+
+&lt;!-- قائمة غير مرتبة (نقاط) --&gt;
+&lt;ul&gt;
+    &lt;li&gt;HTML&lt;/li&gt;
+    &lt;li&gt;CSS&lt;/li&gt;
+    &lt;li&gt;JavaScript
+        &lt;!-- قائمة مرتبة متداخلة داخل العنصر --&gt;
+        &lt;ol type="a"&gt;
+            &lt;li&gt;React.js&lt;/li&gt;
+            &lt;li&gt;Vue.js&lt;/li&gt;
+        &lt;/ol&gt;
+    &lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+                    </div>
+
+                    <div class="code-explanation">
+                        <strong>تحليل الكود:</strong>
+                        <ul>
+                            <li><code>&lt;ul&gt;</code>: (Unordered List) تنشئ قائمة نقطية سوداء افتراضياً.</li>
+                            <li><code>&lt;ol type="a"&gt;</code>: (Ordered List) تنشئ قائمة رقمية. استخدام الخاصية <code>type="a"</code> حول الترقيم من (1, 2, 3) إلى أحرف إنجليزية (a, b, c).</li>
+                            <li><code>&lt;li&gt;</code>: (List Item) هو العنصر المشترك الذي يوضع قبل كل سطر في القائمة.</li>
+                        </ul>
+                    </div>
+                    <div style="text-align: center;"><a href="https://www.programiz.com/html/online-compiler/" target="_blank" class="try-btn"><i class="fas fa-play-circle"></i> طبق الكود عملياً</a></div>
+                </div>
+            </section>
+
+            <section id="media">
+                <h2>6. الصور والروابط التشعبية</h2>
+                <p>هذان العنصران هما ما يميز "النص المترابط" (Hypertext).</p>
+
+                <div class="example-section">
+                    <h3>💡 مثال: صورة قابلة للنقر (رابط صورة)</h3>
+                    <div class="code-box">
+                        <div class="code-header"><span>Image Link</span><button class="copy-btn" onclick="copyCode(this)">نسخ الكود</button></div>
+<pre><code>&lt;!-- صورة عادية --&gt;
+&lt;img src="flower.jpg" alt="زهرة حمراء" width="200" border="2"&gt;
+
+&lt;br&gt;&lt;br&gt;
+
+&lt;!-- صورة داخل رابط --&gt;
+&lt;a href="https://www.google.com" target="_blank"&gt;
+    &lt;img src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png" alt="شعار جوجل" width="100"&gt;
+    &lt;br&gt; اضغط على الشعار للذهاب لجوجل
+&lt;/a&gt;</code></pre>
+                    </div>
+
+                    <div class="code-explanation">
+                        <strong>الخصائص الهامة (Attributes):</strong>
+                        <ul>
+                            <li>في الصورة <code>&lt;img&gt;</code>:
+                                <ul>
+                                    <li><code>src</code>: (Source) مسار الملف، وهو أهم خاصية.</li>
+                                    <li><code>alt</code>: (Alternative Text) نص يظهر إذا فشل تحميل الصورة، وهو مهم للمكفوفين (قارئات الشاشة).</li>
+                                    <li><code>width</code>: للتحكم بالعرض (يفضل استخدام CSS بدلاً منه حديثاً).</li>
+                                </ul>
+                            </li>
+                            <li>في الرابط <code>&lt;a&gt;</code>:
+                                <ul>
+                                    <li><code>href</code>: (Hypertext Reference) العنوان الذي سنذهب إليه.</li>
+                                    <li><code>target="_blank"</code>: يفتح الرابط في تبويب جديد بدلاً من إغلاق صفحتك الحالية.</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div style="text-align: center;"><a href="https://www.programiz.com/html/online-compiler/" target="_blank" class="try-btn"><i class="fas fa-play-circle"></i> طبق الكود عملياً</a></div>
+                </div>
+            </section>
+
+            <section id="tables">
+                <h2>7. الجداول (Tables)</h2>
+                <p>تعتبر الجداول من المواضيع التي تحتاج تركيزاً، خاصة عند دمج الخلايا.</p>
+
+                <div class="example-section">
+                    <h3>💡 مثال متقدم: دمج الخلايا (Colspan & Rowspan)</h3>
+                    <div class="code-box">
+                        <div class="code-header"><span>Complex Table</span><button class="copy-btn" onclick="copyCode(this)">نسخ الكود</button></div>
+<pre><code>&lt;table border="1" cellpadding="10"&gt;
+    &lt;!-- رأس الجدول --&gt;
+    &lt;tr&gt;
+        &lt;th&gt;اليوم&lt;/th&gt;
+        &lt;th&gt;الساعة 8-10&lt;/th&gt;
+        &lt;th&gt;الساعة 10-12&lt;/th&gt;
+    &lt;/tr&gt;
+
+    &lt;!-- الصف الأول --&gt;
+    &lt;tr&gt;
+        &lt;td&gt;السبت&lt;/td&gt;
+        &lt;td&gt;رياضيات&lt;/td&gt;
+        &lt;td rowspan="2" bgcolor="#eee"&gt;مشروع (ساعتين)&lt;/td&gt; &lt;!-- دمج عمودي --&gt;
+    &lt;/tr&gt;
+
+    &lt;!-- الصف الثاني --&gt;
+    &lt;tr&gt;
+        &lt;td&gt;الأحد&lt;/td&gt;
+        &lt;td&gt;فيزياء&lt;/td&gt;
+        &lt;!-- الخلية الثالثة محذوفة لأن السابقة أخذت مكانها --&gt;
+    &lt;/tr&gt;
+    
+    &lt;!-- الصف الثالث --&gt;
+    &lt;tr&gt;
+        &lt;td&gt;الاثنين&lt;/td&gt;
+        &lt;td colspan="2" align="center"&gt;إجازة&lt;/td&gt; &lt;!-- دمج أفقي --&gt;
+    &lt;/tr&gt;
+&lt;/table&gt;</code></pre>
+                    </div>
+
+                    <div class="code-explanation">
+                        <strong>شرح آلية الدمج:</strong>
+                        <ul>
+                            <li><code>rowspan="2"</code>: تجعل الخلية تتمدد لتأخذ مكان خليتين بشكل عمودي (تأكل الخلية التي تحتها).</li>
+                            <li><code>colspan="2"</code>: تجعل الخلية تتمدد أفقياً (تأكل الخلية التي بجانبها).</li>
+                            <li><code>&lt;th&gt;</code>: تستخدم في الصف الأول لجعل الخط غامقاً ومحاذاته في الوسط تلقائياً.</li>
+                            <li><code>cellpadding</code>: المسافة الداخلية بين النص وحدود الخلية.</li>
+                        </ul>
+                    </div>
+                    <div style="text-align: center;"><a href="https://www.programiz.com/html/online-compiler/" target="_blank" class="try-btn"><i class="fas fa-play-circle"></i> طبق الكود عملياً</a></div>
+                </div>
+            </section>
+
+            <section id="forms">
+                <h2>8. النماذج (Forms)</h2>
+                
+                <p>النماذج هي وسيلة التفاعل مع المستخدم لجمع البيانات وإرسالها للسيرفر.</p>
+
+                <div class="example-section">
+                    <h3>💡 مثال شامل: نموذج تسجيل طالب</h3>
+                    <div class="code-box">
+                        <div class="code-header"><span>Form Elements</span><button class="copy-btn" onclick="copyCode(this)">نسخ الكود</button></div>
+<pre><code>&lt;form action="save.php" method="post"&gt;
+    
+    &lt;label&gt;الاسم:&lt;/label&gt;
+    &lt;input type="text" name="username" placeholder="أدخل اسمك"&gt; &lt;br&gt;&lt;br&gt;
+
+    &lt;label&gt;كلمة المرور:&lt;/label&gt;
+    &lt;input type="password" name="pass"&gt; &lt;br&gt;&lt;br&gt;
+
+    &lt;label&gt;الجنس:&lt;/label&gt;
+    &lt;input type="radio" name="gender" value="m"&gt; ذكر
+    &lt;input type="radio" name="gender" value="f"&gt; أنثى &lt;br&gt;&lt;br&gt;
+
+    &lt;label&gt;المهارات:&lt;/label&gt;
+    &lt;input type="checkbox" name="skill1"&gt; HTML
+    &lt;input type="checkbox" name="skill2"&gt; CSS &lt;br&gt;&lt;br&gt;
+
+    &lt;label&gt;المدينة:&lt;/label&gt;
+    &lt;select name="city"&gt;
+        &lt;option value="hebron"&gt;الخليل&lt;/option&gt;
+        &lt;option value="jerusalem"&gt;القدس&lt;/option&gt;
+    &lt;/select&gt; &lt;br&gt;&lt;br&gt;
+
+    &lt;label&gt;ملاحظات:&lt;/label&gt;
+    &lt;textarea name="notes" rows="3" cols="30"&gt;&lt;/textarea&gt; &lt;br&gt;&lt;br&gt;
+
+    &lt;input type="submit" value="تسجيل"&gt;
+    &lt;input type="reset" value="مسح الحقول"&gt;
+
+&lt;/form&gt;</code></pre>
+                    </div>
+
+                    <div class="code-explanation">
+                        <strong>شرح عناصر الإدخال:</strong>
+                        <ul>
+                            <li><code>type="text"</code> vs <code>type="password"</code>: الأول يظهر النص، والثاني يخفيه بنقاط.</li>
+                            <li><code>radio</code>: يسمح باختيار واحد فقط (يجب أن يكون لهما نفس الـ <code>name</code> ليعمل).</li>
+                            <li><code>checkbox</code>: يسمح باختيار أكثر من خيار في نفس الوقت.</li>
+                            <li><code>&lt;select&gt;</code>: القائمة المنسدلة، توفر مساحة وتمنع أخطاء الكتابة.</li>
+                            <li><code>&lt;textarea&gt;</code>: تستخدم للنصوص الطويلة (مثل الملاحظات أو الرسائل).</li>
+                        </ul>
+                    </div>
+                    <div style="text-align: center;"><a href="https://www.programiz.com/html/online-compiler/" target="_blank" class="try-btn"><i class="fas fa-play-circle"></i> طبق الكود عملياً</a></div>
+                </div>
+            </section>
+
+            <section id="css-intro">
+                <h2>9. مقدمة في CSS (Cascading Style Sheets)</h2>
+                
+                <p>هي اللغة المسؤولة عن "مكياج" وديكور الموقع. يمكن كتابتها بثلاث طرق، سنركز على الطريقتين الأهم.</p>
+
+                <div class="example-section">
+                    <h3>أ) النمط الداخلي (Internal Style)</h3>
+                    <p>يكتب في قسم <code>head</code> ويطبق على الصفحة الحالية فقط.</p>
+                    <div class="code-box">
+                        <div class="code-header"><span>Internal CSS</span><button class="copy-btn" onclick="copyCode(this)">نسخ الكود</button></div>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;style&gt;
+        /* هذا سيؤثر على كل الفقرات في الصفحة */
+        p {
+            color: red;
+            font-size: 20px;
+        }
+        /* هذا تنسيق خاص (Class) */
+        .special {
+            background-color: yellow;
+            border: 1px solid black;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;p&gt;هذا نص أحمر كبير.&lt;/p&gt;
+    &lt;p class="special"&gt;هذا نص أحمر ومميز بخلفية صفراء.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                    </div>
+                    <div class="code-explanation">
+                        <strong>شرح المحددات (Selectors):</strong>
+                        <ul>
+                            <li><code>p { ... }</code>: يسمى Element Selector، ويطبق التنسيق على كل وسوم البراجراف.</li>
+                            <li><code>.special { ... }</code>: يسمى Class Selector (يبدأ بنقطة)، ويطبق فقط على العناصر التي تحمل الخاصية <code>class="special"</code>.</li>
+                        </ul>
+                    </div>
+                    <div style="text-align: center;"><a href="https://www.programiz.com/html/online-compiler/" target="_blank" class="try-btn"><i class="fas fa-play-circle"></i> طبق الكود عملياً</a></div>
+                </div>
+
+                <div class="example-section">
+                    <h3>ب) النمط الخارجي (External Style) - الطريقة الاحترافية</h3>
+                    <p>نكتب CSS في ملف منفصل ونربطه بملف HTML. هذا يسمح بتوحيد شكل الموقع كاملاً.</p>
+                    
+                    <div class="code-box">
+                        <div class="code-header"><span>1. ملف (index.html)</span><button class="copy-btn" onclick="copyCode(this)">نسخ الكود</button></div>
+<pre><code>&lt;head&gt;
+    &lt;!-- كود الربط السحري --&gt;
+    &lt;link rel="stylesheet" href="style.css"&gt;
+&lt;/head&gt;</code></pre>
+                    </div>
+
+                    <div class="code-box">
+                        <div class="code-header"><span>2. ملف (style.css)</span><button class="copy-btn" onclick="copyCode(this)">نسخ الكود</button></div>
+<pre><code>body {
+    background-color: #f0f0f0;
+}
+h1 {
+    color: green;
+    text-align: center;
+    border-bottom: 2px solid green;
+}</code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <section id="exercises">
+                <h2>10. التقويم والتدريبات العملية</h2>
+                <p>فيما يلي أسئلة التقويم والتدريبات كما وردت في ملف الوحدة نصياً، مع الحلول النموذجية.</p>
+
+                <h3 style="margin-top: 30px; border-bottom: 2px solid #ddd; padding-bottom: 10px;">أولاً: أسئلة التقويم الذاتي</h3>
+                
+                <div class="qa-container">
+                    
+                    <details class="qa-item">
+                        <summary>س1: كيف يمكن كتابة الرموز الخاصة وتنسيق النصوص (يمين، خط منخفض، لون ليموني)؟ <span class="qa-badge">تقويم ذاتي 1</span></summary>
+                        <div class="qa-answer">
+                            <p><strong>الإجابة:</strong></p>
+                            <ul>
+                                <li>حقوق النشر (©): <code>&amp;copy;</code></li>
+                                <li>العلامة التجارية (™): <code>&amp;#153;</code></li>
+                                <li>الربع (¼): <code>&amp;frac14;</code> | النصف (½): <code>&amp;frac12;</code></li>
+                                <li>فقرة محاذاة لليمين: <code>&lt;p align="right"&gt;</code> أو CSS: <code>text-align: right</code></li>
+                                <li>خط منخفض (Subscript): <code>&lt;sub&gt;النص&lt;/sub&gt;</code></li>
+                                <li>لون ليموني: <code>&lt;font color="lime"&gt;</code> (طريقة قديمة) أو <code>style="color:lime"</code> (الطريقة الحديثة).</li>
+                            </ul>
+                        </div>
+                    </details>
+
+                    <details class="qa-item">
+                        <summary>س2: أنشئ جدولاً بأربعة أعمدة وثلاثة سطور وخلفية بلون أزرق فاتح. <span class="qa-badge">تقويم ذاتي 2</span></summary>
+                        <div class="qa-answer">
+                            <div class="code-box">
+<pre><code>&lt;table border="1" bgcolor="lightblue"&gt;
+  &lt;tr&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;2&lt;/td&gt;&lt;td&gt;3&lt;/td&gt;&lt;td&gt;4&lt;/td&gt;&lt;/tr&gt;
+  &lt;tr&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;2&lt;/td&gt;&lt;td&gt;3&lt;/td&gt;&lt;td&gt;4&lt;/td&gt;&lt;/tr&gt;
+  &lt;tr&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;2&lt;/td&gt;&lt;td&gt;3&lt;/td&gt;&lt;td&gt;4&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</code></pre>
+                            </div>
+                        </div>
+                    </details>
+
+                    <details class="qa-item">
+                        <summary>س3: كيف يتم التعبير عن الألوان ومقاييس الطول في CSS؟ <span class="qa-badge">تقويم ذاتي 4</span></summary>
+                        <div class="qa-answer">
+                            <ul>
+                                <li><strong>الألوان:</strong> بالاسم (Red)، بالنظام السداسي (#FF0000)، أو بنظام RGB (rgb(255,0,0)).</li>
+                                <li><strong>المقاييس:</strong> بالبكسل (px)، النقاط (pt)، أو النسبة المئوية (%).</li>
+                            </ul>
+                        </div>
+                    </details>
+                </div>
+
+                <h3 style="margin-top: 40px; border-bottom: 2px solid #ddd; padding-bottom: 10px;">ثانياً: التدريبات العملية (مع الأكواد الكاملة)</h3>
+                
+                <div class="qa-container">
+                    
+                    <details class="qa-item">
+                        <summary>تدريب (1): إنشاء صفحة HTML بسيطة <span class="qa-badge">أساسي</span></summary>
+                        <div class="qa-answer">
+                            <p><strong>المطلوب:</strong> فتح محرر النصوص وكتابة صفحة وحفظها.</p>
+                            <div class="code-box">
+<pre><code>&lt;html&gt;
+  &lt;head&gt;&lt;title&gt;first web page&lt;/title&gt;&lt;/head&gt;
+  &lt;body&gt;this is my first web page&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                            </div>
+                        </div>
+                    </details>
+
+                    <details class="qa-item">
+                        <summary>تدريب (2): استخدام وسم blockquote <span class="qa-badge">نصوص</span></summary>
+                        <div class="qa-answer">
+                            <p><strong>السؤال:</strong> ماذا يفعل الوسم <code>&lt;blockquote&gt;</code>؟</p>
+                            <p><strong>الحل:</strong> يقوم بإزاحة النص عن الهوامش (Indent) للدلالة على أنه اقتباس، ويترك سطراً فارغاً قبله وبعده.</p>
+                        </div>
+                    </details>
+
+                    <details class="qa-item">
+                        <summary>تدريب (3): تصميم نموذج تسجيل (Registration Form) <span class="qa-badge">هام جداً</span></summary>
+                        <div class="qa-answer">
+                            <p><strong>المطلوب:</strong> نموذج يحتوي على (اسم، كلمة مرور، فصل دراسي Checkbox، مساق Select، وسيرة ذاتية TextArea).</p>
+                            <div class="code-box">
+<pre><code>&lt;html&gt;
+&lt;head&gt;&lt;title&gt;Registration Form&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+&lt;fieldset&gt;&lt;legend&gt;Registration Form&lt;/legend&gt;
+&lt;form method="POST"&gt; 
+ &lt;table border="0" width="100%"&gt;
+  &lt;tr&gt;
+   &lt;td width="33%"&gt;Name:&lt;/td&gt;
+   &lt;td width="33%"&gt;&lt;input type="text" name="T1" size="20"&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td width="33%"&gt;Password:&lt;/td&gt;
+   &lt;td width="33%"&gt;&lt;input type="password" name="T2" size="20"&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td width="33%"&gt;Semester:&lt;/td&gt;
+   &lt;td width="33%"&gt;
+       First: &lt;input type="checkbox" name="C1" value="ON" checked&gt;
+       Second: &lt;input type="checkbox" name="C2" value="ON"&gt;
+       Summer: &lt;input type="checkbox" name="C3" value="ON"&gt;
+   &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td width="33%"&gt;Course:&lt;/td&gt;
+   &lt;td width="33%"&gt;&lt;select size="1" name="D1"&gt;
+     &lt;option&gt;Operating System&lt;/option&gt;
+     &lt;option&gt;Data Structure&lt;/option&gt;
+     &lt;option&gt;Database&lt;/option&gt;
+    &lt;/select&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td width="33%"&gt;CV:&lt;/td&gt;
+    &lt;td width="33%"&gt;&lt;textarea rows="2" name="S1" cols="20"&gt;&lt;/textarea&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+ &lt;/table&gt;
+ &lt;p align="center"&gt;&lt;input type="submit" value="Submit" name="B1"&gt;&lt;/p&gt;
+&lt;/form&gt;
+&lt;/fieldset&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                            </div>
+                        </div>
+                    </details>
+
+                    <details class="qa-item">
+                        <summary>تدريب (4): أوامر CSS في الرأسية <span class="qa-badge">CSS</span></summary>
+                        <div class="qa-answer">
+                            <p><strong>المطلوب:</strong> جعل العنوان H2 أزرق ومحاذياً لليمين.</p>
+                            <div class="code-box">
+<pre><code>&lt;html&gt;
+&lt;head&gt;
+&lt;style&gt;
+  h2 { color: blue; text-align: right; }
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h2&gt;My First CSS Example&lt;/h2&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                            </div>
+                        </div>
+                    </details>
+
+                    <details class="qa-item">
+                        <summary>تدريب (5): شبكة CSS Grid <span class="qa-badge">متقدم</span></summary>
+                        <div class="qa-answer">
+                            <div class="code-box">
+<pre><code>&lt;style&gt;
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-gap: 10px;
+  background-color: #2196F3;
+  padding: 10px;
+}
+.grid-container &gt; div {
+  background-color: rgba(255, 255, 255, 0.8);
+  text-align: center;
+  padding: 20px 0;
+  font-size: 30px;
+}
+.item1 { grid-column: 1; grid-row: 1/3; }
+.item7 { grid-row: 3; grid-column: 2/4; }
+&lt;/style&gt;
+&lt;div class="grid-container"&gt;
+  &lt;div class="item1"&gt;1&lt;/div&gt;&lt;div&gt;2&lt;/div&gt;&lt;div&gt;3&lt;/div&gt;
+  &lt;div&gt;4&lt;/div&gt;&lt;div&gt;5&lt;/div&gt;&lt;div&gt;6&lt;/div&gt;
+  &lt;div class="item7"&gt;7&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                            </div>
+                        </div>
+                    </details>
+
+                    <details class="qa-item">
+                        <summary>تدريب (6): جداول وتنسيق CSS <span class="qa-badge">جداول</span></summary>
+                        <div class="qa-answer">
+                            <div class="code-box">
+<pre><code>&lt;style&gt;
+table { font-family: arial, sans-serif; border-collapse: collapse; width: 100%; }
+td, th { border: 1px solid #dddddd; text-align: left; padding: 8px; }
+tr:nth-child(even) { background-color: #dddddd; }
+&lt;/style&gt;
+&lt;table&gt;
+  &lt;tr&gt;&lt;th&gt;Name&lt;/th&gt;&lt;th&gt;City&lt;/th&gt;&lt;th&gt;Mobile&lt;/th&gt;&lt;/tr&gt;
+  &lt;tr&gt;&lt;td&gt;Ahmad&lt;/td&gt;&lt;td&gt;Ramallah&lt;/td&gt;&lt;td&gt;059966666&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</code></pre>
+                            </div>
+                        </div>
+                    </details>
+
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>جميع الحقوق محفوظة &copy; جامعة القدس المفتوحة - فرع الخليل</p>
+            <p class="small">تصميم وتطوير لأغراض تعليمية</p>
+        </div>
+    </footer>
+
+    <script src="../assets/js/copy-code.js"></script>
+</body>
+</html>
