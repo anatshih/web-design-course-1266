@@ -114,6 +114,7 @@
                 <li><a href="#forms">8. النماذج (Forms)</a></li>
                 <li><a href="#css-intro">9. تنسيق CSS</a></li>
                 <li><a href="#exercises">10. التقويم والتدريبات</a></li>
+                <li><a href="unit2practical.html">11. تدريبات مختبر</a></li>
             </ul>
         </aside>
 
@@ -208,8 +209,8 @@
 
 &lt;!-- الفقرات والخطوط --&gt;
 &lt;p&gt;
-   هذا نص عادي، ولكن هذه الكلمة &lt;b&gt;غامقة (Bold)&lt;/b&gt;.<br>
-   وهذه الكلمة &lt;i&gt;مائلة (Italic)&lt;/i&gt;.<br>
+   هذا نص عادي، ولكن هذه الكلمة &lt;b&gt;غامقة (Bold)&lt;/b&gt;.&lt;br&gt;
+   وهذه الكلمة &lt;i&gt;مائلة (Italic)&lt;/i&gt;.&lt;br&gt;
    وهذا النص &lt;u&gt;تحته خط (Underline)&lt;/u&gt;.
 &lt;/p&gt;
 
@@ -227,7 +228,7 @@
                             <li><code>&lt;h1&gt;</code> إلى <code>&lt;h6&gt;</code>: تستخدم للعناوين فقط. <strong>تنبيه:</strong> لا تستخدمها فقط لتكبير الخط، بل لهيكلة الموضوع، فمحركات البحث (Google) تعتمد عليها.</li>
                             <li><code>&lt;sub&gt;</code>: (Subscript) ينزل النص قليلاً للأسفل (مفيد للكيمياء).</li>
                             <li><code>&lt;sup&gt;</code>: (Superscript) يرفع النص للأعلى (مفيد للرياضيات).</li>
-                            <li><code>&amp;copy;</code> و <code>&amp;lt;</code>: رموز خاصة تسمى (Entities). نستخدمها لأن بعض الرموز (مثل <) محجوزة للغة HTML ولا يمكن كتابتها مباشرة.</li>
+                            <li><code>&amp;copy;</code> و <code>&amp;lt;</code>: رموز خاصة تسمى (Entities). نستخدمها لأن بعض الرموز (مثل &lt;) محجوزة للغة HTML ولا يمكن كتابتها مباشرة.</li>
                         </ul>
                     </div>
                     <div style="text-align: center;"><a href="https://www.programiz.com/html/online-compiler/" target="_blank" class="try-btn"><i class="fas fa-play-circle"></i> طبق الكود عملياً</a></div>
@@ -333,14 +334,14 @@
         &lt;td&gt;السبت&lt;/td&gt;
         &lt;td&gt;رياضيات&lt;/td&gt;
         &lt;td rowspan="2" bgcolor="#eee"&gt;مشروع (ساعتين)&lt;/td&gt; &lt;!-- دمج عمودي --&gt;
-    &lt;/tr&gt;
+    &lt;/tr&gt
 
     &lt;!-- الصف الثاني --&gt;
     &lt;tr&gt;
         &lt;td&gt;الأحد&lt;/td&gt;
         &lt;td&gt;فيزياء&lt;/td&gt;
         &lt;!-- الخلية الثالثة محذوفة لأن السابقة أخذت مكانها --&gt;
-    &lt;/tr&gt;
+    &lt;/tr&gt
     
     &lt;!-- الصف الثالث --&gt;
     &lt;tr&gt;
@@ -454,237 +455,3 @@
                         <ul>
                             <li><code>p { ... }</code>: يسمى Element Selector، ويطبق التنسيق على كل وسوم البراجراف.</li>
                             <li><code>.special { ... }</code>: يسمى Class Selector (يبدأ بنقطة)، ويطبق فقط على العناصر التي تحمل الخاصية <code>class="special"</code>.</li>
-                        </ul>
-                    </div>
-                    <div style="text-align: center;"><a href="https://www.programiz.com/html/online-compiler/" target="_blank" class="try-btn"><i class="fas fa-play-circle"></i> طبق الكود عملياً</a></div>
-                </div>
-
-                <div class="example-section">
-                    <h3>ب) النمط الخارجي (External Style) - الطريقة الاحترافية</h3>
-                    <p>نكتب CSS في ملف منفصل ونربطه بملف HTML. هذا يسمح بتوحيد شكل الموقع كاملاً.</p>
-                    
-                    <div class="code-box">
-                        <div class="code-header"><span>1. ملف (index.html)</span><button class="copy-btn" onclick="copyCode(this)">نسخ الكود</button></div>
-<pre><code>&lt;head&gt;
-    &lt;!-- كود الربط السحري --&gt;
-    &lt;link rel="stylesheet" href="style.css"&gt;
-&lt;/head&gt;</code></pre>
-                    </div>
-
-                    <div class="code-box">
-                        <div class="code-header"><span>2. ملف (style.css)</span><button class="copy-btn" onclick="copyCode(this)">نسخ الكود</button></div>
-<pre><code>body {
-    background-color: #f0f0f0;
-}
-h1 {
-    color: green;
-    text-align: center;
-    border-bottom: 2px solid green;
-}</code></pre>
-                    </div>
-                </div>
-            </section>
-
-            <section id="exercises">
-                <h2>10. التقويم والتدريبات العملية</h2>
-                <p>فيما يلي أسئلة التقويم والتدريبات كما وردت في ملف الوحدة نصياً، مع الحلول النموذجية.</p>
-
-                <h3 style="margin-top: 30px; border-bottom: 2px solid #ddd; padding-bottom: 10px;">أولاً: أسئلة التقويم الذاتي</h3>
-                
-                <div class="qa-container">
-                    
-                    <details class="qa-item">
-                        <summary>س1: كيف يمكن كتابة الرموز الخاصة وتنسيق النصوص (يمين، خط منخفض، لون ليموني)؟ <span class="qa-badge">تقويم ذاتي 1</span></summary>
-                        <div class="qa-answer">
-                            <p><strong>الإجابة:</strong></p>
-                            <ul>
-                                <li>حقوق النشر (©): <code>&amp;copy;</code></li>
-                                <li>العلامة التجارية (™): <code>&amp;#153;</code></li>
-                                <li>الربع (¼): <code>&amp;frac14;</code> | النصف (½): <code>&amp;frac12;</code></li>
-                                <li>فقرة محاذاة لليمين: <code>&lt;p align="right"&gt;</code> أو CSS: <code>text-align: right</code></li>
-                                <li>خط منخفض (Subscript): <code>&lt;sub&gt;النص&lt;/sub&gt;</code></li>
-                                <li>لون ليموني: <code>&lt;font color="lime"&gt;</code> (طريقة قديمة) أو <code>style="color:lime"</code> (الطريقة الحديثة).</li>
-                            </ul>
-                        </div>
-                    </details>
-
-                    <details class="qa-item">
-                        <summary>س2: أنشئ جدولاً بأربعة أعمدة وثلاثة سطور وخلفية بلون أزرق فاتح. <span class="qa-badge">تقويم ذاتي 2</span></summary>
-                        <div class="qa-answer">
-                            <div class="code-box">
-<pre><code>&lt;table border="1" bgcolor="lightblue"&gt;
-  &lt;tr&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;2&lt;/td&gt;&lt;td&gt;3&lt;/td&gt;&lt;td&gt;4&lt;/td&gt;&lt;/tr&gt;
-  &lt;tr&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;2&lt;/td&gt;&lt;td&gt;3&lt;/td&gt;&lt;td&gt;4&lt;/td&gt;&lt;/tr&gt;
-  &lt;tr&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;2&lt;/td&gt;&lt;td&gt;3&lt;/td&gt;&lt;td&gt;4&lt;/td&gt;&lt;/tr&gt;
-&lt;/table&gt;</code></pre>
-                            </div>
-                        </div>
-                    </details>
-
-                    <details class="qa-item">
-                        <summary>س3: كيف يتم التعبير عن الألوان ومقاييس الطول في CSS؟ <span class="qa-badge">تقويم ذاتي 4</span></summary>
-                        <div class="qa-answer">
-                            <ul>
-                                <li><strong>الألوان:</strong> بالاسم (Red)، بالنظام السداسي (#FF0000)، أو بنظام RGB (rgb(255,0,0)).</li>
-                                <li><strong>المقاييس:</strong> بالبكسل (px)، النقاط (pt)، أو النسبة المئوية (%).</li>
-                            </ul>
-                        </div>
-                    </details>
-                </div>
-
-                <h3 style="margin-top: 40px; border-bottom: 2px solid #ddd; padding-bottom: 10px;">ثانياً: التدريبات العملية (مع الأكواد الكاملة)</h3>
-                
-                <div class="qa-container">
-                    
-                    <details class="qa-item">
-                        <summary>تدريب (1): إنشاء صفحة HTML بسيطة <span class="qa-badge">أساسي</span></summary>
-                        <div class="qa-answer">
-                            <p><strong>المطلوب:</strong> فتح محرر النصوص وكتابة صفحة وحفظها.</p>
-                            <div class="code-box">
-<pre><code>&lt;html&gt;
-  &lt;head&gt;&lt;title&gt;first web page&lt;/title&gt;&lt;/head&gt;
-  &lt;body&gt;this is my first web page&lt;/body&gt;
-&lt;/html&gt;</code></pre>
-                            </div>
-                        </div>
-                    </details>
-
-                    <details class="qa-item">
-                        <summary>تدريب (2): استخدام وسم blockquote <span class="qa-badge">نصوص</span></summary>
-                        <div class="qa-answer">
-                            <p><strong>السؤال:</strong> ماذا يفعل الوسم <code>&lt;blockquote&gt;</code>؟</p>
-                            <p><strong>الحل:</strong> يقوم بإزاحة النص عن الهوامش (Indent) للدلالة على أنه اقتباس، ويترك سطراً فارغاً قبله وبعده.</p>
-                        </div>
-                    </details>
-
-                    <details class="qa-item">
-                        <summary>تدريب (3): تصميم نموذج تسجيل (Registration Form) <span class="qa-badge">هام جداً</span></summary>
-                        <div class="qa-answer">
-                            <p><strong>المطلوب:</strong> نموذج يحتوي على (اسم، كلمة مرور، فصل دراسي Checkbox، مساق Select، وسيرة ذاتية TextArea).</p>
-                            <div class="code-box">
-<pre><code>&lt;html&gt;
-&lt;head&gt;&lt;title&gt;Registration Form&lt;/title&gt;&lt;/head&gt;
-&lt;body&gt;
-&lt;fieldset&gt;&lt;legend&gt;Registration Form&lt;/legend&gt;
-&lt;form method="POST"&gt; 
- &lt;table border="0" width="100%"&gt;
-  &lt;tr&gt;
-   &lt;td width="33%"&gt;Name:&lt;/td&gt;
-   &lt;td width="33%"&gt;&lt;input type="text" name="T1" size="20"&gt;&lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td width="33%"&gt;Password:&lt;/td&gt;
-   &lt;td width="33%"&gt;&lt;input type="password" name="T2" size="20"&gt;&lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td width="33%"&gt;Semester:&lt;/td&gt;
-   &lt;td width="33%"&gt;
-       First: &lt;input type="checkbox" name="C1" value="ON" checked&gt;
-       Second: &lt;input type="checkbox" name="C2" value="ON"&gt;
-       Summer: &lt;input type="checkbox" name="C3" value="ON"&gt;
-   &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td width="33%"&gt;Course:&lt;/td&gt;
-   &lt;td width="33%"&gt;&lt;select size="1" name="D1"&gt;
-     &lt;option&gt;Operating System&lt;/option&gt;
-     &lt;option&gt;Data Structure&lt;/option&gt;
-     &lt;option&gt;Database&lt;/option&gt;
-    &lt;/select&gt;&lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-    &lt;td width="33%"&gt;CV:&lt;/td&gt;
-    &lt;td width="33%"&gt;&lt;textarea rows="2" name="S1" cols="20"&gt;&lt;/textarea&gt;&lt;/td&gt;
-  &lt;/tr&gt;
- &lt;/table&gt;
- &lt;p align="center"&gt;&lt;input type="submit" value="Submit" name="B1"&gt;&lt;/p&gt;
-&lt;/form&gt;
-&lt;/fieldset&gt;
-&lt;/body&gt;
-&lt;/html&gt;</code></pre>
-                            </div>
-                        </div>
-                    </details>
-
-                    <details class="qa-item">
-                        <summary>تدريب (4): أوامر CSS في الرأسية <span class="qa-badge">CSS</span></summary>
-                        <div class="qa-answer">
-                            <p><strong>المطلوب:</strong> جعل العنوان H2 أزرق ومحاذياً لليمين.</p>
-                            <div class="code-box">
-<pre><code>&lt;html&gt;
-&lt;head&gt;
-&lt;style&gt;
-  h2 { color: blue; text-align: right; }
-&lt;/style&gt;
-&lt;/head&gt;
-&lt;body&gt;
-  &lt;h2&gt;My First CSS Example&lt;/h2&gt;
-&lt;/body&gt;
-&lt;/html&gt;</code></pre>
-                            </div>
-                        </div>
-                    </details>
-
-                    <details class="qa-item">
-                        <summary>تدريب (5): شبكة CSS Grid <span class="qa-badge">متقدم</span></summary>
-                        <div class="qa-answer">
-                            <div class="code-box">
-<pre><code>&lt;style&gt;
-.grid-container {
-  display: grid;
-  grid-template-columns: auto auto auto;
-  grid-gap: 10px;
-  background-color: #2196F3;
-  padding: 10px;
-}
-.grid-container &gt; div {
-  background-color: rgba(255, 255, 255, 0.8);
-  text-align: center;
-  padding: 20px 0;
-  font-size: 30px;
-}
-.item1 { grid-column: 1; grid-row: 1/3; }
-.item7 { grid-row: 3; grid-column: 2/4; }
-&lt;/style&gt;
-&lt;div class="grid-container"&gt;
-  &lt;div class="item1"&gt;1&lt;/div&gt;&lt;div&gt;2&lt;/div&gt;&lt;div&gt;3&lt;/div&gt;
-  &lt;div&gt;4&lt;/div&gt;&lt;div&gt;5&lt;/div&gt;&lt;div&gt;6&lt;/div&gt;
-  &lt;div class="item7"&gt;7&lt;/div&gt;
-&lt;/div&gt;</code></pre>
-                            </div>
-                        </div>
-                    </details>
-
-                    <details class="qa-item">
-                        <summary>تدريب (6): جداول وتنسيق CSS <span class="qa-badge">جداول</span></summary>
-                        <div class="qa-answer">
-                            <div class="code-box">
-<pre><code>&lt;style&gt;
-table { font-family: arial, sans-serif; border-collapse: collapse; width: 100%; }
-td, th { border: 1px solid #dddddd; text-align: left; padding: 8px; }
-tr:nth-child(even) { background-color: #dddddd; }
-&lt;/style&gt;
-&lt;table&gt;
-  &lt;tr&gt;&lt;th&gt;Name&lt;/th&gt;&lt;th&gt;City&lt;/th&gt;&lt;th&gt;Mobile&lt;/th&gt;&lt;/tr&gt;
-  &lt;tr&gt;&lt;td&gt;Ahmad&lt;/td&gt;&lt;td&gt;Ramallah&lt;/td&gt;&lt;td&gt;059966666&lt;/td&gt;&lt;/tr&gt;
-&lt;/table&gt;</code></pre>
-                            </div>
-                        </div>
-                    </details>
-
-                </div>
-            </section>
-
-        </div>
-    </main>
-
-    <footer>
-        <div class="container">
-            <p>جميع الحقوق محفوظة &copy; جامعة القدس المفتوحة - فرع الخليل</p>
-            <p class="small">تصميم وتطوير لأغراض تعليمية</p>
-        </div>
-    </footer>
-
-    <script src="../assets/js/copy-code.js"></script>
-</body>
-</html>

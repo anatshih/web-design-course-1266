@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>unit2practicasolution</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet"/>
+
+  <style>
+    :root{
+      --primary:#004d99;
+      --secondary:#e6b800;
+      --bg:#f9f9f9;
+      --text:#222;
+      --muted:#555;
+      --border:#e6e6e6;
+      --shadow:0 4px 10px rgba(0,0,0,.08);
+      --radius:12px;
+
+      --q-bg:#ffffff;
+      --a-bg:#e9f7ef;      /* أخضر فاتح للحل */
+      --a-border:#28a745;  /* أخضر */
+      --code-bg:#2d2d2d;
+      --code-text:#f8f8f2;
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{
+      font-family:"Cairo", sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.75;
+      padding:28px 0 60px;
+    }
+    .container{width:92%;max-width:1100px;margin:0 auto}
+
+    .page-title{
+      background:#fff;
+      border:1px solid var(--border);
+      border-right:6px solid var(--secondary);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:18px 20px;
+      margin-bottom:18px;
+    }
+    .page-title h1{
+      color:var(--primary);
+      font-size:1.5rem;
+      margin-bottom:6px;
+    }
+    .page-title p{color:var(--muted)}
+
+    .block{
+      background:#fff;
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      overflow:hidden;
+      margin-top:18px;
+    }
+    .block-h{
+      padding:14px 16px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      border-bottom:1px solid var(--border);
+      background:#fcfcfc;
+    }
+    .block-h h2{
+      color:var(--primary);
+      font-size:1.1rem;
+    }
+    .tag{
+      font-size:.85rem;
+      background:#fff8e1;
+      border:1px solid #ffeeba;
+      color:#856404;
+      padding:4px 10px;
+      border-radius:999px;
+      white-space:nowrap;
+    }
+    .block-b{padding:16px}
+
+    .question-card{
+      background:var(--q-bg);
+      border:1px solid var(--border);
+      border-radius:10px;
+      padding:14px 14px;
+      margin-bottom:14px;
+    }
+    .question-card h3{
+      color:var(--primary);
+      font-size:1.05rem;
+      margin-bottom:8px;
+    }
+    .question-card p{color:var(--muted); margin:6px 0}
+
+    .answer-box{
+      background:var(--a-bg);
+      border:1px solid rgba(40,167,69,.25);
+      border-right:6px solid var(--a-border);
+      border-radius:10px;
+      padding:14px 14px;
+    }
+    .answer-box h4{
+      color:#1d7a33;
+      margin-bottom:8px;
+      font-size:1rem;
+    }
+
+    .code{
+      margin-top:10px;
+      background:var(--code-bg);
+      color:var(--code-text);
+      border-radius:10px;
+      overflow:hidden;
+      border:1px solid rgba(0,0,0,.2);
+    }
+    .code .code-h{
+      background:rgba(255,255,255,.08);
+      padding:10px 12px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+      font-size:.9rem;
+      color:#ddd;
+      display:flex;
+      justify-content:space-between;
+      gap:10px;
+    }
+    pre{
+      margin:0;
+      padding:12px;
+      overflow:auto;
+      direction:ltr;
+      text-align:left;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+      font-size:.92rem;
+      line-height:1.6;
+    }
+
+    .note{
+      margin-top:10px;
+      padding:10px 12px;
+      background:#eef6ff;
+      border:1px solid #d7e8ff;
+      border-right:6px solid var(--primary);
+      border-radius:10px;
+      color:#244a7a;
+    }
+
+    /* خطوط فاصلة بين الأقسام */
+    .divider{
+      height:1px;background:var(--border);
+      margin:18px 0;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+
+    <section class="page-title">
+      <h1>حلول تدريبات المختبر – الوحدة الثانية (unit2practicasolution)</h1>
+      <p>كل بند يحتوي على <strong>السؤال</strong> ثم في الأسفل <strong>الحل</strong> داخل صندوق ملوّن مميّز.</p>
+    </section>
+
+    <!-- =========================
+         السؤال 1: معرفة الخطأ
+         ========================= -->
+    <section class="block">
+      <div class="block-h">
+        <h2>السؤال 1: معرفة الخطأ (Debugging)</h2>
+        <span class="tag">أمثلة متدرجة</span>
+      </div>
+      <div class="block-b">
+
+        <!-- مثال 1 -->
+        <div class="question-card">
+          <h3>مثال 1 (سهل) — 3 أخطاء</h3>
+          <p><strong>المطلوب:</strong> اكتشف 3 أخطاء ثم صحّحها.</p>
+          <div class="code">
+            <div class="code-h"><span>السؤال (الكود كما هو)</span></div>
+<pre><code>&lt;!doctype html&gt;
+&lt;html lang="ar" dir="rtl"&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;title&gt;نشاط أخطاء 1&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h2&gt;مرحبا بكم
+  &lt;p&gt;هذه فقرة تجريبية&lt;/p&gt;
+  &lt;a&gt;زيارة موقع&lt;/a&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+          </div>
+        </div>
+        <div class="answer-box">
+          <h4>الحل (نسخة مصححة)</h4>
+          <div class="code">
+            <div class="code-h"><span>الحل</span></div>
+<pre><code>&lt;!doctype html&gt;
+&lt;html lang="ar" dir="rtl"&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;title&gt;نشاط أخطاء 1&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h2&gt;مرحبا بكم&lt;/h2&gt;
+  &lt;p&gt;هذه فقرة تجريبية&lt;/p&gt;
+  &lt;a href="https://example.com"&gt;زيارة موقع&lt;/a&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+          </div>
+          <div class="note">
+            <strong>تصحيحات أساسية:</strong> إغلاق h2، إضافة href للرابط.
+          </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <!-- مثال 2 -->
+        <div class="question-card">
+          <h3>مثال 2 (سهل-متوسط) — 4 أخطاء (صورة + رابط)</h3>
+          <p><strong>المطلوب:</strong> اكتشف 4 أخطاء ثم صحّحها.</p>
+          <div class="code">
+            <div class="code-h"><span>السؤال (الكود كما هو)</span></div>
+<pre><code>&lt;!doctype html&gt;
+&lt;html lang="ar" dir="rtl"&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;title&gt;نشاط أخطاء 2&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h2&gt;صورة ورابط&lt;/h2&gt;
+
+  &lt;img scr="images/photo.jpg" alt=صورة width=200px&gt;
+
+  &lt;a href="www.google.com" target="_blanck"&gt;Google&lt;/a&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+          </div>
+        </div>
+        <div class="answer-box">
+          <h4>الحل (نسخة مصححة)</h4>
+          <div class="code">
+            <div class="code-h"><span>الحل</span></div>
+<pre><code>&lt;!doctype html&gt;
+&lt;html lang="ar" dir="rtl"&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;title&gt;نشاط أخطاء 2&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h2&gt;صورة ورابط&lt;/h2&gt;
+
+  &lt;img src="images/photo.jpg" alt="صورة" width="200"&gt;
+
+  &lt;a href="https://www.google.com" target="_blank"&gt;Google&lt;/a&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+          </div>
+          <div class="note">
+            <strong>تصحيحات أساسية:</strong> src بدل scr، وضع alt بين " "، width رقم بدون px، إضافة https وتصحيح target.
+          </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <!-- مثال 3 -->
+        <div class="question-card">
+          <h3>مثال 3 (متوسط) — 4 أخطاء (روابط داخلية + id)</h3>
+          <p><strong>المطلوب:</strong> اكتشف 4 أخطاء ثم صحّحها.</p>
+          <div class="code">
+            <div class="code-h"><span>السؤال (الكود كما هو)</span></div>
+<pre><code>&lt;!doctype html&gt;
+&lt;html lang="ar" dir="rtl"&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;title&gt;نشاط أخطاء 3&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;a href="#part2"&gt;اذهب للجزء الثاني&lt;/a&gt;
+  &lt;a href="#top"&gt;للأعلى&lt;/a&gt;
+
+  &lt;h2&gt;مقدمة&lt;/h2&gt;
+  &lt;p&gt;نص...&lt;/p&gt;
+
+  &lt;h3 id="part-2"&gt;الجزء الثاني&lt;/h3&gt;
+  &lt;p&gt;نص الجزء الثاني&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+          </div>
+        </div>
+        <div class="answer-box">
+          <h4>الحل (نسخة مصححة)</h4>
+          <div class="code">
+            <div class="code-h"><span>الحل</span></div>
+<pre><code>&lt;!doctype html&gt;
+&lt;html lang="ar" dir="rtl"&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;title&gt;نشاط أخطاء 3&lt;/title&gt;
+&lt;/head&gt;
+&lt;body id="top"&gt;
+  &lt;a href="#part2"&gt;اذهب للجزء الثاني&lt;/a&gt; |
+  &lt;a href="#top"&gt;للأعلى&lt;/a&gt;
+
+  &lt;h2&gt;مقدمة&lt;/h2&gt;
+  &lt;p&gt;نص...&lt;/p&gt;
+
+  &lt;h3 id="part2"&gt;الجزء الثاني&lt;/h3&gt;
+  &lt;p&gt;نص الجزء الثاني&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+          </div>
+          <div class="note">
+            <strong>تصحيحات أساسية:</strong> مطابقة href مع id (part2)، تعريف top (أضفناه على body).
+          </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <!-- مثال 4 -->
+        <div class="question-card">
+          <h3>مثال 4 (متوسط) — 5 أخطاء (قوائم متداخلة)</h3>
+          <p><strong>المطلوب:</strong> اكتشف 5 أخطاء ثم صحّحها.</p>
+          <div class="code">
+            <div class="code-h"><span>السؤال (الكود كما هو)</span></div>
+<pre><code>&lt;!doctype html&gt;
+&lt;html lang="ar" dir="rtl"&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;title&gt;نشاط أخطاء 4&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h2&gt;قوائم&lt;/h2&gt;
+
+  &lt;ul&gt;
+    &lt;li&gt;HTML&lt;/li&gt;
+    &lt;li&gt;CSS
+      &lt;ol&gt;
+        &lt;li&gt;Selectors&lt;/li&gt;
+        &lt;li&gt;Colors
+      &lt;/ol&gt;
+    &lt;/li&gt;
+    &lt;li&gt;JS&lt;/li&gt;
+  &lt;/ul&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+          </div>
+        </div>
+        <div class="answer-box">
+          <h4>الحل (نسخة مصححة)</h4>
+          <div class="code">
+            <div class="code-h"><span>الحل</span></div>
+<pre><code>&lt;!doctype html&gt;
+&lt;html lang="ar" dir="rtl"&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;title&gt;نشاط أخطاء 4&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h2&gt;قوائم&lt;/h2&gt;
+
+  &lt;ul&gt;
+    &lt;li&gt;HTML&lt;/li&gt;
+    &lt;li&gt;CSS
+      &lt;ol&gt;
+        &lt;li&gt;Selectors&lt;/li&gt;
+        &lt;li&gt;Colors&lt;/li&gt;
+      &lt;/ol&gt;
+    &lt;/li&gt;
+    &lt;li&gt;JS&lt;/li&gt;
+  &lt;/ul&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+          </div>
+          <div class="note">
+            <strong>تصحيحات أساسية:</strong> إغلاق li الخاص بـ Colors، وتأكد من إغلاق ol بشكل صحيح.
+          </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <!-- مثال 5 -->
+        <div class="question-card">
+          <h3>مثال 5 (متوسط) — 5 أخطاء (جدول)</h3>
+          <p><strong>المطلوب:</strong> اكتشف 5 أخطاء ثم صحّحها.</p>
+          <div class="code">
+            <div class="code-h"><span>السؤال (الكود كما هو)</span></div>
+<pre><code>&lt;!doctype html&gt;
+&lt;html lang="ar" dir="rtl"&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;title&gt;نشاط أخطاء 5&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h2&gt;جدول مواعيد&lt;/h2&gt;
+
+  &lt;table border=1&gt;
+    &lt;tr&gt;
+      &lt;th&gt;اليوم&lt;th&gt;
+      &lt;th&gt;الوقت&lt;/th&gt;
+    &lt;/tr&gt;
+
+    &lt;tr&gt;
+      &lt;td&gt;السبت&lt;/td&gt;
+      &lt;td&gt;9:00 - 10:00&lt;/td
+    &lt;/tr&gt;
+  &lt;/table&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+          </div>
+        </div>
+        <div class="answer-box">
+          <h4>الحل (نسخة مصححة)</h4>
+          <div class="code">
+            <div class="code-h"><span>الحل</span></div>
+<pre><code>&lt;!doctype html&gt;
+&lt;html lang="ar" dir="rtl"&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;title&gt;نشاط أخطاء 5&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h2&gt;جدول مواعيد&lt;/h2&gt;
+
+  &lt;table border="1"&gt;
+    &lt;tr&gt;
+      &lt;th&gt;اليوم&lt;/th&gt;
+      &lt;th&gt;الوقت&lt;/th&gt;
+    &lt;/tr&gt;
+
+    &lt;tr&gt;
+      &lt;td&gt;السبت&lt;/td&gt;
+      &lt;td&gt;9:00 - 10:00&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/table&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+          </div>
+          <div class="note">
+            <strong>تصحيحات أساسية:</strong> إغلاق th الأول، إغلاق td، وتوحيد border مع " ".
+          </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <!-- مثال 6 -->
+        <div class="question-card">
+          <h3>مثال 6 (متوسط أعلى) — 6 أخطاء (Form + CSS)</h3>
+          <p><strong>المطلوب:</strong> اكتشف 6 أخطاء ثم صحّحها.</p>
+          <div class="code">
+            <div class="code-h"><span>السؤال (الكود كما هو)</span></div>
+<pre><code>&lt;!doctype html&gt;
+&lt;html lang="ar" dir="rtl"&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;title&gt;نشاط أخطاء 6&lt;/title&gt;
+  &lt;style&gt;
+    h2 { color blue; text-align: center }
+    .box { border: 1px solid #ccc padding: 10px; }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h2&gt;نموذج&lt;/h2&gt;
+
+  &lt;form action="send.php" method="GETT"&gt;
+    &lt;label for="name"&gt;الاسم&lt;/label&gt;
+    &lt;input type="text" id="name"&gt;
+
+    &lt;label for="email"&gt;البريد&lt;/label&gt;
+    &lt;input type="email" id="email" required="true"&gt;
+
+    &lt;button type="submit"&gt;إرسال&lt;/button&gt;
+  &lt;/form&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+          </div>
+        </div>
+        <div class="answer-box">
+          <h4>الحل (نسخة مصححة)</h4>
+          <div class="code">
+            <div class="code-h"><span>الحل</span></div>
+<pre><code>&lt;!doctype html&gt;
+&lt;html lang="ar" dir="rtl"&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;title&gt;نشاط أخطاء 6&lt;/title&gt;
+  &lt;style&gt;
+    h2 { color: blue; text-align: center; }
+    .box { border: 1px solid #ccc; padding: 10px; }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+  &lt;h2&gt;نموذج&lt;/h2&gt;
+
+  &lt;form action="send.php" method="GET"&gt;
+    &lt;label for="name"&gt;الاسم&lt;/label&gt;
+    &lt;input type="text" id="name" name="name"&gt;
+
+    &lt;label for="email"&gt;البريد&lt;/label&gt;
+    &lt;input type="email" id="email" name="email" required&gt;
+
+    &lt;button type="submit"&gt;إرسال&lt;/button&gt;
+  &lt;/form&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+          </div>
+          <div class="note">
+            <strong>تصحيحات أساسية:</strong> إضافة ":" في color، إضافة ";"، فصل border عن padding، تصحيح method، وrequired بدون true.
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =========================
+         السؤال 2: المخرجات
+         ========================= -->
+    <section class="block">
+      <div class="block-h">
+        <h2>السؤال 2: معرفة المخرجات (Predict the Output)</h2>
+        <span class="tag">توقّع قبل التشغيل</span>
+      </div>
+      <div class="block-b">
+
+        <div class="question-card">
+          <h3>سؤال 1 (سهل) — أسطر ونزول سطر</h3>
+          <p><strong>المطلوب:</strong> اكتب كيف سيظهر النص (كم سطر؟ وأين يحدث النزول لسطر جديد؟).</p>
+          <div class="code"><div class="code-h"><span>السؤال</span></div>
+<pre><code>&lt;!doctype html&gt;
+&lt;html lang="ar" dir="rtl"&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;title&gt;مخرجات 1&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  مرحبا
+  &lt;p&gt;سطر داخل فقرة&lt;/p&gt;
+  سطر بعد الفقرة&lt;br&gt;سطر جديد
+&lt;/body&gt;
+&lt;/html&gt;</code></pre></div>
+        </div>
+
+        <div class="question-card">
+          <h3>سؤال 2 (سهل) — العناوين والفقرات والمسافات</h3>
+          <p><strong>المطلوب:</strong> هل ستظهر “المسافات الكثيرة” كما هي؟ وهل يظهر “سطر 1 وسطر 2” على سطرين؟</p>
+          <div class="code"><div class="code-h"><span>السؤال</span></div>
+<pre><code>&lt;!doctype html&gt;
+&lt;html lang="ar" dir="rtl"&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;title&gt;مخرجات 2&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;عنوان رئيسي&lt;/h1&gt;
+  &lt;p&gt;هذه     مسافات     كثيرة&lt;/p&gt;
+  &lt;p&gt;سطر 1
+  سطر 2&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre></div>
+        </div>
+
+        <div class="question-card">
+          <h3>سؤال 3 (سهل-متوسط) — الروابط</h3>
+          <p><strong>المطلوب:</strong> ما الفرق بين رابط 1 ورابط 2 عند الضغط؟</p>
+          <div class="code"><div class="code-h"><span>السؤال</span></div>
+<pre><code>&lt;!doctype html&gt;
+&lt;html lang="ar" dir="rtl"&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;title&gt;مخرجات 3&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;a href="https://example.com"&gt;رابط 1&lt;/a&gt;
+  &lt;a href="https://example.com" target="_blank"&gt;رابط 2&lt;/a&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre></div>
+        </div>
+
+        <div class="question-card">
+          <h3>سؤال 4 (سهل-متوسط) — صورة غير موجودة</h3>
+          <p><strong>المطلوب:</strong> ماذا يحدث إذا لم توجد الصورة؟ وهل يظهر alt؟</p>
+          <div class="code"><div class="code-h"><span>السؤال</span></div>
+<pre><code>&lt;!doctype html&gt;
+&lt;html lang="ar" dir="rtl"&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;title&gt;مخرجات 4&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h2&gt;صورة&lt;/h2&gt;
+  &lt;img src="no-image.png" alt="صورة غير موجودة" width="220"&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre></div>
+        </div>
+
+        <div class="question-card">
+          <h3>سؤال 5 (متوسط) — القوائم</h3>
+          <p><strong>المطلوب:</strong> صف شكل كل قائمة. أيها “مصطلح ثم تعريف”؟</p>
+          <div class="code"><div class="code-h"><span>السؤال</span></div>
+<pre><code>&lt;!doctype html&gt;
+&lt;html lang="ar" dir="rtl"&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;title&gt;مخرجات 5&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h3&gt;قائمة مرتبة&lt;/h3&gt;
+  &lt;ol&gt;
+    &lt;li&gt;خطوة أولى&lt;/li&gt;
+    &lt;li&gt;خطوة ثانية&lt;/li&gt;
+  &lt;/ol&gt;
+
+  &lt;h3&gt;قائمة غير مرتبة&lt;/h3&gt;
+  &lt;ul&gt;
+    &lt;li&gt;ملاحظة&lt;/li&gt;
+    &lt;li&gt;تنبيه&lt;/li&gt;
+  &lt;/ul&gt;
+
+  &lt;h3&gt;قائمة وصفية&lt;/h3&gt;
+  &lt;dl&gt;
+    &lt;dt&gt;HTML&lt;/dt&gt;&lt;dd&gt;هيكل الصفحة&lt;/dd&gt;
+    &lt;dt&gt;CSS&lt;/dt&gt;&lt;dd&gt;تنسيق الشكل&lt;/dd&gt;
+  &lt;/dl&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre></div>
+        </div>
+
+        <div class="question-card">
+          <h3>سؤال 6 (متوسط) — روابط داخل الصفحة</h3>
+          <p><strong>المطلوب:</strong> ماذا يحدث عند الضغط؟ وهل يتغير URL؟</p>
+          <div class="code"><div class="code-h"><span>السؤال</span></div>
+<pre><code>&lt;!doctype html&gt;
+&lt;html lang="ar" dir="rtl"&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;title&gt;مخرجات 6&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;a href="#contact"&gt;اذهب للتواصل&lt;/a&gt;
+
+  &lt;p&gt;نص طويل...&lt;/p&gt;
+  &lt;p&gt;نص طويل...&lt;/p&gt;
+  &lt;p&gt;نص طويل...&lt;/p&gt;
+
+  &lt;h2 id="contact"&gt;قسم التواصل&lt;/h2&gt;
+  &lt;p&gt;هنا معلومات التواصل&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre></div>
+        </div>
+
+        <div class="question-card">
+          <h3>سؤال 7 (متوسط) — جدول</h3>
+          <p><strong>المطلوب:</strong> كم صف وكم عمود؟ وما الفرق بين th و td؟</p>
+          <div class="code"><div class="code-h"><span>السؤال</span></div>
+<pre><code>&lt;!doctype html&gt;
+&lt;html lang="ar" dir="rtl"&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;title&gt;مخرجات 7&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;table border="1"&gt;
+    &lt;tr&gt;
+      &lt;th&gt;اليوم&lt;/th&gt;
+      &lt;th&gt;الموعد&lt;/th&gt;
+      &lt;th&gt;قاعة&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;السبت&lt;/td&gt;
+      &lt;td&gt;9:00 - 10:00&lt;/td&gt;
+      &lt;td&gt;215&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/table&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre></div>
+        </div>
+
+        <div class="question-card">
+          <h3>سؤال 8 (متوسط أعلى) — نموذج required</h3>
+          <p><strong>المطلوب:</strong> ماذا يحدث عند الإرسال بدون بيانات؟ وما الفرق بين text و email؟</p>
+          <div class="code"><div class="code-h"><span>السؤال</span></div>
+<pre><code>&lt;!doctype html&gt;
+&lt;html lang="ar" dir="rtl"&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;title&gt;مخرجات 8&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;form&gt;
+    &lt;label&gt;الاسم:&lt;/label&gt;
+    &lt;input type="text" required&gt;
+
+    &lt;label&gt;البريد:&lt;/label&gt;
+    &lt;input type="email" required&gt;
+
+    &lt;button type="submit"&gt;إرسال&lt;/button&gt;
+  &lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre></div>
+        </div>
+
+        <div class="question-card">
+          <h3>سؤال 9 (متوسط أعلى) — CSS داخل الصفحة</h3>
+          <p><strong>المطلوب:</strong> صف شكل العنوان والصندوق (محاذاة/لون/إطار/padding).</p>
+          <div class="code"><div class="code-h"><span>السؤال</span></div>
+<pre><code>&lt;!doctype html&gt;
+&lt;html lang="ar" dir="rtl"&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;title&gt;مخرجات 9&lt;/title&gt;
+  &lt;style&gt;
+    h2 { text-align: center; color: blue; }
+    .box { border: 1px solid #333; padding: 10px; }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h2&gt;عنوان&lt;/h2&gt;
+  &lt;div class="box"&gt;نص داخل صندوق&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre></div>
+        </div>
+
+        <div class="question-card">
+          <h3>سؤال 10 (متوسط أعلى) — أولوية inline و style</h3>
+          <p><strong>المطلوب:</strong> ما لون نص 1 ونص 2؟ ولماذا؟</p>
+          <div class="code"><div class="code-h"><span>السؤال</span></div>
+<pre><code>&lt;!doctype html&gt;
+&lt;html lang="ar" dir="rtl"&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;title&gt;مخرجات 10&lt;/title&gt;
+  &lt;style&gt;
+    p { color: green; }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;p style="color:red"&gt;نص 1&lt;/p&gt;
+  &lt;p&gt;نص 2&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre></div>
+        </div>
+
+        <!-- حل مختصر لجزء المخرجات -->
+        <div class="answer-box" style="margin-top:14px;">
+          <h4>ملاحظة للمدرس (حل مختصر عام)</h4>
+          <p style="margin:0;color:#1d7a33;">
+            في السؤال 2: الإجابات تعتمد على سلوك المتصفح الافتراضي:
+            تجميع المسافات داخل p، تأثير br، target="_blank"، سلوك anchor بتغيير # في العنوان،
+            سلوك required، وأولوية inline أعلى من style الداخلي.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =========================
+         السؤال 3: كتابة برمجية
+         ========================= -->
+    <section class="block">
+      <div class="block-h">
+        <h2>السؤال 3: كتابة برمجية (مشروع مصغّر)</h2>
+        <span class="tag">35–40 دقيقة</span>
+      </div>
+      <div class="block-b">
+
+        <div class="question-card">
+          <h3>المطلوب (بدون تسليم)</h3>
+          <p><strong>المطلوب من الطالب:</strong> إنشاء صفحة واحدة تعمل في المتصفح وتجمع مهارات الوحدة الثانية.</p>
+
+          <div class="task-box">
+            <ul>
+              <li><span></span> إنشاء ملفين: <code>index.html</code> و <code>style.css</code></li>
+              <li><span></span> ربط CSS في head: <code>&lt;link rel="stylesheet" href="style.css"&gt;</code></li>
+              <li><span></span> h1 + فقرة تعريف (سطرين)</li>
+              <li><span></span> صورة مع <code>alt</code> و <code>width="220"</code></li>
+              <li><span></span> قائمة ul (4 عناصر)</li>
+              <li><span></span> جدول 3 أعمدة × 3 صفوف بيانات (مع th)</li>
+              <li><span></span> رابط داخلي يعمل (href="#form" + id)</li>
+              <li><span></span> نموذج فيه required + submit/reset</li>
+              <li><span></span> CSS: card + table + form + RTL</li>
+            </ul>
+          </div>
+
+          <div class="mini-note">
+            <i class="fas fa-rocket"></i>
+            <div>
+              <strong>تحسين اختياري:</strong> :hover للروابط، caption للجدول، placeholder للحقول.
+            </div>
+          </div>
+
+          <p style="margin-top:12px;color:var(--muted);">
+            <strong>ملاحظة:</strong> لن يتم ربط هذه الصفحة بأي صفحة أخرى (حسب طلبك). هذه صفحة حلول/عرض مستقلة.
+          </p>
+        </div>
+
+        <div class="answer-box">
+          <h4>حل نموذجي (index.html + style.css)</h4>
+
+          <div class="code">
+            <div class="code-h"><span>index.html</span></div>
+<pre><code>&lt;!doctype html&gt;
+&lt;html lang="ar" dir="rtl"&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;
+  &lt;title&gt;مشروع مختبر - الوحدة الثانية&lt;/title&gt;
+  &lt;link rel="stylesheet" href="style.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+  &lt;div class="card"&gt;
+    &lt;h1&gt;تقنية تصميم صفحات الويب (1266)&lt;/h1&gt;
+    &lt;p&gt;هذه صفحة تدريبية مختصرة تجمع عناصر HTML و CSS.&lt;br&gt;
+       الهدف هو التذكير والتطبيق داخل المختبر.&lt;/p&gt;
+
+    &lt;p&gt;&lt;a href="#form"&gt;اذهب إلى النموذج&lt;/a&gt; | &lt;a href="https://www.qou.edu" target="_blank"&gt;موقع الجامعة&lt;/a&gt;&lt;/p&gt;
+
+    &lt;img src="profile.png" alt="صورة توضيحية" width="220"&gt;
+
+    &lt;h2&gt;مهارات&lt;/h2&gt;
+    &lt;ul&gt;
+      &lt;li&gt;HTML&lt;/li&gt;
+      &lt;li&gt;CSS&lt;/li&gt;
+      &lt;li&gt;روابط&lt;/li&gt;
+      &lt;li&gt;جداول ونماذج&lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;h2&gt;خطة الأسبوع&lt;/h2&gt;
+    &lt;table&gt;
+      &lt;caption&gt;خطة أسبوعية مختصرة&lt;/caption&gt;
+      &lt;tr&gt;
+        &lt;th&gt;النشاط&lt;/th&gt;
+        &lt;th&gt;اليوم&lt;/th&gt;
+        &lt;th&gt;الوقت&lt;/th&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;&lt;td&gt;تدريب HTML&lt;/td&gt;&lt;td&gt;السبت&lt;/td&gt;&lt;td&gt;9-10&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr&gt;&lt;td&gt;تدريب CSS&lt;/td&gt;&lt;td&gt;الأحد&lt;/td&gt;&lt;td&gt;10-11&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr&gt;&lt;td&gt;مراجعة عامة&lt;/td&gt;&lt;td&gt;الاثنين&lt;/td&gt;&lt;td&gt;11-12&lt;/td&gt;&lt;/tr&gt;
+    &lt;/table&gt;
+
+    &lt;h2 id="form"&gt;نموذج تواصل&lt;/h2&gt;
+    &lt;form&gt;
+      &lt;label&gt;الاسم&lt;/label&gt;
+      &lt;input type="text" required placeholder="أدخل الاسم"&gt;
+
+      &lt;label&gt;البريد الإلكتروني&lt;/label&gt;
+      &lt;input type="email" required placeholder="name@example.com"&gt;
+
+      &lt;label&gt;التخصص&lt;/label&gt;
+      &lt;select&gt;
+        &lt;option&gt;إدارة أعمال&lt;/option&gt;
+        &lt;option&gt;تقنية معلومات&lt;/option&gt;
+        &lt;option&gt;محاسبة&lt;/option&gt;
+      &lt;/select&gt;
+
+      &lt;label&gt;الرسالة&lt;/label&gt;
+      &lt;textarea rows="4" required placeholder="اكتب رسالتك..."&gt;&lt;/textarea&gt;
+
+      &lt;div class="row"&gt;
+        &lt;input type="submit" value="إرسال"&gt;
+        &lt;input type="reset" value="مسح"&gt;
+      &lt;/div&gt;
+    &lt;/form&gt;
+  &lt;/div&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+          </div>
+
+          <div class="code">
+            <div class="code-h"><span>style.css</span></div>
+<pre><code>body{
+  font-family: Arial, sans-serif;
+  direction: rtl;
+  text-align: right;
+  background: #f7f7f7;
+  padding: 20px;
+}
+
+.card{
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 18px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+h1{
+  color: #004d99;
+  text-align: center;
+  margin-top: 0;
+}
+
+img{display:block; margin: 10px 0; border-radius: 8px;}
+
+table{
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+caption{
+  text-align: right;
+  margin-bottom: 8px;
+  color: #555;
+}
+
+th, td{
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: center;
+}
+
+th{background:#eef6ff;}
+
+form label{display:block; margin-top: 10px; font-weight: bold;}
+form input, form select, form textarea{
+  width: 100%;
+  padding: 8px;
+  margin-top: 6px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.row{
+  display:flex;
+  gap:10px;
+  margin-top: 12px;
+}
+
+.row input{
+  width: auto;
+  padding: 10px 16px;
+  cursor: pointer;
+}
+
+a:hover{color:#e6b800;}</code></pre>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </div>
+</body>
+</html>
