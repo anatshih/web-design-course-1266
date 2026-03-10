@@ -1,1 +1,1484 @@
-<!-- placeholder -->
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>الوحدة الثالثة - JavaScript | تقنية تصميم صفحات الويب 1266</title>
+  <style>
+    :root{
+      --bg:#f4f6f8;
+      --card:#ffffff;
+      --text:#1f2d3d;
+      --muted:#5f6b7a;
+      --primary:#1f4e79;
+      --primary-2:#2f6fa8;
+      --border:#d9e1e8;
+      --code-bg:#1e1f22;
+      --code-text:#f8f8f2;
+      --note-bg:#eef5ff;
+      --note-border:#2f6fa8;
+      --success-bg:#eefaf0;
+      --success-border:#2f9e44;
+      --warning-bg:#fff8e6;
+      --warning-border:#c58b00;
+      --shadow:0 4px 14px rgba(0,0,0,.07);
+      --radius:14px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:"Tahoma","Arial",sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.9;
+    }
+
+    .container{
+      width:min(1200px, 92%);
+      margin:auto;
+      padding:24px 0 60px;
+    }
+
+    .top-actions{
+      display:flex;
+      justify-content:flex-start;
+      align-items:center;
+      margin-top:20px;
+      margin-bottom:16px;
+    }
+
+    .home-link{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      text-decoration:none;
+      background:var(--card);
+      color:var(--primary);
+      border:1px solid var(--border);
+      padding:10px 16px;
+      border-radius:12px;
+      box-shadow:var(--shadow);
+      font-weight:700;
+      transition:.2s;
+    }
+
+    .home-link:hover{
+      background:#eef4fb;
+      transform:translateY(-1px);
+    }
+
+    .home-icon{
+      font-size:1.2rem;
+    }
+
+    header.hero{
+      background:linear-gradient(135deg, var(--primary), var(--primary-2));
+      color:#fff;
+      padding:36px 28px;
+      border-radius:20px;
+      box-shadow:var(--shadow);
+    }
+
+    .hero h1{
+      margin:0 0 10px;
+      font-size:2rem;
+    }
+
+    .hero p{
+      margin:0;
+      color:rgba(255,255,255,.95);
+    }
+
+    .layout{
+      display:grid;
+      grid-template-columns:280px 1fr;
+      gap:22px;
+      margin-top:22px;
+    }
+
+    aside.sidebar{
+      position:sticky;
+      top:16px;
+      align-self:start;
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:18px;
+      max-height:calc(100vh - 32px);
+      overflow:auto;
+    }
+
+    .sidebar h2{
+      margin:0 0 12px;
+      font-size:1.05rem;
+      color:var(--primary);
+    }
+
+    .sidebar a{
+      display:block;
+      text-decoration:none;
+      color:var(--text);
+      padding:8px 10px;
+      border-radius:10px;
+      margin-bottom:6px;
+      transition:.2s;
+      font-size:.96rem;
+    }
+
+    .sidebar a:hover{
+      background:#eef4fb;
+      color:var(--primary);
+    }
+
+    main.content{
+      min-width:0;
+    }
+
+    .card{
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:24px;
+      margin-bottom:20px;
+    }
+
+    .card h2{
+      margin-top:0;
+      color:var(--primary);
+      font-size:1.5rem;
+      border-bottom:2px solid #e9eef4;
+      padding-bottom:10px;
+    }
+
+    .card h3{
+      color:#244d70;
+      margin-top:24px;
+      margin-bottom:10px;
+      font-size:1.1rem;
+    }
+
+    .code{
+      background:var(--code-bg);
+      color:var(--code-text);
+      border-radius:12px;
+      padding:16px;
+      overflow:auto;
+      border:1px solid #000;
+      direction:ltr;
+      text-align:left;
+      font-family:Consolas,"Courier New",monospace;
+      font-size:.95rem;
+      line-height:1.7;
+      white-space:pre-wrap;
+      word-break:break-word;
+    }
+
+    .note, .result-box, .warning{
+      border-radius:12px;
+      padding:14px 16px;
+      margin-top:12px;
+    }
+
+    .note{
+      background:var(--note-bg);
+      border-right:5px solid var(--note-border);
+    }
+
+    .result-box{
+      background:var(--success-bg);
+      border-right:5px solid var(--success-border);
+    }
+
+    .warning{
+      background:var(--warning-bg);
+      border-right:5px solid var(--warning-border);
+    }
+
+    .mini-title{
+      font-weight:700;
+      color:var(--primary);
+      display:block;
+      margin-bottom:6px;
+    }
+
+    .two-col{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:16px;
+    }
+
+    .label{
+      font-weight:700;
+      color:var(--primary);
+    }
+
+    ul.clean{
+      margin:8px 0 0;
+      padding-right:20px;
+    }
+
+    .lab textarea{
+      width:100%;
+      min-height:220px;
+      resize:vertical;
+      padding:14px;
+      border-radius:12px;
+      border:1px solid var(--border);
+      font-family:Consolas,"Courier New",monospace;
+      font-size:.95rem;
+      direction:ltr;
+      text-align:left;
+      background:#fcfdff;
+    }
+
+    .lab-actions{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:12px;
+    }
+
+    .btn{
+      border:none;
+      background:var(--primary);
+      color:#fff;
+      padding:10px 18px;
+      border-radius:10px;
+      cursor:pointer;
+      font-size:1rem;
+    }
+
+    .btn.secondary{
+      background:#6c7a89;
+    }
+
+    .output-frame{
+      width:100%;
+      height:260px;
+      border:1px solid var(--border);
+      border-radius:12px;
+      background:#fff;
+      margin-top:14px;
+    }
+
+    details.exercise{
+      border:1px solid var(--border);
+      border-radius:12px;
+      padding:14px 16px;
+      margin-top:14px;
+      background:#fcfdff;
+    }
+
+    details.exercise summary{
+      cursor:pointer;
+      font-weight:700;
+      color:var(--primary);
+    }
+
+    footer{
+      text-align:center;
+      color:var(--muted);
+      margin-top:28px;
+      padding-bottom:20px;
+    }
+
+    .scroll-top-btn{
+      position:fixed;
+      bottom:24px;
+      left:24px;
+      width:52px;
+      height:52px;
+      border:none;
+      border-radius:50%;
+      background:var(--primary);
+      color:#fff;
+      font-size:1.4rem;
+      cursor:pointer;
+      box-shadow:var(--shadow);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      z-index:999;
+      transition:.2s;
+    }
+
+    .scroll-top-btn:hover{
+      background:var(--primary-2);
+      transform:translateY(-2px);
+    }
+
+    .scroll-top-btn.show{
+      display:flex;
+    }
+
+    @media (max-width:920px){
+      .layout{
+        grid-template-columns:1fr;
+      }
+
+      aside.sidebar{
+        position:relative;
+        top:0;
+        max-height:none;
+      }
+
+      .two-col{
+        grid-template-columns:1fr;
+      }
+
+      .scroll-top-btn{
+        left:16px;
+        bottom:16px;
+      }
+    }
+  </style>
+</head>
+<body id="top">
+
+  <div class="container">
+
+  <a href="../index.html" class="home-link">
+🏠 الصفحة الرئيسية
+</a>
+
+    <header class="hero">
+      <h1>الوحدة الثالثة: برمجة صفحات الويب باستخدام JavaScript</h1>
+      <p>
+        مقرر 1266 - تقنية تصميم صفحات الويب
+        <br>
+        صفحة تعليمية شاملة تتضمن المفاهيم، الأمثلة، شرح السطور، تحديد المدخل والمخرج،
+        مختبرًا تفاعليًا، وتمارين مع الحلول.
+      </p>
+    </header>
+
+    <div class="layout">
+      <aside class="sidebar">
+        <h2>محتويات الوحدة</h2>
+        <a href="#intro">1. مقدمة JavaScript</a>
+        <a href="#addjs">2. إضافة JavaScript إلى الصفحة</a>
+        <a href="#input-output">3. الإدخال والإخراج</a>
+        <a href="#variables">4. المتغيرات وأنواع البيانات</a>
+        <a href="#number">5. تحويل النص إلى رقم Number()</a>
+        <a href="#operators">6. العمليات الحسابية</a>
+        <a href="#precedence">7. ترتيب العمليات</a>
+        <a href="#if">8. الجملة الشرطية if</a>
+        <a href="#ifelse">9. الجملة if...else</a>
+        <a href="#elseif">10. الجملة else if</a>
+        <a href="#comparison">11. معاملات المقارنة</a>
+        <a href="#switch">12. الجملة switch</a>
+        <a href="#loops">13. مفهوم الحلقات</a>
+        <a href="#while">14. while</a>
+        <a href="#dowhile">15. do...while</a>
+        <a href="#for">16. for</a>
+        <a href="#arrays">17. المصفوفات Arrays</a>
+        <a href="#arrays-loops">18. المصفوفات مع الحلقات</a>
+        <a href="#functions">19. الدوال Functions</a>
+        <a href="#full-example">20. مثال تطبيقي شامل</a>
+        <a href="#interactive">21. أمثلة تفاعلية</a>
+        <a href="#exercises">22. التمارين مع الحلول</a>
+      </aside>
+
+      <main class="content">
+
+        <section class="card" id="intro">
+          <h2>1. مقدمة إلى JavaScript</h2>
+
+          <h3>شرح المفهوم</h3>
+          <p>
+            JavaScript هي لغة برمجة تستخدم لجعل صفحات الويب تفاعلية. عند استخدام HTML فقط،
+            تكون الصفحة ثابتة، أي أن المحتوى لا يتغير أثناء استخدام الطالب للموقع.
+            أما عند استخدام JavaScript فيمكن للصفحة أن تتفاعل مع المستخدم، وتقرأ البيانات،
+            وتنفذ العمليات الحسابية، وتتخذ قرارات، وتغير محتوى الصفحة مباشرة.
+          </p>
+
+          <div class="note">
+            <span class="mini-title">معلومة مهمة</span>
+            تعمل JavaScript غالبًا داخل متصفح المستخدم، ولذلك تسمى برمجة جهة العميل
+            <strong>Client-Side</strong>.
+          </div>
+
+          <h3>أهمية JavaScript في صفحات الويب</h3>
+          <ul class="clean">
+            <li>قراءة البيانات من المستخدم.</li>
+            <li>التحقق من صحة الإدخال.</li>
+            <li>تنفيذ العمليات الحسابية.</li>
+            <li>تغيير محتوى الصفحة.</li>
+            <li>إظهار رسائل وتنبيهات.</li>
+          </ul>
+        </section>
+
+        <section class="card" id="addjs">
+          <h2>2. إضافة JavaScript إلى صفحة HTML</h2>
+
+          <h3>شرح المفهوم</h3>
+          <p>
+            لكتابة كود JavaScript داخل صفحة HTML نستخدم الوسم
+            <strong>&lt;script&gt;</strong>.
+            هذا الوسم يخبر المتصفح أن الكود الموجود داخله هو كود JavaScript.
+          </p>
+
+          <h3>الهدف من المثال</h3>
+          <p>
+            توضيح كيفية كتابة JavaScript داخل صفحة HTML وعرض نص داخل الصفحة.
+          </p>
+
+          <h3>المثال</h3>
+          <div class="code">
+&lt;html&gt;
+&lt;body&gt;
+
+&lt;h2&gt;JavaScript Example&lt;/h2&gt;
+&lt;p id="demo"&gt;&lt;/p&gt;
+
+&lt;script&gt;
+document.getElementById("demo").innerHTML = "My First JavaScript";
+&lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+          </div>
+
+          <h3>شرح السطور</h3>
+          <p><span class="label">السطر 3:</span> عنوان داخل الصفحة.</p>
+          <p><span class="label">السطر 4:</span> فقرة HTML تحمل المعرف <strong>demo</strong>.</p>
+          <p><span class="label">السطر 6:</span> بداية كود JavaScript.</p>
+          <p><span class="label">السطر 7:</span> الوصول إلى العنصر الذي يحمل المعرف demo وتغيير محتواه باستخدام <strong>innerHTML</strong>.</p>
+
+          <div class="two-col">
+            <div class="result-box">
+              <span class="mini-title">المدخل</span>
+              لا يوجد.
+            </div>
+            <div class="result-box">
+              <span class="mini-title">المخرج</span>
+              يظهر النص داخل الصفحة: <strong>My First JavaScript</strong>
+            </div>
+          </div>
+
+          <h3>أماكن وضع JavaScript</h3>
+          <p>يمكن وضع JavaScript داخل:</p>
+          <ul class="clean">
+            <li><strong>body</strong>: عندما نريد تنفيذ الكود أثناء عرض الصفحة.</li>
+            <li><strong>head</strong>: عندما نريد تعريف دوال أو كود سيتم استدعاؤه لاحقًا.</li>
+          </ul>
+        </section>
+
+        <section class="card" id="input-output">
+          <h2>3. الإدخال والإخراج في JavaScript</h2>
+
+          <h3>أولاً: الإدخال باستخدام prompt()</h3>
+          <p>
+            تستخدم الدالة <strong>prompt()</strong> لطلب إدخال قيمة من المستخدم.
+            عند تنفيذها يظهر مربع حوار يحتوي رسالة وصندوق إدخال.
+          </p>
+
+          <h3>الهدف من المثال</h3>
+          <p>قراءة اسم المستخدم ثم عرض رسالة ترحيب.</p>
+
+          <h3>المثال</h3>
+          <div class="code">
+var name = prompt("Please enter your name:");
+alert("Hello " + name);
+          </div>
+
+          <h3>شرح السطور</h3>
+          <p><span class="label">السطر 1:</span> يطلب من المستخدم إدخال اسمه ويخزن القيمة في المتغير <strong>name</strong>.</p>
+          <p><span class="label">السطر 2:</span> يعرض رسالة ترحيب تحتوي الاسم الذي أدخله المستخدم.</p>
+
+          <div class="two-col">
+            <div class="result-box">
+              <span class="mini-title">المدخل</span>
+              اسم المستخدم، مثال: Ahmad
+            </div>
+            <div class="result-box">
+              <span class="mini-title">المخرج</span>
+              Hello Ahmad
+            </div>
+          </div>
+
+          <h3>ثانياً: الإخراج باستخدام alert()</h3>
+          <p>
+            تستخدم الدالة <strong>alert()</strong> لعرض رسالة للمستخدم في مربع حوار.
+          </p>
+
+          <div class="code">
+alert("Welcome to JavaScript");
+          </div>
+
+          <p><span class="label">الشرح:</span> يظهر مربع حوار يحتوي الرسالة النصية.</p>
+
+          <div class="two-col">
+            <div class="result-box">
+              <span class="mini-title">المدخل</span>
+              لا يوجد.
+            </div>
+            <div class="result-box">
+              <span class="mini-title">المخرج</span>
+              مربع حوار يحتوي: Welcome to JavaScript
+            </div>
+          </div>
+
+          <h3>ثالثاً: الإخراج باستخدام document.write()</h3>
+          <p>
+            تستخدم الدالة <strong>document.write()</strong> لكتابة النص داخل الصفحة.
+          </p>
+
+          <div class="code">
+document.write("This is JavaScript Output");
+          </div>
+
+          <p><span class="label">الشرح:</span> يكتب النص داخل صفحة الويب مباشرة.</p>
+
+          <div class="warning">
+            <span class="mini-title">تنبيه</span>
+            يفضل استخدام document.write في الأمثلة التعليمية البسيطة فقط.
+          </div>
+
+          <h3>رابعاً: تغيير محتوى عنصر باستخدام innerHTML</h3>
+          <div class="code">
+&lt;p id="demo"&gt;&lt;/p&gt;
+
+&lt;script&gt;
+document.getElementById("demo").innerHTML = "Hello JavaScript";
+&lt;/script&gt;
+          </div>
+
+          <p><span class="label">الشرح:</span> يصل البرنامج إلى العنصر الذي يحمل id=demo ثم يغير النص الموجود بداخله.</p>
+        </section>
+
+        <section class="card" id="variables">
+          <h2>4. المتغيرات وأنواع البيانات</h2>
+
+          <h3>شرح المفهوم</h3>
+          <p>
+            المتغير هو مكان في الذاكرة يستخدم لتخزين قيمة يمكن استخدامها لاحقًا داخل البرنامج.
+            في JavaScript يتم تعريف المتغير باستخدام الكلمة <strong>var</strong>.
+          </p>
+
+          <h3>الهدف من المثال</h3>
+          <p>تعريف متغيرين وحساب مجموعهما.</p>
+
+          <h3>المثال</h3>
+          <div class="code">
+var price1 = 5;
+var price2 = 6;
+var total = price1 + price2;
+
+alert(total);
+          </div>
+
+          <h3>شرح السطور</h3>
+          <p><span class="label">السطر 1:</span> تعريف متغير اسمه price1 وتخزين القيمة 5.</p>
+          <p><span class="label">السطر 2:</span> تعريف متغير اسمه price2 وتخزين القيمة 6.</p>
+          <p><span class="label">السطر 3:</span> إنشاء متغير total لتخزين نتيجة الجمع.</p>
+          <p><span class="label">السطر 5:</span> عرض قيمة المجموع.</p>
+
+          <div class="two-col">
+            <div class="result-box">
+              <span class="mini-title">المدخل</span>
+              لا يوجد.
+            </div>
+            <div class="result-box">
+              <span class="mini-title">المخرج</span>
+              11
+            </div>
+          </div>
+
+          <h3>أنواع البيانات الأساسية</h3>
+          <ul class="clean">
+            <li><strong>String</strong>: نص، مثل: "Ahmad"</li>
+            <li><strong>Number</strong>: رقم، مثل: 25</li>
+            <li><strong>Boolean</strong>: قيمة منطقية، مثل: true / false</li>
+          </ul>
+
+          <div class="note">
+            <span class="mini-title">ملاحظة</span>
+            JavaScript حساسة لحالة الأحرف، لذلك المتغير <strong>age</strong> يختلف عن <strong>Age</strong>.
+          </div>
+        </section>
+
+        <section class="card" id="number">
+          <h2>5. تحويل النص إلى رقم باستخدام Number()</h2>
+
+          <h3>شرح المفهوم</h3>
+          <p>
+            الدالة prompt تعيد القيمة على شكل نص حتى لو أدخل المستخدم رقمًا.
+            لذلك عند الرغبة في إجراء عمليات حسابية يجب استخدام
+            <strong>Number()</strong> لتحويل النص إلى رقم.
+          </p>
+
+          <h3>الهدف من المثال</h3>
+          <p>قراءة رقمين من المستخدم ثم جمعهما بشكل صحيح.</p>
+
+          <h3>المثال</h3>
+          <div class="code">
+var num1 = Number(prompt("Enter first number"));
+var num2 = Number(prompt("Enter second number"));
+
+var sum = num1 + num2;
+
+alert(sum);
+          </div>
+
+          <h3>شرح السطور</h3>
+          <p><span class="label">السطر 1:</span> قراءة الرقم الأول وتحويله من نص إلى رقم.</p>
+          <p><span class="label">السطر 2:</span> قراءة الرقم الثاني وتحويله من نص إلى رقم.</p>
+          <p><span class="label">السطر 4:</span> جمع الرقمين.</p>
+          <p><span class="label">السطر 6:</span> عرض النتيجة.</p>
+
+          <div class="two-col">
+            <div class="result-box">
+              <span class="mini-title">المدخل</span>
+              5 و 7
+            </div>
+            <div class="result-box">
+              <span class="mini-title">المخرج</span>
+              12
+            </div>
+          </div>
+        </section>
+
+        <section class="card" id="operators">
+          <h2>6. العمليات الحسابية</h2>
+
+          <h3>شرح المفهوم</h3>
+          <p>
+            تستخدم العمليات الحسابية لإجراء الحسابات داخل البرنامج.
+            من أهم العمليات: الجمع، الطرح، الضرب، القسمة، وباقي القسمة.
+          </p>
+
+          <h3>أهم العمليات</h3>
+          <ul class="clean">
+            <li><strong>+</strong> الجمع</li>
+            <li><strong>-</strong> الطرح</li>
+            <li><strong>*</strong> الضرب</li>
+            <li><strong>/</strong> القسمة</li>
+            <li><strong>%</strong> باقي القسمة</li>
+          </ul>
+
+          <h3>الهدف من المثال</h3>
+          <p>تنفيذ عمليات حسابية مختلفة على رقمين.</p>
+
+          <h3>المثال</h3>
+          <div class="code">
+var a = 10;
+var b = 5;
+
+var sum = a + b;
+var sub = a - b;
+var mul = a * b;
+var div = a / b;
+var mod = 10 % 3;
+
+alert(sum);
+          </div>
+
+          <h3>شرح السطور</h3>
+          <p><span class="label">السطر 1 و 2:</span> تعريف المتغيرين a و b.</p>
+          <p><span class="label">السطر 4:</span> تنفيذ عملية الجمع.</p>
+          <p><span class="label">السطر 5:</span> تنفيذ عملية الطرح.</p>
+          <p><span class="label">السطر 6:</span> تنفيذ عملية الضرب.</p>
+          <p><span class="label">السطر 7:</span> تنفيذ عملية القسمة.</p>
+          <p><span class="label">السطر 8:</span> تنفيذ عملية باقي القسمة.</p>
+        </section>
+
+        <section class="card" id="precedence">
+          <h2>7. ترتيب تنفيذ العمليات الحسابية</h2>
+
+          <h3>شرح المفهوم</h3>
+          <p>
+            إذا احتوى التعبير الرياضي على أكثر من عملية، فإن JavaScript تنفذ العمليات حسب ترتيب محدد:
+          </p>
+
+          <ul class="clean">
+            <li>الأقواس أولاً</li>
+            <li>الضرب والقسمة</li>
+            <li>الجمع والطرح</li>
+          </ul>
+
+          <h3>الهدف من المثال</h3>
+          <p>توضيح كيف تؤثر أولوية العمليات في الناتج.</p>
+
+          <h3>المثال</h3>
+          <div class="code">
+var result = 5 + 3 * 2;
+
+alert(result);
+          </div>
+
+          <h3>شرح السطور</h3>
+          <p>
+            يتم تنفيذ الضرب أولاً: 3 × 2 = 6
+            <br>
+            ثم الجمع: 5 + 6 = 11
+          </p>
+
+          <div class="two-col">
+            <div class="result-box">
+              <span class="mini-title">المدخل</span>
+              لا يوجد.
+            </div>
+            <div class="result-box">
+              <span class="mini-title">المخرج</span>
+              11
+            </div>
+          </div>
+        </section>
+
+        <section class="card" id="if">
+          <h2>8. الجملة الشرطية if</h2>
+
+          <h3>شرح المفهوم</h3>
+          <p>
+            تستخدم جملة if لتنفيذ أوامر معينة إذا تحقق شرط محدد.
+            إذا كان الشرط صحيحًا ينفذ الكود، وإذا لم يتحقق يتم تجاهله.
+          </p>
+
+          <h3>الهدف من المثال</h3>
+          <p>قراءة درجة طالب، وإذا كانت أكبر أو تساوي 50 يظهر أنه ناجح.</p>
+
+          <h3>المثال</h3>
+          <div class="code">
+var mark = Number(prompt("Enter student mark"));
+
+if(mark >= 50){
+  alert("Pass");
+}
+          </div>
+
+          <h3>شرح السطور</h3>
+          <p><span class="label">السطر 1:</span> قراءة الدرجة وتحويلها إلى رقم.</p>
+          <p><span class="label">السطر 3:</span> فحص إذا كانت الدرجة أكبر أو تساوي 50.</p>
+          <p><span class="label">السطر 4:</span> إذا تحقق الشرط يتم عرض Pass.</p>
+
+          <div class="two-col">
+            <div class="result-box">
+              <span class="mini-title">المدخل</span>
+              70
+            </div>
+            <div class="result-box">
+              <span class="mini-title">المخرج</span>
+              Pass
+            </div>
+          </div>
+        </section>
+
+        <section class="card" id="ifelse">
+          <h2>9. الجملة الشرطية if...else</h2>
+
+          <h3>شرح المفهوم</h3>
+          <p>
+            تستخدم عندما نريد تنفيذ مسارين مختلفين:
+            مسار إذا تحقق الشرط، ومسار آخر إذا لم يتحقق.
+          </p>
+
+          <h3>الهدف من المثال</h3>
+          <p>تحديد إذا كان الطالب ناجحًا أو راسبًا.</p>
+
+          <h3>المثال</h3>
+          <div class="code">
+var mark = Number(prompt("Enter student mark"));
+
+if(mark >= 50){
+  alert("Pass");
+}
+else{
+  alert("Fail");
+}
+          </div>
+
+          <h3>شرح السطور</h3>
+          <p><span class="label">if:</span> تفحص الشرط.</p>
+          <p><span class="label">else:</span> تنفذ إذا لم يتحقق الشرط السابق.</p>
+
+          <div class="two-col">
+            <div class="result-box">
+              <span class="mini-title">المدخل</span>
+              40
+            </div>
+            <div class="result-box">
+              <span class="mini-title">المخرج</span>
+              Fail
+            </div>
+          </div>
+        </section>
+
+        <section class="card" id="elseif">
+          <h2>10. الجملة الشرطية else if</h2>
+
+          <h3>شرح المفهوم</h3>
+          <p>
+            تستخدم else if عندما يكون لدينا أكثر من احتمال أو أكثر من مسار.
+          </p>
+
+          <h3>الهدف من المثال</h3>
+          <p>تحديد تقدير الطالب حسب درجته.</p>
+
+          <h3>المثال</h3>
+          <div class="code">
+var mark = Number(prompt("Enter student mark"));
+
+if(mark >= 90){
+  alert("Excellent");
+}
+else if(mark >= 80){
+  alert("Very Good");
+}
+else if(mark >= 70){
+  alert("Good");
+}
+else if(mark >= 50){
+  alert("Pass");
+}
+else{
+  alert("Fail");
+}
+          </div>
+
+          <h3>شرح السطور</h3>
+          <p><span class="label">if:</span> الشرط الأول.</p>
+          <p><span class="label">else if:</span> شروط إضافية يتم فحصها بالتتابع.</p>
+          <p><span class="label">else:</span> إذا لم يتحقق أي شرط سابق.</p>
+
+          <div class="two-col">
+            <div class="result-box">
+              <span class="mini-title">المدخل</span>
+              85
+            </div>
+            <div class="result-box">
+              <span class="mini-title">المخرج</span>
+              Very Good
+            </div>
+          </div>
+        </section>
+
+        <section class="card" id="comparison">
+          <h2>11. معاملات المقارنة</h2>
+
+          <h3>شرح المفهوم</h3>
+          <p>تستخدم معاملات المقارنة داخل الشروط لمعرفة العلاقة بين القيم.</p>
+
+          <ul class="clean">
+            <li><strong>==</strong> يساوي</li>
+            <li><strong>!=</strong> لا يساوي</li>
+            <li><strong>&gt;</strong> أكبر من</li>
+            <li><strong>&lt;</strong> أصغر من</li>
+            <li><strong>&gt;=</strong> أكبر أو يساوي</li>
+            <li><strong>&lt;=</strong> أصغر أو يساوي</li>
+          </ul>
+
+          <h3>الهدف من المثال</h3>
+          <p>مقارنة رقمين وتحديد أيهما أكبر.</p>
+
+          <h3>المثال</h3>
+          <div class="code">
+var num1 = Number(prompt("Enter first number"));
+var num2 = Number(prompt("Enter second number"));
+
+if(num1 > num2){
+  alert("First number is larger");
+}
+else{
+  alert("Second number is larger");
+}
+          </div>
+
+          <div class="two-col">
+            <div class="result-box">
+              <span class="mini-title">المدخل</span>
+              10 و 5
+            </div>
+            <div class="result-box">
+              <span class="mini-title">المخرج</span>
+              First number is larger
+            </div>
+          </div>
+        </section>
+
+        <section class="card" id="switch">
+          <h2>12. الجملة switch</h2>
+
+          <h3>شرح المفهوم</h3>
+          <p>
+            تستخدم switch عندما نريد اختيار تنفيذ معين بناءً على قيمة متغير واحد مع وجود عدة حالات.
+            وهي بديل مرتب في بعض الحالات عن if المتعددة.
+          </p>
+
+          <h3>الهدف من المثال</h3>
+          <p>إدخال رقم يوم وإظهار اسم اليوم.</p>
+
+          <h3>المثال</h3>
+          <div class="code">
+var day = Number(prompt("Enter day number (1-3)"));
+
+switch(day){
+
+  case 1:
+    alert("Sunday");
+    break;
+
+  case 2:
+    alert("Monday");
+    break;
+
+  case 3:
+    alert("Tuesday");
+    break;
+
+  default:
+    alert("Invalid day");
+}
+          </div>
+
+          <h3>شرح السطور</h3>
+          <p><span class="label">switch(day):</span> فحص قيمة المتغير day.</p>
+          <p><span class="label">case:</span> حالة معينة.</p>
+          <p><span class="label">break:</span> الخروج من switch بعد تنفيذ الحالة.</p>
+          <p><span class="label">default:</span> تنفذ إذا لم تتحقق أي حالة.</p>
+
+          <div class="two-col">
+            <div class="result-box">
+              <span class="mini-title">المدخل</span>
+              2
+            </div>
+            <div class="result-box">
+              <span class="mini-title">المخرج</span>
+              Monday
+            </div>
+          </div>
+        </section>
+
+        <section class="card" id="loops">
+          <h2>13. مفهوم الحلقات التكرارية</h2>
+
+          <h3>شرح المفهوم</h3>
+          <p>
+            نستخدم الحلقات لتكرار تنفيذ الأوامر عدة مرات بدلًا من كتابة نفس الكود مرات كثيرة.
+            من أشهر الحلقات في JavaScript:
+          </p>
+
+          <ul class="clean">
+            <li>while</li>
+            <li>do...while</li>
+            <li>for</li>
+          </ul>
+        </section>
+
+        <section class="card" id="while">
+          <h2>14. حلقة while</h2>
+
+          <h3>شرح المفهوم</h3>
+          <p>
+            تنفذ حلقة while الأوامر طالما أن الشرط صحيح.
+          </p>
+
+          <h3>الهدف من المثال</h3>
+          <p>طباعة الأرقام من 1 إلى 5.</p>
+
+          <h3>المثال</h3>
+          <div class="code">
+var i = 1;
+
+while(i <= 5){
+  alert(i);
+  i++;
+}
+          </div>
+
+          <h3>شرح السطور</h3>
+          <p><span class="label">السطر 1:</span> تعريف عداد يبدأ من 1.</p>
+          <p><span class="label">السطر 3:</span> تكرار طالما i أقل أو يساوي 5.</p>
+          <p><span class="label">السطر 4:</span> عرض قيمة العداد.</p>
+          <p><span class="label">السطر 5:</span> زيادة العداد بمقدار 1.</p>
+
+          <div class="two-col">
+            <div class="result-box">
+              <span class="mini-title">المدخل</span>
+              لا يوجد.
+            </div>
+            <div class="result-box">
+              <span class="mini-title">المخرج</span>
+              1 ثم 2 ثم 3 ثم 4 ثم 5
+            </div>
+          </div>
+        </section>
+
+        <section class="card" id="dowhile">
+          <h2>15. حلقة do...while</h2>
+
+          <h3>شرح المفهوم</h3>
+          <p>
+            تشبه while لكن الفرق أنها تنفذ الأوامر مرة واحدة على الأقل قبل فحص الشرط.
+          </p>
+
+          <h3>الهدف من المثال</h3>
+          <p>طلب إدخال رقم أكبر من 10، وإعادة الطلب حتى يتم إدخال رقم صحيح.</p>
+
+          <h3>المثال</h3>
+          <div class="code">
+var number;
+
+do{
+  number = Number(prompt("Enter number greater than 10"));
+}
+while(number <= 10);
+
+alert("Correct number");
+          </div>
+
+          <h3>شرح السطور</h3>
+          <p><span class="label">السطر 1:</span> تعريف متغير لتخزين الرقم.</p>
+          <p><span class="label">do:</span> بداية تنفيذ الحلقة.</p>
+          <p><span class="label">while(number &lt;= 10):</span> إذا كان الرقم أقل أو يساوي 10 تتكرر الحلقة.</p>
+
+          <div class="two-col">
+            <div class="result-box">
+              <span class="mini-title">المدخل</span>
+              5 ثم 7 ثم 12
+            </div>
+            <div class="result-box">
+              <span class="mini-title">المخرج</span>
+              Correct number
+            </div>
+          </div>
+        </section>
+
+        <section class="card" id="for">
+          <h2>16. حلقة for</h2>
+
+          <h3>شرح المفهوم</h3>
+          <p>
+            تستخدم for عندما يكون عدد مرات التكرار معروفًا مسبقًا.
+            وتتكون من: بداية، شرط، وتحديث.
+          </p>
+
+          <h3>الهدف من المثال</h3>
+          <p>حساب مجموع الأرقام من 1 إلى 5.</p>
+
+          <h3>المثال</h3>
+          <div class="code">
+var sum = 0;
+
+for(var i = 1; i <= 5; i++){
+  sum = sum + i;
+}
+
+alert(sum);
+          </div>
+
+          <h3>شرح السطور</h3>
+          <p><span class="label">sum = 0:</span> متغير لتخزين المجموع.</p>
+          <p><span class="label">i = 1:</span> بداية العداد.</p>
+          <p><span class="label">i &lt;= 5:</span> شرط استمرار الحلقة.</p>
+          <p><span class="label">i++:</span> زيادة العداد بعد كل دورة.</p>
+          <p><span class="label">sum = sum + i:</span> إضافة قيمة العداد إلى المجموع.</p>
+
+          <div class="two-col">
+            <div class="result-box">
+              <span class="mini-title">المدخل</span>
+              لا يوجد.
+            </div>
+            <div class="result-box">
+              <span class="mini-title">المخرج</span>
+              15
+            </div>
+          </div>
+        </section>
+
+        <section class="card" id="arrays">
+          <h2>17. المصفوفات Arrays</h2>
+
+          <h3>شرح المفهوم</h3>
+          <p>
+            المصفوفة تسمح بتخزين عدة قيم داخل متغير واحد.
+            كل عنصر داخل المصفوفة له رقم يسمى الفهرس، ويبدأ العد من الصفر.
+          </p>
+
+          <h3>الهدف من المثال</h3>
+          <p>إنشاء مصفوفة تحتوي أسماء ثلاث سيارات وعرض أول عنصر.</p>
+
+          <h3>المثال</h3>
+          <div class="code">
+var cars = ["BMW","Toyota","Volvo"];
+
+alert(cars[0]);
+          </div>
+
+          <h3>شرح السطور</h3>
+          <p><span class="label">السطر 1:</span> تعريف مصفوفة باسم cars تحتوي ثلاثة عناصر.</p>
+          <p><span class="label">السطر 3:</span> عرض العنصر الأول، لأن cars[0] تمثل أول عنصر.</p>
+
+          <div class="two-col">
+            <div class="result-box">
+              <span class="mini-title">المدخل</span>
+              لا يوجد.
+            </div>
+            <div class="result-box">
+              <span class="mini-title">المخرج</span>
+              BMW
+            </div>
+          </div>
+        </section>
+
+        <section class="card" id="arrays-loops">
+          <h2>18. استخدام المصفوفات مع الحلقات</h2>
+
+          <h3>شرح المفهوم</h3>
+          <p>
+            غالبًا ما تستخدم المصفوفات مع الحلقات لعرض جميع العناصر بشكل منظم.
+          </p>
+
+          <h3>الهدف من المثال</h3>
+          <p>عرض جميع عناصر مصفوفة باستخدام حلقة for.</p>
+
+          <h3>المثال</h3>
+          <div class="code">
+var cars = ["BMW","Toyota","Volvo"];
+
+for(var i = 0; i < cars.length; i++){
+  alert(cars[i]);
+}
+          </div>
+
+          <h3>شرح السطور</h3>
+          <p><span class="label">cars.length:</span> عدد عناصر المصفوفة.</p>
+          <p><span class="label">cars[i]:</span> الوصول إلى العنصر الحالي حسب قيمة i.</p>
+
+          <div class="two-col">
+            <div class="result-box">
+              <span class="mini-title">المدخل</span>
+              لا يوجد.
+            </div>
+            <div class="result-box">
+              <span class="mini-title">المخرج</span>
+              BMW ثم Toyota ثم Volvo
+            </div>
+          </div>
+        </section>
+
+        <section class="card" id="functions">
+          <h2>19. الدوال Functions</h2>
+
+          <h3>شرح المفهوم</h3>
+          <p>
+            الدالة هي مجموعة أوامر تنفذ مهمة محددة. نستخدمها لتنظيم الكود وتقليل التكرار
+            وإعادة استخدام الأوامر أكثر من مرة.
+          </p>
+
+          <h3>الهدف من المثال</h3>
+          <p>إنشاء دالة لحساب حاصل ضرب رقمين.</p>
+
+          <h3>المثال</h3>
+          <div class="code">
+function multiply(a,b){
+  return a * b;
+}
+
+var result = multiply(4,3);
+
+alert(result);
+          </div>
+
+          <h3>شرح السطور</h3>
+          <p><span class="label">function multiply(a,b):</span> تعريف دالة اسمها multiply تستقبل رقمين.</p>
+          <p><span class="label">return a * b:</span> تعيد حاصل ضرب الرقمين.</p>
+          <p><span class="label">var result = multiply(4,3):</span> استدعاء الدالة وإرسال القيم 4 و3 إليها.</p>
+          <p><span class="label">alert(result):</span> عرض الناتج.</p>
+
+          <div class="two-col">
+            <div class="result-box">
+              <span class="mini-title">المدخل</span>
+              4 و 3
+            </div>
+            <div class="result-box">
+              <span class="mini-title">المخرج</span>
+              12
+            </div>
+          </div>
+        </section>
+
+        <section class="card" id="full-example">
+          <h2>20. مثال تطبيقي شامل</h2>
+
+          <h3>شرح المفهوم</h3>
+          <p>
+            هذا المثال يجمع عدة مفاهيم من الوحدة مثل:
+            الإدخال، المتغيرات، الحلقات، والعمليات الحسابية.
+          </p>
+
+          <h3>الهدف من المثال</h3>
+          <p>
+            قراءة عدد من القيم من المستخدم ثم حساب مجموعها.
+          </p>
+
+          <h3>المثال</h3>
+          <div class="code">
+var n = Number(prompt("Enter number of values"));
+var sum = 0;
+
+for(var i = 1; i <= n; i++){
+  var num = Number(prompt("Enter number"));
+  sum = sum + num;
+}
+
+alert("Total = " + sum);
+          </div>
+
+          <h3>شرح السطور</h3>
+          <p><span class="label">السطر 1:</span> قراءة عدد القيم.</p>
+          <p><span class="label">السطر 2:</span> تعريف متغير للمجموع.</p>
+          <p><span class="label">السطر 4:</span> تكرار حسب عدد القيم التي أدخلها المستخدم.</p>
+          <p><span class="label">السطر 5:</span> قراءة قيمة جديدة في كل دورة.</p>
+          <p><span class="label">السطر 6:</span> إضافة القيمة إلى المجموع.</p>
+          <p><span class="label">السطر 9:</span> عرض النتيجة النهائية.</p>
+
+          <div class="two-col">
+            <div class="result-box">
+              <span class="mini-title">المدخل</span>
+              3 ثم 5 ثم 7 ثم 10
+            </div>
+            <div class="result-box">
+              <span class="mini-title">المخرج</span>
+              Total = 22
+            </div>
+          </div>
+        </section>
+
+        <section class="card lab" id="interactive">
+          <h2>21. قسم أمثلة تفاعلية للطلبة</h2>
+
+          <h3>فكرة القسم</h3>
+          <p>
+            يمكن للطالب كتابة كود JavaScript وتجربته مباشرة من خلال المحرر التالي.
+          </p>
+
+          <textarea id="codeEditor">alert("Hello JavaScript");</textarea>
+
+          <div class="lab-actions">
+            <button class="btn" onclick="runCode()">تشغيل الكود</button>
+            <button class="btn secondary" onclick="resetCode()">إعادة المثال الافتراضي</button>
+          </div>
+
+          <iframe id="outputFrame" class="output-frame"></iframe>
+
+          <h3>أمثلة جاهزة للتجربة</h3>
+          <div class="code">
+var name = prompt("Enter your name");
+alert("Hello " + name);
+          </div>
+
+          <div class="code">
+var num1 = Number(prompt("Enter first number"));
+var num2 = Number(prompt("Enter second number"));
+alert(num1 + num2);
+          </div>
+
+          <div class="code">
+for(var i=1; i&lt;=5; i++){
+  document.write(i + "&lt;br&gt;");
+}
+          </div>
+        </section>
+
+        <section class="card" id="exercises">
+          <h2>22. التمارين مع الحلول</h2>
+
+          <details class="exercise">
+            <summary>التمرين 1: قراءة اسم المستخدم</summary>
+            <p>اكتب برنامجًا يقرأ اسم المستخدم ويعرض رسالة ترحيب.</p>
+            <div class="code">
+var name = prompt("Enter your name");
+alert("Welcome " + name);
+            </div>
+          </details>
+
+          <details class="exercise">
+            <summary>التمرين 2: جمع رقمين</summary>
+            <p>اكتب برنامجًا يقرأ رقمين ويعرض مجموعهما.</p>
+            <div class="code">
+var num1 = Number(prompt("Enter first number"));
+var num2 = Number(prompt("Enter second number"));
+var sum = num1 + num2;
+alert("Sum = " + sum);
+            </div>
+          </details>
+
+          <details class="exercise">
+            <summary>التمرين 3: حساب مساحة مستطيل</summary>
+            <p>اقرأ الطول والعرض ثم احسب مساحة المستطيل.</p>
+            <div class="code">
+var length = Number(prompt("Enter length"));
+var width = Number(prompt("Enter width"));
+var area = length * width;
+alert("Area = " + area);
+            </div>
+          </details>
+
+          <details class="exercise">
+            <summary>التمرين 4: عدد زوجي أو فردي</summary>
+            <p>اكتب برنامجًا يحدد إذا كان العدد زوجيًا أو فرديًا.</p>
+            <div class="code">
+var num = Number(prompt("Enter a number"));
+
+if(num % 2 == 0){
+  alert("Even number");
+}
+else{
+  alert("Odd number");
+}
+            </div>
+          </details>
+
+          <details class="exercise">
+            <summary>التمرين 5: تحديد نجاح الطالب</summary>
+            <p>إذا كانت الدرجة أكبر أو تساوي 50 يظهر Pass، وإلا يظهر Fail.</p>
+            <div class="code">
+var mark = Number(prompt("Enter student mark"));
+
+if(mark >= 50){
+  alert("Pass");
+}
+else{
+  alert("Fail");
+}
+            </div>
+          </details>
+
+          <details class="exercise">
+            <summary>التمرين 6: مجموع الأرقام من 1 إلى 10</summary>
+            <p>استخدم حلقة for لحساب مجموع الأرقام من 1 إلى 10.</p>
+            <div class="code">
+var sum = 0;
+
+for(var i = 1; i &lt;= 10; i++){
+  sum = sum + i;
+}
+
+alert("Sum = " + sum);
+            </div>
+          </details>
+
+          <details class="exercise">
+            <summary>التمرين 7: طباعة الأرقام من 1 إلى 5</summary>
+            <p>استخدم حلقة while لطباعة الأرقام من 1 إلى 5.</p>
+            <div class="code">
+var i = 1;
+
+while(i &lt;= 5){
+  document.write(i + "&lt;br&gt;");
+  i++;
+}
+            </div>
+          </details>
+
+          <details class="exercise">
+            <summary>التمرين 8: حساب متوسط 3 علامات</summary>
+            <p>اقرأ ثلاث علامات ثم احسب المتوسط.</p>
+            <div class="code">
+var m1 = Number(prompt("Enter mark 1"));
+var m2 = Number(prompt("Enter mark 2"));
+var m3 = Number(prompt("Enter mark 3"));
+
+var avg = (m1 + m2 + m3) / 3;
+
+alert("Average = " + avg);
+            </div>
+          </details>
+
+          <details class="exercise">
+            <summary>التمرين 9: استخدام المصفوفة</summary>
+            <p>أنشئ مصفوفة تحتوي أسماء ثلاث مدن واعرضها باستخدام for.</p>
+            <div class="code">
+var cities = ["Hebron","Jerusalem","Ramallah"];
+
+for(var i = 0; i &lt; cities.length; i++){
+  document.write(cities[i] + "&lt;br&gt;");
+}
+            </div>
+          </details>
+
+          <details class="exercise">
+            <summary>التمرين 10: دالة لحساب مربع عدد</summary>
+            <p>اكتب دالة تستقبل رقمًا وتعيد مربعه.</p>
+            <div class="code">
+function square(num){
+  return num * num;
+}
+
+var result = square(5);
+alert(result);
+            </div>
+          </details>
+        </section>
+
+      </main>
+    </div>
+
+    <footer>
+      تم إعداد هذه الصفحة التعليمية لدعم طلبة مقرر تقنية تصميم صفحات الويب 1266 - الوحدة الثالثة
+    </footer>
+  </div>
+
+  <button id="scrollTopBtn" class="scroll-top-btn" title="العودة إلى أعلى الصفحة">↑</button>
+
+  <script>
+    const defaultCode = 'alert("Hello JavaScript");';
+
+    function runCode() {
+      const code = document.getElementById("codeEditor").value;
+      const frame = document.getElementById("outputFrame");
+      const doc = frame.contentWindow.document;
+
+      doc.open();
+      doc.write(`
+        <!DOCTYPE html>
+        <html>
+        <head>
+          <title>Output</title>
+          <style>
+            body{
+              font-family: Arial, sans-serif;
+              padding: 14px;
+              line-height: 1.8;
+            }
+          </style>
+        </head>
+        <body>
+          <script>
+            ${code.replace(/<\/script>/gi, "<\\/script>")}
+          <\/script>
+        </body>
+        </html>
+      `);
+      doc.close();
+    }
+
+    function resetCode() {
+      document.getElementById("codeEditor").value = defaultCode;
+      document.getElementById("outputFrame").src = "about:blank";
+    }
+
+    const scrollTopBtn = document.getElementById("scrollTopBtn");
+
+    window.addEventListener("scroll", function () {
+      if (window.scrollY > 300) {
+        scrollTopBtn.classList.add("show");
+      } else {
+        scrollTopBtn.classList.remove("show");
+      }
+    });
+
+    scrollTopBtn.addEventListener("click", function () {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+    });
+  </script>
+
+</body>
+</html>
