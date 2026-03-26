@@ -1,0 +1,1719 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>الوحدة الرابعة | JavaScript التفاعلية</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#f4f7fb;
+      --bg2:#eef7f6;
+      --card:#ffffff;
+      --text:#18324a;
+      --muted:#5b7085;
+      --primary:#0f766e;
+      --primary2:#14b8a6;
+      --accent:#2563eb;
+      --warn:#b45309;
+      --danger:#b91c1c;
+      --success:#15803d;
+      --border:#d9e4ef;
+      --soft:#f8fbff;
+      --shadow:0 10px 30px rgba(15,23,42,.08);
+      --radius:20px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:'Cairo',sans-serif;
+      background:linear-gradient(180deg,var(--bg2),var(--bg));
+      color:var(--text);
+      line-height:1.95;
+    }
+    a{text-decoration:none;color:inherit}
+    .container{width:min(1180px,calc(100% - 28px));margin:auto}
+    .topbar{
+      position:sticky;top:0;z-index:30;
+      background:rgba(15,118,110,.95);
+      backdrop-filter:blur(8px);
+      color:#fff;
+      box-shadow:0 8px 24px rgba(0,0,0,.12);
+    }
+    .topbar-inner{display:flex;gap:14px;align-items:center;justify-content:space-between;flex-wrap:wrap;padding:14px 0}
+    .home-btn{
+      background:#fff;color:var(--primary);padding:10px 16px;border-radius:12px;font-weight:800;
+      display:inline-flex;align-items:center;gap:8px;border:2px solid rgba(255,255,255,.35)
+    }
+    .course-title{font-size:1.1rem;font-weight:800}
+    .tabs{display:flex;gap:10px;flex-wrap:wrap}
+    .tab{
+      padding:9px 14px;border-radius:999px;background:rgba(255,255,255,.16);font-size:.95rem;font-weight:700;
+      border:1px solid rgba(255,255,255,.18);cursor:pointer;
+    }
+    .tab:hover{background:rgba(255,255,255,.28)}
+    .hero{padding:28px 0 16px}
+    .hero-grid{display:grid;grid-template-columns:1.25fr .95fr;gap:20px}
+    .hero-card,.map-card,.section,.footer-card{
+      background:var(--card);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow)
+    }
+    .hero-card{padding:28px}
+    .hero-card h1{margin:0 0 12px;font-size:2rem;line-height:1.5}
+    .lead{color:var(--muted);margin:0 0 18px}
+    .badges{display:flex;gap:10px;flex-wrap:wrap}
+    .badge{background:#ecfeff;color:var(--primary);border:1px solid #bfe9e3;padding:8px 12px;border-radius:999px;font-weight:700;font-size:.92rem}
+    .map-card{padding:22px}
+    .map-title{margin:0 0 14px;font-size:1.2rem}
+    .map-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+    .map-item{background:var(--soft);border:1px solid var(--border);border-radius:16px;padding:14px;min-height:92px;transition:.2s}
+    .map-item:hover{background:#ecfeff;border-color:var(--primary2)}
+    .map-item .icon{font-size:1.5rem}
+    .map-item h3{margin:6px 0 4px;font-size:1rem}
+    .map-item p{margin:0;color:var(--muted);font-size:.92rem}
+    .quick-note{margin-top:14px;padding:12px 14px;border-radius:14px;background:#fffbeb;border:1px solid #f5deb1;color:#7c5b08}
+    .section{margin:22px 0;padding:24px;scroll-margin-top:110px}
+    .section-header{display:flex;justify-content:space-between;gap:16px;align-items:flex-start;flex-wrap:wrap;margin-bottom:16px}
+    .section h2{margin:0;font-size:1.75rem}
+    .section p{margin:0}
+    .section-sub{color:var(--muted);max-width:850px}
+    .chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+    .chip{padding:7px 12px;background:#eff6ff;color:#1d4ed8;border:1px solid #cfe0ff;border-radius:999px;font-size:.9rem;font-weight:700}
+    .blocks{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:18px}
+    .block{background:var(--soft);border:1px solid var(--border);border-radius:18px;padding:18px}
+    .block h3,.block h4{margin:0 0 10px}
+    .block p:last-child,.block ul:last-child{margin-bottom:0}
+
+    /* ===== رسم تدفق محسّن (اتجاه صحيح) ===== */
+    .visual{
+      background:linear-gradient(135deg,#ecfeff,#eff6ff);
+      border:1px dashed #9ad7cf;border-radius:18px;padding:18px;margin-top:16px
+    }
+    .visual-title{font-weight:800;margin-bottom:14px;font-size:1rem}
+    .flow{display:flex;gap:0;flex-wrap:wrap;align-items:center;direction:rtl;justify-content:flex-start}
+    .flow-box{
+      background:#fff;border:2px solid var(--primary2);padding:10px 16px;border-radius:14px;
+      font-weight:700;font-size:.92rem;text-align:center;color:var(--text);
+      min-width:110px;
+    }
+    .arrow{font-weight:800;color:var(--primary);font-size:1.4rem;padding:0 6px}
+
+    .demo-box,.exercise,.quiz,.summary-box,.code-box,.result-box,.note-box,.mistake-box,.project-box,.quick-review,.practice-card{
+      margin-top:16px;border-radius:18px;padding:16px;border:1px solid var(--border);background:#fff
+    }
+    .demo-box{background:#f8fbff}
+    .exercise{background:#fefce8;border-color:#f1e4ab}
+    .quiz{background:#f5f3ff;border-color:#ddd6fe}
+    .summary-box{background:#f0fdf4;border-color:#bbf7d0}
+    .note-box{background:#fff7ed;border-color:#fed7aa}
+    .mistake-box{background:#fff1f2;border-color:#fecdd3}
+    .project-box{background:#eff6ff;border-color:#bfdbfe}
+    .quick-review{background:#f8fafc;border-color:#cbd5e1}
+    .practice-card{background:#fafafa}
+    .label{display:inline-block;padding:6px 10px;border-radius:999px;font-size:.85rem;font-weight:800;margin-bottom:8px}
+    .label.demo{background:#dbeafe;color:#1d4ed8}
+    .label.exercise{background:#fef3c7;color:#92400e}
+    .label.quiz{background:#ede9fe;color:#6d28d9}
+    .label.summary{background:#dcfce7;color:#166534}
+    .label.note{background:#ffedd5;color:#9a3412}
+    .label.code{background:#e0f2fe;color:#075985}
+    .label.mistake{background:#ffe4e6;color:#be123c}
+    .label.project{background:#dbeafe;color:#1d4ed8}
+    .label.review{background:#e2e8f0;color:#334155}
+    .controls{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+    button,.btn-link{
+      border:none;border-radius:12px;padding:10px 16px;font-family:inherit;font-weight:800;cursor:pointer;
+      background:var(--accent);color:#fff;box-shadow:0 6px 14px rgba(37,99,235,.2);font-size:.95rem;
+    }
+    button:hover{opacity:.9}
+    button.secondary,.btn-link.secondary{background:#fff;color:var(--accent);border:1px solid #bfdbfe;box-shadow:none}
+    button.success{background:var(--success)}
+    button.warn{background:var(--warn)}
+    button.danger{background:var(--danger)}
+    input,select,textarea{
+      width:100%;padding:12px 14px;border-radius:12px;border:1px solid #cbd5e1;font-family:inherit;font-size:1rem;background:#fff
+    }
+    textarea{min-height:120px;resize:vertical}
+    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    .result-box{background:#effcf7;min-height:58px;padding:14px;border-radius:14px;border:1px solid #d9e4ef;margin-top:12px;font-weight:600}
+    .code-box{background:#0f172a;color:#e2e8f0;overflow:auto;direction:ltr;text-align:left;border-radius:14px;padding:16px}
+    .code-box code{font-family:Consolas,monospace;white-space:pre-wrap;font-size:.93rem;line-height:1.7}
+    .section-nav{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:20px}
+    .nav-btn{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--border);color:var(--text);padding:11px 16px;border-radius:14px;font-weight:800;transition:.2s}
+    .nav-btn:hover{background:#ecfeff;border-color:var(--primary2)}
+    .footer-card{padding:24px;margin:24px 0 42px}
+    .footer-card h2{margin-top:0}
+    .mini-list{margin:0;padding-right:20px}
+    .score{font-size:1.05rem;font-weight:800}
+    .small{font-size:.92rem;color:var(--muted)}
+    .code-actions{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}
+    .progress-wrap{margin-top:16px}
+    .progress-bar{height:14px;background:#dbeafe;border-radius:999px;overflow:hidden}
+    .progress-fill{height:100%;width:0;background:linear-gradient(90deg,var(--primary),var(--accent));transition:.4s}
+    .progress-text{margin-top:8px;font-weight:800;color:var(--primary)}
+    .level{display:inline-block;padding:4px 8px;border-radius:999px;font-size:.8rem;font-weight:800;margin-inline-start:8px}
+    .level.easy{background:#dcfce7;color:#166534}
+    .level.medium{background:#fef3c7;color:#92400e}
+    .level.hard{background:#fee2e2;color:#991b1b}
+
+    /* ===== مقارنة الكود — جديد ===== */
+    .compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
+    .compare-box{border-radius:14px;overflow:hidden}
+    .compare-box .compare-label{padding:8px 14px;font-weight:800;font-size:.88rem}
+    .compare-box.wrong .compare-label{background:#fee2e2;color:#991b1b}
+    .compare-box.right .compare-label{background:#dcfce7;color:#166534}
+    .compare-box .code-box{margin:0;border-radius:0 0 14px 14px}
+
+    /* ===== جدول الأحداث ===== */
+    .events-table{width:100%;border-collapse:collapse;margin-top:12px}
+    .events-table th,.events-table td{padding:10px 14px;border:1px solid var(--border);text-align:right;font-size:.95rem}
+    .events-table th{background:#ecfeff;color:var(--primary);font-weight:800}
+    .events-table tr:hover td{background:#f8fbff}
+
+    @media (max-width: 920px){
+      .hero-grid,.blocks,.grid-2,.grid-3,.compare-grid{grid-template-columns:1fr}
+      .topbar-inner{align-items:flex-start}
+      .hero-card h1{font-size:1.65rem}
+      .section h2{font-size:1.45rem}
+      .map-grid{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ====== شريط التنقل ====== -->
+  <div class="topbar">
+    <div class="container topbar-inner">
+      <a class="home-btn" href="index.html">⬅ الرجوع للرئيسية</a>
+      <div class="course-title">مقرر 1266 | الوحدة الرابعة: JavaScript التفاعلية</div>
+      <div class="tabs">
+        <a class="tab" href="#gui">GUI</a>
+        <a class="tab" href="#validation">Validation</a>
+        <a class="tab" href="#dhtml">DHTML</a>
+        <a class="tab" href="#dom">DOM</a>
+        <a class="tab" href="#events">Events</a>
+        <a class="tab" href="#animation">Animation</a>
+        <a class="tab" href="#final-review">المراجعة</a>
+      </div>
+    </div>
+  </div>
+
+  <main class="container">
+
+    <!-- ====== البطاقة الرئيسية ====== -->
+    <section class="hero">
+      <div class="hero-grid">
+        <div class="hero-card">
+          <h1>الوحدة الرابعة<br>تصميم صفحات الويب الديناميكية باستخدام JavaScript</h1>
+          <p class="lead">صُمِّمت هذه الصفحة لتساعدك على الدراسة بمفردك. ستقرأ الفكرة، ثم تشاهد مثالًا تفاعليًا، ثم تُجرّب الكود بنفسك.</p>
+          <div class="badges">
+            <span class="badge">شرح مبسط + أكاديمي</span>
+            <span class="badge">أمثلة قابلة للتشغيل</span>
+            <span class="badge">تمارين ذاتية</span>
+            <span class="badge">تنقل سريع بالتبويبات</span>
+          </div>
+          <div class="note-box">
+            <span class="label note">كيف تدرس هذه الصفحة؟</span>
+            <p>اقرأ كل قسم بالترتيب. في كل قسم: <strong>الفكرة</strong> ← <strong>مثال تفاعلي</strong> ← <strong>كود كامل للتجربة</strong> ← <strong>خطأ شائع</strong> ← <strong>اختبر نفسك</strong>.</p>
+          </div>
+        </div>
+
+        <div class="map-card">
+          <h2 class="map-title">🗺️ خريطة الوحدة</h2>
+          <div class="map-grid">
+            <a href="#gui" class="map-item"><div class="icon">🧩</div><h3>1) GUI</h3><p>عناصر الواجهة التي يتفاعل معها المستخدم</p></a>
+            <a href="#validation" class="map-item"><div class="icon">✅</div><h3>2) Validation</h3><p>فحص صحة البيانات قبل الإرسال</p></a>
+            <a href="#dhtml" class="map-item"><div class="icon">⚡</div><h3>3) DHTML</h3><p>جعل الصفحة ديناميكية وحيوية</p></a>
+            <a href="#dom" class="map-item"><div class="icon">🧠</div><h3>4) DOM</h3><p>الوصول لعناصر الصفحة وتعديلها</p></a>
+            <a href="#events" class="map-item"><div class="icon">🖱️</div><h3>5) Events</h3><p>تنفيذ أوامر عند حدوث حدث</p></a>
+            <a href="#animation" class="map-item"><div class="icon">🎈</div><h3>6) Animation</h3><p>تحريك العناصر وتغيير مواقعها</p></a>
+          </div>
+          <div class="quick-note">الترابط: <strong>GUI</strong> يوفّر العناصر → <strong>Events</strong> تلتقط التفاعل → <strong>DOM</strong> يغيّر الصفحة → <strong>DHTML</strong> هو النتيجة → <strong>Animation</strong> تضيف الحركة.</div>
+          <div class="progress-wrap">
+            <div class="progress-bar"><div id="progressFill" class="progress-fill"></div></div>
+            <div id="progressText" class="progress-text">تقدّمك في الوحدة: 0%</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================
+         1. GUI
+    ==================================================== -->
+    <section class="section" id="gui">
+      <div class="section-header">
+        <div>
+          <h2>🧩 أولاً: واجهة المستخدم الرسومية GUI</h2>
+          <p class="section-sub">GUI هي العناصر التي يراها المستخدم ويتفاعل معها، مثل الأزرار وحقول النصوص والقوائم ومربعات الاختيار.</p>
+          <div class="chips">
+            <span class="chip">Button</span>
+            <span class="chip">Text Input</span>
+            <span class="chip">Textarea</span>
+            <span class="chip">Checkbox</span>
+            <span class="chip">Select</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="blocks">
+        <div class="block">
+          <h3>ما المقصود بـ GUI؟</h3>
+          <p>هي الواجهة التي تسمح للمستخدم بإدخال البيانات أو اختيار أمر أو مشاهدة نتيجة. كل عنصر يمكن التعامل معه برمجيًا.</p>
+          <h4>لماذا نستخدمها؟</h4>
+          <ul>
+            <li>لتسهيل التفاعل مع الصفحة.</li>
+            <li>لإدخال البيانات والحصول على نتائج.</li>
+            <li>لربط العناصر بأحداث مثل النقر أو التغيير.</li>
+          </ul>
+        </div>
+        <div class="block">
+          <h3>أهم فكرة يجب فهمها</h3>
+          <p>العناصر ليست مجرد شكل، بل هي <strong>كائنات</strong> لها خصائص:</p>
+          <ul>
+            <li><strong>value</strong> — قيمة حقل النص</li>
+            <li><strong>checked</strong> — حالة مربع الاختيار</li>
+            <li><strong>selectedIndex</strong> — الخيار المحدد من القائمة</li>
+          </ul>
+          <p>وعند تفاعل المستخدم، تستطيع JavaScript قراءة هذه القيم.</p>
+        </div>
+      </div>
+
+      <div class="visual">
+        <div class="visual-title">📌 كيف تعمل عناصر GUI مع JavaScript؟</div>
+        <div class="flow">
+          <div class="flow-box">المستخدم يكتب أو يختار</div>
+          <div class="arrow">←</div>
+          <div class="flow-box">العنصر يستقبل التفاعل</div>
+          <div class="arrow">←</div>
+          <div class="flow-box">JS تقرأ القيمة</div>
+          <div class="arrow">←</div>
+          <div class="flow-box">النتيجة تظهر للمستخدم</div>
+        </div>
+        <p style="margin-top:10px;color:var(--muted);font-size:.9rem">⬆ اتجاه التدفق من اليمين إلى اليسار</p>
+      </div>
+
+      <div class="demo-box">
+        <span class="label demo">🎯 مثال تفاعلي — جرّب الآن</span>
+        <p>أدخل اسمك واختر لونك المفضل، ثم اضغط "عرض". ستقرأ JavaScript القيم وتعرضها.</p>
+        <div class="grid-2">
+          <div>
+            <label><strong>الاسم</strong></label>
+            <input id="guiName" type="text" placeholder="مثال: محمد">
+          </div>
+          <div>
+            <label><strong>اللون المفضل</strong></label>
+            <select id="guiColor">
+              <option value="الأزرق">الأزرق</option>
+              <option value="الأخضر">الأخضر</option>
+              <option value="الأحمر">الأحمر</option>
+              <option value="الأصفر">الأصفر</option>
+            </select>
+          </div>
+        </div>
+        <div class="controls">
+          <button onclick="runGUIDemo()">عرض النتيجة</button>
+          <button class="secondary" onclick="resetGUIDemo()">مسح</button>
+        </div>
+        <div id="guiResult" class="result-box">ستظهر النتيجة هنا بعد الضغط.</div>
+      </div>
+
+      <div style="margin-top:16px">
+        <div class="label code">💡 ما الذي يحدث داخل JavaScript؟</div>
+        <div class="code-box"><code>// نقرأ القيمة من حقل النص باستخدام .value
+let name = document.getElementById("guiName").value;
+
+// نقرأ الخيار المحدد من القائمة
+let color = document.getElementById("guiColor").value;
+
+// نعرض النتيجة داخل عنصر آخر
+document.getElementById("guiResult").innerHTML = "مرحبًا " + name;</code></div>
+      </div>
+
+      <div class="practice-card">
+        <span class="label code">📋 كود كامل قابل للتشغيل</span>
+        <div class="code-actions">
+          <button class="secondary" onclick="copyCode('code-gui-full')">📋 نسخ الكود</button>
+          <button class="secondary" onclick="openInTab('code-gui-full')">🔗 فتح في تبويب جديد</button>
+        </div>
+        <div id="code-gui-full" class="code-box"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="ar" dir="rtl"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;title&gt;مثال GUI&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h3&gt;مثال على عناصر GUI&lt;/h3&gt;
+
+  &lt;label&gt;الاسم:&lt;/label&gt;
+  &lt;input id="name" type="text" placeholder="اكتب اسمك"&gt;
+
+  &lt;label&gt;اللون المفضل:&lt;/label&gt;
+  &lt;select id="color"&gt;
+    &lt;option value="الأزرق"&gt;الأزرق&lt;/option&gt;
+    &lt;option value="الأخضر"&gt;الأخضر&lt;/option&gt;
+    &lt;option value="الأحمر"&gt;الأحمر&lt;/option&gt;
+  &lt;/select&gt;
+
+  &lt;button onclick="showInfo()"&gt;اعرض&lt;/button&gt;
+  &lt;p id="result"&gt;&lt;/p&gt;
+
+  &lt;script&gt;
+    function showInfo(){
+      let name  = document.getElementById("name").value;
+      let color = document.getElementById("color").value;
+      document.getElementById("result").innerHTML =
+        "مرحبًا " + name + "، لونك المفضل هو " + color;
+    }
+  &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></div>
+      </div>
+
+      <div class="mistake-box">
+        <span class="label mistake">⚠️ خطأ شائع</span>
+        <p>من الأخطاء المتكررة أن ينسى الطالب كتابة <strong>id</strong> للعنصر ثم يحاول الوصول إليه بـ <strong>getElementById</strong>. إذا لم يكن هناك id صحيح فلن يعمل الكود.</p>
+        <div class="compare-grid">
+          <div class="compare-box wrong">
+            <div class="compare-label">❌ خطأ — بدون id</div>
+            <div class="code-box"><code>&lt;input type="text"&gt;
+// هذا لن يعمل!
+document.getElementById("name").value</code></div>
+          </div>
+          <div class="compare-box right">
+            <div class="compare-label">✅ صحيح — مع id</div>
+            <div class="code-box"><code>&lt;input id="name" type="text"&gt;
+// الآن يعمل بشكل صحيح
+document.getElementById("name").value</code></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="quick-review">
+        <span class="label review">⚡ راجع بسرعة</span>
+        <ul class="mini-list">
+          <li>العناصر الأساسية: زر، حقل نص، قائمة، مربع اختيار.</li>
+          <li>كل عنصر له خصائص مثل <strong>value</strong> و<strong>checked</strong>.</li>
+          <li>JavaScript تقرأ القيم وتعرض النتيجة.</li>
+        </ul>
+      </div>
+
+      <div class="summary-box">
+        <span class="label summary">ملخص</span>
+        <p>GUI هو الجزء المرئي الذي يتعامل معه المستخدم. عناصر الواجهة ليست ثابتة، بل يمكن قراءتها والتحكم بها عبر JavaScript.</p>
+      </div>
+
+      <div class="section-nav">
+        <span></span>
+        <a class="nav-btn" href="#validation">التالي: التحقق من البيانات ⬅</a>
+      </div>
+    </section>
+
+    <!-- ===================================================
+         2. VALIDATION
+    ==================================================== -->
+    <section class="section" id="validation">
+      <div class="section-header">
+        <div>
+          <h2>✅ ثانياً: التحقق من صحة البيانات Form Validation</h2>
+          <p class="section-sub">قبل إرسال البيانات، يجب التأكد أنها موجودة وصحيحة ومنطقية. مثلًا لا يجوز أن يكون العمر فارغًا أو نصًا أو عددًا غير منطقي.</p>
+          <div class="chips">
+            <span class="chip">length</span>
+            <span class="chip">isNaN()</span>
+            <span class="chip">حقول إجبارية</span>
+            <span class="chip">مدى القيم</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="blocks">
+        <div class="block">
+          <h3>لماذا نتحقق من البيانات؟</h3>
+          <ul>
+            <li>لمنع إرسال بيانات ناقصة أو خاطئة.</li>
+            <li>لتقليل العبء على الخادم.</li>
+            <li>لإخبار المستخدم بالخطأ فورًا.</li>
+          </ul>
+        </div>
+        <div class="block">
+          <h3>ما الثلاثة فحوصات الأساسية؟</h3>
+          <ul>
+            <li>1️⃣ هل الحقل <strong>فارغ</strong>؟</li>
+            <li>2️⃣ هل القيمة من <strong>النوع الصحيح</strong> (رقم أو نص)؟</li>
+            <li>3️⃣ هل القيمة ضمن <strong>المدى المنطقي</strong>؟</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="visual">
+        <div class="visual-title">📌 ترتيب خطوات التحقق (دائمًا بهذا الترتيب!)</div>
+        <div class="flow">
+          <div class="flow-box">المستخدم يدخل البيانات</div>
+          <div class="arrow">←</div>
+          <div class="flow-box">1. فحص الفراغ</div>
+          <div class="arrow">←</div>
+          <div class="flow-box">2. فحص النوع</div>
+          <div class="arrow">←</div>
+          <div class="flow-box">3. فحص المدى</div>
+          <div class="arrow">←</div>
+          <div class="flow-box">قبول أو رفض</div>
+        </div>
+      </div>
+
+      <div class="demo-box">
+        <span class="label demo">🎯 مثال تفاعلي</span>
+        <p>جرّب إدخال قيم مختلفة وشاهد نتيجة التحقق:</p>
+        <div class="grid-2">
+          <div>
+            <label><strong>الاسم</strong></label>
+            <input id="valName" type="text" placeholder="الاسم مطلوب">
+          </div>
+          <div>
+            <label><strong>العمر</strong></label>
+            <input id="valAge" type="text" placeholder="مثال: 21">
+          </div>
+        </div>
+        <div class="controls">
+          <button onclick="validateFormDemo()">تحقق من البيانات</button>
+          <button class="secondary" onclick="resetValidationDemo()">مسح</button>
+        </div>
+        <div id="validationResult" class="result-box">ستظهر نتيجة التحقق هنا.</div>
+      </div>
+
+      <div style="margin-top:16px">
+        <div class="label code">💡 الكود المستخدم في التحقق</div>
+        <div class="code-box"><code>function checkData() {
+  let name = document.getElementById("name").value.trim();
+  let age  = document.getElementById("age").value.trim();
+
+  // 1. فحص الفراغ أولاً
+  if (name === "" || age === "") {
+    // أحد الحقلين فارغ
+  }
+  // 2. فحص النوع ثانياً — isNaN تعني "هل هو ليس رقمًا؟"
+  else if (isNaN(age)) {
+    // العمر ليس رقمًا
+  }
+  // 3. فحص المدى المنطقي
+  else if (age &lt; 0 || age &gt; 100) {
+    // العمر خارج النطاق المقبول
+  }
+  else {
+    // كل شيء صحيح ✅
+  }
+}</code></div>
+      </div>
+
+      <div class="practice-card">
+        <span class="label code">📋 كود كامل قابل للتشغيل</span>
+        <div class="code-actions">
+          <button class="secondary" onclick="copyCode('code-validation-full')">📋 نسخ الكود</button>
+          <button class="secondary" onclick="openInTab('code-validation-full')">🔗 فتح في تبويب جديد</button>
+        </div>
+        <div id="code-validation-full" class="code-box"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="ar" dir="rtl"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;title&gt;Validation Example&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h3&gt;التحقق من بيانات المستخدم&lt;/h3&gt;
+  &lt;input id="name" type="text" placeholder="الاسم"&gt;
+  &lt;input id="age"  type="text" placeholder="العمر"&gt;
+  &lt;button onclick="checkData()"&gt;تحقق&lt;/button&gt;
+  &lt;p id="result"&gt;&lt;/p&gt;
+
+  &lt;script&gt;
+    function checkData() {
+      let name = document.getElementById("name").value.trim();
+      let age  = document.getElementById("age").value.trim();
+
+      if (name === "" || age === "")
+        document.getElementById("result").innerHTML = "⚠️ الرجاء تعبئة جميع الحقول";
+      else if (isNaN(age))
+        document.getElementById("result").innerHTML = "⚠️ العمر يجب أن يكون رقمًا";
+      else if (age &lt; 0 || age &gt; 100)
+        document.getElementById("result").innerHTML = "⚠️ العمر يجب أن يكون بين 0 و100";
+      else
+        document.getElementById("result").innerHTML = "✅ البيانات صحيحة، شكرًا " + name;
+    }
+  &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></div>
+      </div>
+
+      <div class="mistake-box">
+        <span class="label mistake">⚠️ خطأ شائع</span>
+        <p>من الأخطاء استخدام <strong>isNaN()</strong> قبل التأكد أن الحقل غير فارغ. إذا كان الحقل فارغًا فـ <code>isNaN("")</code> ترجع <strong>false</strong> وكأن القيمة رقم صحيح!</p>
+        <div class="compare-grid">
+          <div class="compare-box wrong">
+            <div class="compare-label">❌ خطأ — فحص النوع قبل الفراغ</div>
+            <div class="code-box"><code>if (isNaN(age)) { ... }
+// المشكلة: isNaN("") = false
+// أي أن الحقل الفارغ يُعتبر رقمًا!</code></div>
+          </div>
+          <div class="compare-box right">
+            <div class="compare-label">✅ صحيح — فحص الفراغ أولاً</div>
+            <div class="code-box"><code>if (age === "") { ... }
+else if (isNaN(age)) { ... }
+// الآن نفحص الفراغ قبل النوع</code></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="quiz">
+        <span class="label quiz">❓ اختبر نفسك</span>
+        <p>ما وظيفة <strong>isNaN()</strong> في JavaScript؟</p>
+        <div class="controls">
+          <button class="secondary" onclick="checkQuickAnswer('validation','a')">فحص طول النص</button>
+          <button class="secondary" onclick="checkQuickAnswer('validation','b')">فحص إذا كانت القيمة ليست رقمًا</button>
+          <button class="secondary" onclick="checkQuickAnswer('validation','c')">إرسال النموذج</button>
+        </div>
+        <div id="quiz-validation" class="result-box">اختر الإجابة.</div>
+      </div>
+
+      <div class="quick-review">
+        <span class="label review">⚡ راجع بسرعة</span>
+        <ul class="mini-list">
+          <li>افحص الفراغ أولًا (<code>value === ""</code>).</li>
+          <li>افحص النوع ثانيًا (<code>isNaN()</code>).</li>
+          <li>افحص المدى المنطقي ثالثًا.</li>
+        </ul>
+      </div>
+
+      <div class="summary-box">
+        <span class="label summary">ملخص</span>
+        <p>Form Validation يعني فحص البيانات قبل الإرسال. الفحص يشمل ثلاث مراحل: الوجود ← النوع ← المدى.</p>
+      </div>
+
+      <div class="section-nav">
+        <a class="nav-btn" href="#gui">➡ السابق: GUI</a>
+        <a class="nav-btn" href="#dhtml">التالي: DHTML ⬅</a>
+      </div>
+    </section>
+
+    <!-- ===================================================
+         3. DHTML
+    ==================================================== -->
+    <section class="section" id="dhtml">
+      <div class="section-header">
+        <div>
+          <h2>⚡ ثالثاً: صفحات الويب الديناميكية DHTML</h2>
+          <p class="section-sub">DHTML ليس لغة مستقلة، بل مصطلح يشير إلى استخدام HTML + CSS + JavaScript + DOM معًا لجعل الصفحة تتغير دون إعادة تحميلها.</p>
+          <div class="chips">
+            <span class="chip">HTML</span>
+            <span class="chip">CSS</span>
+            <span class="chip">JavaScript</span>
+            <span class="chip">DOM</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="blocks">
+        <div class="block">
+          <h3>الفكرة الأساسية</h3>
+          <p>الصفحة الديناميكية لا تبقى ثابتة، بل تتغير عند التفاعل: قد يتغير نص أو لون أو حجم أو موضع، دون الحاجة لفتح صفحة جديدة.</p>
+        </div>
+        <div class="block">
+          <h3>ما مكونات DHTML؟</h3>
+          <ul>
+            <li><strong>HTML</strong> — يبني هيكل الصفحة</li>
+            <li><strong>CSS</strong> — ينسّق الشكل والألوان</li>
+            <li><strong>JavaScript</strong> — يضيف التفاعل والمنطق</li>
+            <li><strong>DOM</strong> — يسمح بتعديل العناصر لحظيًا</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="visual">
+        <div class="visual-title">📌 كيف تتكون DHTML من أربع تقنيات؟</div>
+        <div class="flow">
+          <div class="flow-box">HTML<br><small>الهيكل</small></div>
+          <div class="arrow">+</div>
+          <div class="flow-box">CSS<br><small>الشكل</small></div>
+          <div class="arrow">+</div>
+          <div class="flow-box">JavaScript<br><small>التفاعل</small></div>
+          <div class="arrow">+</div>
+          <div class="flow-box">DOM<br><small>التعديل</small></div>
+          <div class="arrow">=</div>
+          <div class="flow-box" style="background:#ecfeff;border-color:var(--primary)">DHTML ⚡</div>
+        </div>
+      </div>
+
+      <div class="demo-box">
+        <span class="label demo">🎯 مثال تفاعلي</span>
+        <p>اضغط الزر ولاحظ كيف يتغير محتوى الصفحة <strong>بدون</strong> الانتقال لصفحة جديدة — هذه هي DHTML.</p>
+        <div id="dhtmlArea" class="result-box">هذه رسالة أصلية داخل الصفحة.</div>
+        <div class="controls">
+          <button onclick="changeDHTMLExample()">غيّر المحتوى</button>
+          <button class="secondary" onclick="resetDHTMLExample()">إعادة المحتوى الأصلي</button>
+        </div>
+      </div>
+
+      <div style="margin-top:16px">
+        <div class="label code">💡 الكود المستخدم</div>
+        <div class="code-box"><code>// نصل للعنصر بالـ id ثم نغيّر محتواه مباشرة
+document.getElementById("box").innerHTML = "محتوى جديد";
+
+// يمكن أيضًا تغيير اللون أو الحجم
+document.getElementById("box").style.background = "#dbeafe";</code></div>
+      </div>
+
+      <div class="practice-card">
+        <span class="label code">📋 كود كامل قابل للتشغيل</span>
+        <div class="code-actions">
+          <button class="secondary" onclick="copyCode('code-dhtml-full')">📋 نسخ الكود</button>
+          <button class="secondary" onclick="openInTab('code-dhtml-full')">🔗 فتح في تبويب جديد</button>
+        </div>
+        <div id="code-dhtml-full" class="code-box"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="ar" dir="rtl"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;title&gt;DHTML Example&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;div id="box" style="padding:15px;border:2px solid #ccc;border-radius:8px;"&gt;
+    محتوى أصلي
+  &lt;/div&gt;
+  &lt;button onclick="changeContent()"&gt;غيّر المحتوى&lt;/button&gt;
+  &lt;button onclick="reset()"&gt;إعادة&lt;/button&gt;
+
+  &lt;script&gt;
+    function changeContent() {
+      let box = document.getElementById("box");
+      box.innerHTML = "✅ تم تغيير هذا الجزء بدون تحميل الصفحة!";
+      box.style.background = "#dbeafe";
+    }
+    function reset() {
+      let box = document.getElementById("box");
+      box.innerHTML = "محتوى أصلي";
+      box.style.background = "";
+    }
+  &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></div>
+      </div>
+
+      <div class="mistake-box">
+        <span class="label mistake">⚠️ خطأ شائع</span>
+        <p>بعض الطلبة يخلطون بين تعديل <em>جزء</em> من الصفحة وبين استبدال الصفحة كاملة. DHTML يركز على تعديل جزء محدد داخل الصفحة الحالية، ليس فتح صفحة جديدة.</p>
+      </div>
+
+      <div class="quick-review">
+        <span class="label review">⚡ راجع بسرعة</span>
+        <ul class="mini-list">
+          <li>DHTML ليس لغة مستقلة.</li>
+          <li>يجعل الصفحة أكثر حيوية دون إعادة تحميل.</li>
+          <li>يعتمد على HTML + CSS + JS + DOM معًا.</li>
+        </ul>
+      </div>
+
+      <div class="summary-box">
+        <span class="label summary">ملخص</span>
+        <p>DHTML هو نتيجة عمل HTML وCSS وJavaScript وDOM معًا. النتيجة: صفحة تتغير وتتفاعل دون الحاجة لإعادة التحميل.</p>
+      </div>
+
+      <div class="section-nav">
+        <a class="nav-btn" href="#validation">➡ السابق: Validation</a>
+        <a class="nav-btn" href="#dom">التالي: DOM ⬅</a>
+      </div>
+    </section>
+
+    <!-- ===================================================
+         4. DOM
+    ==================================================== -->
+    <section class="section" id="dom">
+      <div class="section-header">
+        <div>
+          <h2>🧠 رابعاً: نموذج كائن الوثيقة DOM</h2>
+          <p class="section-sub">DOM يسمح لـ JavaScript بالتعامل مع عناصر الصفحة على أنها كائنات لها خصائص وإجراءات. الأداة الأساسية هي: <strong>document.getElementById()</strong></p>
+          <div class="chips">
+            <span class="chip">getElementById()</span>
+            <span class="chip">innerHTML</span>
+            <span class="chip">src</span>
+            <span class="chip">width / height</span>
+            <span class="chip">style</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="blocks">
+        <div class="block">
+          <h3>ما الذي يقدمه DOM؟</h3>
+          <ul>
+            <li>الوصول لأي عنصر في الصفحة بالـ id.</li>
+            <li>تغيير النصوص والصور والأحجام والألوان.</li>
+            <li>صفحات ديناميكية دون إعادة تحميل.</li>
+          </ul>
+        </div>
+        <div class="block">
+          <h3>الشكل العام لاستخدام DOM</h3>
+          <div class="code-box"><code>// خطوة 1: الوصول للعنصر بالـ id
+let el = document.getElementById("myId");
+
+// خطوة 2: تعديل خاصية
+el.innerHTML = "نص جديد";
+el.style.color = "red";
+el.src = "newImage.jpg";</code></div>
+        </div>
+      </div>
+
+      <div class="visual">
+        <div class="visual-title">📌 سلسلة العمل في DOM</div>
+        <div class="flow">
+          <div class="flow-box">نحدد العنصر<br><small>getElementById(id)</small></div>
+          <div class="arrow">←</div>
+          <div class="flow-box">نصل للخاصية<br><small>innerHTML / style / src</small></div>
+          <div class="arrow">←</div>
+          <div class="flow-box">نغير القيمة<br><small>= "القيمة الجديدة"</small></div>
+        </div>
+      </div>
+
+      <div class="demo-box">
+        <span class="label demo">🎯 مثال تفاعلي — ثلاثة تجارب</span>
+        <div id="domDemoText" class="result-box" style="font-weight:800;transition:.3s">هذا النص سيتغير باستخدام DOM.</div>
+        <div class="controls">
+          <button onclick="changeDOMText()">📝 غيّر النص</button>
+          <button class="warn" onclick="resizeDOMBox()">🔠 كبّر الخط</button>
+          <button class="secondary" onclick="resetDOMDemo()">↩ إعادة الأصل</button>
+        </div>
+      </div>
+
+      <div style="margin-top:16px">
+        <div class="label code">💡 ماذا يفعل كل زر؟</div>
+        <div class="code-box"><code>// زر "غيّر النص" — يغير innerHTML
+document.getElementById("domDemoText").innerHTML = "نص جديد بواسطة DOM";
+
+// زر "كبّر الخط" — يغير style
+document.getElementById("domDemoText").style.fontSize = "1.3rem";
+
+// زر "إعادة الأصل" — يرجع للقيمة الأصلية
+document.getElementById("domDemoText").innerHTML = "النص الأصلي";</code></div>
+      </div>
+
+      <div class="practice-card">
+        <span class="label code">📋 كود كامل قابل للتشغيل</span>
+        <div class="code-actions">
+          <button class="secondary" onclick="copyCode('code-dom-full')">📋 نسخ الكود</button>
+          <button class="secondary" onclick="openInTab('code-dom-full')">🔗 فتح في تبويب جديد</button>
+        </div>
+        <div id="code-dom-full" class="code-box"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="ar" dir="rtl"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;title&gt;DOM Example&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h2 id="title"&gt;عنوان قديم&lt;/h2&gt;
+  &lt;p  id="info"&gt;لون العنوان: أسود&lt;/p&gt;
+
+  &lt;button onclick="changeTitle()"&gt;غيّر العنوان&lt;/button&gt;
+  &lt;button onclick="changeColor()"&gt;غيّر اللون&lt;/button&gt;
+  &lt;button onclick="resetAll()"&gt;إعادة&lt;/button&gt;
+
+  &lt;script&gt;
+    function changeTitle() {
+      document.getElementById("title").innerHTML = "✅ عنوان جديد باستخدام DOM";
+    }
+    function changeColor() {
+      document.getElementById("title").style.color = "teal";
+      document.getElementById("info").innerHTML = "لون العنوان: أخضر مائي (teal)";
+    }
+    function resetAll() {
+      document.getElementById("title").innerHTML = "عنوان قديم";
+      document.getElementById("title").style.color = "";
+      document.getElementById("info").innerHTML = "لون العنوان: أسود";
+    }
+  &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></div>
+      </div>
+
+      <div class="mistake-box">
+        <span class="label mistake">⚠️ خطأ شائع</span>
+        <p>كتابة اسم id بشكل مختلف بين HTML وJavaScript، مثل <code>Title</code> في مكان و<code>title</code> في مكان آخر. الـ id حساس لحالة الأحرف.</p>
+        <div class="compare-grid">
+          <div class="compare-box wrong">
+            <div class="compare-label">❌ خطأ — اختلاف الأحرف</div>
+            <div class="code-box"><code>&lt;h2 id="Title"&gt;...&lt;/h2&gt;
+// الخطأ: Title ≠ title
+document.getElementById("title")</code></div>
+          </div>
+          <div class="compare-box right">
+            <div class="compare-label">✅ صحيح — تطابق الأحرف</div>
+            <div class="code-box"><code>&lt;h2 id="title"&gt;...&lt;/h2&gt;
+// صحيح: كلاهما title
+document.getElementById("title")</code></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="quick-review">
+        <span class="label review">⚡ راجع بسرعة</span>
+        <ul class="mini-list">
+          <li>DOM يتعامل مع العناصر ككائنات.</li>
+          <li>نصل للعنصر عبر <code>getElementById(id)</code>.</li>
+          <li>نغيّر النص أو الحجم أو اللون أو الصورة.</li>
+        </ul>
+      </div>
+
+      <div class="summary-box">
+        <span class="label summary">ملخص</span>
+        <p>DOM هو الجسر الذي يربط JavaScript بعناصر الصفحة. من خلاله نستطيع الوصول لأي عنصر وتغيير خصائصه.</p>
+      </div>
+
+      <div class="section-nav">
+        <a class="nav-btn" href="#dhtml">➡ السابق: DHTML</a>
+        <a class="nav-btn" href="#events">التالي: Events ⬅</a>
+      </div>
+    </section>
+
+    <!-- ===================================================
+         5. EVENTS
+    ==================================================== -->
+    <section class="section" id="events">
+      <div class="section-header">
+        <div>
+          <h2>🖱️ خامساً: التعامل مع الأحداث Events</h2>
+          <p class="section-sub">الحدث هو شيء يحدث داخل الصفحة، مثل تحميل الصفحة، أو النقر، أو مرور الفأرة. عند وقوع الحدث، تُستدعى دالة برمجية.</p>
+          <div class="chips">
+            <span class="chip">onload</span>
+            <span class="chip">onclick</span>
+            <span class="chip">onmouseover</span>
+            <span class="chip">onmouseout</span>
+            <span class="chip">onmousedown</span>
+            <span class="chip">onmouseup</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="blocks">
+        <div class="block">
+          <h3>أحداث الصفحة</h3>
+          <ul>
+            <li><strong>onload</strong> — عند انتهاء تحميل الصفحة</li>
+            <li><strong>onunload</strong> — عند مغادرة الصفحة</li>
+          </ul>
+          <p style="margin-top:8px">تُستخدم لتشغيل رسالة ترحيب أو تهيئة عناصر عند فتح الصفحة.</p>
+        </div>
+        <div class="block">
+          <h3>أحداث الفأرة</h3>
+          <ul>
+            <li><strong>onclick</strong> — عند النقر</li>
+            <li><strong>onmouseover</strong> — عند مرور المؤشر فوق العنصر</li>
+            <li><strong>onmouseout</strong> — عند ابتعاد المؤشر</li>
+            <li><strong>onmousedown</strong> — عند الضغط المستمر</li>
+            <li><strong>onmouseup</strong> — عند رفع الضغط</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- جدول الأحداث المحسّن -->
+      <table class="events-table">
+        <tr><th>الحدث</th><th>متى يُنفَّذ؟</th><th>مثال بسيط</th></tr>
+        <tr><td><code>onload</code></td><td>عند تحميل الصفحة</td><td><code>&lt;body onload="init()"&gt;</code></td></tr>
+        <tr><td><code>onclick</code></td><td>عند النقر</td><td><code>&lt;button onclick="go()"&gt;</code></td></tr>
+        <tr><td><code>onmouseover</code></td><td>عند مرور الفأرة</td><td><code>&lt;div onmouseover="show()"&gt;</code></td></tr>
+        <tr><td><code>onmouseout</code></td><td>عند إبعاد الفأرة</td><td><code>&lt;div onmouseout="hide()"&gt;</code></td></tr>
+        <tr><td><code>onmousedown</code></td><td>عند الضغط والاستمرار</td><td><code>&lt;button onmousedown="hold()"&gt;</code></td></tr>
+        <tr><td><code>onmouseup</code></td><td>عند رفع الإصبع</td><td><code>&lt;button onmouseup="release()"&gt;</code></td></tr>
+      </table>
+
+      <div class="visual">
+        <div class="visual-title">📌 الفكرة ببساطة</div>
+        <div class="flow">
+          <div class="flow-box">حدث يقع<br><small>(نقر/مرور...)</small></div>
+          <div class="arrow">←</div>
+          <div class="flow-box">الدالة تُستدعى<br><small>function go() { }</small></div>
+          <div class="arrow">←</div>
+          <div class="flow-box">الصفحة تتفاعل<br><small>تغيير نص/لون/حجم</small></div>
+        </div>
+      </div>
+
+      <div class="demo-box">
+        <span class="label demo">🎯 مثال تفاعلي — جرّب الأحداث الثلاثة</span>
+        <div class="grid-3">
+          <button onclick="eventMessage('✅ تم تنفيذ حدث النقر: onclick')">انقر هنا</button>
+          <button onmouseover="eventMessage('🖱️ تم تنفيذ حدث المرور: onmouseover')">مرّر المؤشر هنا</button>
+          <button onmousedown="eventMessage('⬇ حدث الضغط: onmousedown')" onmouseup="eventMessage('⬆ حدث رفع الضغط: onmouseup')">اضغط وأفلت</button>
+        </div>
+        <div id="eventResult" class="result-box">ستظهر هنا نتيجة الحدث.</div>
+      </div>
+
+      <div style="margin-top:16px">
+        <div class="label code">💡 طريقة كتابة الحدث في HTML</div>
+        <div class="code-box"><code>&lt;!-- نكتب اسم الحدث كخاصية للعنصر --&gt;
+&lt;button onclick="myFunction()"&gt;اضغط&lt;/button&gt;
+&lt;div onmouseover="myFunction()"&gt;مرّر هنا&lt;/div&gt;
+
+&lt;script&gt;
+  function myFunction() {
+    // نفذ شيئًا هنا
+    document.getElementById("result").innerHTML = "تم تنفيذ الحدث!";
+  }
+&lt;/script&gt;</code></div>
+      </div>
+
+      <div class="practice-card">
+        <span class="label code">📋 كود كامل قابل للتشغيل</span>
+        <div class="code-actions">
+          <button class="secondary" onclick="copyCode('code-events-full')">📋 نسخ الكود</button>
+          <button class="secondary" onclick="openInTab('code-events-full')">🔗 فتح في تبويب جديد</button>
+        </div>
+        <div id="code-events-full" class="code-box"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="ar" dir="rtl"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;title&gt;Events Example&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h3&gt;تجربة الأحداث&lt;/h3&gt;
+
+  &lt;button onclick="showMsg('تم النقر على الزر')"&gt;
+    انقر هنا (onclick)
+  &lt;/button&gt;
+
+  &lt;div onmouseover="showMsg('مررت بالفأرة فوق المربع')"
+       onmouseout="showMsg('أبعدت الفأرة عن المربع')"
+       style="margin-top:14px;padding:14px;border:2px solid #ccc;border-radius:8px;"&gt;
+    مرّر الفأرة هنا (onmouseover / onmouseout)
+  &lt;/div&gt;
+
+  &lt;p id="result"&gt;&lt;/p&gt;
+
+  &lt;script&gt;
+    function showMsg(msg) {
+      document.getElementById("result").innerHTML = msg;
+    }
+  &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></div>
+      </div>
+
+      <div class="mistake-box">
+        <span class="label mistake">⚠️ خطأ شائع</span>
+        <p>كتابة اسم الحدث خطأ، مثل <code>onmousever</code> بدل <code>onmouseover</code>. الحل: تعلّم الأسماء الصحيحة من الجدول أعلاه.</p>
+      </div>
+
+      <div class="quick-review">
+        <span class="label review">⚡ راجع بسرعة</span>
+        <ul class="mini-list">
+          <li>الحدث هو شيء يقع داخل الصفحة.</li>
+          <li>عند وقوع الحدث تُستدعى دالة برمجية.</li>
+          <li>الأحداث المهمة: onclick، onmouseover، onload.</li>
+        </ul>
+      </div>
+
+      <div class="summary-box">
+        <span class="label summary">ملخص</span>
+        <p>الأحداث هي لحظة التفاعل. عند وقوع الحدث نُنفّذ دالة تغير شيئًا في الصفحة.</p>
+      </div>
+
+      <div class="section-nav">
+        <a class="nav-btn" href="#dom">➡ السابق: DOM</a>
+        <a class="nav-btn" href="#animation">التالي: Animation ⬅</a>
+      </div>
+    </section>
+
+    <!-- ===================================================
+         6. ANIMATION
+    ==================================================== -->
+    <section class="section" id="animation">
+      <div class="section-header">
+        <div>
+          <h2>🎈 سادساً: الكائنات المتحركة Animation</h2>
+          <p class="section-sub">الحركة في صفحات الويب تعني تغيير موقع أو حجم عنصر مرات متتابعة بسرعة مناسبة. نستخدم <strong>setTimeout</strong> لتكرار الاستدعاء و<strong>clearTimeout</strong> للإيقاف.</p>
+          <div class="chips">
+            <span class="chip">setTimeout()</span>
+            <span class="chip">clearTimeout()</span>
+            <span class="chip">style.left / style.right</span>
+            <span class="chip">style.top</span>
+            <span class="chip">width / height</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="blocks">
+        <div class="block">
+          <h3>كيف تحدث الحركة؟</h3>
+          <p>الحركة لا تعني أن العنصر يتحرك وحده، بل نغيّر موضعه أو حجمه مرات متتابعة بسرعة، فيبدو للمستخدم وكأنه يتحرك.</p>
+          <p>مثال: إذا غيّرنا <code>style.right</code> من 10 إلى 15 إلى 20... كل 30 ثانية، يبدو العنصر متحركًا.</p>
+        </div>
+        <div class="block">
+          <h3>الأداتان الأساسيتان</h3>
+          <ul>
+            <li><strong>setTimeout(دالة, وقت)</strong> — ينفّذ الدالة بعد مدة (بالميلي ثانية)</li>
+            <li><strong>clearTimeout(timer)</strong> — يوقف التوقيت ويوقف الحركة</li>
+          </ul>
+          <div class="code-box" style="margin-top:10px"><code>// setTimeout يستدعي الدالة مرة بعد مرة
+timer = setTimeout(move, 30);  // كل 30ms
+
+// clearTimeout يوقف الحركة
+clearTimeout(timer);</code></div>
+        </div>
+      </div>
+
+      <div class="visual">
+        <div class="visual-title">📌 منطق الحركة خطوة بخطوة</div>
+        <div class="flow">
+          <div class="flow-box">حدد موقع البداية</div>
+          <div class="arrow">←</div>
+          <div class="flow-box">غيّر الموقع قليلًا</div>
+          <div class="arrow">←</div>
+          <div class="flow-box">setTimeout → نفس الدالة</div>
+          <div class="arrow">←</div>
+          <div class="flow-box">تكرار = حركة مرئية!</div>
+        </div>
+      </div>
+
+      <div class="demo-box">
+        <span class="label demo">🎯 مثال تفاعلي — كرة متحركة</span>
+        <p>جرّب تحريك الكرة وإيقافها وإعادتها.</p>
+        <div style="position:relative;height:180px;background:linear-gradient(180deg,#eff6ff,#ecfeff);border:1px solid var(--border);border-radius:18px;overflow:hidden;margin-top:8px">
+          <div id="ball" style="position:absolute;right:14px;top:60px;width:60px;height:60px;border-radius:50%;background:radial-gradient(circle at 30% 30%, #fde68a, #f59e0b);box-shadow:0 10px 18px rgba(245,158,11,.35)"></div>
+        </div>
+        <div class="controls">
+          <button onclick="startBallMotion()">▶ ابدأ الحركة</button>
+          <button class="danger" onclick="stopBallMotion()">⏹ أوقف</button>
+          <button class="secondary" onclick="resetBallMotion()">↩ إعادة</button>
+        </div>
+        <div id="animationResult" class="result-box">ملاحظة: الحركة تعتمد على تحديث الموضع باستمرار.</div>
+      </div>
+
+      <div style="margin-top:16px">
+        <div class="label code">💡 كيف تعمل الحركة — شرح مبسط</div>
+        <div class="code-box"><code>let timer = null;  // مؤشر التوقيت
+let pos   = 14;    // الموقع الابتدائي (من اليمين)
+let dir   = 1;     // الاتجاه: 1 يسار، -1 يمين
+
+function move() {
+  pos += 6 * dir;       // نحرك بـ 6 بكسل
+  if (pos >= 300) dir = -1;  // وصل لليسار → انعكس
+  if (pos <= 14)  dir =  1;  // وصل لليمين → انعكس
+
+  // نطبّق الموقع الجديد على العنصر
+  document.getElementById("ball").style.right = pos + "px";
+
+  // نستدعي نفسنا بعد 35ms → حركة مستمرة
+  timer = setTimeout(move, 35);
+}
+
+function startMove() { if (!timer) move(); }
+function stopMove()  { clearTimeout(timer); timer = null; }</code></div>
+      </div>
+
+      <div class="practice-card">
+        <span class="label code">📋 كود كامل قابل للتشغيل</span>
+        <div class="code-actions">
+          <button class="secondary" onclick="copyCode('code-animation-full')">📋 نسخ الكود</button>
+          <button class="secondary" onclick="openInTab('code-animation-full')">🔗 فتح في تبويب جديد</button>
+        </div>
+        <div id="code-animation-full" class="code-box"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="ar" dir="rtl"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;title&gt;Animation Example&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;!-- مساحة الحركة --&gt;
+  &lt;div style="position:relative;height:150px;border:2px solid #ccc;border-radius:8px;overflow:hidden;"&gt;
+    &lt;div id="ball"
+         style="position:absolute;right:10px;top:45px;
+                width:50px;height:50px;border-radius:50%;background:orange;"&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;button onclick="startMove()"&gt;▶ ابدأ&lt;/button&gt;
+  &lt;button onclick="stopMove()"&gt;⏹ أوقف&lt;/button&gt;
+
+  &lt;script&gt;
+    let timer = null;
+    let pos   = 10;
+    let dir   = 1;
+
+    function move() {
+      pos += 5 * dir;
+      if (pos &gt; 300) dir = -1;
+      if (pos &lt; 10)  dir =  1;
+      document.getElementById("ball").style.right = pos + "px";
+      timer = setTimeout(move, 30);
+    }
+
+    function startMove() {
+      if (!timer) move();
+    }
+
+    function stopMove() {
+      clearTimeout(timer);
+      timer = null;
+    }
+  &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></div>
+      </div>
+
+      <div class="mistake-box">
+        <span class="label mistake">⚠️ خطأ شائع</span>
+        <p>إذا لم توقف التوقيت باستخدام <strong>clearTimeout</strong> وضغطت على "ابدأ" مرتين، تتضاعف الحركة وتصبح سريعة جدًا لأن هناك دالتين تعملان في نفس الوقت!</p>
+        <div class="compare-grid">
+          <div class="compare-box wrong">
+            <div class="compare-label">❌ خطأ — لا فحص قبل البدء</div>
+            <div class="code-box"><code>function startMove() {
+  move(); // إذا ضغطت مرتين تضاعفت!
+}</code></div>
+          </div>
+          <div class="compare-box right">
+            <div class="compare-label">✅ صحيح — فحص أن لا يوجد timer نشط</div>
+            <div class="code-box"><code>function startMove() {
+  if (!timer) move(); // تأكد أنها لم تبدأ
+}</code></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="quick-review">
+        <span class="label review">⚡ راجع بسرعة</span>
+        <ul class="mini-list">
+          <li>الحركة = تغيير متكرر للموقع أو الحجم.</li>
+          <li><code>setTimeout</code> يستدعي الدالة مرة بعد مرة.</li>
+          <li><code>clearTimeout</code> يوقف الحركة.</li>
+          <li>افحص دائمًا أن الـ timer غير نشط قبل البدء.</li>
+        </ul>
+      </div>
+
+      <div class="summary-box">
+        <span class="label summary">ملخص</span>
+        <p>الحركة في صفحات الويب تعتمد على تغيير متكرر للموقع أو الحجم مع التحكم بالزمن عبر setTimeout وclearTimeout.</p>
+      </div>
+
+      <div class="section-nav">
+        <a class="nav-btn" href="#events">➡ السابق: Events</a>
+        <a class="nav-btn" href="#final-review">التالي: المراجعة النهائية ⬅</a>
+      </div>
+    </section>
+
+    <!-- ===================================================
+         المراجعة النهائية
+    ==================================================== -->
+    <section class="footer-card" id="final-review">
+      <h2>📝 المراجعة النهائية للوحدة</h2>
+      <p>إذا فهمت النقاط التالية فأنت على الطريق الصحيح:</p>
+      <ul class="mini-list">
+        <li>تعرفت على عناصر الواجهة GUI وكيف يتفاعل المستخدم معها.</li>
+        <li>فهمت كيف نتحقق من صحة البيانات بثلاث مراحل.</li>
+        <li>أدركت أن DHTML هو استخدام HTML+CSS+JS+DOM معًا.</li>
+        <li>تعلمت أن DOM يمكّننا من الوصول للعناصر وتغييرها.</li>
+        <li>فهمت دور الأحداث مثل onclick وonmouseover وonload.</li>
+        <li>رأيت كيف تحدث الحركة عبر setTimeout وclearTimeout.</li>
+      </ul>
+
+      <div class="quiz">
+        <span class="label quiz">🧩 اختبار قصير نهائي</span>
+        <div class="grid-2">
+          <div>
+            <p><strong>1)</strong> أي مفهوم يتيح لنا تغيير نص عنصر داخل الصفحة؟</p>
+            <select id="finalQ1">
+              <option value="">اختر الإجابة</option>
+              <option value="a">DOM</option>
+              <option value="b">Checkbox</option>
+              <option value="c">Textarea</option>
+            </select>
+          </div>
+          <div>
+            <p><strong>2)</strong> أي حدث يناسب تنفيذ أمر عند النقر على زر؟</p>
+            <select id="finalQ2">
+              <option value="">اختر الإجابة</option>
+              <option value="a">onclick</option>
+              <option value="b">onmouseout</option>
+              <option value="c">onunload</option>
+            </select>
+          </div>
+          <div>
+            <p><strong>3)</strong> أي دالة مناسبة لفحص أن القيمة ليست رقمًا؟</p>
+            <select id="finalQ3">
+              <option value="">اختر الإجابة</option>
+              <option value="a">length</option>
+              <option value="b">isNaN()</option>
+              <option value="c">submit()</option>
+            </select>
+          </div>
+          <div>
+            <p><strong>4)</strong> أي دالة تستخدم لإيقاف الحركة؟</p>
+            <select id="finalQ4">
+              <option value="">اختر الإجابة</option>
+              <option value="a">getElementById()</option>
+              <option value="b">clearTimeout()</option>
+              <option value="c">innerHTML</option>
+            </select>
+          </div>
+        </div>
+        <div class="controls">
+          <button class="success" onclick="gradeFinalQuiz()">احسب نتيجتي</button>
+          <button class="secondary" onclick="resetFinalQuiz()">إعادة الاختبار</button>
+        </div>
+        <div id="finalQuizResult" class="result-box">أجب عن الأسئلة ثم اضغط "احسب نتيجتي".</div>
+      </div>
+
+      <div class="note-box" style="margin-top:18px">
+        <span class="label note">💡 توجيه للطالب</span>
+        <p>بعد إنهاء هذه الصفحة، حاول بناء صفحة صغيرة تحتوي على: حقل نص، قائمة اختيار، زر، رسالة تتغير عند النقر، وصورة تتفاعل مع الفأرة. هذا أفضل تدريب عملي على الوحدة.</p>
+      </div>
+
+      <div class="section-nav">
+        <a class="nav-btn" href="#animation">➡ السابق: Animation</a>
+        <a class="nav-btn" href="#gui">العودة لبداية الوحدة ⬆</a>
+      </div>
+    </section>
+
+    <!-- ===================================================
+         تدريبات عملية — مُصحَّحة ومحسَّنة
+    ==================================================== -->
+    <section class="section" id="practical-exercises">
+      <h2>🧪 تدريبات عملية مع الحلول</h2>
+      <p>جرّب حل كل تدريب بنفسك أولًا، ثم افتح الحل. مُرتَّبة من السهل للصعب.</p>
+
+      <!-- تدريب 1 -->
+      <div class="practice-card">
+        <span class="label exercise">تدريب 1 <span class="level easy">سهل</span></span>
+        <p>أنشئ صفحة تحتوي على حقل نص وزر، وعند الضغط يظهر النص داخل فقرة أسفل الزر.</p>
+        <div class="label code">💡 تلميح</div>
+        <div class="code-box"><code>let name = document.getElementById("name").value;
+document.getElementById("result").innerHTML = name;</code></div>
+        <button onclick="toggleSolution('sol1')">إظهار الحل</button>
+        <div id="sol1" style="display:none">
+          <div class="code-actions">
+          <button class="secondary" onclick="copyCode('sol1code')">📋 نسخ الكود</button>
+          <button class="secondary" onclick="openInTab('sol1code')">🔗 فتح في تبويب جديد</button>
+        </div>
+          <div id="sol1code" class="code-box"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="ar" dir="rtl"&gt;
+&lt;body&gt;
+  &lt;input id="name" type="text" placeholder="اكتب اسمك"&gt;
+  &lt;button onclick="show()"&gt;عرض&lt;/button&gt;
+  &lt;p id="result"&gt;&lt;/p&gt;
+
+  &lt;script&gt;
+    function show() {
+      let name = document.getElementById("name").value;
+      document.getElementById("result").innerHTML = "مرحبًا: " + name;
+    }
+  &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></div>
+        </div>
+      </div>
+
+      <!-- تدريب 2 -->
+      <div class="practice-card">
+        <span class="label exercise">تدريب 2 <span class="level easy">سهل</span></span>
+        <p>تحقق أن المستخدم أدخل رقمًا فقط في حقل العمر.</p>
+        <div class="label code">💡 تلميح</div>
+        <div class="code-box"><code>// isNaN(value) ترجع true إذا كانت القيمة ليست رقمًا
+if (isNaN(value)) { ... }</code></div>
+        <button onclick="toggleSolution('sol2')">إظهار الحل</button>
+        <div id="sol2" style="display:none">
+          <div class="code-actions">
+          <button class="secondary" onclick="copyCode('sol2code')">📋 نسخ الكود</button>
+          <button class="secondary" onclick="openInTab('sol2code')">🔗 فتح في تبويب جديد</button>
+        </div>
+          <div id="sol2code" class="code-box"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="ar" dir="rtl"&gt;
+&lt;body&gt;
+  &lt;input id="age" placeholder="أدخل العمر"&gt;
+  &lt;button onclick="check()"&gt;تحقق&lt;/button&gt;
+  &lt;p id="result"&gt;&lt;/p&gt;
+
+  &lt;script&gt;
+    function check() {
+      let v = document.getElementById("age").value.trim();
+      if (v === "") {
+        document.getElementById("result").innerHTML = "⚠️ الحقل فارغ";
+      } else if (isNaN(v)) {
+        document.getElementById("result").innerHTML = "❌ أدخل رقمًا فقط";
+      } else {
+        document.getElementById("result").innerHTML = "✅ العمر صحيح: " + v;
+      }
+    }
+  &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></div>
+        </div>
+      </div>
+
+      <!-- تدريب 3 -->
+      <div class="practice-card">
+        <span class="label exercise">تدريب 3 <span class="level medium">متوسط</span></span>
+        <p>غيّر نص عنصر عند الضغط على زر.</p>
+        <div class="label code">💡 تلميح</div>
+        <div class="code-box"><code>// نصل للعنصر ثم نغير innerHTML
+document.getElementById("t").innerHTML = "نص جديد";</code></div>
+        <button onclick="toggleSolution('sol3')">إظهار الحل</button>
+        <div id="sol3" style="display:none">
+          <div class="code-actions">
+          <button class="secondary" onclick="copyCode('sol3code')">📋 نسخ الكود</button>
+          <button class="secondary" onclick="openInTab('sol3code')">🔗 فتح في تبويب جديد</button>
+        </div>
+          <div id="sol3code" class="code-box"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="ar" dir="rtl"&gt;
+&lt;body&gt;
+  &lt;p id="t"&gt;هذا هو النص القديم&lt;/p&gt;
+  &lt;button onclick="changeText()"&gt;غيّر النص&lt;/button&gt;
+  &lt;button onclick="resetText()"&gt;إعادة&lt;/button&gt;
+
+  &lt;script&gt;
+    function changeText() {
+      document.getElementById("t").innerHTML = "✅ تم تغيير النص بنجاح!";
+    }
+    function resetText() {
+      document.getElementById("t").innerHTML = "هذا هو النص القديم";
+    }
+  &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></div>
+        </div>
+      </div>
+
+      <!-- تدريب 4 -->
+      <div class="practice-card">
+        <span class="label exercise">تدريب 4 <span class="level medium">متوسط</span></span>
+        <p>اعرض رسالة عند مرور الفأرة على مربع، واعرض رسالة أخرى عند إبعادها.</p>
+        <div class="label code">💡 تلميح</div>
+        <div class="code-box"><code>// onmouseover عند الدخول، onmouseout عند الخروج
+&lt;div onmouseover="enter()" onmouseout="leave()"&gt;</code></div>
+        <button onclick="toggleSolution('sol4')">إظهار الحل</button>
+        <div id="sol4" style="display:none">
+          <div class="code-actions">
+          <button class="secondary" onclick="copyCode('sol4code')">📋 نسخ الكود</button>
+          <button class="secondary" onclick="openInTab('sol4code')">🔗 فتح في تبويب جديد</button>
+        </div>
+          <div id="sol4code" class="code-box"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="ar" dir="rtl"&gt;
+&lt;body&gt;
+  &lt;div onmouseover="enter()"
+       onmouseout="leave()"
+       style="padding:20px;border:2px solid #ccc;border-radius:8px;
+              background:#f9f9f9;cursor:pointer;"&gt;
+    مرّر الفأرة هنا
+  &lt;/div&gt;
+  &lt;p id="r"&gt;&lt;/p&gt;
+
+  &lt;script&gt;
+    function enter() {
+      document.getElementById("r").innerHTML = "🖱️ الفأرة داخل المربع";
+    }
+    function leave() {
+      document.getElementById("r").innerHTML = "👋 الفأرة خارج المربع";
+    }
+  &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></div>
+        </div>
+      </div>
+
+      <!-- تدريب 5 -->
+      <div class="practice-card">
+        <span class="label exercise">تدريب 5 <span class="level hard">متقدم</span></span>
+        <p>كبّر صورة عند الضغط على زر، وأوقف التكبير عند حد معين (200px).</p>
+        <div class="label code">💡 تلميح</div>
+        <div class="code-box"><code>let img = document.getElementById("img");
+if (img.width &lt; 200) {
+  img.width += 20;
+}</code></div>
+        <button onclick="toggleSolution('sol5')">إظهار الحل</button>
+        <div id="sol5" style="display:none">
+          <div class="code-actions">
+          <button class="secondary" onclick="copyCode('sol5code')">📋 نسخ الكود</button>
+          <button class="secondary" onclick="openInTab('sol5code')">🔗 فتح في تبويب جديد</button>
+        </div>
+          <div id="sol5code" class="code-box"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="ar" dir="rtl"&gt;
+&lt;body&gt;
+  &lt;img id="img"
+       src="https://picsum.photos/100"
+       width="100"
+       style="border-radius:8px;"&gt;
+  &lt;br&gt;&lt;br&gt;
+  &lt;button onclick="grow()"&gt;كبّر الصورة&lt;/button&gt;
+  &lt;button onclick="shrink()"&gt;صغّر الصورة&lt;/button&gt;
+  &lt;p id="sizeInfo"&gt;الحجم الحالي: 100px&lt;/p&gt;
+
+  &lt;script&gt;
+    function grow() {
+      let img = document.getElementById("img");
+      if (img.width &lt; 200) {
+        img.width += 20;
+        document.getElementById("sizeInfo").innerHTML = "الحجم الحالي: " + img.width + "px";
+      } else {
+        document.getElementById("sizeInfo").innerHTML = "⚠️ وصلنا للحد الأقصى (200px)";
+      }
+    }
+    function shrink() {
+      let img = document.getElementById("img");
+      if (img.width &gt; 60) {
+        img.width -= 20;
+        document.getElementById("sizeInfo").innerHTML = "الحجم الحالي: " + img.width + "px";
+      }
+    }
+  &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></div>
+        </div>
+      </div>
+
+      <!-- مشروع مصغر -->
+      <div class="practice-card">
+        <span class="label exercise">مشروع مصغر <span class="level hard">متقدم</span></span>
+        <p>ابنِ صفحة تجمع: حقل اسم + تحقق بسيط + زر + رسالة نتيجة + عنصر يتحرك أو يتغير حجمه.</p>
+        <button onclick="toggleSolution('miniProject')">إظهار نموذج الحل</button>
+        <div id="miniProject" style="display:none">
+          <div class="code-actions">
+          <button class="secondary" onclick="copyCode('miniProjectCode')">📋 نسخ الكود</button>
+          <button class="secondary" onclick="openInTab('miniProjectCode')">🔗 فتح في تبويب جديد</button>
+        </div>
+          <div id="miniProjectCode" class="code-box"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="ar" dir="rtl"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;style&gt;
+    body { font-family: sans-serif; padding: 20px; }
+    #box {
+      width: 80px; height: 80px;
+      background: teal; border-radius: 8px;
+      transition: all 0.4s;
+      margin-top: 16px;
+    }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h3&gt;مشروعي المصغر&lt;/h3&gt;
+  &lt;input id="name" type="text" placeholder="اكتب اسمك"&gt;
+  &lt;button onclick="runApp()"&gt;تنفيذ&lt;/button&gt;
+  &lt;p id="msg"&gt;&lt;/p&gt;
+  &lt;div id="box"&gt;&lt;/div&gt;
+
+  &lt;script&gt;
+    function runApp() {
+      let name = document.getElementById("name").value.trim();
+      if (name === "") {
+        document.getElementById("msg").innerHTML = "⚠️ الرجاء إدخال الاسم أولًا";
+        document.getElementById("box").style.width = "80px";
+        document.getElementById("box").style.height = "80px";
+        document.getElementById("box").style.background = "teal";
+      } else {
+        document.getElementById("msg").innerHTML = "✅ مرحبًا " + name + "!";
+        document.getElementById("box").style.width = "160px";
+        document.getElementById("box").style.height = "160px";
+        document.getElementById("box").style.background = "coral";
+      }
+    }
+  &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></div>
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- ===================================================
+       JavaScript الرئيسي — مصحح ومنظم
+  ==================================================== -->
+  <script>
+    /* ---- أدوات عامة ---- */
+    function setText(id, text){
+      document.getElementById(id).innerHTML = text;
+    }
+
+    function toggleSolution(id){
+      let el = document.getElementById(id);
+      el.style.display = (el.style.display === 'none') ? 'block' : 'none';
+    }
+
+    function copyCode(containerId){
+      const el   = document.getElementById(containerId);
+      const text = el.innerText || el.textContent;
+      navigator.clipboard.writeText(text).then(function(){
+        alert('تم نسخ الكود بنجاح ✅');
+      });
+    }
+
+    function openInTab(codeId){
+      const code = document.getElementById(codeId).innerText || document.getElementById(codeId).textContent;
+      const blob = new Blob([code], {type: 'text/html'});
+      const url  = URL.createObjectURL(blob);
+      window.open(url, '_blank');
+    }
+
+    /* ---- تقدم الدراسة ---- */
+    function markProgress(){
+      const sections = ['gui','validation','dhtml','dom','events','animation','final-review','practical-exercises'];
+      let passed = 0;
+      const trigger = window.scrollY + window.innerHeight * 0.35;
+      sections.forEach(function(id){
+        const el = document.getElementById(id);
+        if(el && el.offsetTop <= trigger) passed++;
+      });
+      const percent = Math.round((passed / sections.length) * 100);
+      document.getElementById('progressFill').style.width = percent + '%';
+      document.getElementById('progressText').innerHTML = 'تقدّمك في الوحدة: ' + percent + '%';
+    }
+    window.addEventListener('scroll', markProgress);
+    window.addEventListener('load', markProgress);
+
+    /* ---- GUI Demo ---- */
+    function runGUIDemo(){
+      const name  = document.getElementById('guiName').value.trim();
+      const color = document.getElementById('guiColor').value;
+      if(name === ''){
+        setText('guiResult','الرجاء كتابة الاسم أولًا.');
+        return;
+      }
+      setText('guiResult','مرحبًا <strong>' + name + '</strong>، لونك المفضل هو <strong>' + color + '</strong>. قرأت JavaScript القيم من عناصر GUI بنجاح ✅');
+    }
+    function resetGUIDemo(){
+      document.getElementById('guiName').value='';
+      document.getElementById('guiColor').selectedIndex=0;
+      setText('guiResult','ستظهر النتيجة هنا بعد الضغط.');
+    }
+
+    /* ---- Validation Demo ---- */
+    function validateFormDemo(){
+      const name = document.getElementById('valName').value.trim();
+      const age  = document.getElementById('valAge').value.trim();
+      if(name === '' || age === ''){
+        setText('validationResult','⚠️ يوجد حقل فارغ — يجب إدخال الاسم والعمر.');
+      } else if(isNaN(age)){
+        setText('validationResult','❌ العمر يجب أن يكون رقمًا، وليس نصًا.');
+      } else if(Number(age) < 0 || Number(age) > 100){
+        setText('validationResult','❌ العمر يجب أن يكون بين 0 و100.');
+      } else {
+        setText('validationResult','✅ البيانات صحيحة. يمكن قبول النموذج.');
+      }
+    }
+    function resetValidationDemo(){
+      document.getElementById('valName').value='';
+      document.getElementById('valAge').value='';
+      setText('validationResult','ستظهر نتيجة التحقق هنا.');
+    }
+
+    /* ---- DHTML Demo ---- */
+    function changeDHTMLExample(){
+      const area = document.getElementById('dhtmlArea');
+      area.innerHTML = '⚡ تم تغيير جزء من الصفحة نفسها دون الانتقال لصفحة جديدة. هذه هي فكرة DHTML!';
+      area.style.background = '#dbeafe';
+      area.style.borderColor = '#93c5fd';
+    }
+    function resetDHTMLExample(){
+      const area = document.getElementById('dhtmlArea');
+      area.innerHTML = 'هذه رسالة أصلية داخل الصفحة.';
+      area.style.background = '#effcf7';
+      area.style.borderColor = '#d9e4ef';
+    }
+
+    /* ---- DOM Demo ---- */
+    function changeDOMText(){
+      const el = document.getElementById('domDemoText');
+      el.innerHTML = 'تم تغيير النص باستخدام <strong>innerHTML</strong> عبر DOM ✅';
+    }
+    function resizeDOMBox(){
+      const el = document.getElementById('domDemoText');
+      el.style.fontSize = '1.3rem';
+      el.style.padding  = '22px';
+      el.style.background  = '#fef3c7';
+      el.style.borderColor = '#fcd34d';
+    }
+    function resetDOMDemo(){
+      const el = document.getElementById('domDemoText');
+      el.innerHTML         = 'هذا النص سيتغير باستخدام DOM.';
+      el.style.fontSize    = '1rem';
+      el.style.padding     = '16px';
+      el.style.background  = '#effcf7';
+      el.style.borderColor = '#d9e4ef';
+    }
+
+    /* ---- Events Demo ---- */
+    function eventMessage(msg){
+      setText('eventResult', msg);
+    }
+
+    /* ---- Quiz Answers ---- */
+    const answers = {
+      gui:'b', validation:'b', dhtml:'b', dom:'a', events:'b', animation:'b'
+    };
+    function checkQuickAnswer(section, choice){
+      const target = document.getElementById('quiz-' + section);
+      if(choice === answers[section]){
+        target.innerHTML = '✅ إجابة صحيحة!';
+        target.style.background = '#f0fdf4';
+      } else {
+        target.innerHTML = '❌ إجابة غير صحيحة، حاول مرة أخرى.';
+        target.style.background = '#fff1f2';
+      }
+    }
+
+    /* ---- Animation Demo ---- */
+    let motionTimer = null;
+    let ballPos     = 14;
+    let direction   = 1;
+
+    function moveBall(){
+      const ball = document.getElementById('ball');
+      ballPos += 6 * direction;
+      if(ballPos >= 360) direction = -1;
+      if(ballPos <= 14)  direction =  1;
+      ball.style.right   = ballPos + 'px';
+      motionTimer = setTimeout(moveBall, 35);
+    }
+    function startBallMotion(){
+      if(motionTimer) return;
+      setText('animationResult','▶ بدأت الحركة. الموضع يتغير كل 35ms باستخدام setTimeout.');
+      moveBall();
+    }
+    function stopBallMotion(){
+      clearTimeout(motionTimer);
+      motionTimer = null;
+      setText('animationResult','⏹ تم إيقاف الحركة باستخدام clearTimeout().');
+    }
+    function resetBallMotion(){
+      clearTimeout(motionTimer);
+      motionTimer = null;
+      ballPos     = 14;
+      direction   = 1;
+      document.getElementById('ball').style.right = '14px';
+      setText('animationResult','↩ تمت إعادة الكرة لموضعها الأصلي.');
+    }
+
+    /* ---- Final Quiz ---- */
+    function gradeFinalQuiz(){
+      let score = 0;
+      if(document.getElementById('finalQ1').value === 'a') score++;
+      if(document.getElementById('finalQ2').value === 'a') score++;
+      if(document.getElementById('finalQ3').value === 'b') score++;
+      if(document.getElementById('finalQ4').value === 'b') score++;
+      const result = document.getElementById('finalQuizResult');
+      if(score === 4){
+        result.innerHTML = '<strong>نتيجتك 4/4 — ممتاز جدًا 🎉</strong><br>أحسنت! فهمت المفاهيم الأساسية للوحدة.';
+        result.style.background = '#f0fdf4';
+      } else if(score >= 2){
+        result.innerHTML = '<strong>نتيجتك ' + score + '/4 — جيد</strong><br>لديك فهم جيد، راجع الأجزاء الضعيفة وأعد المحاولة.';
+        result.style.background = '#fffbeb';
+      } else {
+        result.innerHTML = '<strong>نتيجتك ' + score + '/4</strong><br>يُفضَّل إعادة قراءة الأقسام الأساسية ثم المحاولة مجددًا.';
+        result.style.background = '#fff1f2';
+      }
+    }
+    function resetFinalQuiz(){
+      ['finalQ1','finalQ2','finalQ3','finalQ4'].forEach(function(id){
+        document.getElementById(id).selectedIndex = 0;
+      });
+      const result = document.getElementById('finalQuizResult');
+      result.innerHTML  = 'أجب عن الأسئلة ثم اضغط "احسب نتيجتي".';
+      result.style.background = '#effcf7';
+    }
+  </script>
+
+</body>
+</html>
