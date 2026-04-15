@@ -1,0 +1,1369 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>المشاريع العملية - تقنية تصميم صفحات الويب (1266)</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Header Styles */
+        header {
+            text-align: center;
+            color: white;
+            margin-bottom: 60px;
+            animation: slideDown 0.8s ease;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .header-content {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        header h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        header p {
+            font-size: 1.3em;
+            opacity: 0.95;
+            margin-bottom: 5px;
+        }
+
+        header .subtitle {
+            font-size: 1em;
+            opacity: 0.85;
+        }
+
+        .btn-home {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 2px solid white;
+            padding: 12px 25px;
+            border-radius: 25px;
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        .btn-home:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-3px);
+        }
+
+        /* Projects Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        /* Project Card - Simple Version */
+        .project-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            animation: fadeInUp 0.8s ease;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+            text-align: center;
+            min-height: 250px;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .project-icon {
+            font-size: 4em;
+            margin-bottom: 20px;
+            animation: bounce 2s infinite;
+        }
+
+        .project-card h2 {
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .project-card .project-code {
+            font-size: 0.95em;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .btn-more {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        .btn-more:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .project-card:nth-child(2) .btn-more {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+
+        .project-card:nth-child(2) .btn-more:hover {
+            box-shadow: 0 8px 20px rgba(245, 87, 108, 0.4);
+        }
+
+        .project-card:nth-child(3) .btn-more {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+
+        .project-card:nth-child(3) .btn-more:hover {
+            box-shadow: 0 8px 20px rgba(0, 242, 254, 0.4);
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            animation: fadeIn 0.3s ease;
+            overflow-y: auto;
+        }
+
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 950px;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            animation: slideUp 0.3s ease;
+        }
+
+        .modal-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .modal-header h2 {
+            font-size: 2em;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .close-btn {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: none;
+            font-size: 1.5em;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .close-btn:hover {
+            background: rgba(255, 255, 255, 0.4);
+            transform: rotate(90deg);
+        }
+
+        .modal-body {
+            padding: 40px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .section h3 {
+            color: #667eea;
+            font-size: 1.6em;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding-bottom: 12px;
+            border-bottom: 3px solid #667eea;
+        }
+
+        .section h4 {
+            color: #333;
+            font-size: 1.2em;
+            margin: 20px 0 15px 0;
+            padding-left: 15px;
+            border-left: 4px solid #667eea;
+        }
+
+        .section p {
+            color: #555;
+            line-height: 1.9;
+            font-size: 1em;
+            margin-bottom: 15px;
+        }
+
+        .requirement-item {
+            background: #f8f9fa;
+            padding: 18px 20px;
+            margin-bottom: 15px;
+            border-right: 5px solid #667eea;
+            border-radius: 5px;
+            font-size: 0.95em;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        .requirement-item strong {
+            color: #333;
+            display: block;
+            margin-bottom: 8px;
+            font-size: 1.05em;
+        }
+
+        .requirement-item ul {
+            margin: 10px 0 0 20px;
+            color: #555;
+        }
+
+        .requirement-item li {
+            margin-bottom: 8px;
+        }
+
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .tech-tag {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 25px;
+            font-size: 0.9em;
+            font-weight: 500;
+        }
+
+        .grading-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .grading-table th {
+            background: #f0f4ff;
+            padding: 15px;
+            text-align: right;
+            font-weight: 700;
+            color: #333;
+            border-bottom: 2px solid #667eea;
+        }
+
+        .grading-table td {
+            padding: 15px;
+            border-bottom: 1px solid #e0e0e0;
+            color: #555;
+        }
+
+        .grading-table tr:hover {
+            background: #f8f9fa;
+        }
+
+        .grading-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .percentage {
+            color: #667eea;
+            font-weight: 700;
+            font-size: 1.1em;
+        }
+
+        .note-box {
+            background: #fff3cd;
+            border-left: 5px solid #ffc107;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            color: #856404;
+            line-height: 1.8;
+        }
+
+        .note-box strong {
+            color: #333;
+        }
+
+        /* Color variations for different projects */
+        .project-card:nth-child(2) .section h3,
+        .project-card:nth-child(2) .requirement-item {
+            border-color: #f5576c;
+        }
+
+        .project-card:nth-child(2) .section h4 {
+            border-left-color: #f5576c;
+        }
+
+        .project-card:nth-child(2) .tech-tag {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+
+        .project-card:nth-child(2) .modal-header {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+
+        .project-card:nth-child(2) .section h3 {
+            color: #f5576c;
+        }
+
+        .project-card:nth-child(2) .percentage {
+            color: #f5576c;
+        }
+
+        .project-card:nth-child(2) .grading-table th {
+            background: #ffe8f0;
+            border-bottom-color: #f5576c;
+        }
+
+        .project-card:nth-child(3) .section h3,
+        .project-card:nth-child(3) .requirement-item {
+            border-color: #00f2fe;
+        }
+
+        .project-card:nth-child(3) .section h4 {
+            border-left-color: #00f2fe;
+        }
+
+        .project-card:nth-child(3) .tech-tag {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+
+        .project-card:nth-child(3) .modal-header {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+
+        .project-card:nth-child(3) .section h3 {
+            color: #00f2fe;
+        }
+
+        .project-card:nth-child(3) .percentage {
+            color: #00f2fe;
+        }
+
+        .project-card:nth-child(3) .grading-table th {
+            background: #e0f7ff;
+            border-bottom-color: #00f2fe;
+        }
+
+        /* Animations */
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            header h1 {
+                font-size: 2em;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .modal-content {
+                width: 95%;
+                max-height: 95vh;
+            }
+
+            .modal-body {
+                padding: 20px;
+            }
+
+            .modal-header h2 {
+                font-size: 1.5em;
+            }
+
+            .grading-table {
+                font-size: 0.9em;
+            }
+
+            .grading-table th,
+            .grading-table td {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <div class="header-content">
+                <h1>🚀 المشاريع العملية</h1>
+                <p>مقرر تقنية تصميم صفحات الويب (1266)</p>
+                <p class="subtitle">جامعة القدس المفتوحة - فرع الخليل</p>
+            </div>
+            <a href="https://anatshih.github.io/web-design-course-1266/" class="btn-home">
+                <i class="fas fa-home"></i> الرئيسية
+            </a>
+        </header>
+
+        <!-- Projects Grid -->
+        <div class="projects-grid">
+            <!-- Project 1: Advanced Task Manager -->
+            <div class="project-card">
+                <div class="project-icon">📋</div>
+                <h2>Advanced Task Manager</h2>
+                <p class="project-code">نظام إدارة المهام المتقدم</p>
+                <button class="btn-more" onclick="openModal(0)">المزيد</button>
+            </div>
+
+            <!-- Project 2: Expense Tracker Pro -->
+            <div class="project-card">
+                <div class="project-icon">💰</div>
+                <h2>Expense Tracker Pro</h2>
+                <p class="project-code">نظام إدارة المصروفات المتقدم</p>
+                <button class="btn-more" onclick="openModal(1)">المزيد</button>
+            </div>
+
+            <!-- Project 3: Smart Notes Pro -->
+            <div class="project-card">
+                <div class="project-icon">📝</div>
+                <h2>Smart Notes Pro</h2>
+                <p class="project-code">تطبيق الملاحظات الذكي</p>
+                <button class="btn-more" onclick="openModal(2)">المزيد</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for Project 1 -->
+    <div id="modal0" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2><span style="font-size: 1.2em;">📋</span> Advanced Task Manager</h2>
+                <button class="close-btn" onclick="closeModal(0)"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body">
+                <div class="section">
+                    <h3><i class="fas fa-lightbulb"></i> الفكرة العامة</h3>
+                    <p>
+                        تطبيق ويب تفاعلي متكامل يهدف إلى إدارة المهام اليومية. يسمح للمستخدم بإضافة المهام وتعديلها وحذفها وتغيير حالتها مع واجهة جذابة وسهلة الاستخدام.
+                    </p>
+                </div>
+
+                <div class="section">
+                    <h3><i class="fas fa-tasks"></i> المتطلبات الأساسية (40%)</h3>
+                    <h4>الوظائف الأساسية التي يجب أن يحتويها التطبيق:</h4>
+                    <div class="requirement-item">
+                        <strong>إدارة المهام:</strong>
+                        <ul>
+                            <li>إضافة مهمة جديدة</li>
+                            <li>تعديل مهمة موجودة</li>
+                            <li>حذف مهمة</li>
+                            <li>تغيير حالة المهمة (مكتملة أو غير مكتملة)</li>
+                        </ul>
+                    </div>
+                    <div class="requirement-item">
+                        <strong>بيانات المهمة - يجب أن ينزخ النظام البيانات التالية:</strong>
+                        <ul>
+                            <li>العنوان: نص إجباري لا يجوز تركه فارغاً</li>
+                            <li>مستوى الأولوية: قائمة منسدلة إجبارية (منخفضة / متوسطة / عالية)</li>
+                            <li>التاريخ: حقل اختياري لتنظيم العمل</li>
+                            <li>الحالة: مكتملة أو غير مكتملة</li>
+                        </ul>
+                    </div>
+                    <div class="requirement-item">
+                        <strong>العرض والتخزين:</strong>
+                        <ul>
+                            <li>عرض جميع المهام بوضوح على الشاشة</li>
+                            <li>تمييز المهام المكتملة (بخط مشطوب أو لون مختلف)</li>
+                            <li>الحفظ التلقائي في LocalStorage</li>
+                            <li>استرجاع المهام عند فتح الصفحة بدون إعادة تحميل</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3><i class="fas fa-code"></i> التقنيات المستخدمة</h3>
+                    <div class="tech-tags">
+                        <span class="tech-tag">HTML5</span>
+                        <span class="tech-tag">CSS3</span>
+                        <span class="tech-tag">JavaScript</span>
+                        <span class="tech-tag">LocalStorage</span>
+                        <span class="tech-tag">DOM Manipulation</span>
+                        <span class="tech-tag">Array Methods</span>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3><i class="fas fa-star"></i> المتطلبات المتوسطة (25%)</h3>
+                    <div class="requirement-item">
+                        <strong>البحث:</strong>
+                        توفير شريط بحث للبحث عن مهمة من خلال كلمات من عنوانها
+                    </div>
+                    <div class="requirement-item">
+                        <strong>الفلترة:</strong>
+                        أزرار أو خيارات لتصفية عرض المهام:
+                        <ul>
+                            <li>حسب الحالة (مكتملة / غير مكتملة)</li>
+                            <li>حسب مستوى الأولوية (عالية / متوسطة / منخفضة)</li>
+                        </ul>
+                    </div>
+                    <div class="requirement-item">
+                        <strong>الترتيب:</strong>
+                        إمكانية ترتيب المهام المعروضة:
+                        <ul>
+                            <li>حسب التاريخ (الأحدث أو الأقدم)</li>
+                            <li>حسب الأولوية (الأهم أولاً)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3><i class="fas fa-trophy"></i> مميزات التميز - Bonus (10%)</h3>
+                    <p>يمكنك اختيار واحدة أو أكثر من المميزات التالية لإظهار مهاراتك المتقدمة:</p>
+                    <div class="requirement-item">
+                        <strong>إحصائيات:</strong>
+                        شريط تقدم يعرض نسبة المهام المكتملة (مثلاً: 3 من 5)
+                    </div>
+                    <div class="requirement-item">
+                        <strong>تحسينات بصرية:</strong>
+                        <ul>
+                            <li>رسوم متحركة عند الإضافة والحذف</li>
+                            <li>تأثيرات بصرية احترافية</li>
+                        </ul>
+                    </div>
+                    <div class="requirement-item">
+                        <strong>تفاعل متقدم:</strong>
+                        سحب وإفلات (Drag & Drop) لإعادة ترتيب المهام
+                    </div>
+                    <div class="requirement-item">
+                        <strong>تنبيهات وتنويهات:</strong>
+                        <ul>
+                            <li>رسائل تأكيد قبل الحذف</li>
+                            <li>تنبيهات عند إضافة أو تعديل المهام</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3><i class="fas fa-code-branch"></i> البنية البرمجية - كيفية كتابة الكود</h3>
+                    <p>لتنظيم الكود وتسهيل قراءته:</p>
+                    <div class="requirement-item">
+                        <strong>استخدام Array:</strong>
+                        استخدم "مصفوفة" (Array) لتخزين قائمة المهام بالكامل
+                    </div>
+                    <div class="requirement-item">
+                        <strong>استخدام Object:</strong>
+                        استخدم "كائن" (Object) لتمثيل بيانات كل مهمة على حدة
+                    </div>
+                    <div class="requirement-item">
+                        <strong>مثال توضيحي للبيانات:</strong>
+                        <pre style="background: #f5f5f5; padding: 15px; border-radius: 5px; overflow-x: auto; font-family: monospace; direction: ltr; text-align: left;">
+const task = {
+  id: 1,
+  title: "إنهاء المشروع",
+  priority: "عالي",
+  date: "2024-12-31",
+  completed: false
+};</pre>
+                    </div>
+                    <div class="requirement-item">
+                        <strong>نصيحة برمجية:</strong>
+                        قسم الكود إلى دوال (Functions) منفصلة لكل وظيفة، استخدم أسماء متغيرات واضحة وذات معنى، وأضف تعليقات توضح آلية عمل الكود
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3><i class="fas fa-tasks-alt"></i> خطة العمل (المراحل التطبيقية)</h3>
+                    <p>اتبع هذه المراحل بهذا الترتيب لضمان إنجاز المشروع بسلاسة:</p>
+                    <table class="grading-table">
+                        <tr>
+                            <th>المرحلة</th>
+                            <th>المهام المطلوبة</th>
+                        </tr>
+                        <tr>
+                            <td><strong>1. التخطيط والتصميم</strong></td>
+                            <td>رسم وتخيل شكل الواجهة، تحديد التطلبات والعناصر الأساسية، تصميم الواجهة</td>
+                        </tr>
+                        <tr>
+                            <td><strong>2. بناء الهيكل</strong></td>
+                            <td>كتابة الكود باستخدام HTML، تنسيق العناصر وترتيبها باستخدام CSS</td>
+                        </tr>
+                        <tr>
+                            <td><strong>3. البرمجة الأساسية</strong></td>
+                            <td>كتابة كود JavaScript لتفعيل وظائف الإضافة والحذف والتعديل والتغيير الحالة</td>
+                        </tr>
+                        <tr>
+                            <td><strong>4. الفلترة والبحث</strong></td>
+                            <td>دمج وظائف البحث والفلترة والترتيب حسب الخصائص</td>
+                        </tr>
+                        <tr>
+                            <td><strong>5. الاختبار</strong></td>
+                            <td>إجراء اختبار شامل للتطبيق على المتصفح والتأكد من عدم وجود أخطاء</td>
+                        </tr>
+                        <tr>
+                            <td><strong>6. التقرير والتسليم</strong></td>
+                            <td>كتابة التقرير النهائي وتجهيز الملفات للتسليم</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="section">
+                    <h3><i class="fas fa-chart-pie"></i> توزيع الدرجات</h3>
+                    <table class="grading-table">
+                        <tr>
+                            <th>معيار التقييم</th>
+                            <th>النسبة</th>
+                        </tr>
+                        <tr>
+                            <td>الوظائف الأساسية (إضافة، تعديل، حذف، تغيير الحالة)</td>
+                            <td class="percentage">40%</td>
+                        </tr>
+                        <tr>
+                            <td>البحث والفلترة حسب الحالة والأولوية</td>
+                            <td class="percentage">15%</td>
+                        </tr>
+                        <tr>
+                            <td>التصميم وجمالية الواجهة وسهولة الاستخدام</td>
+                            <td class="percentage">15%</td>
+                        </tr>
+                        <tr>
+                            <td>جودة الكود والتنظيم والتعليقات</td>
+                            <td class="percentage">15%</td>
+                        </tr>
+                        <tr>
+                            <td>المميزات الإضافية (مثل الإحصائيات والرسوم المتحركة)</td>
+                            <td class="percentage">10%</td>
+                        </tr>
+                        <tr>
+                            <td>جودة التقرير والتوثيق</td>
+                            <td class="percentage">5%</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="section">
+                    <h3><i class="fas fa-file-alt"></i> متطلبات التسليم</h3>
+                    <div class="requirement-item">
+                        <strong>الملفات المطلوبة (ملف مضغوط ZIP):</strong>
+                        <ul>
+                            <li>index.html</li>
+                            <li>style.css</li>
+                            <li>script.js</li>
+                        </ul>
+                    </div>
+                    <div class="requirement-item">
+                        <strong>التقرير (PDF أو Word):</strong>
+                        <ul>
+                            <li>وصف المشروع والفكرة العامة</li>
+                            <li>خطوات التنفيذ والمراحل التي مررت بها</li>
+                            <li>التحديات التي واجهتك وكيفية حلها</li>
+                            <li>صور من واجهة التطبيق</li>
+                            <li>شرح مفصل لكيفية عمل البرمجة والكود</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3><i class="fas fa-calendar"></i> موعد ودية التسليم</h3>
+                    <div class="requirement-item">
+                        <strong>طريقة التسليم:</strong>
+                        يتم التسليم شخصياً في المختبر
+                    </div>
+                    <div class="requirement-item">
+                        <strong>الموعد النهائي:</strong>
+                        يستمر قبول المشاريع حتى نهاية الأسبوع الأخير من الفصل الدراسي قبل بدء الامتحانات النهائية
+                    </div>
+                </div>
+
+                <div class="note-box">
+                    <strong>⚠️ ملاحظات هامة جداً:</strong>
+                    <ul style="margin-top: 10px;">
+                        <li>أي مشروع يفتقر للتفاعل الديناميكي (DOM) لن يتم قبوله</li>
+                        <li>تأكد من عدم وجود أخطاء في المتصفح (استخدم F12 لفتح أدوات المطور)</li>
+                        <li>اختبر المشروع على أجهزة مختلفة للتأكد من التوافقية</li>
+                        <li>استخدم أسماء ملفات واضحة ومنظمة</li>
+                        <li>اكتب تقريراً شاملاً وواضحاً يشرح عملك</li>
+                    </ul>
+                </div>
+
+                <div class="note-box" style="background: #d4edda; border-left-color: #28a745; color: #155724;">
+                    <strong>🎉 بالتوفيق!</strong>
+                    <p style="margin-top: 10px;">المشاريع المتكاملة والمميزة ستحصل على علامات إضافية تقديراً لجهدك. ابدأ مبكراً ولا تؤجل العمل!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for Project 2 -->
+    <div id="modal1" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2><span style="font-size: 1.2em;">💰</span> Expense Tracker Pro</h2>
+                <button class="close-btn" onclick="closeModal(1)"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body">
+                <div class="section">
+                    <h3><i class="fas fa-lightbulb"></i> الفكرة العامة</h3>
+                    <p>
+                        تطبيق ويب متقدم لتتبع وإدارة المصروفات الشخصية. يختلف هذا المشروع عن مشروع "إدارة المهام" بأنه يركز بشكل أساسي على العمليات الحسابية والتحليل المالي للبيانات بدلاً من التركيز على الحالات.
+                    </p>
+                </div>
+
+                <div class="section">
+                    <h3><i class="fas fa-tasks"></i> المتطلبات الأساسية (40%)</h3>
+                    <div class="requirement-item">
+                        <strong>نموذج إدخال البيانات:</strong>
+                        <ul>
+                            <li>المبلغ: حقل إجباري - يقبل فقط أرقام موجبة</li>
+                            <li>الفئة: قائمة منسدلة إجبارية (ماعط، مواصلات، فواتير، ترفيه)</li>
+                            <li>التاريخ: حقل إجباري لتتبع وقت المصروف</li>
+                            <li>الوصف: نص اختياري لشرح المصروف</li>
+                        </ul>
+                    </div>
+                    <div class="requirement-item">
+                        <strong>إدارة المصروفات:</strong>
+                        <ul>
+                            <li>إمكانية إضافة مصروف جديد</li>
+                            <li>تعديل مصروف موجود</li>
+                            <li>حذف مصروف</li>
+                            <li>عرض جميع المصروفات بوضوح</li>
+                        </ul>
+                    </div>
+                    <div class="requirement-item">
+                        <strong>العمليات الحسابية (الأهم):</strong>
+                        <ul>
+                            <li>حساب المجموع الكلي للمصروفات</li>
+                            <li>عرض المجموع بشكل بارز وواضح</li>
+                            <li>تحديث الحسابات تلقائياً عند أي عملية إضافة أو حذف</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3><i class="fas fa-code"></i> التقنيات المستخدمة</h3>
+                    <div class="tech-tags">
+                        <span class="tech-tag">HTML5</span>
+                        <span class="tech-tag">CSS3</span>
+                        <span class="tech-tag">JavaScript</span>
+                        <span class="tech-tag">Array Methods</span>
+                        <span class="tech-tag">LocalStorage</span>
+                        <span class="tech-tag">Mathematical Operations</span>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3><i class="fas fa-star"></i> المتطلبات المتوسطة (15%)</h3>
+                    <div class="requirement-item">
+                        <strong>البحث:</strong>
+                        شريط بحث للبحث عن مصروف معين باستخدام الوصف أو الفئة
+                    </div>
+                    <div class="requirement-item">
+                        <strong>الفلترة:</strong>
+                        <ul>
+                            <li>تصفية العرض لإظهار فئة معينة فقط</li>
+                            <li>عرض مصروفات تاريخ محدد</li>
+                        </ul>
+                    </div>
+                    <div class="requirement-item">
+                        <strong>الترتيب:</strong>
+                        ترتيب المصروفات حسب:
+                        <ul>
+                            <li>المبلغ (تصاعدي/تنازلي)</li>
+                            <li>التاريخ</li>
+                            <li>الفئة</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3><i class="fas fa-trophy"></i> مميزات التميز - Bonus (5%)</h3>
+                    <p>يمكنك اختيار واحدة أو أكثر من المميزات التالية:</p>
+                    <div class="requirement-item">
+                        <strong>إحصائيات متقدمة:</strong>
+                        <ul>
+                            <li>تحديد أعلى فئة يتم الإنفاق عليها</li>
+                            <li>إظهار متوسط المصروفات</li>
+                        </ul>
+                    </div>
+                    <div class="requirement-item">
+                        <strong>الميزانية (Budget):</strong>
+                        <ul>
+                            <li>تحديد حد للإنفاق الشهري</li>
+                            <li>إظهار تنبيه عند تجاوز الحد</li>
+                        </ul>
+                    </div>
+                    <div class="requirement-item">
+                        <strong>الرسوم البيانية:</strong>
+                        استخدام مكتبة Chart.js لعرض البيانات بشكل مرئي
+                    </div>
+                    <div class="requirement-item">
+                        <strong>ميزات أخرى:</strong>
+                        <ul>
+                            <li>تصدير البيانات كملف CSV أو PDF</li>
+                            <li>وضع ليلي (Dark Mode)</li>
+                            <li>تصميم متجاوب</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3><i class="fas fa-code-branch"></i> البنية البرمجية - كيفية كتابة الكود</h3>
+                    <div class="requirement-item">
+                        <strong>استخدام Array:</strong>
+                        استخدم مصفوفة (Array) لتخزين المصروفات بحيث يمثل كل مصروف كائن (Object) منفصل
+                    </div>
+                    <div class="requirement-item">
+                        <strong>مثال توضيحي للبيانات:</strong>
+                        <pre style="background: #f5f5f5; padding: 15px; border-radius: 5px; overflow-x: auto; font-family: monospace; direction: ltr; text-align: left;">
+const expense = {
+  id: 1,
+  amount: 50,
+  category: "ماعط",
+  date: "2024-12-15",
+  description: "ءادغ يف معطم"
+};</pre>
+                    </div>
+                    <div class="requirement-item">
+                        <strong>نصيحة ذهبية للحسابات:</strong>
+                        استخدم دالة reduce المدمجة في المصفوفات لحساب المجموع الكلي بسهولة وقدقة. يجب استدعاء دالة الحساب بعد كل عملية إضافة أو حذف لتحديث الواجهة (DOM)
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3><i class="fas fa-tasks-alt"></i> خطة العمل (المراحل التطبيقية)</h3>
+                    <table class="grading-table">
+                        <tr>
+                            <th>المرحلة</th>
+                            <th>المهام المطلوبة</th>
+                        </tr>
+                        <tr>
+                            <td><strong>1. التخطيط والتصميم</strong></td>
+                            <td>رسم الواجهة، تحديد الفئات، تصميم الواجهة والألوان</td>
+                        </tr>
+                        <tr>
+                            <td><strong>2. بناء الهيكل</strong></td>
+                            <td>كتابة HTML وتصميم نموذج الإدخال، تنسيق باستخدام CSS</td>
+                        </tr>
+                        <tr>
+                            <td><strong>3. البرمجة الأساسية</strong></td>
+                            <td>تفعيل وظائف الإضافة والحذف والتعديل والعمليات الحسابية الأساسية</td>
+                        </tr>
+                        <tr>
+                            <td><strong>4. الفلترة والبحث</strong></td>
+                            <td>إضافة شريط البحث وخيارات الفلترة والترتيب</td>
+                        </tr>
+                        <tr>
+                            <td><strong>5. الإحصائيات</strong></td>
+                            <td>عرض المتوسطات والإحصائيات المتقدمة</td>
+                        </tr>
+                        <tr>
+                            <td><strong>6. الاختبار والتقرير</strong></td>
+                            <td>اختبار شامل والتأكد من صحة الحسابات وكتابة التقرير</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="section">
+                    <h3><i class="fas fa-chart-pie"></i> توزيع الدرجات</h3>
+                    <table class="grading-table">
+                        <tr>
+                            <th>معيار التقييم</th>
+                            <th>النسبة</th>
+                        </tr>
+                        <tr>
+                            <td>الوظائف الأساسية (إضافة، حذف، تعديل، الحفظ الفوري)</td>
+                            <td class="percentage">40%</td>
+                        </tr>
+                        <tr>
+                            <td>صحة وقدقة العمليات الحسابية (المجموع، المتوسط، الإحصائيات)</td>
+                            <td class="percentage">20%</td>
+                        </tr>
+                        <tr>
+                            <td>البحث والفلترة والترتيب</td>
+                            <td class="percentage">15%</td>
+                        </tr>
+                        <tr>
+                            <td>التصميم وجمالية الواجهة والألوان</td>
+                            <td class="percentage">15%</td>
+                        </tr>
+                        <tr>
+                            <td>جودة الكود والتنظيم والتعليقات</td>
+                            <td class="percentage">5%</td>
+                        </tr>
+                        <tr>
+                            <td>المميزات الإضافية (رسوم بيانية، ميزانية، إلخ)</td>
+                            <td class="percentage">5%</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="section">
+                    <h3><i class="fas fa-file-alt"></i> متطلبات التسليم</h3>
+                    <div class="requirement-item">
+                        <strong>الملفات المطلوبة (ملف مضغوط ZIP):</strong>
+                        <ul>
+                            <li>index.html</li>
+                            <li>style.css</li>
+                            <li>script.js</li>
+                        </ul>
+                    </div>
+                    <div class="requirement-item">
+                        <strong>التقرير (PDF أو Word):</strong>
+                        <ul>
+                            <li>وصف المشروع</li>
+                            <li>خطوات التنفيذ</li>
+                            <li>صور للتطبيق</li>
+                            <li>شرح مفصل جداً لكيفية برمجة العمليات الحسابية والمتوسطات</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3><i class="fas fa-calendar"></i> موعد ودية التسليم</h3>
+                    <div class="requirement-item">
+                        <strong>طريقة التسليم:</strong>
+                        يتم التسليم شخصياً في المختبر
+                    </div>
+                    <div class="requirement-item">
+                        <strong>الموعد النهائي:</strong>
+                        يستمر قبول المشاريع حتى نهاية الأسبوع الأخير من الفصل الدراسي قبل بدء الامتحانات النهائية
+                    </div>
+                </div>
+
+                <div class="note-box">
+                    <strong>⚠️ تنبيه هام للطالب:</strong>
+                    <p>هذا المشروع يعتمد بشكل كامل على الأرقام، لذا تأكد من صحة الحسابات. أي مشروع يعرض حسابات خاطئة سيتم رفضه. اختبر الحسابات يدوياً قبل التسليم والتأكد من مطابقتها لنتائج التطبيق.</p>
+                </div>
+
+                <div class="note-box" style="background: #d4edda; border-left-color: #28a745; color: #155724;">
+                    <strong>🎉 بالتوفيق!</strong>
+                    <p style="margin-top: 10px;">استمتع بعملية التطوير وتعلم من كل خطأ. المشاريع المتكاملة ستحصل على علامات إضافية!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for Project 3 -->
+    <div id="modal2" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2><span style="font-size: 1.2em;">📝</span> Smart Notes Pro</h2>
+                <button class="close-btn" onclick="closeModal(2)"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body">
+                <div class="section">
+                    <h3><i class="fas fa-lightbulb"></i> الفكرة العامة</h3>
+                    <p>
+                        تطبيق ويب تفاعلي يعمل من خلال المتصفح يشبه تطبيقات كتابة الملاحظات في الهواتف الذكية. يسمح للمستخدم بإضافة الملاحظات وتعديلها وحذفها مع تصنيفها في فئات مختلفة والبحث فيها بسهولة. يتميز هذا المشروع بأنه يركز على إدارة النصوص والبحث السريع.
+                    </p>
+                </div>
+
+                <div class="section">
+                    <h3><i class="fas fa-tasks"></i> المتطلبات الأساسية (40%)</h3>
+                    <div class="requirement-item">
+                        <strong>عمليات CRUD (الأساسية):</strong>
+                        <ul>
+                            <li>Create: إضافة ملاحظة جديدة</li>
+                            <li>Read: عرض جميع الملاحظات بوضوح</li>
+                            <li>Update: تعديل ملاحظة موجودة</li>
+                            <li>Delete: حذف ملاحظة</li>
+                        </ul>
+                    </div>
+                    <div class="requirement-item">
+                        <strong>بيانات الملاحظة - يجب أن ينزخ النظام:</strong>
+                        <ul>
+                            <li>العنوان: نص إجباري لا يجوز تركه فارغاً</li>
+                            <li>المحتوى: نص الملاحظة - يجب أن يستوعب نصوص طويلة</li>
+                            <li>الفئة: تصنيف الملاحظة (دراسة، عمل، شخصي)</li>
+                            <li>تاريخ الإنشاء: يتم إنشاؤه وحفظه تلقائياً بدون تدخل المستخدم</li>
+                            <li>تاريخ التعديل: يتحدث تلقائياً عند تعديل الملاحظة</li>
+                        </ul>
+                    </div>
+                    <div class="requirement-item">
+                        <strong>طريقة العرض والتخزين:</strong>
+                        <ul>
+                            <li>عرض الملاحظات في شكل بطاقات (Cards)</li>
+                            <li>تحديث الواجهة بشكل مباشر (بدون إعادة تحميل الصفحة)</li>
+                            <li>حفظ البيانات في LocalStorage</li>
+                            <li>استرجاع الملاحظات عند فتح الصفحة</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3><i class="fas fa-code"></i> التقنيات المستخدمة</h3>
+                    <div class="tech-tags">
+                        <span class="tech-tag">HTML5</span>
+                        <span class="tech-tag">CSS3</span>
+                        <span class="tech-tag">JavaScript</span>
+                        <span class="tech-tag">Real-time Search</span>
+                        <span class="tech-tag">LocalStorage</span>
+                        <span class="tech-tag">DOM Manipulation</span>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3><i class="fas fa-star"></i> المتطلبات المتوسطة (20%)</h3>
+                    <div class="requirement-item">
+                        <strong>البحث الفوري (Real-time Search):</strong>
+                        <ul>
+                            <li>يجب أن يحتوي التطبيق على عبرم بحث</li>
+                            <li>يبحث في "العنوان" و "المحتوى"</li>
+                            <li>البحث يعمل فوراً أثناء كتابة المستخدم (حدث input)</li>
+                            <li>ليس بعد الضغط على زر بحث</li>
+                        </ul>
+                    </div>
+                    <div class="requirement-item">
+                        <strong>التصنيف والفلترة:</strong>
+                        <ul>
+                            <li>تصنيف الملاحظات عند إضافتها في الفئات (دراسة، عمل، شخصي)</li>
+                            <li>أزرار أو خيارات لتصفية العرض</li>
+                            <li>مثلاً: إظهار ملاحظات "الدراسة" فقط، أو إظهار "الجميع"</li>
+                        </ul>
+                    </div>
+                    <div class="requirement-item">
+                        <strong>الترتيب:</strong>
+                        إمكانية ترتيب الملاحظات المعروضة:
+                        <ul>
+                            <li>حسب التاريخ (الأحدث/الأقدم)</li>
+                            <li>حسب الاسم (أبجدياً)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3><i class="fas fa-trophy"></i> مميزات التميز - Bonus (10%)</h3>
+                    <p>يمكنك اختيار واحدة أو أكثر من المميزات التالية:</p>
+                    <div class="requirement-item">
+                        <strong>للإدارة:</strong>
+                        <ul>
+                            <li>زر تثبيت الملاحظة (Pin) في أعلى القائمة</li>
+                            <li>تمييزها بنجمة (مفضلة)</li>
+                            <li>تغيير لون البطاقة</li>
+                        </ul>
+                    </div>
+                    <div class="requirement-item">
+                        <strong>للإحصائيات:</strong>
+                        <ul>
+                            <li>عرض عدد الملاحظات الكلي</li>
+                            <li>عدد الملاحظات لكل فئة</li>
+                            <li>إحصاء لعدد الكلمات</li>
+                        </ul>
+                    </div>
+                    <div class="requirement-item">
+                        <strong>للواجهة:</strong>
+                        <ul>
+                            <li>وضع ليلي/نهاري (Dark Mode)</li>
+                            <li>تصميم متجاوب يعمل على الهواتف</li>
+                            <li>رسوم متحركة عند الحذف والإضافة</li>
+                            <li>تنبيهات احترافية</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3><i class="fas fa-code-branch"></i> البنية البرمجية - كيفية كتابة الكود</h3>
+                    <div class="requirement-item">
+                        <strong>هيكل البيانات:</strong>
+                        <ul>
+                            <li>نزخ الملاحظات في Array</li>
+                            <li>كل ملاحظة هي Object منفصل</li>
+                        </ul>
+                    </div>
+                    <div class="requirement-item">
+                        <strong>مثال توضيحي للبيانات:</strong>
+                        <pre style="background: #f5f5f5; padding: 15px; border-radius: 5px; overflow-x: auto; font-family: monospace; direction: ltr; text-align: left;">
+const note = {
+  id: 1,
+  title: "ةمهم ةظحلام",
+  content: "...انه ةظحلاملا ىوتحم",
+  category: "ةسارد",
+  createdDate: "2024-12-15",
+  lastModified: "2024-12-15 10:30"
+};</pre>
+                    </div>
+                    <div class="requirement-item">
+                        <strong>نصيحة برمجية:</strong>
+                        قسم الكود إلى دوال صغيرة (Functions) - دالة لإضافة، دالة للبحث، دالة للعرض، إلخ. هذا يجعل الكود أسهل للقراءة والتعديل
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3><i class="fas fa-tasks-alt"></i> خطة العمل (المراحل التطبيقية)</h3>
+                    <table class="grading-table">
+                        <tr>
+                            <th>المرحلة</th>
+                            <th>المهام المطلوبة</th>
+                        </tr>
+                        <tr>
+                            <td><strong>1. التخطيط والتصميم</strong></td>
+                            <td>تخيل شكل الصفحة (أين ثحب البحث؟ أين الملاحظات؟) وتحديد الألوان والتصميم</td>
+                        </tr>
+                        <tr>
+                            <td><strong>2. بناء الهيكل</strong></td>
+                            <td>كتابة HTML وتصميم نموذج الإدخال وتنسيق باستخدام CSS</td>
+                        </tr>
+                        <tr>
+                            <td><strong>3. البرمجة الأساسية</strong></td>
+                            <td>تفعيل وظائف الإضافة والعرض والحذف والتعديل (CRUD)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>4. نيزختلا</strong></td>
+                            <td>التأكد من حفظ البيانات في LocalStorage واسترجاعها عند فتح الصفحة</td>
+                        </tr>
+                        <tr>
+                            <td><strong>5. البحث والفلترة</strong></td>
+                            <td>تفعيل شريط البحث الفوري وخيارات الفلترة والترتيب</td>
+                        </tr>
+                        <tr>
+                            <td><strong>6. الاختبار والتقرير</strong></td>
+                            <td>اختبار شامل والتأكد من عدم وجود أخطاء وكتابة التقرير</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="section">
+                    <h3><i class="fas fa-chart-pie"></i> توزيع الدرجات</h3>
+                    <table class="grading-table">
+                        <tr>
+                            <th>معيار التقييم</th>
+                            <th>النسبة</th>
+                        </tr>
+                        <tr>
+                            <td>هل يضيف، يحذف، يعدل، ويحفظ البيانات بشكل صحيح؟</td>
+                            <td class="percentage">40%</td>
+                        </tr>
+                        <tr>
+                            <td>هل يعمل البحث فوراً أثناء الكتابة وهل تعمل الفلترة؟</td>
+                            <td class="percentage">20%</td>
+                        </tr>
+                        <tr>
+                            <td>هل تتحدث الواجهة بشكل مباشر بدون إعادة تحميل الصفحة؟</td>
+                            <td class="percentage">20%</td>
+                        </tr>
+                        <tr>
+                            <td>هل شكل التطبيق منظم وقنيع وسهل الاستخدام؟</td>
+                            <td class="percentage">15%</td>
+                        </tr>
+                        <tr>
+                            <td>هل كود JavaScript منظم وبه تعليقات إيضاحية؟</td>
+                            <td class="percentage">5%</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="section">
+                    <h3><i class="fas fa-file-alt"></i> متطلبات التسليم</h3>
+                    <div class="requirement-item">
+                        <strong>الملفات المطلوبة (ملف مضغوط ZIP):</strong>
+                        <ul>
+                            <li>index.html</li>
+                            <li>style.css</li>
+                            <li>script.js</li>
+                        </ul>
+                    </div>
+                    <div class="requirement-item">
+                        <strong>التقرير (PDF أو Word):</strong>
+                        <ul>
+                            <li>وصف المشروع</li>
+                            <li>التحديات التي واجهتك</li>
+                            <li>صور من واجهة التطبيق</li>
+                            <li>شرح مفصل لكيفية برمجة البحث والفلترة</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3><i class="fas fa-calendar"></i> موعد ودية التسليم</h3>
+                    <div class="requirement-item">
+                        <strong>طريقة التسليم:</strong>
+                        يتم التسليم شخصياً في المختبر
+                    </div>
+                    <div class="requirement-item">
+                        <strong>الموعد النهائي:</strong>
+                        يستمر قبول المشاريع حتى نهاية الأسبوع الأخير من الفصل الدراسي قبل بدء الامتحانات النهائية
+                    </div>
+                </div>
+
+                <div class="note-box">
+                    <strong>⚠️ ملاحظة هامة جداً:</strong>
+                    <p>مشروع بدون وظيفتي (البحث) و(التصنيف) لن يتم قبوله. كما يجب التأكد من وجود تفاعل مباشر في الصفحة. قم باختبار المشروع من خلال المتصفح والتأكد من عدم وجود أخطاء (F12).</p>
+                </div>
+
+                <div class="note-box" style="background: #d4edda; border-left-color: #28a745; color: #155724;">
+                    <strong>🎉 استمتع بالعمل!</strong>
+                    <p style="margin-top: 10px;">حول أفكارك إلى تطبيق حقيقي. ابدأ مبكراً ولا تتردد في طلب المساعدة عند الحاجة!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openModal(index) {
+            const modal = document.getElementById('modal' + index);
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(index) {
+            const modal = document.getElementById('modal' + index);
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal when clicking outside the content
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                const modals = document.querySelectorAll('.modal.active');
+                modals.forEach(modal => {
+                    modal.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                });
+            }
+        }
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                const modals = document.querySelectorAll('.modal.active');
+                modals.forEach(modal => {
+                    modal.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                });
+            }
+        });
+    </script>
+</body>
+</html>

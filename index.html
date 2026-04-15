@@ -12,6 +12,38 @@
     <link rel="stylesheet" href="assets/css/style.css">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* تنسيق خاص لبطاقة المشروع العملي */
+        .practical-card {
+            position: relative;
+            padding-top: 80px;
+        }
+        
+        .practical-icon {
+            position: absolute;
+            top: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 50px;
+            color: white;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+            border: 4px solid white;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .practical-card:hover .practical-icon {
+            transform: translateX(-50%) translateY(-10px) scale(1.1);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.6);
+        }
+    </style>
 </head>
 <body>
 
@@ -40,6 +72,15 @@
                     <strong>تنويه هام:</strong> هذا الموقع هو جهد شخصي <u>غير رسمي</u> وغير تابع لإدارة الجامعة. يهدف للمساعدة في الفهم فقط، وهو <strong>لا يغني إطلاقاً</strong> عن الكتاب الرسمي المعتمد للمقرر.
                 </span>
             </div>
+        </div>
+
+        <div style="margin-top: 40px;">
+            <a href="https://anatshih.github.io/web-design-course-1266/practical.html" class="unit-card practical-card">
+                <div class="card-icon practical-icon"><i class="fas fa-laptop-code"></i></div>
+                <h3>المشروع العملي</h3>
+                <p>تطبيق عملي شامل يجمع بين جميع المفاهيم المدروسة في الوحدات.</p>
+                <span class="btn-text">ابدأ المشروع <i class="fas fa-arrow-left"></i></span>
+            </a>
         </div>
     </section>
 
