@@ -1,22 +1,21 @@
-<!DOCTYPE html>
-
-<html dir="rtl" lang="ar"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><meta content="تعلّم تصميم صفحات الويب 1266: دروس عربية وأمثلة عملية ومختبر تفاعلي." name="description"/><title>تصميم صفحات الويب الديناميكية | مقرر 1266</title><link href="../assets/css/learning.css?v=20261020b" rel="stylesheet"/><script defer="" src="../assets/js/learning.js?v=20261020b"></script><script defer="" src="../assets/js/unit4-demos.js"></script></head><body class="learning-page" data-unit="4"><a class="skip-link" href="#content">انتقل إلى المحتوى</a><header class="site-header"><div class="site-bar"><a class="brand" href="../index.html">تقنية تصميم صفحات الويب <b dir="ltr">1266</b></a><span>أ. أحمد عوني النتشة</span></div><nav aria-label="التنقل الرئيسي" class="course-nav"><a href="../index.html">الرئيسية</a><a href="../units/unit1.html">1. الإنترنت</a><a href="../units/unit2.html">2. HTML وCSS</a><a href="../units/unit3.html">3. JavaScript</a><a aria-current="page" href="../units/unit4.html">4. الويب الديناميكي</a><a href="../units/unit5.html">5. PHP وSQL</a><a href="../lab.html">المختبر</a><a href="../practical.html">المشاريع</a></nav></header><section class="unit-intro learning-wrap"><p class="eyebrow">الوحدة 4 · عدد الدروس: 8</p><h1>تصميم صفحات الويب الديناميكية</h1><p>اربط عناصر الواجهة بالأحداث، وتحقق من المدخلات.</p><a href="../journey.html#stage4">تطبيق هذه الوحدة في المشروع المتدرج ←</a></section><div class="learning-wrap learning-layout"><aside class="learning-toc"><details data-toc="" open=""><summary>دروس الوحدة</summary><div class="progress-summary"><label for="unit-progress">إنجازك المحفوظ على هذا الجهاز</label><progress id="unit-progress" max="8" value="0"></progress><span data-progress-text="">0 من 8</span></div><nav aria-label="فهرس دروس الوحدة"><a data-lesson-link="gui" href="#gui"><span>01</span> 🧩 أولاً: واجهة المستخدم الرسومية GUI<small data-done="gui"></small></a><a data-lesson-link="validation" href="#validation"><span>02</span> ✅ ثانياً: التحقق من صحة البيانات Form Validation<small data-done="validation"></small></a><a data-lesson-link="dhtml" href="#dhtml"><span>03</span> ⚡ ثالثاً: صفحات الويب الديناميكية DHTML<small data-done="dhtml"></small></a><a data-lesson-link="dom" href="#dom"><span>04</span> 🧠 رابعاً: نموذج كائن الوثيقة DOM<small data-done="dom"></small></a><a data-lesson-link="events" href="#events"><span>05</span> 🖱️ خامساً: التعامل مع الأحداث Events<small data-done="events"></small></a><a data-lesson-link="animation" href="#animation"><span>06</span> 🎈 سادساً: الكائنات المتحركة Animation<small data-done="animation"></small></a><a data-lesson-link="final-review" href="#final-review"><span>07</span> 📝 المراجعة النهائية للوحدة<small data-done="final-review"></small></a><a data-lesson-link="practical-exercises" href="#practical-exercises"><span>08</span> 🧪 تدريبات عملية مع الحلول<small data-done="practical-exercises"></small></a></nav></details></aside><main id="content"><section class="lesson" data-step="" id="gui">
+<!doctype html>
+<html dir="rtl" lang="ar"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><meta content="تعلّم تصميم صفحات الويب 1266: دروس عربية وأمثلة عملية ومختبر تفاعلي." name="description"/><title>تصميم صفحات الويب الديناميكية | مقرر 1266</title><link href="../assets/css/learning.css?v=20261020c" rel="stylesheet"/><script defer="" src="../assets/js/learning.js?v=20261020c"></script><script defer="" src="../assets/js/unit4-demos.js"></script><script defer="True" src="../assets/vendor/prism.min.js"></script><script defer="True" src="../assets/vendor/prism-markup-templating.min.js"></script><script defer="True" src="../assets/vendor/prism-php.min.js"></script><script defer="True" src="../assets/vendor/prism-sql.min.js"></script></head><body class="learning-page" data-unit="4"><a class="skip-link" href="#content">انتقل إلى المحتوى</a><header class="site-header"><div class="site-bar"><a class="brand" href="../index.html">تقنية تصميم صفحات الويب <b dir="ltr">1266</b></a><span>أ. أحمد عوني النتشة</span></div><nav aria-label="التنقل الرئيسي" class="course-nav"><a href="../index.html">الرئيسية</a><a href="../units/unit1.html">1. الإنترنت</a><a href="../units/unit2.html">2. <bdi dir="ltr">HTML</bdi> و <bdi dir="ltr">CSS</bdi></a><a href="../units/unit3.html">3. <bdi dir="ltr">JavaScript</bdi></a><a aria-current="page" href="../units/unit4.html">4. الويب الديناميكي</a><a href="../units/unit5.html">5. <bdi dir="ltr">PHP</bdi> و <bdi dir="ltr">SQL</bdi></a><a href="../lab.html">المختبر</a><a href="../practical.html">المشاريع</a></nav></header><section class="unit-intro learning-wrap"><p class="eyebrow">الوحدة 4 · عدد الدروس: 8</p><h1>تصميم صفحات الويب الديناميكية</h1><p>اربط عناصر الواجهة بالأحداث، وتحقق من المدخلات.</p><a href="../journey.html#stage4">تطبيق هذه الوحدة في المشروع المتدرج ←</a></section><div class="learning-wrap learning-layout"><aside class="learning-toc"><details data-toc="" open=""><summary>دروس الوحدة</summary><div class="progress-summary"><label for="unit-progress">إنجازك المحفوظ على هذا الجهاز</label><progress id="unit-progress" max="8" value="0"></progress><span data-progress-text="">0 من 8</span></div><nav aria-label="فهرس دروس الوحدة"><a data-lesson-link="gui" href="#gui" title="01 🧩 أولاً: واجهة المستخدم الرسومية GUI"><span>01</span><span class="toc-label">واجهة المستخدم الرسومية <bdi dir="ltr">GUI</bdi></span><small data-done="gui"></small></a><a data-lesson-link="validation" href="#validation" title="02 ✅ ثانياً: التحقق من صحة البيانات Form Validation"><span>02</span><span class="toc-label">التحقق من صحة البيانات <bdi dir="ltr">Form Validation</bdi></span><small data-done="validation"></small></a><a data-lesson-link="dhtml" href="#dhtml" title="03 ⚡ ثالثاً: صفحات الويب الديناميكية DHTML"><span>03</span><span class="toc-label">صفحات الويب الديناميكية <bdi dir="ltr">DHTML</bdi></span><small data-done="dhtml"></small></a><a data-lesson-link="dom" href="#dom" title="04 🧠 رابعاً: نموذج كائن الوثيقة DOM"><span>04</span><span class="toc-label">نموذج كائن الوثيقة <bdi dir="ltr">DOM</bdi></span><small data-done="dom"></small></a><a data-lesson-link="events" href="#events" title="05 🖱️ خامساً: التعامل مع الأحداث Events"><span>05</span><span class="toc-label">التعامل مع الأحداث <bdi dir="ltr">Events</bdi></span><small data-done="events"></small></a><a data-lesson-link="animation" href="#animation" title="06 🎈 سادساً: الكائنات المتحركة Animation"><span>06</span><span class="toc-label">الكائنات المتحركة <bdi dir="ltr">Animation</bdi></span><small data-done="animation"></small></a><a data-lesson-link="final-review" href="#final-review" title="07 📝 المراجعة النهائية للوحدة"><span>07</span><span class="toc-label">المراجعة النهائية للوحدة</span><small data-done="final-review"></small></a><a data-lesson-link="practical-exercises" href="#practical-exercises" title="08 🧪 تدريبات عملية مع الحلول"><span>08</span><span class="toc-label">تدريبات عملية مع الحلول</span><small data-done="practical-exercises"></small></a></nav></details></aside><main id="content"><section class="lesson" data-step="" id="gui">
 <div class="section-header">
 <div>
-<h2>🧩 أولاً: واجهة المستخدم الرسومية GUI</h2>
-<p class="section-sub">GUI هي العناصر التي يراها المستخدم ويتفاعل معها، مثل الأزرار وحقول النصوص والقوائم ومربعات الاختيار.</p>
+<h2>🧩 أولاً: واجهة المستخدم الرسومية <bdi dir="ltr">GUI</bdi></h2>
+<p class="section-sub"><bdi dir="ltr">GUI</bdi> هي العناصر التي يراها المستخدم ويتفاعل معها، مثل الأزرار وحقول النصوص والقوائم ومربعات الاختيار.</p>
 <div class="chips">
-<span class="chip">Button</span>
-<span class="chip">Text Input</span>
-<span class="chip">Textarea</span>
-<span class="chip">Checkbox</span>
-<span class="chip">Select</span>
+<span class="chip"><bdi dir="ltr">Button</bdi></span>
+<span class="chip"><bdi dir="ltr">Text Input</bdi></span>
+<span class="chip"><bdi dir="ltr">Textarea</bdi></span>
+<span class="chip"><bdi dir="ltr">Checkbox</bdi></span>
+<span class="chip"><bdi dir="ltr">Select</bdi></span>
 </div>
 </div>
 </div>
 <div class="blocks">
 <div class="block">
-<h3>ما المقصود بـ GUI؟</h3>
+<h3>ما المقصود بـ <bdi dir="ltr">GUI</bdi>؟</h3>
 <p>هي الواجهة التي تسمح للمستخدم بإدخال البيانات أو اختيار أمر أو مشاهدة نتيجة. كل عنصر يمكن التعامل معه برمجيًا.</p>
 <h4>لماذا نستخدمها؟</h4>
 <ul>
@@ -29,21 +28,21 @@
 <h3>أهم فكرة يجب فهمها</h3>
 <p>العناصر ليست مجرد شكل، بل هي <strong>كائنات</strong> لها خصائص:</p>
 <ul>
-<li><strong>value</strong> — قيمة حقل النص</li>
-<li><strong>checked</strong> — حالة مربع الاختيار</li>
-<li><strong>selectedIndex</strong> — الخيار المحدد من القائمة</li>
+<li><strong><bdi dir="ltr">value</bdi></strong> — قيمة حقل النص</li>
+<li><strong><bdi dir="ltr">checked</bdi></strong> — حالة مربع الاختيار</li>
+<li><strong><bdi dir="ltr">selectedIndex</bdi></strong> — الخيار المحدد من القائمة</li>
 </ul>
-<p>وعند تفاعل المستخدم، تستطيع JavaScript قراءة هذه القيم.</p>
+<p>وعند تفاعل المستخدم، تستطيع <bdi dir="ltr">JavaScript</bdi> قراءة هذه القيم.</p>
 </div>
 </div>
 <div class="visual">
-<div class="visual-title">📌 كيف تعمل عناصر GUI مع JavaScript؟</div>
+<div class="visual-title">📌 كيف تعمل عناصر <bdi dir="ltr">GUI</bdi> مع <bdi dir="ltr">JavaScript</bdi>؟</div>
 <div class="flow">
 <div class="flow-box">المستخدم يكتب أو يختار</div>
 <div class="arrow">←</div>
 <div class="flow-box">العنصر يستقبل التفاعل</div>
 <div class="arrow">←</div>
-<div class="flow-box">JS تقرأ القيمة</div>
+<div class="flow-box"><bdi dir="ltr">JS</bdi> تقرأ القيمة</div>
 <div class="arrow">←</div>
 <div class="flow-box">النتيجة تظهر للمستخدم</div>
 </div>
@@ -51,7 +50,7 @@
 </div>
 <div class="demo-box">
 <span class="label demo">🎯 مثال تفاعلي — جرّب الآن</span>
-<p>أدخل اسمك واختر لونك المفضل، ثم اضغط "عرض". ستقرأ JavaScript القيم وتعرضها.</p>
+<p>أدخل اسمك واختر لونك المفضل، ثم اضغط "عرض". ستقرأ <bdi dir="ltr">JavaScript</bdi> القيم وتعرضها.</p>
 <div class="grid-2">
 <div>
 <label for="guiName"><strong>الاسم</strong></label>
@@ -74,7 +73,7 @@
 <div aria-live="polite" class="result-box" id="guiResult">ستظهر النتيجة هنا بعد الضغط.</div>
 </div>
 <div style="margin-top:16px">
-<h3>💡 ما الذي يحدث داخل JavaScript؟</h3>
+<h3>💡 ما الذي يحدث داخل <bdi dir="ltr">JavaScript</bdi>؟</h3>
 <div class="code-toolbar"><button data-copy-target="u4-gui-1" type="button">نسخ الكود</button></div><pre id="u4-gui-1">// نقرأ القيمة من حقل النص باستخدام .value
 let name = document.getElementById("guiName").value;
 
@@ -121,16 +120,16 @@ document.getElementById("guiResult").innerHTML = "مرحبًا " + name;</pre><p
 </div>
 <div class="mistake-box">
 <span class="label mistake">⚠️ خطأ شائع</span>
-<p>من الأخطاء المتكررة أن ينسى الطالب كتابة <strong>id</strong> للعنصر ثم يحاول الوصول إليه بـ <strong>getElementById</strong>. إذا لم يكن هناك id صحيح فلن يعمل الكود.</p>
+<p>من الأخطاء المتكررة أن ينسى الطالب كتابة <strong><bdi dir="ltr">id</bdi></strong> للعنصر ثم يحاول الوصول إليه بـ <strong><bdi dir="ltr">getElementById</bdi></strong>. إذا لم يكن هناك <bdi dir="ltr">id</bdi> صحيح فلن يعمل الكود.</p>
 <div class="compare-grid">
 <div class="compare-box wrong">
-<div class="compare-label">❌ خطأ — بدون id</div>
+<div class="compare-label">❌ خطأ — بدون <bdi dir="ltr">id</bdi></div>
 <div class="code-toolbar"><button data-copy-target="u4-gui-3" type="button">نسخ الكود</button></div><pre id="u4-gui-3">&lt;input type="text"&gt;
 // هذا لن يعمل!
 document.getElementById("name").value</pre><p class="lab-meta">مقتطف للشرح؛ لتشغيله مع عناصر الصفحة استخدم المثال الكامل في هذا الدرس.</p>
 </div>
 <div class="compare-box right">
-<div class="compare-label">✅ صحيح — مع id</div>
+<div class="compare-label">✅ صحيح — مع <bdi dir="ltr">id</bdi></div>
 <div class="code-toolbar"><button data-copy-target="u4-gui-4" type="button">نسخ الكود</button></div><pre id="u4-gui-4">&lt;input id="name" type="text"&gt;
 // الآن يعمل بشكل صحيح
 document.getElementById("name").value</pre><p class="lab-meta">مقتطف للشرح؛ لتشغيله مع عناصر الصفحة استخدم المثال الكامل في هذا الدرس.</p>
@@ -141,13 +140,13 @@ document.getElementById("name").value</pre><p class="lab-meta">مقتطف للش
 <span class="label review">⚡ راجع بسرعة</span>
 <ul class="mini-list">
 <li>العناصر الأساسية: زر، حقل نص، قائمة، مربع اختيار.</li>
-<li>كل عنصر له خصائص مثل <strong>value</strong> و<strong>checked</strong>.</li>
-<li>JavaScript تقرأ القيم وتعرض النتيجة.</li>
+<li>كل عنصر له خصائص مثل <strong><bdi dir="ltr">value</bdi></strong> و<strong><bdi dir="ltr">checked</bdi></strong>.</li>
+<li><bdi dir="ltr">JavaScript</bdi> تقرأ القيم وتعرض النتيجة.</li>
 </ul>
 </div>
 <div class="summary-box">
 <span class="label summary">ملخص</span>
-<p>GUI هو الجزء المرئي الذي يتعامل معه المستخدم. عناصر الواجهة ليست ثابتة، بل يمكن قراءتها والتحكم بها عبر JavaScript.</p>
+<p><bdi dir="ltr">GUI</bdi> هو الجزء المرئي الذي يتعامل معه المستخدم. عناصر الواجهة ليست ثابتة، بل يمكن قراءتها والتحكم بها عبر <bdi dir="ltr">JavaScript</bdi>.</p>
 </div>
 <div class="section-nav">
 <span></span>
@@ -156,11 +155,11 @@ document.getElementById("name").value</pre><p class="lab-meta">مقتطف للش
 <div class="lesson-completion"><button aria-pressed="false" class="secondary" data-complete="gui" type="button">حدّد الدرس كمكتمل</button><span data-step-position="">الدرس 1 من 8</span></div><nav aria-label="التنقل بين الدروس" class="lesson-pagination"><span></span><a class="button" href="#validation">الدرس التالي ←</a></nav></section><section class="lesson" data-step="" id="validation">
 <div class="section-header">
 <div>
-<h2>✅ ثانياً: التحقق من صحة البيانات Form Validation</h2>
+<h2>✅ ثانياً: التحقق من صحة البيانات <bdi dir="ltr">Form Validation</bdi></h2>
 <p class="section-sub">قبل إرسال البيانات، يجب التأكد أنها موجودة وصحيحة ومنطقية. مثلًا لا يجوز أن يكون العمر فارغًا أو نصًا أو عددًا غير منطقي.</p>
 <div class="chips">
-<span class="chip">length</span>
-<span class="chip">isNaN()</span>
+<span class="chip"><bdi dir="ltr">length</bdi></span>
+<span class="chip"><bdi dir="ltr">isNaN</bdi>()</span>
 <span class="chip">حقول إجبارية</span>
 <span class="chip">مدى القيم</span>
 </div>
@@ -275,7 +274,7 @@ document.getElementById("name").value</pre><p class="lab-meta">مقتطف للش
 </div>
 <div class="mistake-box">
 <span class="label mistake">⚠️ خطأ شائع</span>
-<p>من الأخطاء استخدام <strong>isNaN()</strong> قبل التأكد أن الحقل غير فارغ. إذا كان الحقل فارغًا فـ <code>isNaN("")</code> ترجع <strong>false</strong> وكأن القيمة رقم صحيح!</p>
+<p>من الأخطاء استخدام <strong><bdi dir="ltr">isNaN</bdi>()</strong> قبل التأكد أن الحقل غير فارغ. إذا كان الحقل فارغًا فـ <code>isNaN("")</code> ترجع <strong><bdi dir="ltr">false</bdi></strong> وكأن القيمة رقم صحيح!</p>
 <div class="compare-grid">
 <div class="compare-box wrong">
 <div class="compare-label">❌ خطأ — فحص النوع قبل الفراغ</div>
@@ -293,7 +292,7 @@ else if (isNaN(age)) { ... }
 </div>
 <div class="quiz">
 <span class="label quiz">❓ اختبر نفسك</span>
-<p>ما وظيفة <strong>isNaN()</strong> في JavaScript؟</p>
+<p>ما وظيفة <strong><bdi dir="ltr">isNaN</bdi>()</strong> في <bdi dir="ltr">JavaScript</bdi>؟</p>
 <div class="controls">
 <button class="secondary" onclick="checkQuickAnswer('validation','a')">فحص طول النص</button>
 <button class="secondary" onclick="checkQuickAnswer('validation','b')">فحص إذا كانت القيمة ليست رقمًا</button>
@@ -311,22 +310,22 @@ else if (isNaN(age)) { ... }
 </div>
 <div class="summary-box">
 <span class="label summary">ملخص</span>
-<p>Form Validation يعني فحص البيانات قبل الإرسال. الفحص يشمل ثلاث مراحل: الوجود ← النوع ← المدى.</p>
+<p><bdi dir="ltr">Form Validation</bdi> يعني فحص البيانات قبل الإرسال. الفحص يشمل ثلاث مراحل: الوجود ← النوع ← المدى.</p>
 </div>
 <div class="section-nav">
-<a class="nav-btn" href="#gui">➡ السابق: GUI</a>
-<a class="nav-btn" href="#dhtml">التالي: DHTML ⬅</a>
+<a class="nav-btn" href="#gui">➡ السابق: <bdi dir="ltr">GUI</bdi></a>
+<a class="nav-btn" href="#dhtml">التالي: <bdi dir="ltr">DHTML</bdi> ⬅</a>
 </div>
 <div class="lesson-completion"><button aria-pressed="false" class="secondary" data-complete="validation" type="button">حدّد الدرس كمكتمل</button><span data-step-position="">الدرس 2 من 8</span></div><nav aria-label="التنقل بين الدروس" class="lesson-pagination"><a class="button secondary" href="#gui">→ الدرس السابق</a><a class="button" href="#dhtml">الدرس التالي ←</a></nav></section><section class="lesson" data-step="" id="dhtml">
 <div class="section-header">
 <div>
-<h2>⚡ ثالثاً: صفحات الويب الديناميكية DHTML</h2>
-<p class="section-sub">DHTML ليس لغة مستقلة، بل مصطلح يشير إلى استخدام HTML + CSS + JavaScript + DOM معًا لجعل الصفحة تتغير دون إعادة تحميلها.</p>
+<h2>⚡ ثالثاً: صفحات الويب الديناميكية <bdi dir="ltr">DHTML</bdi></h2>
+<p class="section-sub"><bdi dir="ltr">DHTML</bdi> ليس لغة مستقلة، بل مصطلح يشير إلى استخدام <bdi dir="ltr">HTML</bdi> + <bdi dir="ltr">CSS</bdi> + <bdi dir="ltr">JavaScript</bdi> + <bdi dir="ltr">DOM</bdi> معًا لجعل الصفحة تتغير دون إعادة تحميلها.</p>
 <div class="chips">
-<span class="chip">HTML</span>
-<span class="chip">CSS</span>
-<span class="chip">JavaScript</span>
-<span class="chip">DOM</span>
+<span class="chip"><bdi dir="ltr">HTML</bdi></span>
+<span class="chip"><bdi dir="ltr">CSS</bdi></span>
+<span class="chip"><bdi dir="ltr">JavaScript</bdi></span>
+<span class="chip"><bdi dir="ltr">DOM</bdi></span>
 </div>
 </div>
 </div>
@@ -336,32 +335,32 @@ else if (isNaN(age)) { ... }
 <p>الصفحة الديناميكية لا تبقى ثابتة، بل تتغير عند التفاعل: قد يتغير نص أو لون أو حجم أو موضع، دون الحاجة لفتح صفحة جديدة.</p>
 </div>
 <div class="block">
-<h3>ما مكونات DHTML؟</h3>
+<h3>ما مكونات <bdi dir="ltr">DHTML</bdi>؟</h3>
 <ul>
-<li><strong>HTML</strong> — يبني هيكل الصفحة</li>
-<li><strong>CSS</strong> — ينسّق الشكل والألوان</li>
-<li><strong>JavaScript</strong> — يضيف التفاعل والمنطق</li>
-<li><strong>DOM</strong> — يسمح بتعديل العناصر لحظيًا</li>
+<li><strong><bdi dir="ltr">HTML</bdi></strong> — يبني هيكل الصفحة</li>
+<li><strong><bdi dir="ltr">CSS</bdi></strong> — ينسّق الشكل والألوان</li>
+<li><strong><bdi dir="ltr">JavaScript</bdi></strong> — يضيف التفاعل والمنطق</li>
+<li><strong><bdi dir="ltr">DOM</bdi></strong> — يسمح بتعديل العناصر لحظيًا</li>
 </ul>
 </div>
 </div>
 <div class="visual">
-<div class="visual-title">📌 كيف تتكون DHTML من أربع تقنيات؟</div>
+<div class="visual-title">📌 كيف تتكون <bdi dir="ltr">DHTML</bdi> من أربع تقنيات؟</div>
 <div class="flow">
-<div class="flow-box">HTML<br/><small>الهيكل</small></div>
+<div class="flow-box"><bdi dir="ltr">HTML</bdi><br/><small>الهيكل</small></div>
 <div class="arrow">+</div>
-<div class="flow-box">CSS<br/><small>الشكل</small></div>
+<div class="flow-box"><bdi dir="ltr">CSS</bdi><br/><small>الشكل</small></div>
 <div class="arrow">+</div>
-<div class="flow-box">JavaScript<br/><small>التفاعل</small></div>
+<div class="flow-box"><bdi dir="ltr">JavaScript</bdi><br/><small>التفاعل</small></div>
 <div class="arrow">+</div>
-<div class="flow-box">DOM<br/><small>التعديل</small></div>
+<div class="flow-box"><bdi dir="ltr">DOM</bdi><br/><small>التعديل</small></div>
 <div class="arrow">=</div>
-<div class="flow-box" style="background:#ecfeff;border-color:var(--primary)">DHTML ⚡</div>
+<div class="flow-box" style="background:#ecfeff;border-color:var(--primary)"><bdi dir="ltr">DHTML</bdi> ⚡</div>
 </div>
 </div>
 <div class="demo-box">
 <span class="label demo">🎯 مثال تفاعلي</span>
-<p>اضغط الزر ولاحظ كيف يتغير محتوى الصفحة <strong>بدون</strong> الانتقال لصفحة جديدة — هذه هي DHTML.</p>
+<p>اضغط الزر ولاحظ كيف يتغير محتوى الصفحة <strong>بدون</strong> الانتقال لصفحة جديدة — هذه هي <bdi dir="ltr">DHTML</bdi>.</p>
 <div aria-live="polite" class="result-box" id="dhtmlArea">هذه رسالة أصلية داخل الصفحة.</div>
 <div class="controls">
 <button onclick="changeDHTMLExample()">غيّر المحتوى</button>
@@ -408,49 +407,49 @@ document.getElementById("box").style.background = "#dbeafe";</pre><p class="lab-
 </div>
 <div class="mistake-box">
 <span class="label mistake">⚠️ خطأ شائع</span>
-<p>بعض الطلبة يخلطون بين تعديل <em>جزء</em> من الصفحة وبين استبدال الصفحة كاملة. DHTML يركز على تعديل جزء محدد داخل الصفحة الحالية، ليس فتح صفحة جديدة.</p>
+<p>بعض الطلبة يخلطون بين تعديل <em>جزء</em> من الصفحة وبين استبدال الصفحة كاملة. <bdi dir="ltr">DHTML</bdi> يركز على تعديل جزء محدد داخل الصفحة الحالية، ليس فتح صفحة جديدة.</p>
 </div>
 <div class="quick-review">
 <span class="label review">⚡ راجع بسرعة</span>
 <ul class="mini-list">
-<li>DHTML ليس لغة مستقلة.</li>
+<li><bdi dir="ltr">DHTML</bdi> ليس لغة مستقلة.</li>
 <li>يجعل الصفحة أكثر حيوية دون إعادة تحميل.</li>
-<li>يعتمد على HTML + CSS + JS + DOM معًا.</li>
+<li>يعتمد على <bdi dir="ltr">HTML</bdi> + <bdi dir="ltr">CSS</bdi> + <bdi dir="ltr">JS</bdi> + <bdi dir="ltr">DOM</bdi> معًا.</li>
 </ul>
 </div>
 <div class="summary-box">
 <span class="label summary">ملخص</span>
-<p>DHTML هو نتيجة عمل HTML وCSS وJavaScript وDOM معًا. النتيجة: صفحة تتغير وتتفاعل دون الحاجة لإعادة التحميل.</p>
+<p><bdi dir="ltr">DHTML</bdi> هو نتيجة عمل <bdi dir="ltr">HTML</bdi> و <bdi dir="ltr">CSS</bdi> و <bdi dir="ltr">JavaScript</bdi> و <bdi dir="ltr">DOM</bdi> معًا. النتيجة: صفحة تتغير وتتفاعل دون الحاجة لإعادة التحميل.</p>
 </div>
 <div class="section-nav">
-<a class="nav-btn" href="#validation">➡ السابق: Validation</a>
-<a class="nav-btn" href="#dom">التالي: DOM ⬅</a>
+<a class="nav-btn" href="#validation">➡ السابق: <bdi dir="ltr">Validation</bdi></a>
+<a class="nav-btn" href="#dom">التالي: <bdi dir="ltr">DOM</bdi> ⬅</a>
 </div>
 <div class="lesson-completion"><button aria-pressed="false" class="secondary" data-complete="dhtml" type="button">حدّد الدرس كمكتمل</button><span data-step-position="">الدرس 3 من 8</span></div><nav aria-label="التنقل بين الدروس" class="lesson-pagination"><a class="button secondary" href="#validation">→ الدرس السابق</a><a class="button" href="#dom">الدرس التالي ←</a></nav></section><section class="lesson" data-step="" id="dom">
 <div class="section-header">
 <div>
-<h2>🧠 رابعاً: نموذج كائن الوثيقة DOM</h2>
-<p class="section-sub">DOM يسمح لـ JavaScript بالتعامل مع عناصر الصفحة على أنها كائنات لها خصائص وإجراءات. الأداة الأساسية هي: <strong>document.getElementById()</strong></p>
+<h2>🧠 رابعاً: نموذج كائن الوثيقة <bdi dir="ltr">DOM</bdi></h2>
+<p class="section-sub"><bdi dir="ltr">DOM</bdi> يسمح لـ <bdi dir="ltr">JavaScript</bdi> بالتعامل مع عناصر الصفحة على أنها كائنات لها خصائص وإجراءات. الأداة الأساسية هي: <strong><bdi dir="ltr">document</bdi>.<bdi dir="ltr">getElementById</bdi>()</strong></p>
 <div class="chips">
-<span class="chip">getElementById()</span>
-<span class="chip">innerHTML</span>
-<span class="chip">src</span>
-<span class="chip">width / height</span>
-<span class="chip">style</span>
+<span class="chip"><bdi dir="ltr">getElementById</bdi>()</span>
+<span class="chip"><bdi dir="ltr">innerHTML</bdi></span>
+<span class="chip"><bdi dir="ltr">src</bdi></span>
+<span class="chip"><bdi dir="ltr">width</bdi> / <bdi dir="ltr">height</bdi></span>
+<span class="chip"><bdi dir="ltr">style</bdi></span>
 </div>
 </div>
 </div>
 <div class="blocks">
 <div class="block">
-<h3>ما الذي يقدمه DOM؟</h3>
+<h3>ما الذي يقدمه <bdi dir="ltr">DOM</bdi>؟</h3>
 <ul>
-<li>الوصول لأي عنصر في الصفحة بالـ id.</li>
+<li>الوصول لأي عنصر في الصفحة بالـ <bdi dir="ltr">id</bdi>.</li>
 <li>تغيير النصوص والصور والأحجام والألوان.</li>
 <li>صفحات ديناميكية دون إعادة تحميل.</li>
 </ul>
 </div>
 <div class="block">
-<h3>الشكل العام لاستخدام DOM</h3>
+<h3>الشكل العام لاستخدام <bdi dir="ltr">DOM</bdi></h3>
 <div class="code-toolbar"><button data-copy-target="u4-dom-0" type="button">نسخ الكود</button></div><pre id="u4-dom-0">// خطوة 1: الوصول للعنصر بالـ id
 let el = document.getElementById("myId");
 
@@ -461,18 +460,18 @@ el.src = "newImage.jpg";</pre><p class="lab-meta">مقتطف للشرح؛ لتش
 </div>
 </div>
 <div class="visual">
-<div class="visual-title">📌 سلسلة العمل في DOM</div>
+<div class="visual-title">📌 سلسلة العمل في <bdi dir="ltr">DOM</bdi></div>
 <div class="flow">
-<div class="flow-box">نحدد العنصر<br/><small>getElementById(id)</small></div>
+<div class="flow-box">نحدد العنصر<br/><small><bdi dir="ltr">getElementById</bdi>(<bdi dir="ltr">id</bdi>)</small></div>
 <div class="arrow">←</div>
-<div class="flow-box">نصل للخاصية<br/><small>innerHTML / style / src</small></div>
+<div class="flow-box">نصل للخاصية<br/><small><bdi dir="ltr">innerHTML</bdi> / <bdi dir="ltr">style</bdi> / <bdi dir="ltr">src</bdi></small></div>
 <div class="arrow">←</div>
 <div class="flow-box">نغير القيمة<br/><small>= "القيمة الجديدة"</small></div>
 </div>
 </div>
 <div class="demo-box">
 <span class="label demo">🎯 مثال تفاعلي — ثلاثة تجارب</span>
-<div aria-live="polite" class="result-box" id="domDemoText" style="font-weight:800;transition:.3s">هذا النص سيتغير باستخدام DOM.</div>
+<div aria-live="polite" class="result-box" id="domDemoText" style="font-weight:800;transition:.3s">هذا النص سيتغير باستخدام <bdi dir="ltr">DOM</bdi>.</div>
 <div class="controls">
 <button onclick="changeDOMText()">📝 غيّر النص</button>
 <button class="warn" onclick="resizeDOMBox()">🔠 كبّر الخط</button>
@@ -525,7 +524,7 @@ document.getElementById("domDemoText").innerHTML = "النص الأصلي";</pre
 </div>
 <div class="mistake-box">
 <span class="label mistake">⚠️ خطأ شائع</span>
-<p>كتابة اسم id بشكل مختلف بين HTML وJavaScript، مثل <code>Title</code> في مكان و<code>title</code> في مكان آخر. الـ id حساس لحالة الأحرف.</p>
+<p>كتابة اسم <bdi dir="ltr">id</bdi> بشكل مختلف بين <bdi dir="ltr">HTML</bdi> و <bdi dir="ltr">JavaScript</bdi>، مثل <code>Title</code> في مكان و<code>title</code> في مكان آخر. الـ <bdi dir="ltr">id</bdi> حساس لحالة الأحرف.</p>
 <div class="compare-grid">
 <div class="compare-box wrong">
 <div class="compare-label">❌ خطأ — اختلاف الأحرف</div>
@@ -544,31 +543,31 @@ document.getElementById("title")</pre>
 <div class="quick-review">
 <span class="label review">⚡ راجع بسرعة</span>
 <ul class="mini-list">
-<li>DOM يتعامل مع العناصر ككائنات.</li>
+<li><bdi dir="ltr">DOM</bdi> يتعامل مع العناصر ككائنات.</li>
 <li>نصل للعنصر عبر <code>getElementById(id)</code>.</li>
 <li>نغيّر النص أو الحجم أو اللون أو الصورة.</li>
 </ul>
 </div>
 <div class="summary-box">
 <span class="label summary">ملخص</span>
-<p>DOM هو الجسر الذي يربط JavaScript بعناصر الصفحة. من خلاله نستطيع الوصول لأي عنصر وتغيير خصائصه.</p>
+<p><bdi dir="ltr">DOM</bdi> هو الجسر الذي يربط <bdi dir="ltr">JavaScript</bdi> بعناصر الصفحة. من خلاله نستطيع الوصول لأي عنصر وتغيير خصائصه.</p>
 </div>
 <div class="section-nav">
-<a class="nav-btn" href="#dhtml">➡ السابق: DHTML</a>
-<a class="nav-btn" href="#events">التالي: Events ⬅</a>
+<a class="nav-btn" href="#dhtml">➡ السابق: <bdi dir="ltr">DHTML</bdi></a>
+<a class="nav-btn" href="#events">التالي: <bdi dir="ltr">Events</bdi> ⬅</a>
 </div>
 <div class="lesson-completion"><button aria-pressed="false" class="secondary" data-complete="dom" type="button">حدّد الدرس كمكتمل</button><span data-step-position="">الدرس 4 من 8</span></div><nav aria-label="التنقل بين الدروس" class="lesson-pagination"><a class="button secondary" href="#dhtml">→ الدرس السابق</a><a class="button" href="#events">الدرس التالي ←</a></nav></section><section class="lesson" data-step="" id="events">
 <div class="section-header">
 <div>
-<h2>🖱️ خامساً: التعامل مع الأحداث Events</h2>
+<h2>🖱️ خامساً: التعامل مع الأحداث <bdi dir="ltr">Events</bdi></h2>
 <p class="section-sub">الحدث هو شيء يحدث داخل الصفحة، مثل تحميل الصفحة، أو النقر، أو مرور الفأرة. عند وقوع الحدث، تُستدعى دالة برمجية.</p>
 <div class="chips">
-<span class="chip">onload</span>
-<span class="chip">onclick</span>
-<span class="chip">onmouseover</span>
-<span class="chip">onmouseout</span>
-<span class="chip">onmousedown</span>
-<span class="chip">onmouseup</span>
+<span class="chip"><bdi dir="ltr">onload</bdi></span>
+<span class="chip"><bdi dir="ltr">onclick</bdi></span>
+<span class="chip"><bdi dir="ltr">onmouseover</bdi></span>
+<span class="chip"><bdi dir="ltr">onmouseout</bdi></span>
+<span class="chip"><bdi dir="ltr">onmousedown</bdi></span>
+<span class="chip"><bdi dir="ltr">onmouseup</bdi></span>
 </div>
 </div>
 </div>
@@ -576,19 +575,19 @@ document.getElementById("title")</pre>
 <div class="block">
 <h3>أحداث الصفحة</h3>
 <ul>
-<li><strong>onload</strong> — عند انتهاء تحميل الصفحة</li>
-<li><strong>onunload</strong> — عند مغادرة الصفحة</li>
+<li><strong><bdi dir="ltr">onload</bdi></strong> — عند انتهاء تحميل الصفحة</li>
+<li><strong><bdi dir="ltr">onunload</bdi></strong> — عند مغادرة الصفحة</li>
 </ul>
 <p style="margin-top:8px">تُستخدم لتشغيل رسالة ترحيب أو تهيئة عناصر عند فتح الصفحة.</p>
 </div>
 <div class="block">
 <h3>أحداث الفأرة</h3>
 <ul>
-<li><strong>onclick</strong> — عند النقر</li>
-<li><strong>onmouseover</strong> — عند مرور المؤشر فوق العنصر</li>
-<li><strong>onmouseout</strong> — عند ابتعاد المؤشر</li>
-<li><strong>onmousedown</strong> — عند الضغط المستمر</li>
-<li><strong>onmouseup</strong> — عند رفع الضغط</li>
+<li><strong><bdi dir="ltr">onclick</bdi></strong> — عند النقر</li>
+<li><strong><bdi dir="ltr">onmouseover</bdi></strong> — عند مرور المؤشر فوق العنصر</li>
+<li><strong><bdi dir="ltr">onmouseout</bdi></strong> — عند ابتعاد المؤشر</li>
+<li><strong><bdi dir="ltr">onmousedown</bdi></strong> — عند الضغط المستمر</li>
+<li><strong><bdi dir="ltr">onmouseup</bdi></strong> — عند رفع الضغط</li>
 </ul>
 </div>
 </div>
@@ -607,7 +606,7 @@ document.getElementById("title")</pre>
 <div class="flow">
 <div class="flow-box">حدث يقع<br/><small>(نقر/مرور...)</small></div>
 <div class="arrow">←</div>
-<div class="flow-box">الدالة تُستدعى<br/><small>function go() { }</small></div>
+<div class="flow-box">الدالة تُستدعى<br/><small><bdi dir="ltr">function go</bdi>() { }</small></div>
 <div class="arrow">←</div>
 <div class="flow-box">الصفحة تتفاعل<br/><small>تغيير نص/لون/حجم</small></div>
 </div>
@@ -622,7 +621,7 @@ document.getElementById("title")</pre>
 <div aria-live="polite" class="result-box" id="eventResult">ستظهر هنا نتيجة الحدث.</div>
 </div>
 <div style="margin-top:16px">
-<h3>💡 طريقة كتابة الحدث في HTML</h3>
+<h3>💡 طريقة كتابة الحدث في <bdi dir="ltr">HTML</bdi></h3>
 <div class="code-toolbar"><button data-copy-target="u4-events-1" type="button">نسخ الكود</button></div><pre id="u4-events-1">&lt;!-- نكتب اسم الحدث كخاصية للعنصر --&gt;
 &lt;button onclick="myFunction()"&gt;اضغط&lt;/button&gt;
 &lt;div onmouseover="myFunction()"&gt;مرّر هنا&lt;/div&gt;
@@ -674,7 +673,7 @@ document.getElementById("title")</pre>
 <ul class="mini-list">
 <li>الحدث هو شيء يقع داخل الصفحة.</li>
 <li>عند وقوع الحدث تُستدعى دالة برمجية.</li>
-<li>الأحداث المهمة: onclick، onmouseover، onload.</li>
+<li>الأحداث المهمة: <bdi dir="ltr">onclick</bdi>، <bdi dir="ltr">onmouseover</bdi>، <bdi dir="ltr">onload</bdi>.</li>
 </ul>
 </div>
 <div class="summary-box">
@@ -682,20 +681,20 @@ document.getElementById("title")</pre>
 <p>الأحداث هي لحظة التفاعل. عند وقوع الحدث نُنفّذ دالة تغير شيئًا في الصفحة.</p>
 </div>
 <div class="section-nav">
-<a class="nav-btn" href="#dom">➡ السابق: DOM</a>
-<a class="nav-btn" href="#animation">التالي: Animation ⬅</a>
+<a class="nav-btn" href="#dom">➡ السابق: <bdi dir="ltr">DOM</bdi></a>
+<a class="nav-btn" href="#animation">التالي: <bdi dir="ltr">Animation</bdi> ⬅</a>
 </div>
 <div class="lesson-completion"><button aria-pressed="false" class="secondary" data-complete="events" type="button">حدّد الدرس كمكتمل</button><span data-step-position="">الدرس 5 من 8</span></div><nav aria-label="التنقل بين الدروس" class="lesson-pagination"><a class="button secondary" href="#dom">→ الدرس السابق</a><a class="button" href="#animation">الدرس التالي ←</a></nav></section><section class="lesson" data-step="" id="animation">
 <div class="section-header">
 <div>
-<h2>🎈 سادساً: الكائنات المتحركة Animation</h2>
-<p class="section-sub">الحركة في صفحات الويب تعني تغيير موقع أو حجم عنصر مرات متتابعة بسرعة مناسبة. نستخدم <strong>setTimeout</strong> لتكرار الاستدعاء و<strong>clearTimeout</strong> للإيقاف.</p>
+<h2>🎈 سادساً: الكائنات المتحركة <bdi dir="ltr">Animation</bdi></h2>
+<p class="section-sub">الحركة في صفحات الويب تعني تغيير موقع أو حجم عنصر مرات متتابعة بسرعة مناسبة. نستخدم <strong><bdi dir="ltr">setTimeout</bdi></strong> لتكرار الاستدعاء و<strong><bdi dir="ltr">clearTimeout</bdi></strong> للإيقاف.</p>
 <div class="chips">
-<span class="chip">setTimeout()</span>
-<span class="chip">clearTimeout()</span>
-<span class="chip">style.left / style.right</span>
-<span class="chip">style.top</span>
-<span class="chip">width / height</span>
+<span class="chip"><bdi dir="ltr">setTimeout</bdi>()</span>
+<span class="chip"><bdi dir="ltr">clearTimeout</bdi>()</span>
+<span class="chip"><bdi dir="ltr">style</bdi>.<bdi dir="ltr">left</bdi> / <bdi dir="ltr">style</bdi>.<bdi dir="ltr">right</bdi></span>
+<span class="chip"><bdi dir="ltr">style</bdi>.<bdi dir="ltr">top</bdi></span>
+<span class="chip"><bdi dir="ltr">width</bdi> / <bdi dir="ltr">height</bdi></span>
 </div>
 </div>
 </div>
@@ -708,8 +707,8 @@ document.getElementById("title")</pre>
 <div class="block">
 <h3>الأداتان الأساسيتان</h3>
 <ul>
-<li><strong>setTimeout(دالة, وقت)</strong> — ينفّذ الدالة بعد مدة (بالميلي ثانية)</li>
-<li><strong>clearTimeout(timer)</strong> — يوقف التوقيت ويوقف الحركة</li>
+<li><strong><bdi dir="ltr">setTimeout</bdi>(دالة, وقت)</strong> — ينفّذ الدالة بعد مدة (بالميلي ثانية)</li>
+<li><strong><bdi dir="ltr">clearTimeout</bdi>(<bdi dir="ltr">timer</bdi>)</strong> — يوقف التوقيت ويوقف الحركة</li>
 </ul>
 <div class="code-toolbar"><button data-copy-target="u4-animation-0" type="button">نسخ الكود</button></div><pre id="u4-animation-0">// setTimeout يستدعي الدالة مرة بعد مرة
 timer = setTimeout(move, 30);  // كل 30ms
@@ -725,7 +724,7 @@ clearTimeout(timer);</pre>
 <div class="arrow">←</div>
 <div class="flow-box">غيّر الموقع قليلًا</div>
 <div class="arrow">←</div>
-<div class="flow-box">setTimeout → نفس الدالة</div>
+<div class="flow-box"><bdi dir="ltr">setTimeout</bdi> → نفس الدالة</div>
 <div class="arrow">←</div>
 <div class="flow-box">تكرار = حركة مرئية!</div>
 </div>
@@ -811,7 +810,7 @@ function stopMove()  { clearTimeout(timer); timer = null; }</pre><p class="lab-m
 </div>
 <div class="mistake-box">
 <span class="label mistake">⚠️ خطأ شائع</span>
-<p>إذا لم توقف التوقيت باستخدام <strong>clearTimeout</strong> وضغطت على "ابدأ" مرتين، تتضاعف الحركة وتصبح سريعة جدًا لأن هناك دالتين تعملان في نفس الوقت!</p>
+<p>إذا لم توقف التوقيت باستخدام <strong><bdi dir="ltr">clearTimeout</bdi></strong> وضغطت على "ابدأ" مرتين، تتضاعف الحركة وتصبح سريعة جدًا لأن هناك دالتين تعملان في نفس الوقت!</p>
 <div class="compare-grid">
 <div class="compare-box wrong">
 <div class="compare-label">❌ خطأ — لا فحص قبل البدء</div>
@@ -820,7 +819,7 @@ function stopMove()  { clearTimeout(timer); timer = null; }</pre><p class="lab-m
 }</pre><p class="lab-meta">مقتطف للشرح؛ لتشغيله مع عناصر الصفحة استخدم المثال الكامل في هذا الدرس.</p>
 </div>
 <div class="compare-box right">
-<div class="compare-label">✅ صحيح — فحص أن لا يوجد timer نشط</div>
+<div class="compare-label">✅ صحيح — فحص أن لا يوجد <bdi dir="ltr">timer</bdi> نشط</div>
 <div class="code-toolbar"><button data-copy-target="u4-animation-5" type="button">نسخ الكود</button></div><pre id="u4-animation-5">function startMove() {
   if (!timer) move(); // تأكد أنها لم تبدأ
 }</pre><p class="lab-meta">مقتطف للشرح؛ لتشغيله مع عناصر الصفحة استخدم المثال الكامل في هذا الدرس.</p>
@@ -833,27 +832,27 @@ function stopMove()  { clearTimeout(timer); timer = null; }</pre><p class="lab-m
 <li>الحركة = تغيير متكرر للموقع أو الحجم.</li>
 <li><code>setTimeout</code> يستدعي الدالة مرة بعد مرة.</li>
 <li><code>clearTimeout</code> يوقف الحركة.</li>
-<li>افحص دائمًا أن الـ timer غير نشط قبل البدء.</li>
+<li>افحص دائمًا أن الـ <bdi dir="ltr">timer</bdi> غير نشط قبل البدء.</li>
 </ul>
 </div>
 <div class="summary-box">
 <span class="label summary">ملخص</span>
-<p>الحركة في صفحات الويب تعتمد على تغيير متكرر للموقع أو الحجم مع التحكم بالزمن عبر setTimeout وclearTimeout.</p>
+<p>الحركة في صفحات الويب تعتمد على تغيير متكرر للموقع أو الحجم مع التحكم بالزمن عبر <bdi dir="ltr">setTimeout</bdi> و<bdi dir="ltr">clearTimeout</bdi>.</p>
 </div>
 <div class="section-nav">
-<a class="nav-btn" href="#events">➡ السابق: Events</a>
+<a class="nav-btn" href="#events">➡ السابق: <bdi dir="ltr">Events</bdi></a>
 <a class="nav-btn" href="#final-review">التالي: المراجعة النهائية ⬅</a>
 </div>
 <div class="lesson-completion"><button aria-pressed="false" class="secondary" data-complete="animation" type="button">حدّد الدرس كمكتمل</button><span data-step-position="">الدرس 6 من 8</span></div><nav aria-label="التنقل بين الدروس" class="lesson-pagination"><a class="button secondary" href="#events">→ الدرس السابق</a><a class="button" href="#final-review">الدرس التالي ←</a></nav></section><section class="lesson" data-step="" id="final-review">
 <h2>📝 المراجعة النهائية للوحدة</h2>
 <p>إذا فهمت النقاط التالية فأنت على الطريق الصحيح:</p>
 <ul class="mini-list">
-<li>تعرفت على عناصر الواجهة GUI وكيف يتفاعل المستخدم معها.</li>
+<li>تعرفت على عناصر الواجهة <bdi dir="ltr">GUI</bdi> وكيف يتفاعل المستخدم معها.</li>
 <li>فهمت كيف نتحقق من صحة البيانات بثلاث مراحل.</li>
-<li>أدركت أن DHTML هو استخدام HTML+CSS+JS+DOM معًا.</li>
-<li>تعلمت أن DOM يمكّننا من الوصول للعناصر وتغييرها.</li>
-<li>فهمت دور الأحداث مثل onclick وonmouseover وonload.</li>
-<li>رأيت كيف تحدث الحركة عبر setTimeout وclearTimeout.</li>
+<li>أدركت أن <bdi dir="ltr">DHTML</bdi> هو استخدام <bdi dir="ltr">HTML</bdi>+<bdi dir="ltr">CSS</bdi>+<bdi dir="ltr">JS</bdi>+<bdi dir="ltr">DOM</bdi> معًا.</li>
+<li>تعلمت أن <bdi dir="ltr">DOM</bdi> يمكّننا من الوصول للعناصر وتغييرها.</li>
+<li>فهمت دور الأحداث مثل <bdi dir="ltr">onclick</bdi> و<bdi dir="ltr">onmouseover</bdi> و<bdi dir="ltr">onload</bdi>.</li>
+<li>رأيت كيف تحدث الحركة عبر <bdi dir="ltr">setTimeout</bdi> و<bdi dir="ltr">clearTimeout</bdi>.</li>
 </ul>
 <div class="quiz">
 <span class="label quiz">🧩 اختبار قصير نهائي</span>
@@ -906,7 +905,7 @@ function stopMove()  { clearTimeout(timer); timer = null; }</pre><p class="lab-m
 <p>بعد إنهاء هذه الصفحة، حاول بناء صفحة صغيرة تحتوي على: حقل نص، قائمة اختيار، زر، رسالة تتغير عند النقر، وصورة تتفاعل مع الفأرة. هذا أفضل تدريب عملي على الوحدة.</p>
 </div>
 <div class="section-nav">
-<a class="nav-btn" href="#animation">➡ السابق: Animation</a>
+<a class="nav-btn" href="#animation">➡ السابق: <bdi dir="ltr">Animation</bdi></a>
 <a class="nav-btn" href="#gui">العودة لبداية الوحدة ⬆</a>
 </div>
 <div class="lesson-completion"><button aria-pressed="false" class="secondary" data-complete="final-review" type="button">حدّد الدرس كمكتمل</button><span data-step-position="">الدرس 7 من 8</span></div><nav aria-label="التنقل بين الدروس" class="lesson-pagination"><a class="button secondary" href="#animation">→ الدرس السابق</a><a class="button" href="#practical-exercises">الدرس التالي ←</a></nav></section><section class="lesson" data-step="" id="practical-exercises">
@@ -1033,7 +1032,7 @@ document.getElementById("t").innerHTML = "نص جديد";</pre><p class="lab-met
 <!-- تدريب 5 -->
 <div class="practice-card">
 <span class="label exercise">تدريب 5 <span class="level hard">متقدم</span></span>
-<p>كبّر صورة عند الضغط على زر، وأوقف التكبير عند حد معين (200px).</p>
+<p>كبّر صورة عند الضغط على زر، وأوقف التكبير عند حد معين (200<bdi dir="ltr">px</bdi>).</p>
 <h3>💡 تلميح</h3>
 <div class="code-toolbar"><button data-copy-target="u4-practical-exercises-13" type="button">نسخ الكود</button></div><pre id="u4-practical-exercises-13">let img = document.getElementById("img");
 if (img.width &lt; 200) {

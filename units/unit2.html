@@ -1,39 +1,39 @@
 <!doctype html>
-<html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="تعلّم تصميم صفحات الويب 1266: دروس عربية وأمثلة عملية ومختبر تفاعلي."><title>بناء الصفحات باستخدام HTML وCSS | مقرر 1266</title><link rel="stylesheet" href="../assets/css/learning.css?v=20261020b"><script src="../assets/js/learning.js?v=20261020b" defer></script></head><body class="learning-page" data-unit="2"><a class="skip-link" href="#content">انتقل إلى المحتوى</a><header class="site-header"><div class="site-bar"><a class="brand" href="../index.html">تقنية تصميم صفحات الويب <b dir="ltr">1266</b></a><span>أ. أحمد عوني النتشة</span></div><nav class="course-nav" aria-label="التنقل الرئيسي"><a href="../index.html">الرئيسية</a><a href="../units/unit1.html" >1. الإنترنت</a><a href="../units/unit2.html" aria-current="page">2. HTML وCSS</a><a href="../units/unit3.html" >3. JavaScript</a><a href="../units/unit4.html" >4. الويب الديناميكي</a><a href="../units/unit5.html" >5. PHP وSQL</a><a href="../lab.html">المختبر</a><a href="../practical.html">المشاريع</a></nav></header><section class="unit-intro learning-wrap"><p class="eyebrow">الوحدة 2 · عدد الدروس: 10</p><h1>بناء الصفحات باستخدام HTML وCSS</h1><p>ابنِ صفحة عربية سليمة، ثم نسّق محتواها ونموذجها.</p><a href="../journey.html#stage2">تطبيق هذه الوحدة في المشروع المتدرج ←</a></section><div class="learning-wrap learning-layout"><aside class="learning-toc"><details open data-toc><summary>دروس الوحدة</summary><div class="progress-summary"><label for="unit-progress">إنجازك المحفوظ على هذا الجهاز</label><progress id="unit-progress" max="10" value="0"></progress><span data-progress-text>0 من 10</span></div><nav aria-label="فهرس دروس الوحدة"><a href="#intro" data-lesson-link="intro"><span>01</span> 1. المقدمة والأهداف<small data-done="intro"></small></a><a href="#markup" data-lesson-link="markup"><span>02</span> 2. لغات التوسيم (Markup Languages)<small data-done="markup"></small></a><a href="#structure" data-lesson-link="structure"><span>03</span> 3. الهيكل العام لصفحة HTML<small data-done="structure"></small></a><a href="#text" data-lesson-link="text"><span>04</span> 4. تنسيق النصوص (Text Formatting)<small data-done="text"></small></a><a href="#lists" data-lesson-link="lists"><span>05</span> 5. القوائم (Lists)<small data-done="lists"></small></a><a href="#media" data-lesson-link="media"><span>06</span> 6. الصور والروابط التشعبية<small data-done="media"></small></a><a href="#tables" data-lesson-link="tables"><span>07</span> 7. الجداول (Tables)<small data-done="tables"></small></a><a href="#forms" data-lesson-link="forms"><span>08</span> 8. النماذج (Forms)<small data-done="forms"></small></a><a href="#css-intro" data-lesson-link="css-intro"><span>09</span> 9. مقدمة في CSS (Cascading Style Sheets)<small data-done="css-intro"></small></a><a href="#exercises" data-lesson-link="exercises"><span>10</span> التطبيق والتقويم<small data-done="exercises"></small></a></nav></details></aside><main id="content"><section class="lesson" data-step="" id="intro">
+<html dir="rtl" lang="ar"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><meta content="تعلّم تصميم صفحات الويب 1266: دروس عربية وأمثلة عملية ومختبر تفاعلي." name="description"/><title>بناء الصفحات باستخدام HTML وCSS | مقرر 1266</title><link href="../assets/css/learning.css?v=20261020c" rel="stylesheet"/><script defer="" src="../assets/js/learning.js?v=20261020c"></script><script defer="True" src="../assets/vendor/prism.min.js"></script><script defer="True" src="../assets/vendor/prism-markup-templating.min.js"></script><script defer="True" src="../assets/vendor/prism-php.min.js"></script><script defer="True" src="../assets/vendor/prism-sql.min.js"></script></head><body class="learning-page" data-unit="2"><a class="skip-link" href="#content">انتقل إلى المحتوى</a><header class="site-header"><div class="site-bar"><a class="brand" href="../index.html">تقنية تصميم صفحات الويب <b dir="ltr">1266</b></a><span>أ. أحمد عوني النتشة</span></div><nav aria-label="التنقل الرئيسي" class="course-nav"><a href="../index.html">الرئيسية</a><a href="../units/unit1.html">1. الإنترنت</a><a aria-current="page" href="../units/unit2.html">2. <bdi dir="ltr">HTML</bdi> و <bdi dir="ltr">CSS</bdi></a><a href="../units/unit3.html">3. <bdi dir="ltr">JavaScript</bdi></a><a href="../units/unit4.html">4. الويب الديناميكي</a><a href="../units/unit5.html">5. <bdi dir="ltr">PHP</bdi> و <bdi dir="ltr">SQL</bdi></a><a href="../lab.html">المختبر</a><a href="../practical.html">المشاريع</a></nav></header><section class="unit-intro learning-wrap"><p class="eyebrow">الوحدة 2 · عدد الدروس: 10</p><h1>بناء الصفحات باستخدام <bdi dir="ltr">HTML</bdi> و <bdi dir="ltr">CSS</bdi></h1><p>ابنِ صفحة عربية سليمة، ثم نسّق محتواها ونموذجها.</p><a href="../journey.html#stage2">تطبيق هذه الوحدة في المشروع المتدرج ←</a></section><div class="learning-wrap learning-layout"><aside class="learning-toc"><details data-toc="" open=""><summary>دروس الوحدة</summary><div class="progress-summary"><label for="unit-progress">إنجازك المحفوظ على هذا الجهاز</label><progress id="unit-progress" max="10" value="0"></progress><span data-progress-text="">0 من 10</span></div><nav aria-label="فهرس دروس الوحدة"><a data-lesson-link="intro" href="#intro" title="01 1. المقدمة والأهداف"><span>01</span><span class="toc-label">المقدمة والأهداف</span><small data-done="intro"></small></a><a data-lesson-link="markup" href="#markup" title="02 2. لغات التوسيم (Markup Languages)"><span>02</span><span class="toc-label">لغات التوسيم</span><small data-done="markup"></small></a><a data-lesson-link="structure" href="#structure" title="03 3. الهيكل العام لصفحة HTML"><span>03</span><span class="toc-label">الهيكل العام لصفحة <bdi dir="ltr">HTML</bdi></span><small data-done="structure"></small></a><a data-lesson-link="text" href="#text" title="04 4. تنسيق النصوص (Text Formatting)"><span>04</span><span class="toc-label">تنسيق النصوص</span><small data-done="text"></small></a><a data-lesson-link="lists" href="#lists" title="05 5. القوائم (Lists)"><span>05</span><span class="toc-label">القوائم</span><small data-done="lists"></small></a><a data-lesson-link="media" href="#media" title="06 6. الصور والروابط التشعبية"><span>06</span><span class="toc-label">الصور والروابط التشعبية</span><small data-done="media"></small></a><a data-lesson-link="tables" href="#tables" title="07 7. الجداول (Tables)"><span>07</span><span class="toc-label">الجداول</span><small data-done="tables"></small></a><a data-lesson-link="forms" href="#forms" title="08 8. النماذج (Forms)"><span>08</span><span class="toc-label">النماذج</span><small data-done="forms"></small></a><a data-lesson-link="css-intro" href="#css-intro" title="09 9. مقدمة في CSS (Cascading Style Sheets)"><span>09</span><span class="toc-label">مقدمة في <bdi dir="ltr">CSS</bdi></span><small data-done="css-intro"></small></a><a data-lesson-link="exercises" href="#exercises" title="10 التطبيق والتقويم"><span>10</span><span class="toc-label">التطبيق والتقويم</span><small data-done="exercises"></small></a></nav></details></aside><main id="content"><section class="lesson" data-step="" id="intro">
 <h2>1. المقدمة والأهداف</h2>
-<p>تُعتبر لغة HTML (HyperText Markup Language) حجر الأساس في بناء صفحات الويب. هي ليست لغة برمجة معقدة، بل لغة وصفية تخبر المتصفح "كيف يعرض المحتوى".</p>
+<p>تُعتبر لغة <bdi dir="ltr">HTML</bdi> (<bdi dir="ltr">HyperText Markup Language</bdi>) حجر الأساس في بناء صفحات الويب. هي ليست لغة برمجة معقدة، بل لغة وصفية تخبر المتصفح "كيف يعرض المحتوى".</p>
 <div class="note-box">
 <i class="fas fa-info-circle"></i>
 <span><strong>الهدف العام:</strong> تمكين الطالب من إنشاء صفحة ويب متكاملة تحتوي على نصوص، صور، جداول، ونماذج تفاعلية.</span>
 </div>
 <div class="lesson-completion"><button aria-pressed="false" class="secondary" data-complete="intro" type="button">حدّد الدرس كمكتمل</button><span data-step-position="">الدرس 1 من 10</span></div><nav aria-label="التنقل بين الدروس" class="lesson-pagination"><span></span><a class="button" href="#markup">الدرس التالي ←</a></nav></section><section class="lesson" data-step="" id="markup">
-<h2>2. لغات التوسيم (Markup Languages)</h2>
-<p>قبل الخوض في HTML، يجب أن نفهم عائلتها. لغات التوسيم هي نظام لترواح النصوص بعلامات خاصة.</p>
+<h2>2. لغات التوسيم (<bdi dir="ltr">Markup Languages</bdi>)</h2>
+<p>قبل الخوض في <bdi dir="ltr">HTML</bdi>، يجب أن نفهم عائلتها. لغات التوسيم هي نظام لترواح النصوص بعلامات خاصة.</p>
 <div aria-label="جدول قابل للتمرير" class="table-scroll" role="region" tabindex="0"><table class="content-table">
 <thead>
 <tr><th>اللغة</th><th>الوصف والوظيفة</th></tr>
 </thead>
 <tbody>
 <tr>
-<td><strong>SGML</strong></td>
-<td>(Standard Generalized Markup Language): هي "اللغة الأم". لغة معقدة جداً استخدمت قديماً لتصنيف الوثائق الضخمة. HTML اشتقت منها.</td>
+<td><strong><bdi dir="ltr">SGML</bdi></strong></td>
+<td>(<bdi dir="ltr">Standard Generalized Markup Language</bdi>): هي "اللغة الأم". لغة معقدة جداً استخدمت قديماً لتصنيف الوثائق الضخمة. <bdi dir="ltr">HTML</bdi> اشتقت منها.</td>
 </tr>
 <tr>
-<td><strong>HTML</strong></td>
-<td>(HyperText Markup Language): لغة <strong>عرض (Presentation)</strong>. تهتم بكيفية ظهور النص والصور على الشاشة للمستخدم.</td>
+<td><strong><bdi dir="ltr">HTML</bdi></strong></td>
+<td>(<bdi dir="ltr">HyperText Markup Language</bdi>): لغة <strong>عرض (<bdi dir="ltr">Presentation</bdi>)</strong>. تهتم بكيفية ظهور النص والصور على الشاشة للمستخدم.</td>
 </tr>
 <tr>
-<td><strong>XML</strong></td>
-<td>(Extensible Markup Language): لغة <strong>وصف (Description)</strong>. تهتم بمعنى البيانات وتخزينها ونقلها، ولا تهتم بكيفية عرضها (مثلاً نقل بيانات فاتورة بين برنامجين).</td>
+<td><strong><bdi dir="ltr">XML</bdi></strong></td>
+<td>(<bdi dir="ltr">Extensible Markup Language</bdi>): لغة <strong>وصف (<bdi dir="ltr">Description</bdi>)</strong>. تهتم بمعنى البيانات وتخزينها ونقلها، ولا تهتم بكيفية عرضها (مثلاً نقل بيانات فاتورة بين برنامجين).</td>
 </tr>
 </tbody>
 </table></div>
 <div class="lesson-completion"><button aria-pressed="false" class="secondary" data-complete="markup" type="button">حدّد الدرس كمكتمل</button><span data-step-position="">الدرس 2 من 10</span></div><nav aria-label="التنقل بين الدروس" class="lesson-pagination"><a class="button secondary" href="#intro">→ الدرس السابق</a><a class="button" href="#structure">الدرس التالي ←</a></nav></section><section class="lesson" data-step="" id="structure">
-<h2>3. الهيكل العام لصفحة HTML</h2>
-<p>تعمل صفحة الويب مثل الشجرة (DOM Tree)، حيث يوجد جذر رئيسي تتفرع منه باقي العناصر.</p>
+<h2>3. الهيكل العام لصفحة <bdi dir="ltr">HTML</bdi></h2>
+<p>تعمل صفحة الويب مثل الشجرة (<bdi dir="ltr">DOM Tree</bdi>)، حيث يوجد جذر رئيسي تتفرع منه باقي العناصر.</p>
 <div class="example-section">
 <h3>💡 الكود الهيكلي القياسي</h3>
-<p>ابدأ بهذا الهيكل الواضح لكتابة صفحة HTML سليمة، وحدّد اللغة والترميز والعنوان.</p>
+<p>ابدأ بهذا الهيكل الواضح لكتابة صفحة <bdi dir="ltr">HTML</bdi> سليمة، وحدّد اللغة والترميز والعنوان.</p>
 <div class="code-toolbar"><button data-copy-target="u2-structure-0" type="button">نسخ الكود</button><a class="button secondary" href="../lab.html?example=u2-structure-0">جرّب المثال</a></div><pre id="u2-structure-0">&lt;!DOCTYPE html&gt;   &lt;!-- 1. تعريف نوع الوثيقة --&gt;
 &lt;html dir="rtl"&gt;    &lt;!-- 2. بداية الصفحة وتحديد الاتجاه --&gt;
 
@@ -49,9 +49,9 @@
 
 &lt;/html&gt;</pre>
 <div class="code-explanation">
-<strong>تفكيك الكود (Code Explanation):</strong>
+<strong>تفكيك الكود (<bdi dir="ltr">Code Explanation</bdi>):</strong>
 <ul>
-<li><code>&lt;!DOCTYPE html&gt;</code>: سطر يخبر المتصفح أننا نستخدم الإصدار الحديث (HTML5). بدونه قد تظهر الصفحة بشكل مشوه.</li>
+<li><code>&lt;!DOCTYPE html&gt;</code>: سطر يخبر المتصفح أننا نستخدم الإصدار الحديث (<bdi dir="ltr">HTML5</bdi>). بدونه قد تظهر الصفحة بشكل مشوه.</li>
 <li><code>&lt;html dir="rtl"&gt;</code>: الوسم الجذري. الخاصية <code>dir="rtl"</code> ضرورية جداً للمواقع العربية لضبط اتجاه النص من اليمين لليسار.</li>
 <li><code>&lt;head&gt;</code>: يحتوي على الإعدادات الخلفية. الرمز <code>charset="UTF-8"</code> هو الأهم لدعم الحروف العربية ومنع ظهورها كرموز غريبة.</li>
 <li><code>&lt;body&gt;</code>: "المسرح" الذي نضع فيه كل النصوص والصور والأزرار التي يتفاعل معها المستخدم.</li>
@@ -60,8 +60,8 @@
 <div style="text-align: center;"></div>
 </div>
 <div class="lesson-completion"><button aria-pressed="false" class="secondary" data-complete="structure" type="button">حدّد الدرس كمكتمل</button><span data-step-position="">الدرس 3 من 10</span></div><nav aria-label="التنقل بين الدروس" class="lesson-pagination"><a class="button secondary" href="#markup">→ الدرس السابق</a><a class="button" href="#text">الدرس التالي ←</a></nav></section><section class="lesson" data-step="" id="text">
-<h2>4. تنسيق النصوص (Text Formatting)</h2>
-<p>توفر HTML نوعين من التنسيق: <strong>منطقي</strong> (يصف المعنى) و <strong>مادي</strong> (يصف الشكل).</p>
+<h2>4. تنسيق النصوص (<bdi dir="ltr">Text Formatting</bdi>)</h2>
+<p>توفر <bdi dir="ltr">HTML</bdi> نوعين من التنسيق: <strong>منطقي</strong> (يصف المعنى) و <strong>مادي</strong> (يصف الشكل).</p>
 <div class="example-section">
 <h3>💡 مثال: تنسيقات النصوص المختلفة</h3>
 <div class="code-toolbar"><button data-copy-target="u2-text-0" type="button">نسخ الكود</button><a class="button secondary" href="../lab.html?example=u2-text-0">جرّب المثال</a></div><pre id="u2-text-0">&lt;!-- العناوين: من الأكبر للأصغر --&gt;
@@ -84,16 +84,16 @@
 <div class="code-explanation">
 <strong>شرح الوسوم والرموز:</strong>
 <ul>
-<li><code>&lt;h1&gt;</code> إلى <code>&lt;h6&gt;</code>: تستخدم للعناوين فقط. <strong>تنبيه:</strong> لا تستخدمها فقط لتكبير الخط، بل لهيكلة الموضوع، فمحركات البحث (Google) تعتمد عليها.</li>
-<li><code>&lt;sub&gt;</code>: (Subscript) ينزل النص قليلاً للأسفل (مفيد للكيمياء).</li>
-<li><code>&lt;sup&gt;</code>: (Superscript) يرفع النص للأعلى (مفيد للرياضيات).</li>
-<li><code>&amp;copy;</code> و <code>&amp;lt;</code>: رموز خاصة تسمى (Entities). نستخدمها لأن بعض الرموز (مثل &lt;) محجوزة للغة HTML ولا يمكن كتابتها مباشرة.</li>
+<li><code>&lt;h1&gt;</code> إلى <code>&lt;h6&gt;</code>: تستخدم للعناوين فقط. <strong>تنبيه:</strong> لا تستخدمها فقط لتكبير الخط، بل لهيكلة الموضوع، فمحركات البحث (<bdi dir="ltr">Google</bdi>) تعتمد عليها.</li>
+<li><code>&lt;sub&gt;</code>: (<bdi dir="ltr">Subscript</bdi>) ينزل النص قليلاً للأسفل (مفيد للكيمياء).</li>
+<li><code>&lt;sup&gt;</code>: (<bdi dir="ltr">Superscript</bdi>) يرفع النص للأعلى (مفيد للرياضيات).</li>
+<li><code>&amp;copy;</code> و <code>&amp;lt;</code>: رموز خاصة تسمى (<bdi dir="ltr">Entities</bdi>). نستخدمها لأن بعض الرموز (مثل &lt;) محجوزة للغة <bdi dir="ltr">HTML</bdi> ولا يمكن كتابتها مباشرة.</li>
 </ul>
 </div>
 <div style="text-align: center;"></div>
 </div>
 <div class="lesson-completion"><button aria-pressed="false" class="secondary" data-complete="text" type="button">حدّد الدرس كمكتمل</button><span data-step-position="">الدرس 4 من 10</span></div><nav aria-label="التنقل بين الدروس" class="lesson-pagination"><a class="button secondary" href="#structure">→ الدرس السابق</a><a class="button" href="#lists">الدرس التالي ←</a></nav></section><section class="lesson" data-step="" id="lists">
-<h2>5. القوائم (Lists)</h2>
+<h2>5. القوائم (<bdi dir="ltr">Lists</bdi>)</h2>
 <p>تستخدم لتنظيم المعلومات في نقاط. هناك نوعان رئيسيان: مرتبة (أرقام) وغير مرتبة (رموز).</p>
 <div class="example-section">
 <h3>💡 مثال: القوائم المتداخلة</h3>
@@ -114,16 +114,16 @@
 <div class="code-explanation">
 <strong>تحليل الكود:</strong>
 <ul>
-<li><code>&lt;ul&gt;</code>: (Unordered List) تنشئ قائمة نقطية سوداء افتراضياً.</li>
-<li><code>&lt;ol type="a"&gt;</code>: (Ordered List) تنشئ قائمة رقمية. استخدام الخاصية <code>type="a"</code> حول الترقيم من (1, 2, 3) إلى أحرف إنجليزية (a, b, c).</li>
-<li><code>&lt;li&gt;</code>: (List Item) هو العنصر المشترك الذي يوضع قبل كل سطر في القائمة.</li>
+<li><code>&lt;ul&gt;</code>: (<bdi dir="ltr">Unordered List</bdi>) تنشئ قائمة نقطية سوداء افتراضياً.</li>
+<li><code>&lt;ol type="a"&gt;</code>: (<bdi dir="ltr">Ordered List</bdi>) تنشئ قائمة رقمية. استخدام الخاصية <code>type="a"</code> حول الترقيم من (1, 2, 3) إلى أحرف إنجليزية (<bdi dir="ltr">a</bdi>, <bdi dir="ltr">b</bdi>, <bdi dir="ltr">c</bdi>).</li>
+<li><code>&lt;li&gt;</code>: (<bdi dir="ltr">List Item</bdi>) هو العنصر المشترك الذي يوضع قبل كل سطر في القائمة.</li>
 </ul>
 </div>
 <div style="text-align: center;"></div>
 </div>
 <div class="lesson-completion"><button aria-pressed="false" class="secondary" data-complete="lists" type="button">حدّد الدرس كمكتمل</button><span data-step-position="">الدرس 5 من 10</span></div><nav aria-label="التنقل بين الدروس" class="lesson-pagination"><a class="button secondary" href="#text">→ الدرس السابق</a><a class="button" href="#media">الدرس التالي ←</a></nav></section><section class="lesson" data-step="" id="media">
 <h2>6. الصور والروابط التشعبية</h2>
-<p>هذان العنصران هما ما يميز "النص المترابط" (Hypertext).</p>
+<p>هذان العنصران هما ما يميز "النص المترابط" (<bdi dir="ltr">Hypertext</bdi>).</p>
 <div class="example-section">
 <h3>💡 مثال: صورة قابلة للنقر (رابط صورة)</h3>
 <div class="code-toolbar"><button data-copy-target="u2-media-0" type="button">نسخ الكود</button><a class="button secondary" href="../lab.html?example=u2-media-0">جرّب المثال</a></div><pre id="u2-media-0">&lt;!-- صورة عادية --&gt;
@@ -137,18 +137,18 @@
     &lt;br&gt; اضغط على الشعار للذهاب لجوجل
 &lt;/a&gt;</pre>
 <div class="code-explanation">
-<strong>الخصائص الهامة (Attributes):</strong>
+<strong>الخصائص الهامة (<bdi dir="ltr">Attributes</bdi>):</strong>
 <ul>
 <li>في الصورة <code>&lt;img&gt;</code>:
                                 <ul>
-<li><code>src</code>: (Source) مسار الملف، وهو أهم خاصية.</li>
-<li><code>alt</code>: (Alternative Text) نص يظهر إذا فشل تحميل الصورة، وهو مهم للمكفوفين (قارئات الشاشة).</li>
-<li><code>width</code>: للتحكم بالعرض (يفضل استخدام CSS بدلاً منه حديثاً).</li>
+<li><code>src</code>: (<bdi dir="ltr">Source</bdi>) مسار الملف، وهو أهم خاصية.</li>
+<li><code>alt</code>: (<bdi dir="ltr">Alternative Text</bdi>) نص يظهر إذا فشل تحميل الصورة، وهو مهم للمكفوفين (قارئات الشاشة).</li>
+<li><code>width</code>: للتحكم بالعرض (يفضل استخدام <bdi dir="ltr">CSS</bdi> بدلاً منه حديثاً).</li>
 </ul>
 </li>
 <li>في الرابط <code>&lt;a&gt;</code>:
                                 <ul>
-<li><code>href</code>: (Hypertext Reference) العنوان الذي سنذهب إليه.</li>
+<li><code>href</code>: (<bdi dir="ltr">Hypertext Reference</bdi>) العنوان الذي سنذهب إليه.</li>
 <li><code>target="_blank"</code>: يفتح الرابط في تبويب جديد بدلاً من إغلاق صفحتك الحالية.</li>
 </ul>
 </li>
@@ -157,10 +157,10 @@
 <div style="text-align: center;"></div>
 </div>
 <div class="lesson-completion"><button aria-pressed="false" class="secondary" data-complete="media" type="button">حدّد الدرس كمكتمل</button><span data-step-position="">الدرس 6 من 10</span></div><nav aria-label="التنقل بين الدروس" class="lesson-pagination"><a class="button secondary" href="#lists">→ الدرس السابق</a><a class="button" href="#tables">الدرس التالي ←</a></nav></section><section class="lesson" data-step="" id="tables">
-<h2>7. الجداول (Tables)</h2>
+<h2>7. الجداول (<bdi dir="ltr">Tables</bdi>)</h2>
 <p>تعتبر الجداول من المواضيع التي تحتاج تركيزاً، خاصة عند دمج الخلايا.</p>
 <div class="example-section">
-<h3>💡 مثال متقدم: دمج الخلايا (Colspan &amp; Rowspan)</h3>
+<h3>💡 مثال متقدم: دمج الخلايا (<bdi dir="ltr">Colspan</bdi> &amp; <bdi dir="ltr">Rowspan</bdi>)</h3>
 <div class="code-toolbar"><button data-copy-target="u2-tables-0" type="button">نسخ الكود</button><a class="button secondary" href="../lab.html?example=u2-tables-0">جرّب المثال</a></div><pre id="u2-tables-0">&lt;table border="1" cellpadding="10"&gt;
     &lt;!-- رأس الجدول --&gt;
     &lt;tr&gt;
@@ -201,7 +201,7 @@
 <div style="text-align: center;"></div>
 </div>
 <div class="lesson-completion"><button aria-pressed="false" class="secondary" data-complete="tables" type="button">حدّد الدرس كمكتمل</button><span data-step-position="">الدرس 7 من 10</span></div><nav aria-label="التنقل بين الدروس" class="lesson-pagination"><a class="button secondary" href="#media">→ الدرس السابق</a><a class="button" href="#forms">الدرس التالي ←</a></nav></section><section class="lesson" data-step="" id="forms">
-<h2>8. النماذج (Forms)</h2>
+<h2>8. النماذج (<bdi dir="ltr">Forms</bdi>)</h2>
 <p>النماذج هي وسيلة التفاعل مع المستخدم لجمع البيانات وإرسالها للسيرفر.</p>
 <div class="example-section">
 <h3>💡 مثال شامل: نموذج تسجيل طالب</h3>
@@ -237,7 +237,7 @@
 <div class="code-explanation">
 <strong>شرح عناصر الإدخال:</strong>
 <ul>
-<li><code>type="text"</code> vs <code>type="password"</code>: الأول يظهر النص، والثاني يخفيه بنقاط.</li>
+<li><code>type="text"</code> <bdi dir="ltr">vs</bdi> <code>type="password"</code>: الأول يظهر النص، والثاني يخفيه بنقاط.</li>
 <li><code>radio</code>: يسمح باختيار واحد فقط (يجب أن يكون لهما نفس الـ <code>name</code> ليعمل).</li>
 <li><code>checkbox</code>: يسمح باختيار أكثر من خيار في نفس الوقت.</li>
 <li><code>&lt;select&gt;</code>: القائمة المنسدلة، توفر مساحة وتمنع أخطاء الكتابة.</li>
@@ -247,10 +247,10 @@
 <div style="text-align: center;"></div>
 </div>
 <div class="lesson-completion"><button aria-pressed="false" class="secondary" data-complete="forms" type="button">حدّد الدرس كمكتمل</button><span data-step-position="">الدرس 8 من 10</span></div><nav aria-label="التنقل بين الدروس" class="lesson-pagination"><a class="button secondary" href="#tables">→ الدرس السابق</a><a class="button" href="#css-intro">الدرس التالي ←</a></nav></section><section class="lesson" data-step="" id="css-intro">
-<h2>9. مقدمة في CSS (Cascading Style Sheets)</h2>
-<p>تحدد CSS مظهر الصفحة، بما يشمل الألوان والخطوط والمسافات والتخطيط. يمكن ربطها بالصفحة بأكثر من طريقة.</p>
+<h2>9. مقدمة في <bdi dir="ltr">CSS</bdi> (<bdi dir="ltr">Cascading Style Sheets</bdi>)</h2>
+<p>تحدد <bdi dir="ltr">CSS</bdi> مظهر الصفحة، بما يشمل الألوان والخطوط والمسافات والتخطيط. يمكن ربطها بالصفحة بأكثر من طريقة.</p>
 <div class="example-section">
-<h3>أ) النمط الداخلي (Internal Style)</h3>
+<h3>أ) النمط الداخلي (<bdi dir="ltr">Internal Style</bdi>)</h3>
 <p>يكتب في قسم <code>head</code> ويطبق على الصفحة الحالية فقط.</p>
 <div class="code-toolbar"><button data-copy-target="u2-css-intro-0" type="button">نسخ الكود</button><a class="button secondary" href="../lab.html?example=u2-css-intro-0">جرّب المثال</a></div><pre id="u2-css-intro-0">&lt;!DOCTYPE html&gt;
 &lt;html&gt;
@@ -274,7 +274,7 @@
 &lt;/body&gt;
 &lt;/html&gt;</pre>
 <div class="code-explanation">
-<strong>شرح المحددات (Selectors):</strong>
+<strong>شرح المحددات (<bdi dir="ltr">Selectors</bdi>):</strong>
 <ul>
-<li><code>p { ... }</code>: يسمى Element Selector، ويطبق التنسيق على كل وسوم البراجراف.</li>
-<li><code>.special { ... }</code>: يسمى Class Selector (يبدأ بنقطة)، ويطبق فقط على العناصر التي تحمل الخاصية <code>class="special"</code>.</li></ul></div></div><div class="lesson-completion"><button aria-pressed="false" class="secondary" data-complete="css-intro" type="button">حدّد الدرس كمكتمل</button><span data-step-position="">الدرس 9 من 10</span></div><nav aria-label="التنقل بين الدروس" class="lesson-pagination"><a class="button secondary" href="#forms">→ الدرس السابق</a><a class="button" href="#exercises">الدرس التالي ←</a></nav></section><section class="lesson" data-step="" id="exercises"><h2>التطبيق والتقويم</h2><p>أنشئ صفحة تعريف بنشاط طلابي، تحتوي عنواناً وقائمة وصورة ذات بديل نصي ونموذج تسجيل. نسّقها بملف CSS منفصل.</p><h3>معايير نجاح تطبيقك</h3><ul><li>تظهر العربية سليمة واتجاهها صحيح.</li><li>لكل حقل تسمية، وللصورة بديل نصي مناسب.</li><li>تظل الصفحة قابلة للقراءة على شاشة ضيقة.</li><li>يستخدم التصميم CSS بدلاً من وسوم التنسيق القديمة.</li></ul><form class="quiz"><h3>تحقق من أساسيات HTML وCSS</h3><fieldset><legend>ما وظيفة خاصية alt للصورة؟</legend><label><input name="html1" required="" type="radio" value="correct"/> تقديم بديل نصي يصف معناها</label><label><input name="html1" required="" type="radio" value="wrong"/> تغيير عرض الصورة</label><p class="question-feedback" hidden="">alt يصف الصورة عندما لا تُعرض ولمن يستخدم قارئ الشاشة؛ الأبعاد تضبطها width وheight أو CSS.</p></fieldset><fieldset><legend>أي محدد يطابق class="special"؟</legend><label><input name="html2" required="" type="radio" value="wrong"/> #special</label><label><input name="html2" required="" type="radio" value="correct"/> .special</label><p class="question-feedback" hidden="">النقطة لاختيار class، والرمز # لاختيار id.</p></fieldset><button>تحقق من الإجابات</button><output aria-live="polite"></output></form><a href="unit2practical.html">تدريبات المختبر الإضافية</a><div class="lesson-completion"><button aria-pressed="false" class="secondary" data-complete="exercises" type="button">حدّد الدرس كمكتمل</button><span data-step-position="">الدرس 10 من 10</span></div><nav aria-label="التنقل بين الدروس" class="lesson-pagination"><a class="button secondary" href="#css-intro">→ الدرس السابق</a><a class="button" href="unit3.html">الوحدة التالية ←</a></nav></section></main></div><p class="learning-wrap save-notice" data-save-status role="status"></p><footer class="learning-footer"><p>جامعة القدس المفتوحة · فرع الخليل · إعداد الأستاذ أحمد عوني النتشة</p><p>موقع تعليمي مساند غير رسمي لا يغني عن الكتاب المعتمد.</p><a href="../index.html">خريطة المقرر</a></footer></body></html>
+<li><code>p { ... }</code>: يسمى <bdi dir="ltr">Element Selector</bdi>، ويطبق التنسيق على كل وسوم البراجراف.</li>
+<li><code>.special { ... }</code>: يسمى <bdi dir="ltr">Class Selector</bdi> (يبدأ بنقطة)، ويطبق فقط على العناصر التي تحمل الخاصية <code>class="special"</code>.</li></ul></div></div><div class="lesson-completion"><button aria-pressed="false" class="secondary" data-complete="css-intro" type="button">حدّد الدرس كمكتمل</button><span data-step-position="">الدرس 9 من 10</span></div><nav aria-label="التنقل بين الدروس" class="lesson-pagination"><a class="button secondary" href="#forms">→ الدرس السابق</a><a class="button" href="#exercises">الدرس التالي ←</a></nav></section><section class="lesson" data-step="" id="exercises"><h2>التطبيق والتقويم</h2><p>أنشئ صفحة تعريف بنشاط طلابي، تحتوي عنواناً وقائمة وصورة ذات بديل نصي ونموذج تسجيل. نسّقها بملف <bdi dir="ltr">CSS</bdi> منفصل.</p><h3>معايير نجاح تطبيقك</h3><ul><li>تظهر العربية سليمة واتجاهها صحيح.</li><li>لكل حقل تسمية، وللصورة بديل نصي مناسب.</li><li>تظل الصفحة قابلة للقراءة على شاشة ضيقة.</li><li>يستخدم التصميم <bdi dir="ltr">CSS</bdi> بدلاً من وسوم التنسيق القديمة.</li></ul><form class="quiz"><h3>تحقق من أساسيات <bdi dir="ltr">HTML</bdi> و <bdi dir="ltr">CSS</bdi></h3><fieldset><legend>ما وظيفة خاصية <bdi dir="ltr">alt</bdi> للصورة؟</legend><label><input name="html1" required="" type="radio" value="correct"/> تقديم بديل نصي يصف معناها</label><label><input name="html1" required="" type="radio" value="wrong"/> تغيير عرض الصورة</label><p class="question-feedback" hidden=""><bdi dir="ltr">alt</bdi> يصف الصورة عندما لا تُعرض ولمن يستخدم قارئ الشاشة؛ الأبعاد تضبطها <bdi dir="ltr">width</bdi> و<bdi dir="ltr">height</bdi> أو <bdi dir="ltr">CSS</bdi>.</p></fieldset><fieldset><legend>أي محدد يطابق <bdi dir="ltr">class</bdi>="<bdi dir="ltr">special</bdi>"؟</legend><label><input name="html2" required="" type="radio" value="wrong"/> #<bdi dir="ltr">special</bdi></label><label><input name="html2" required="" type="radio" value="correct"/> .<bdi dir="ltr">special</bdi></label><p class="question-feedback" hidden="">النقطة لاختيار <bdi dir="ltr">class</bdi>، والرمز # لاختيار <bdi dir="ltr">id</bdi>.</p></fieldset><button>تحقق من الإجابات</button><output aria-live="polite"></output></form><a href="unit2practical.html">تدريبات المختبر الإضافية</a><div class="lesson-completion"><button aria-pressed="false" class="secondary" data-complete="exercises" type="button">حدّد الدرس كمكتمل</button><span data-step-position="">الدرس 10 من 10</span></div><nav aria-label="التنقل بين الدروس" class="lesson-pagination"><a class="button secondary" href="#css-intro">→ الدرس السابق</a><a class="button" href="unit3.html">الوحدة التالية ←</a></nav></section></main></div><p class="learning-wrap save-notice" data-save-status="" role="status"></p><footer class="learning-footer"><p>جامعة القدس المفتوحة · فرع الخليل · إعداد الأستاذ أحمد عوني النتشة</p><p>موقع تعليمي مساند غير رسمي لا يغني عن الكتاب المعتمد.</p><a href="../index.html">خريطة المقرر</a></footer></body></html>

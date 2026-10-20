@@ -124,3 +124,26 @@
     }else status.textContent='عدّل المثال ثم اضغط تشغيل.';
   }
 })();
+
+// Preserve source text for copying while making runnable examples the primary action.
+window.Prism = window.Prism || {manual:true};
+document.addEventListener('DOMContentLoaded',()=>{
+  document.querySelectorAll('pre[id]').forEach(pre=>{
+    const source=pre.textContent;
+    let language='javascript';
+    if(/^\s*<\?php/i.test(source))language='php';
+    else if(/^\s*(?:CREATE|SELECT|INSERT|UPDATE|DELETE|DROP|USE|GRANT)\b/i.test(source))language='sql';
+    else if(/^\s*</.test(source))language='markup';
+    else if(/^\s*(?:[.#][\w-]+|body|html|p|h1|\*)\s*\{/.test(source))language='css';
+    else if(/^\s*(?:http|nslookup|php\s)/.test(source))language='none';
+    const toolbar=pre.previousElementSibling?.matches('.code-toolbar')?pre.previousElementSibling:null;
+    if(toolbar){
+      const run=toolbar.querySelector('a');const copy=toolbar.querySelector('button');
+      if(run){run.className='button';toolbar.prepend(run);}
+      if(copy)copy.classList.add('secondary');
+      const label=document.createElement('span');label.className='code-language';label.textContent=({markup:'HTML',javascript:'JavaScript',php:'PHP',sql:'SQL',css:'CSS',none:'Text'})[language];toolbar.append(label);
+    }
+    const code=document.createElement('code');code.textContent=source;code.className='language-'+language;pre.replaceChildren(code);
+    if(window.Prism?.languages?.[language])window.Prism.highlightElement(code);
+  });
+});

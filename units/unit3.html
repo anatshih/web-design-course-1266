@@ -1,15 +1,15 @@
 <!doctype html>
-<html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="تعلّم تصميم صفحات الويب 1266: دروس عربية وأمثلة عملية ومختبر تفاعلي."><title>أساسيات البرمجة باستخدام JavaScript | مقرر 1266</title><link rel="stylesheet" href="../assets/css/learning.css?v=20261020b"><script src="../assets/js/learning.js?v=20261020b" defer></script></head><body class="learning-page" data-unit="3"><a class="skip-link" href="#content">انتقل إلى المحتوى</a><header class="site-header"><div class="site-bar"><a class="brand" href="../index.html">تقنية تصميم صفحات الويب <b dir="ltr">1266</b></a><span>أ. أحمد عوني النتشة</span></div><nav class="course-nav" aria-label="التنقل الرئيسي"><a href="../index.html">الرئيسية</a><a href="../units/unit1.html" >1. الإنترنت</a><a href="../units/unit2.html" >2. HTML وCSS</a><a href="../units/unit3.html" aria-current="page">3. JavaScript</a><a href="../units/unit4.html" >4. الويب الديناميكي</a><a href="../units/unit5.html" >5. PHP وSQL</a><a href="../lab.html">المختبر</a><a href="../practical.html">المشاريع</a></nav></header><section class="unit-intro learning-wrap"><p class="eyebrow">الوحدة 3 · عدد الدروس: 22</p><h1>أساسيات البرمجة باستخدام JavaScript</h1><p>استخدم المتغيرات والشروط والحلقات والدوال لحل المشكلات.</p><a href="../journey.html#stage3">تطبيق هذه الوحدة في المشروع المتدرج ←</a></section><div class="learning-wrap learning-layout"><aside class="learning-toc"><details open data-toc><summary>دروس الوحدة</summary><div class="progress-summary"><label for="unit-progress">إنجازك المحفوظ على هذا الجهاز</label><progress id="unit-progress" max="22" value="0"></progress><span data-progress-text>0 من 22</span></div><nav aria-label="فهرس دروس الوحدة"><a href="#intro" data-lesson-link="intro"><span>01</span> 1. مقدمة إلى JavaScript<small data-done="intro"></small></a><a href="#addjs" data-lesson-link="addjs"><span>02</span> 2. إضافة JavaScript إلى صفحة HTML<small data-done="addjs"></small></a><a href="#input-output" data-lesson-link="input-output"><span>03</span> 3. الإدخال والإخراج في JavaScript<small data-done="input-output"></small></a><a href="#variables" data-lesson-link="variables"><span>04</span> 4. المتغيرات وأنواع البيانات<small data-done="variables"></small></a><a href="#number" data-lesson-link="number"><span>05</span> 5. تحويل النص إلى رقم — Number()<small data-done="number"></small></a><a href="#operators" data-lesson-link="operators"><span>06</span> 6. العمليات الحسابية<small data-done="operators"></small></a><a href="#precedence" data-lesson-link="precedence"><span>07</span> 7. ترتيب تنفيذ العمليات الحسابية<small data-done="precedence"></small></a><a href="#if" data-lesson-link="if"><span>08</span> 8. الجملة الشرطية if<small data-done="if"></small></a><a href="#ifelse" data-lesson-link="ifelse"><span>09</span> 9. الجملة الشرطية if...else<small data-done="ifelse"></small></a><a href="#elseif" data-lesson-link="elseif"><span>10</span> 10. الجملة الشرطية else if<small data-done="elseif"></small></a><a href="#comparison" data-lesson-link="comparison"><span>11</span> 11. معاملات المقارنة<small data-done="comparison"></small></a><a href="#switch" data-lesson-link="switch"><span>12</span> 12. الجملة switch<small data-done="switch"></small></a><a href="#loops" data-lesson-link="loops"><span>13</span> 13. مفهوم الحلقات التكرارية<small data-done="loops"></small></a><a href="#while" data-lesson-link="while"><span>14</span> 14. حلقة while<small data-done="while"></small></a><a href="#dowhile" data-lesson-link="dowhile"><span>15</span> 15. حلقة do...while<small data-done="dowhile"></small></a><a href="#for" data-lesson-link="for"><span>16</span> 16. حلقة for<small data-done="for"></small></a><a href="#arrays" data-lesson-link="arrays"><span>17</span> 17. المصفوفات Arrays<small data-done="arrays"></small></a><a href="#arrays-loops" data-lesson-link="arrays-loops"><span>18</span> 18. استخدام المصفوفات مع الحلقات<small data-done="arrays-loops"></small></a><a href="#functions" data-lesson-link="functions"><span>19</span> 19. الدوال Functions<small data-done="functions"></small></a><a href="#full-example" data-lesson-link="full-example"><span>20</span> 20. مثال تطبيقي شامل<small data-done="full-example"></small></a><a href="#interactive" data-lesson-link="interactive"><span>21</span> مختبر JavaScript<small data-done="interactive"></small></a><a href="#exercises" data-lesson-link="exercises"><span>22</span> 22. التمارين مع الحلول<small data-done="exercises"></small></a></nav></details></aside><main id="content"><section class="lesson" data-step="" id="intro">
+<html dir="rtl" lang="ar"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><meta content="تعلّم تصميم صفحات الويب 1266: دروس عربية وأمثلة عملية ومختبر تفاعلي." name="description"/><title>أساسيات البرمجة باستخدام JavaScript | مقرر 1266</title><link href="../assets/css/learning.css?v=20261020c" rel="stylesheet"/><script defer="" src="../assets/js/learning.js?v=20261020c"></script><script defer="True" src="../assets/vendor/prism.min.js"></script><script defer="True" src="../assets/vendor/prism-markup-templating.min.js"></script><script defer="True" src="../assets/vendor/prism-php.min.js"></script><script defer="True" src="../assets/vendor/prism-sql.min.js"></script></head><body class="learning-page" data-unit="3"><a class="skip-link" href="#content">انتقل إلى المحتوى</a><header class="site-header"><div class="site-bar"><a class="brand" href="../index.html">تقنية تصميم صفحات الويب <b dir="ltr">1266</b></a><span>أ. أحمد عوني النتشة</span></div><nav aria-label="التنقل الرئيسي" class="course-nav"><a href="../index.html">الرئيسية</a><a href="../units/unit1.html">1. الإنترنت</a><a href="../units/unit2.html">2. <bdi dir="ltr">HTML</bdi> و <bdi dir="ltr">CSS</bdi></a><a aria-current="page" href="../units/unit3.html">3. <bdi dir="ltr">JavaScript</bdi></a><a href="../units/unit4.html">4. الويب الديناميكي</a><a href="../units/unit5.html">5. <bdi dir="ltr">PHP</bdi> و <bdi dir="ltr">SQL</bdi></a><a href="../lab.html">المختبر</a><a href="../practical.html">المشاريع</a></nav></header><section class="unit-intro learning-wrap"><p class="eyebrow">الوحدة 3 · عدد الدروس: 22</p><h1>أساسيات البرمجة باستخدام <bdi dir="ltr">JavaScript</bdi></h1><p>استخدم المتغيرات والشروط والحلقات والدوال لحل المشكلات.</p><a href="../journey.html#stage3">تطبيق هذه الوحدة في المشروع المتدرج ←</a></section><div class="learning-wrap learning-layout"><aside class="learning-toc"><details data-toc="" open=""><summary>دروس الوحدة</summary><div class="progress-summary"><label for="unit-progress">إنجازك المحفوظ على هذا الجهاز</label><progress id="unit-progress" max="22" value="0"></progress><span data-progress-text="">0 من 22</span></div><nav aria-label="فهرس دروس الوحدة"><a data-lesson-link="intro" href="#intro" title="01 1. مقدمة إلى JavaScript"><span>01</span><span class="toc-label">مقدمة إلى <bdi dir="ltr">JavaScript</bdi></span><small data-done="intro"></small></a><a data-lesson-link="addjs" href="#addjs" title="02 2. إضافة JavaScript إلى صفحة HTML"><span>02</span><span class="toc-label">إضافة <bdi dir="ltr">JavaScript</bdi> إلى صفحة <bdi dir="ltr">HTML</bdi></span><small data-done="addjs"></small></a><a data-lesson-link="input-output" href="#input-output" title="03 3. الإدخال والإخراج في JavaScript"><span>03</span><span class="toc-label">الإدخال والإخراج في <bdi dir="ltr">JavaScript</bdi></span><small data-done="input-output"></small></a><a data-lesson-link="variables" href="#variables" title="04 4. المتغيرات وأنواع البيانات"><span>04</span><span class="toc-label">المتغيرات وأنواع البيانات</span><small data-done="variables"></small></a><a data-lesson-link="number" href="#number" title="05 5. تحويل النص إلى رقم — Number()"><span>05</span><span class="toc-label">تحويل النص إلى رقم — <bdi dir="ltr">Number</bdi></span><small data-done="number"></small></a><a data-lesson-link="operators" href="#operators" title="06 6. العمليات الحسابية"><span>06</span><span class="toc-label">العمليات الحسابية</span><small data-done="operators"></small></a><a data-lesson-link="precedence" href="#precedence" title="07 7. ترتيب تنفيذ العمليات الحسابية"><span>07</span><span class="toc-label">ترتيب تنفيذ العمليات الحسابية</span><small data-done="precedence"></small></a><a data-lesson-link="if" href="#if" title="08 8. الجملة الشرطية if"><span>08</span><span class="toc-label">الجملة الشرطية <bdi dir="ltr">if</bdi></span><small data-done="if"></small></a><a data-lesson-link="ifelse" href="#ifelse" title="09 9. الجملة الشرطية if...else"><span>09</span><span class="toc-label">الجملة الشرطية <bdi dir="ltr">if</bdi>...<bdi dir="ltr">else</bdi></span><small data-done="ifelse"></small></a><a data-lesson-link="elseif" href="#elseif" title="10 10. الجملة الشرطية else if"><span>10</span><span class="toc-label">الجملة الشرطية <bdi dir="ltr">else if</bdi></span><small data-done="elseif"></small></a><a data-lesson-link="comparison" href="#comparison" title="11 11. معاملات المقارنة"><span>11</span><span class="toc-label">معاملات المقارنة</span><small data-done="comparison"></small></a><a data-lesson-link="switch" href="#switch" title="12 12. الجملة switch"><span>12</span><span class="toc-label">الجملة <bdi dir="ltr">switch</bdi></span><small data-done="switch"></small></a><a data-lesson-link="loops" href="#loops" title="13 13. مفهوم الحلقات التكرارية"><span>13</span><span class="toc-label">مفهوم الحلقات التكرارية</span><small data-done="loops"></small></a><a data-lesson-link="while" href="#while" title="14 14. حلقة while"><span>14</span><span class="toc-label">حلقة <bdi dir="ltr">while</bdi></span><small data-done="while"></small></a><a data-lesson-link="dowhile" href="#dowhile" title="15 15. حلقة do...while"><span>15</span><span class="toc-label">حلقة <bdi dir="ltr">do</bdi>...<bdi dir="ltr">while</bdi></span><small data-done="dowhile"></small></a><a data-lesson-link="for" href="#for" title="16 16. حلقة for"><span>16</span><span class="toc-label">حلقة <bdi dir="ltr">for</bdi></span><small data-done="for"></small></a><a data-lesson-link="arrays" href="#arrays" title="17 17. المصفوفات Arrays"><span>17</span><span class="toc-label">المصفوفات <bdi dir="ltr">Arrays</bdi></span><small data-done="arrays"></small></a><a data-lesson-link="arrays-loops" href="#arrays-loops" title="18 18. استخدام المصفوفات مع الحلقات"><span>18</span><span class="toc-label">استخدام المصفوفات مع الحلقات</span><small data-done="arrays-loops"></small></a><a data-lesson-link="functions" href="#functions" title="19 19. الدوال Functions"><span>19</span><span class="toc-label">الدوال <bdi dir="ltr">Functions</bdi></span><small data-done="functions"></small></a><a data-lesson-link="full-example" href="#full-example" title="20 20. مثال تطبيقي شامل"><span>20</span><span class="toc-label">مثال تطبيقي شامل</span><small data-done="full-example"></small></a><a data-lesson-link="interactive" href="#interactive" title="21 مختبر JavaScript"><span>21</span><span class="toc-label">مختبر <bdi dir="ltr">JavaScript</bdi></span><small data-done="interactive"></small></a><a data-lesson-link="exercises" href="#exercises" title="22 22. التمارين مع الحلول"><span>22</span><span class="toc-label">التمارين مع الحلول</span><small data-done="exercises"></small></a></nav></details></aside><main id="content"><section class="lesson" data-step="" id="intro">
 <div class="card-header">
 <div class="section-icon">⚡</div>
-<h2>1. مقدمة إلى JavaScript</h2>
+<h2>1. مقدمة إلى <bdi dir="ltr">JavaScript</bdi></h2>
 </div>
-<p>JavaScript هي لغة برمجة تستخدم لجعل صفحات الويب تفاعلية. عند استخدام HTML فقط تكون الصفحة ثابتة، أما مع JavaScript فيمكن التفاعل مع المستخدم، وقراءة البيانات، وتنفيذ العمليات، وتغيير المحتوى مباشرة.</p>
+<p><bdi dir="ltr">JavaScript</bdi> هي لغة برمجة تستخدم لجعل صفحات الويب تفاعلية. عند استخدام <bdi dir="ltr">HTML</bdi> فقط تكون الصفحة ثابتة، أما مع <bdi dir="ltr">JavaScript</bdi> فيمكن التفاعل مع المستخدم، وقراءة البيانات، وتنفيذ العمليات، وتغيير المحتوى مباشرة.</p>
 <div class="note">
 <div class="mini-title">💡 معلومة مهمة</div>
-          تعمل JavaScript داخل متصفح المستخدم، ولذلك تسمى برمجة جهة العميل <strong>Client-Side</strong>.
+          تعمل <bdi dir="ltr">JavaScript</bdi> داخل متصفح المستخدم، ولذلك تسمى برمجة جهة العميل <strong><bdi dir="ltr">Client-Side</bdi></strong>.
         </div>
-<h3>أهمية JavaScript</h3>
+<h3>أهمية <bdi dir="ltr">JavaScript</bdi></h3>
 <ul class="clean">
 <li>قراءة البيانات من المستخدم</li>
 <li>التحقق من صحة الإدخال</li>
@@ -20,9 +20,9 @@
 <div class="lesson-completion"><button aria-pressed="false" class="secondary" data-complete="intro" type="button">حدّد الدرس كمكتمل</button><span data-step-position="">الدرس 1 من 22</span></div><nav aria-label="التنقل بين الدروس" class="lesson-pagination"><span></span><a class="button" href="#addjs">الدرس التالي ←</a></nav></section><section class="lesson" data-step="" id="addjs">
 <div class="card-header">
 <div class="section-icon">🔗</div>
-<h2>2. إضافة JavaScript إلى صفحة HTML</h2>
+<h2>2. إضافة <bdi dir="ltr">JavaScript</bdi> إلى صفحة <bdi dir="ltr">HTML</bdi></h2>
 </div>
-<p>نستخدم الوسم <strong>&lt;script&gt;</strong> لكتابة JavaScript داخل HTML. هذا الوسم يخبر المتصفح أن الكود داخله هو JavaScript.</p>
+<p>نستخدم الوسم <strong>&lt;<bdi dir="ltr">script</bdi>&gt;</strong> لكتابة <bdi dir="ltr">JavaScript</bdi> داخل <bdi dir="ltr">HTML</bdi>. هذا الوسم يخبر المتصفح أن الكود داخله هو <bdi dir="ltr">JavaScript</bdi>.</p>
 <h3>المثال</h3>
 <div class="code-toolbar"><button data-copy-target="u3-addjs-0" type="button">نسخ الكود</button><a class="button secondary" href="../lab.html?example=u3-addjs-0">جرّب المثال</a></div><pre id="u3-addjs-0">&lt;html&gt;
 &lt;body&gt;
@@ -38,40 +38,40 @@ document.getElementById("demo").innerHTML = "My First JavaScript";
 &lt;/html&gt;</pre>
 <h3>شرح السطور</h3>
 <div class="explain-row"><span class="label">السطر 4</span><p>عنوان داخل الصفحة.</p></div>
-<div class="explain-row"><span class="label">السطر 5</span><p>فقرة HTML تحمل المعرف <code>demo</code>.</p></div>
-<div class="explain-row"><span class="label">السطر 8</span><p>الوصول للعنصر بالمعرف demo وتغيير محتواه عبر <code>innerHTML</code>.</p></div>
+<div class="explain-row"><span class="label">السطر 5</span><p>فقرة <bdi dir="ltr">HTML</bdi> تحمل المعرف <code>demo</code>.</p></div>
+<div class="explain-row"><span class="label">السطر 8</span><p>الوصول للعنصر بالمعرف <bdi dir="ltr">demo</bdi> وتغيير محتواه عبر <code>innerHTML</code>.</p></div>
 <div class="two-col" style="margin-top:14px">
 <div aria-live="polite" class="result-box"><div class="mini-title">📥 المدخل</div>لا يوجد.</div>
-<div aria-live="polite" class="result-box"><div class="mini-title">📤 المخرج</div>يظهر النص: <strong>My First JavaScript</strong></div>
+<div aria-live="polite" class="result-box"><div class="mini-title">📤 المخرج</div>يظهر النص: <strong><bdi dir="ltr">My First JavaScript</bdi></strong></div>
 </div>
 <div class="lesson-completion"><button aria-pressed="false" class="secondary" data-complete="addjs" type="button">حدّد الدرس كمكتمل</button><span data-step-position="">الدرس 2 من 22</span></div><nav aria-label="التنقل بين الدروس" class="lesson-pagination"><a class="button secondary" href="#intro">→ الدرس السابق</a><a class="button" href="#input-output">الدرس التالي ←</a></nav></section><section class="lesson" data-step="" id="input-output">
 <div class="card-header">
 <div class="section-icon">🖥️</div>
-<h2>3. الإدخال والإخراج في JavaScript</h2>
+<h2>3. الإدخال والإخراج في <bdi dir="ltr">JavaScript</bdi></h2>
 </div>
-<h3>أولاً: الإدخال — prompt()</h3>
+<h3>أولاً: الإدخال — <bdi dir="ltr">prompt</bdi>()</h3>
 <p>تعرض مربع حوار يطلب إدخالاً من المستخدم وتعيد القيمة المدخلة.</p>
 <div class="code-toolbar"><button data-copy-target="u3-input-output-0" type="button">نسخ الكود</button><a class="button secondary" href="../lab.html?example=u3-input-output-0">جرّب المثال</a></div><pre id="u3-input-output-0">var name = prompt("Please enter your name:");
 alert("Hello " + name);</pre>
 <div class="two-col" style="margin-top:10px">
-<div aria-live="polite" class="result-box"><div class="mini-title">📥 المدخل</div>Ahmad</div>
-<div aria-live="polite" class="result-box"><div class="mini-title">📤 المخرج</div>Hello Ahmad</div>
+<div aria-live="polite" class="result-box"><div class="mini-title">📥 المدخل</div><bdi dir="ltr">Ahmad</bdi></div>
+<div aria-live="polite" class="result-box"><div class="mini-title">📤 المخرج</div><bdi dir="ltr">Hello Ahmad</bdi></div>
 </div>
-<h3>ثانياً: الإخراج — alert()</h3>
+<h3>ثانياً: الإخراج — <bdi dir="ltr">alert</bdi>()</h3>
 <p>تعرض رسالة للمستخدم داخل مربع حوار.</p>
 <div class="code-toolbar"><button data-copy-target="u3-input-output-1" type="button">نسخ الكود</button><a class="button secondary" href="../lab.html?example=u3-input-output-1">جرّب المثال</a></div><pre id="u3-input-output-1">alert("Welcome to JavaScript");</pre>
-<h3>ثالثاً: الكتابة في الصفحة — document.write()</h3>
+<h3>ثالثاً: الكتابة في الصفحة — <bdi dir="ltr">document</bdi>.<bdi dir="ltr">write</bdi>()</h3>
 <div class="code-toolbar"><button data-copy-target="u3-input-output-2" type="button">نسخ الكود</button><a class="button secondary" href="../lab.html?example=u3-input-output-2">جرّب المثال</a></div><pre id="u3-input-output-2">document.write("This is JavaScript Output");</pre>
 <div class="warning" style="margin-top:10px">
 <div class="mini-title">⚠️ تنبيه</div>
-          يُفضَّل استخدام document.write في الأمثلة التعليمية البسيطة فقط.
+          يُفضَّل استخدام <bdi dir="ltr">document</bdi>.<bdi dir="ltr">write</bdi> في الأمثلة التعليمية البسيطة فقط.
         </div>
-<h3>رابعاً: تغيير محتوى عنصر — innerHTML</h3>
+<h3>رابعاً: تغيير محتوى عنصر — <bdi dir="ltr">innerHTML</bdi></h3>
 <div class="code-toolbar"><button data-copy-target="u3-input-output-3" type="button">نسخ الكود</button><a class="button secondary" href="../lab.html?example=u3-input-output-3">جرّب المثال</a></div><pre id="u3-input-output-3">&lt;p id="demo"&gt;&lt;/p&gt;
 &lt;script&gt;
 document.getElementById("demo").innerHTML = "Hello JavaScript";
 &lt;/script&gt;</pre>
-<!-- COMPARISON SECTION -->
+<bdi dir="ltr">COMPARISON SECTION</bdi>
 <div class="compare-section" style="margin-top:32px">
 <div class="compare-header">
 <span style="font-size:1.3rem">⚡</span>
@@ -79,81 +79,81 @@ document.getElementById("demo").innerHTML = "Hello JavaScript";
 <span class="compare-header-badge">مقارنة مهمة</span>
 </div>
 <div class="compare-grid">
-<!-- alert -->
+<bdi dir="ltr">alert</bdi>
 <div class="compare-col">
 <div class="compare-col-head">
-<span class="col-method alert-color">alert()</span>
+<span class="col-method alert-color"><bdi dir="ltr">alert</bdi>()</span>
 <span class="col-subtitle">مربع حوار منبثق</span>
 </div>
 <div class="compare-body">
 <div class="compare-row-item"><span class="dot alert-dot"></span>يعرض رسالة في نافذة منبثقة منفصلة</div>
 <div class="compare-row-item"><span class="dot alert-dot"></span>يوقف تنفيذ البرنامج حتى يضغط المستخدم موافق</div>
 <div class="compare-row-item"><span class="dot alert-dot"></span>لا يغير محتوى الصفحة</div>
-<div class="compare-row-item"><span class="dot alert-dot"></span>يظهر نص فقط، بدون تنسيق HTML</div>
+<div class="compare-row-item"><span class="dot alert-dot"></span>يظهر نص فقط، بدون تنسيق <bdi dir="ltr">HTML</bdi></div>
 </div>
 <div class="compare-use alert-use">✅ مثالي لـ: التنبيهات، تأكيد نتائج، الاختبار السريع</div>
 </div>
-<!-- document.write -->
+<bdi dir="ltr">document</bdi>.<bdi dir="ltr">write</bdi>
 <div class="compare-col">
 <div class="compare-col-head">
-<span class="col-method write-color">document.write()</span>
+<span class="col-method write-color"><bdi dir="ltr">document</bdi>.<bdi dir="ltr">write</bdi>()</span>
 <span class="col-subtitle">كتابة مباشرة في الصفحة</span>
 </div>
 <div class="compare-body">
 <div class="compare-row-item"><span class="dot write-dot"></span>يكتب النص مباشرة داخل صفحة الويب</div>
 <div class="compare-row-item"><span class="dot write-dot"></span>إذا استُدعي بعد تحميل الصفحة يمسح المحتوى كله</div>
 <div class="compare-row-item"><span class="dot write-dot"></span>لا يمكن تحديد مكان محدد في الصفحة</div>
-<div class="compare-row-item"><span class="dot write-dot"></span>يدعم كتابة وسوم HTML داخله</div>
+<div class="compare-row-item"><span class="dot write-dot"></span>يدعم كتابة وسوم <bdi dir="ltr">HTML</bdi> داخله</div>
 </div>
 <div class="compare-use write-use">⚠️ مثالي لـ: الأمثلة التعليمية البسيطة فقط</div>
 </div>
-<!-- innerHTML -->
+<bdi dir="ltr">innerHTML</bdi>
 <div class="compare-col">
 <div class="compare-col-head">
-<span class="col-method inner-color">innerHTML</span>
+<span class="col-method inner-color"><bdi dir="ltr">innerHTML</bdi></span>
 <span class="col-subtitle">تعديل عنصر محدد</span>
 </div>
 <div class="compare-body">
-<div class="compare-row-item"><span class="dot inner-dot"></span>يغير محتوى عنصر HTML بعينه عبر id</div>
+<div class="compare-row-item"><span class="dot inner-dot"></span>يغير محتوى عنصر <bdi dir="ltr">HTML</bdi> بعينه عبر <bdi dir="ltr">id</bdi></div>
 <div class="compare-row-item"><span class="dot inner-dot"></span>لا يؤثر على بقية محتوى الصفحة</div>
-<div class="compare-row-item"><span class="dot inner-dot"></span>يدعم وسوم HTML داخله</div>
+<div class="compare-row-item"><span class="dot inner-dot"></span>يدعم وسوم <bdi dir="ltr">HTML</bdi> داخله</div>
 <div class="compare-row-item"><span class="dot inner-dot"></span>الأسلوب الاحترافي المُفضَّل في المشاريع</div>
 </div>
 <div class="compare-use inner-use">🏆 مثالي لـ: المشاريع الحقيقية وتحديث أجزاء الصفحة</div>
 </div>
 </div>
 </div>
-<!-- Examples for each -->
+<bdi dir="ltr">Examples for each</bdi>
 <h3>أمثلة مقارنة — نفس النتيجة بثلاث طرق</h3>
 <p style="margin-bottom:4px">الهدف: عرض الجملة <code>"مرحباً بك في JavaScript"</code> بالطرق الثلاث:</p>
 <div class="compare-examples">
 <div class="compare-example-block">
-<div class="ceb-head ceb-alert">🔔 alert()</div>
-<div class="ceb-code">alert("مرحباً بك في JavaScript");</div>
+<div class="ceb-head ceb-alert">🔔 <bdi dir="ltr">alert</bdi>()</div>
+<div class="ceb-code"><bdi dir="ltr">alert</bdi>("مرحباً بك في <bdi dir="ltr">JavaScript</bdi>");</div>
 <div class="ceb-result">📤 النتيجة: <strong>نافذة منبثقة</strong> تحتوي الرسالة — تتوقف الصفحة حتى يغلقها المستخدم</div>
 </div>
 <div class="compare-example-block">
-<div class="ceb-head ceb-write">📄 document.write()</div>
-<div class="ceb-code">document.write("مرحباً بك في JavaScript");</div>
+<div class="ceb-head ceb-write">📄 <bdi dir="ltr">document</bdi>.<bdi dir="ltr">write</bdi>()</div>
+<div class="ceb-code"><bdi dir="ltr">document</bdi>.<bdi dir="ltr">write</bdi>("مرحباً بك في <bdi dir="ltr">JavaScript</bdi>");</div>
 <div class="ceb-result">📤 النتيجة: <strong>يُكتب النص</strong> داخل الصفحة في مكان تنفيذ السطر</div>
 </div>
 <div class="compare-example-block">
-<div class="ceb-head ceb-inner">✏️ innerHTML</div>
-<div class="ceb-code">&lt;p id="out"&gt;&lt;/p&gt;
-&lt;script&gt;
-document.getElementById("out")
-  .innerHTML = "مرحباً بك في JavaScript";
-&lt;/script&gt;</div>
-<div class="ceb-result">📤 النتيجة: <strong>يُحدَّث العنصر</strong> الذي id="out" فقط دون المساس بباقي الصفحة</div>
+<div class="ceb-head ceb-inner">✏️ <bdi dir="ltr">innerHTML</bdi></div>
+<div class="ceb-code">&lt;<bdi dir="ltr">p id</bdi>="<bdi dir="ltr">out</bdi>"&gt;&lt;/<bdi dir="ltr">p</bdi>&gt;
+&lt;<bdi dir="ltr">script</bdi>&gt;
+<bdi dir="ltr">document</bdi>.<bdi dir="ltr">getElementById</bdi>("<bdi dir="ltr">out</bdi>")
+  .<bdi dir="ltr">innerHTML</bdi> = "مرحباً بك في <bdi dir="ltr">JavaScript</bdi>";
+&lt;/<bdi dir="ltr">script</bdi>&gt;</div>
+<div class="ceb-result">📤 النتيجة: <strong>يُحدَّث العنصر</strong> الذي <bdi dir="ltr">id</bdi>="<bdi dir="ltr">out</bdi>" فقط دون المساس بباقي الصفحة</div>
 </div>
 </div>
-<!-- When to use -->
+<bdi dir="ltr">When to use</bdi>
 <div class="note" style="margin-top:20px">
 <div class="mini-title">💡 متى تستخدم كل طريقة؟</div>
 <ul class="clean" style="margin-top:8px">
-<li>استخدم <strong style="color:#ff9f43">alert()</strong> عند الحاجة لتنبيه المستخدم أو اختبار قيمة متغير بسرعة.</li>
-<li>استخدم <strong style="color:#48dbfb">document.write()</strong> في الأمثلة والشرح التعليمي البسيط فقط.</li>
-<li>استخدم <strong style="color:#ff6b9d">innerHTML</strong> في المشاريع الحقيقية لتحديث أجزاء محددة من الصفحة.</li>
+<li>استخدم <strong style="color:#ff9f43"><bdi dir="ltr">alert</bdi>()</strong> عند الحاجة لتنبيه المستخدم أو اختبار قيمة متغير بسرعة.</li>
+<li>استخدم <strong style="color:#48dbfb"><bdi dir="ltr">document</bdi>.<bdi dir="ltr">write</bdi>()</strong> في الأمثلة والشرح التعليمي البسيط فقط.</li>
+<li>استخدم <strong style="color:#ff6b9d"><bdi dir="ltr">innerHTML</bdi></strong> في المشاريع الحقيقية لتحديث أجزاء محددة من الصفحة.</li>
 </ul>
 </div>
 <div class="lesson-completion"><button aria-pressed="false" class="secondary" data-complete="input-output" type="button">حدّد الدرس كمكتمل</button><span data-step-position="">الدرس 3 من 22</span></div><nav aria-label="التنقل بين الدروس" class="lesson-pagination"><a class="button secondary" href="#addjs">→ الدرس السابق</a><a class="button" href="#variables">الدرس التالي ←</a></nav></section><section class="lesson" data-step="" id="variables">
@@ -161,7 +161,7 @@ document.getElementById("out")
 <div class="section-icon">📦</div>
 <h2>4. المتغيرات وأنواع البيانات</h2>
 </div>
-<p>المتغير مكان في الذاكرة لتخزين قيمة. في JavaScript نعرّف المتغير بالكلمة <code>var</code>.</p>
+<p>المتغير مكان في الذاكرة لتخزين قيمة. في <bdi dir="ltr">JavaScript</bdi> نعرّف المتغير بالكلمة <code>var</code>.</p>
 <h3>المثال</h3>
 <div class="code-toolbar"><button data-copy-target="u3-variables-0" type="button">نسخ الكود</button><a class="button secondary" href="../lab.html?example=u3-variables-0">جرّب المثال</a></div><pre id="u3-variables-0">var price1 = 5;
 var price2 = 6;
@@ -176,28 +176,28 @@ alert(total);</pre>
 <div class="types-grid">
 <div class="type-card">
 <span class="type-icon">📝</span>
-<span class="type-name">String</span>
-<span class="type-ex">"Ahmad"</span>
+<span class="type-name"><bdi dir="ltr">String</bdi></span>
+<span class="type-ex">"<bdi dir="ltr">Ahmad</bdi>"</span>
 </div>
 <div class="type-card">
 <span class="type-icon">🔢</span>
-<span class="type-name">Number</span>
+<span class="type-name"><bdi dir="ltr">Number</bdi></span>
 <span class="type-ex">25</span>
 </div>
 <div class="type-card">
 <span class="type-icon">✅</span>
-<span class="type-name">Boolean</span>
-<span class="type-ex">true / false</span>
+<span class="type-name"><bdi dir="ltr">Boolean</bdi></span>
+<span class="type-ex"><bdi dir="ltr">true</bdi> / <bdi dir="ltr">false</bdi></span>
 </div>
 </div>
 <div class="note" style="margin-top:14px">
 <div class="mini-title">💡 ملاحظة</div>
-          JavaScript حساسة لحالة الأحرف — المتغير <code>age</code> يختلف عن <code>Age</code>.
+<bdi dir="ltr">JavaScript</bdi> حساسة لحالة الأحرف — المتغير <code>age</code> يختلف عن <code>Age</code>.
         </div>
 <div class="lesson-completion"><button aria-pressed="false" class="secondary" data-complete="variables" type="button">حدّد الدرس كمكتمل</button><span data-step-position="">الدرس 4 من 22</span></div><nav aria-label="التنقل بين الدروس" class="lesson-pagination"><a class="button secondary" href="#input-output">→ الدرس السابق</a><a class="button" href="#number">الدرس التالي ←</a></nav></section><section class="lesson" data-step="" id="number">
 <div class="card-header">
 <div class="section-icon">🔄</div>
-<h2>5. تحويل النص إلى رقم — Number()</h2>
+<h2>5. تحويل النص إلى رقم — <bdi dir="ltr">Number</bdi>()</h2>
 </div>
 <p>دالة <code>prompt()</code> تعيد القيمة دائماً كنص. لإجراء عمليات حسابية يجب تحويله باستخدام <code>Number()</code>.</p>
 <h3>المثال</h3>
@@ -238,7 +238,7 @@ var mod = 10 % 3;  // 1</pre>
 <div class="section-icon">📐</div>
 <h2>7. ترتيب تنفيذ العمليات الحسابية</h2>
 </div>
-<p>إذا احتوى التعبير على أكثر من عملية، تنفذ JavaScript حسب ترتيب محدد:</p>
+<p>إذا احتوى التعبير على أكثر من عملية، تنفذ <bdi dir="ltr">JavaScript</bdi> حسب ترتيب محدد:</p>
 <ul class="clean">
 <li>الأقواس أولاً</li>
 <li>الضرب والقسمة</li>
@@ -253,7 +253,7 @@ alert(result);</pre>
 <div class="lesson-completion"><button aria-pressed="false" class="secondary" data-complete="precedence" type="button">حدّد الدرس كمكتمل</button><span data-step-position="">الدرس 7 من 22</span></div><nav aria-label="التنقل بين الدروس" class="lesson-pagination"><a class="button secondary" href="#operators">→ الدرس السابق</a><a class="button" href="#if">الدرس التالي ←</a></nav></section><section class="lesson" data-step="" id="if">
 <div class="card-header">
 <div class="section-icon">🔀</div>
-<h2>8. الجملة الشرطية if</h2>
+<h2>8. الجملة الشرطية <bdi dir="ltr">if</bdi></h2>
 </div>
 <p>تنفذ أوامر معينة إذا تحقق شرط محدد. إذا لم يتحقق الشرط يتم تجاهل الكود.</p>
 <h3>المثال — تحديد النجاح</h3>
@@ -264,12 +264,12 @@ if(mark &gt;= 50){
 }</pre>
 <div class="two-col" style="margin-top:12px">
 <div aria-live="polite" class="result-box"><div class="mini-title">📥 المدخل</div>70</div>
-<div aria-live="polite" class="result-box"><div class="mini-title">📤 المخرج</div><strong>Pass</strong></div>
+<div aria-live="polite" class="result-box"><div class="mini-title">📤 المخرج</div><strong><bdi dir="ltr">Pass</bdi></strong></div>
 </div>
 <div class="lesson-completion"><button aria-pressed="false" class="secondary" data-complete="if" type="button">حدّد الدرس كمكتمل</button><span data-step-position="">الدرس 8 من 22</span></div><nav aria-label="التنقل بين الدروس" class="lesson-pagination"><a class="button secondary" href="#precedence">→ الدرس السابق</a><a class="button" href="#ifelse">الدرس التالي ←</a></nav></section><section class="lesson" data-step="" id="ifelse">
 <div class="card-header">
 <div class="section-icon">⚖️</div>
-<h2>9. الجملة الشرطية if...else</h2>
+<h2>9. الجملة الشرطية <bdi dir="ltr">if</bdi>...<bdi dir="ltr">else</bdi></h2>
 </div>
 <p>تستخدم عند وجود مسارين: مسار إذا تحقق الشرط، وآخر إذا لم يتحقق.</p>
 <h3>المثال</h3>
@@ -283,12 +283,12 @@ else{
 }</pre>
 <div class="two-col" style="margin-top:12px">
 <div aria-live="polite" class="result-box"><div class="mini-title">📥 المدخل</div>40</div>
-<div aria-live="polite" class="result-box"><div class="mini-title">📤 المخرج</div><strong>Fail</strong></div>
+<div aria-live="polite" class="result-box"><div class="mini-title">📤 المخرج</div><strong><bdi dir="ltr">Fail</bdi></strong></div>
 </div>
 <div class="lesson-completion"><button aria-pressed="false" class="secondary" data-complete="ifelse" type="button">حدّد الدرس كمكتمل</button><span data-step-position="">الدرس 9 من 22</span></div><nav aria-label="التنقل بين الدروس" class="lesson-pagination"><a class="button secondary" href="#if">→ الدرس السابق</a><a class="button" href="#elseif">الدرس التالي ←</a></nav></section><section class="lesson" data-step="" id="elseif">
 <div class="card-header">
 <div class="section-icon">🎯</div>
-<h2>10. الجملة الشرطية else if</h2>
+<h2>10. الجملة الشرطية <bdi dir="ltr">else if</bdi></h2>
 </div>
 <p>تستخدم عند وجود أكثر من احتمال أو مسار.</p>
 <h3>المثال — تقدير الطالب</h3>
@@ -311,7 +311,7 @@ else{
 }</pre>
 <div class="two-col" style="margin-top:12px">
 <div aria-live="polite" class="result-box"><div class="mini-title">📥 المدخل</div>85</div>
-<div aria-live="polite" class="result-box"><div class="mini-title">📤 المخرج</div><strong>Very Good</strong></div>
+<div aria-live="polite" class="result-box"><div class="mini-title">📤 المخرج</div><strong><bdi dir="ltr">Very Good</bdi></strong></div>
 </div>
 <div class="lesson-completion"><button aria-pressed="false" class="secondary" data-complete="elseif" type="button">حدّد الدرس كمكتمل</button><span data-step-position="">الدرس 10 من 22</span></div><nav aria-label="التنقل بين الدروس" class="lesson-pagination"><a class="button secondary" href="#ifelse">→ الدرس السابق</a><a class="button" href="#comparison">الدرس التالي ←</a></nav></section><section class="lesson" data-step="" id="comparison">
 <div class="card-header">
@@ -340,9 +340,9 @@ else{
 <div class="lesson-completion"><button aria-pressed="false" class="secondary" data-complete="comparison" type="button">حدّد الدرس كمكتمل</button><span data-step-position="">الدرس 11 من 22</span></div><nav aria-label="التنقل بين الدروس" class="lesson-pagination"><a class="button secondary" href="#elseif">→ الدرس السابق</a><a class="button" href="#switch">الدرس التالي ←</a></nav></section><section class="lesson" data-step="" id="switch">
 <div class="card-header">
 <div class="section-icon">🔘</div>
-<h2>12. الجملة switch</h2>
+<h2>12. الجملة <bdi dir="ltr">switch</bdi></h2>
 </div>
-<p>تستخدم عند اختيار تنفيذ معين بناءً على قيمة متغير واحد مع عدة حالات. بديل منظم عن if المتعددة.</p>
+<p>تستخدم عند اختيار تنفيذ معين بناءً على قيمة متغير واحد مع عدة حالات. بديل منظم عن <bdi dir="ltr">if</bdi> المتعددة.</p>
 <h3>المثال — أيام الأسبوع</h3>
 <div class="code-toolbar"><button data-copy-target="u3-switch-0" type="button">نسخ الكود</button><a class="button secondary" href="../lab.html?example=u3-switch-0">جرّب المثال</a></div><pre id="u3-switch-0">var day = Number(prompt("Enter day number (1-3)"));
 
@@ -364,13 +364,13 @@ switch(day){
     alert("Invalid day");
 }</pre>
 <h3>شرح العناصر</h3>
-<div class="explain-row"><span class="label">switch(day)</span><p>فحص قيمة المتغير day.</p></div>
-<div class="explain-row"><span class="label">case</span><p>حالة معينة يتم فحصها.</p></div>
-<div class="explain-row"><span class="label">break</span><p>الخروج من switch بعد تنفيذ الحالة.</p></div>
-<div class="explain-row"><span class="label">default</span><p>تنفذ إذا لم تتحقق أي حالة.</p></div>
+<div class="explain-row"><span class="label"><bdi dir="ltr">switch</bdi>(<bdi dir="ltr">day</bdi>)</span><p>فحص قيمة المتغير <bdi dir="ltr">day</bdi>.</p></div>
+<div class="explain-row"><span class="label"><bdi dir="ltr">case</bdi></span><p>حالة معينة يتم فحصها.</p></div>
+<div class="explain-row"><span class="label"><bdi dir="ltr">break</bdi></span><p>الخروج من <bdi dir="ltr">switch</bdi> بعد تنفيذ الحالة.</p></div>
+<div class="explain-row"><span class="label"><bdi dir="ltr">default</bdi></span><p>تنفذ إذا لم تتحقق أي حالة.</p></div>
 <div class="two-col" style="margin-top:12px">
 <div aria-live="polite" class="result-box"><div class="mini-title">📥 المدخل</div>2</div>
-<div aria-live="polite" class="result-box"><div class="mini-title">📤 المخرج</div><strong>Monday</strong></div>
+<div aria-live="polite" class="result-box"><div class="mini-title">📤 المخرج</div><strong><bdi dir="ltr">Monday</bdi></strong></div>
 </div>
 <div class="lesson-completion"><button aria-pressed="false" class="secondary" data-complete="switch" type="button">حدّد الدرس كمكتمل</button><span data-step-position="">الدرس 12 من 22</span></div><nav aria-label="التنقل بين الدروس" class="lesson-pagination"><a class="button secondary" href="#comparison">→ الدرس السابق</a><a class="button" href="#loops">الدرس التالي ←</a></nav></section><section class="lesson" data-step="" id="loops">
 <div class="card-header">
@@ -379,14 +379,14 @@ switch(day){
 </div>
 <p>نستخدم الحلقات لتكرار الأوامر عدة مرات بدلاً من كتابة نفس الكود مرات كثيرة.</p>
 <div class="ops-grid" style="margin-top:14px">
-<div class="op-chip"><span class="op-sym" style="font-size:1rem">while</span><span class="op-name">طالما الشرط صحيح</span></div>
-<div class="op-chip"><span class="op-sym" style="font-size:0.85rem">do...while</span><span class="op-name">مرة على الأقل</span></div>
-<div class="op-chip"><span class="op-sym" style="font-size:1rem">for</span><span class="op-name">عدد محدد</span></div>
+<div class="op-chip"><span class="op-sym" style="font-size:1rem"><bdi dir="ltr">while</bdi></span><span class="op-name">طالما الشرط صحيح</span></div>
+<div class="op-chip"><span class="op-sym" style="font-size:0.85rem"><bdi dir="ltr">do</bdi>...<bdi dir="ltr">while</bdi></span><span class="op-name">مرة على الأقل</span></div>
+<div class="op-chip"><span class="op-sym" style="font-size:1rem"><bdi dir="ltr">for</bdi></span><span class="op-name">عدد محدد</span></div>
 </div>
 <div class="lesson-completion"><button aria-pressed="false" class="secondary" data-complete="loops" type="button">حدّد الدرس كمكتمل</button><span data-step-position="">الدرس 13 من 22</span></div><nav aria-label="التنقل بين الدروس" class="lesson-pagination"><a class="button secondary" href="#switch">→ الدرس السابق</a><a class="button" href="#while">الدرس التالي ←</a></nav></section><section class="lesson" data-step="" id="while">
 <div class="card-header">
 <div class="section-icon">🔄</div>
-<h2>14. حلقة while</h2>
+<h2>14. حلقة <bdi dir="ltr">while</bdi></h2>
 </div>
 <p>تنفذ الأوامر طالما أن الشرط صحيح.</p>
 <h3>المثال — طباعة 1 إلى 5</h3>
@@ -397,16 +397,16 @@ while(i &lt;= 5){
   i++;
 }</pre>
 <h3>شرح السطور</h3>
-<div class="explain-row"><span class="label">i = 1</span><p>تعريف عداد يبدأ من 1.</p></div>
-<div class="explain-row"><span class="label">i &lt;= 5</span><p>تكرار طالما i أقل أو يساوي 5.</p></div>
-<div class="explain-row"><span class="label">i++</span><p>زيادة العداد بمقدار 1 في كل دورة.</p></div>
+<div class="explain-row"><span class="label"><bdi dir="ltr">i</bdi> = 1</span><p>تعريف عداد يبدأ من 1.</p></div>
+<div class="explain-row"><span class="label"><bdi dir="ltr">i</bdi> &lt;= 5</span><p>تكرار طالما <bdi dir="ltr">i</bdi> أقل أو يساوي 5.</p></div>
+<div class="explain-row"><span class="label"><bdi dir="ltr">i</bdi>++</span><p>زيادة العداد بمقدار 1 في كل دورة.</p></div>
 <div class="output-badge">📤 المخرج: 1 ثم 2 ثم 3 ثم 4 ثم 5</div>
 <div class="lesson-completion"><button aria-pressed="false" class="secondary" data-complete="while" type="button">حدّد الدرس كمكتمل</button><span data-step-position="">الدرس 14 من 22</span></div><nav aria-label="التنقل بين الدروس" class="lesson-pagination"><a class="button secondary" href="#loops">→ الدرس السابق</a><a class="button" href="#dowhile">الدرس التالي ←</a></nav></section><section class="lesson" data-step="" id="dowhile">
 <div class="card-header">
 <div class="section-icon">🔃</div>
-<h2>15. حلقة do...while</h2>
+<h2>15. حلقة <bdi dir="ltr">do</bdi>...<bdi dir="ltr">while</bdi></h2>
 </div>
-<p>تشبه while لكنها تنفذ الأوامر <strong>مرة واحدة على الأقل</strong> قبل فحص الشرط.</p>
+<p>تشبه <bdi dir="ltr">while</bdi> لكنها تنفذ الأوامر <strong>مرة واحدة على الأقل</strong> قبل فحص الشرط.</p>
 <h3>المثال</h3>
 <div class="code-toolbar"><button data-copy-target="u3-dowhile-0" type="button">نسخ الكود</button><a class="button secondary" href="../lab.html?example=u3-dowhile-0">جرّب المثال</a></div><pre id="u3-dowhile-0">var number;
 
@@ -418,12 +418,12 @@ while(number &lt;= 10);
 alert("Correct number");</pre>
 <div class="two-col" style="margin-top:12px">
 <div aria-live="polite" class="result-box"><div class="mini-title">📥 المدخل</div>5 ثم 7 ثم 12</div>
-<div aria-live="polite" class="result-box"><div class="mini-title">📤 المخرج</div><strong>Correct number</strong></div>
+<div aria-live="polite" class="result-box"><div class="mini-title">📤 المخرج</div><strong><bdi dir="ltr">Correct number</bdi></strong></div>
 </div>
 <div class="lesson-completion"><button aria-pressed="false" class="secondary" data-complete="dowhile" type="button">حدّد الدرس كمكتمل</button><span data-step-position="">الدرس 15 من 22</span></div><nav aria-label="التنقل بين الدروس" class="lesson-pagination"><a class="button secondary" href="#while">→ الدرس السابق</a><a class="button" href="#for">الدرس التالي ←</a></nav></section><section class="lesson" data-step="" id="for">
 <div class="card-header">
 <div class="section-icon">🔢</div>
-<h2>16. حلقة for</h2>
+<h2>16. حلقة <bdi dir="ltr">for</bdi></h2>
 </div>
 <p>تستخدم عندما يكون عدد مرات التكرار معروفاً مسبقاً. تتكون من: <strong>بداية، شرط، تحديث</strong>.</p>
 <h3>المثال — مجموع 1 إلى 5</h3>
@@ -435,15 +435,15 @@ for(var i = 1; i &lt;= 5; i++){
 
 alert(sum);</pre>
 <h3>شرح السطور</h3>
-<div class="explain-row"><span class="label">i = 1</span><p>بداية العداد.</p></div>
-<div class="explain-row"><span class="label">i &lt;= 5</span><p>شرط استمرار الحلقة.</p></div>
-<div class="explain-row"><span class="label">i++</span><p>زيادة العداد بعد كل دورة.</p></div>
-<div class="explain-row"><span class="label">sum = sum + i</span><p>إضافة قيمة العداد للمجموع.</p></div>
+<div class="explain-row"><span class="label"><bdi dir="ltr">i</bdi> = 1</span><p>بداية العداد.</p></div>
+<div class="explain-row"><span class="label"><bdi dir="ltr">i</bdi> &lt;= 5</span><p>شرط استمرار الحلقة.</p></div>
+<div class="explain-row"><span class="label"><bdi dir="ltr">i</bdi>++</span><p>زيادة العداد بعد كل دورة.</p></div>
+<div class="explain-row"><span class="label"><bdi dir="ltr">sum</bdi> = <bdi dir="ltr">sum</bdi> + <bdi dir="ltr">i</bdi></span><p>إضافة قيمة العداد للمجموع.</p></div>
 <div class="output-badge">📤 المخرج: 15</div>
 <div class="lesson-completion"><button aria-pressed="false" class="secondary" data-complete="for" type="button">حدّد الدرس كمكتمل</button><span data-step-position="">الدرس 16 من 22</span></div><nav aria-label="التنقل بين الدروس" class="lesson-pagination"><a class="button secondary" href="#dowhile">→ الدرس السابق</a><a class="button" href="#arrays">الدرس التالي ←</a></nav></section><section class="lesson" data-step="" id="arrays">
 <div class="card-header">
 <div class="section-icon">📋</div>
-<h2>17. المصفوفات Arrays</h2>
+<h2>17. المصفوفات <bdi dir="ltr">Arrays</bdi></h2>
 </div>
 <p>تسمح بتخزين عدة قيم داخل متغير واحد. كل عنصر له رقم فهرس يبدأ من الصفر.</p>
 <h3>المثال</h3>
@@ -451,10 +451,10 @@ alert(sum);</pre>
 
 alert(cars[0]);</pre>
 <h3>شرح السطور</h3>
-<div class="explain-row"><span class="label">cars[0]</span><p>العنصر الأول (BMW) — الفهرس يبدأ من 0.</p></div>
-<div class="explain-row"><span class="label">cars[1]</span><p>العنصر الثاني (Toyota).</p></div>
-<div class="explain-row"><span class="label">cars[2]</span><p>العنصر الثالث (Volvo).</p></div>
-<div class="output-badge">📤 المخرج: BMW</div>
+<div class="explain-row"><span class="label"><bdi dir="ltr">cars</bdi>[0]</span><p>العنصر الأول (<bdi dir="ltr">BMW</bdi>) — الفهرس يبدأ من 0.</p></div>
+<div class="explain-row"><span class="label"><bdi dir="ltr">cars</bdi>[1]</span><p>العنصر الثاني (<bdi dir="ltr">Toyota</bdi>).</p></div>
+<div class="explain-row"><span class="label"><bdi dir="ltr">cars</bdi>[2]</span><p>العنصر الثالث (<bdi dir="ltr">Volvo</bdi>).</p></div>
+<div class="output-badge">📤 المخرج: <bdi dir="ltr">BMW</bdi></div>
 <div class="lesson-completion"><button aria-pressed="false" class="secondary" data-complete="arrays" type="button">حدّد الدرس كمكتمل</button><span data-step-position="">الدرس 17 من 22</span></div><nav aria-label="التنقل بين الدروس" class="lesson-pagination"><a class="button secondary" href="#for">→ الدرس السابق</a><a class="button" href="#arrays-loops">الدرس التالي ←</a></nav></section><section class="lesson" data-step="" id="arrays-loops">
 <div class="card-header">
 <div class="section-icon">🔄</div>
@@ -468,13 +468,13 @@ for(var i = 0; i &lt; cars.length; i++){
   alert(cars[i]);
 }</pre>
 <h3>شرح السطور</h3>
-<div class="explain-row"><span class="label">cars.length</span><p>عدد عناصر المصفوفة (3).</p></div>
-<div class="explain-row"><span class="label">cars[i]</span><p>الوصول للعنصر الحالي حسب قيمة i.</p></div>
-<div class="output-badge">📤 المخرج: BMW ثم Toyota ثم Volvo</div>
+<div class="explain-row"><span class="label"><bdi dir="ltr">cars</bdi>.<bdi dir="ltr">length</bdi></span><p>عدد عناصر المصفوفة (3).</p></div>
+<div class="explain-row"><span class="label"><bdi dir="ltr">cars</bdi>[<bdi dir="ltr">i</bdi>]</span><p>الوصول للعنصر الحالي حسب قيمة <bdi dir="ltr">i</bdi>.</p></div>
+<div class="output-badge">📤 المخرج: <bdi dir="ltr">BMW</bdi> ثم <bdi dir="ltr">Toyota</bdi> ثم <bdi dir="ltr">Volvo</bdi></div>
 <div class="lesson-completion"><button aria-pressed="false" class="secondary" data-complete="arrays-loops" type="button">حدّد الدرس كمكتمل</button><span data-step-position="">الدرس 18 من 22</span></div><nav aria-label="التنقل بين الدروس" class="lesson-pagination"><a class="button secondary" href="#arrays">→ الدرس السابق</a><a class="button" href="#functions">الدرس التالي ←</a></nav></section><section class="lesson" data-step="" id="functions">
 <div class="card-header">
 <div class="section-icon">⚙️</div>
-<h2>19. الدوال Functions</h2>
+<h2>19. الدوال <bdi dir="ltr">Functions</bdi></h2>
 </div>
 <p>الدالة مجموعة أوامر تنفذ مهمة محددة. تستخدم لتنظيم الكود وتقليل التكرار وإعادة الاستخدام.</p>
 <h3>المثال — دالة الضرب</h3>
@@ -486,9 +486,9 @@ var result = multiply(4, 3);
 
 alert(result);</pre>
 <h3>شرح السطور</h3>
-<div class="explain-row"><span class="label">function multiply(a,b)</span><p>تعريف دالة اسمها multiply تستقبل رقمين.</p></div>
-<div class="explain-row"><span class="label">return a * b</span><p>تعيد حاصل ضرب الرقمين.</p></div>
-<div class="explain-row"><span class="label">multiply(4, 3)</span><p>استدعاء الدالة بالقيمتين 4 و3.</p></div>
+<div class="explain-row"><span class="label"><bdi dir="ltr">function multiply</bdi>(<bdi dir="ltr">a</bdi>,<bdi dir="ltr">b</bdi>)</span><p>تعريف دالة اسمها <bdi dir="ltr">multiply</bdi> تستقبل رقمين.</p></div>
+<div class="explain-row"><span class="label"><bdi dir="ltr">return a</bdi> * <bdi dir="ltr">b</bdi></span><p>تعيد حاصل ضرب الرقمين.</p></div>
+<div class="explain-row"><span class="label"><bdi dir="ltr">multiply</bdi>(4, 3)</span><p>استدعاء الدالة بالقيمتين 4 و3.</p></div>
 <div class="output-badge">📤 المخرج: 12</div>
 <div class="lesson-completion"><button aria-pressed="false" class="secondary" data-complete="functions" type="button">حدّد الدرس كمكتمل</button><span data-step-position="">الدرس 19 من 22</span></div><nav aria-label="التنقل بين الدروس" class="lesson-pagination"><a class="button secondary" href="#arrays-loops">→ الدرس السابق</a><a class="button" href="#full-example">الدرس التالي ←</a></nav></section><section class="lesson" data-step="" id="full-example">
 <div class="card-header">
@@ -509,14 +509,14 @@ alert("Total = " + sum);</pre>
 <h3>شرح السطور</h3>
 <div class="explain-row"><span class="label">السطر 1</span><p>قراءة عدد القيم المراد إدخالها.</p></div>
 <div class="explain-row"><span class="label">السطر 2</span><p>تعريف متغير المجموع وتهيئته بصفر.</p></div>
-<div class="explain-row"><span class="label">السطر 4</span><p>حلقة تتكرر n مرة.</p></div>
+<div class="explain-row"><span class="label">السطر 4</span><p>حلقة تتكرر <bdi dir="ltr">n</bdi> مرة.</p></div>
 <div class="explain-row"><span class="label">السطر 5</span><p>قراءة قيمة جديدة في كل دورة.</p></div>
 <div class="explain-row"><span class="label">السطر 6</span><p>إضافة القيمة للمجموع.</p></div>
 <div class="two-col" style="margin-top:12px">
 <div aria-live="polite" class="result-box"><div class="mini-title">📥 المدخل</div>3 ثم 5 ثم 7 ثم 10</div>
-<div aria-live="polite" class="result-box"><div class="mini-title">📤 المخرج</div><strong>Total = 22</strong></div>
+<div aria-live="polite" class="result-box"><div class="mini-title">📤 المخرج</div><strong><bdi dir="ltr">Total</bdi> = 22</strong></div>
 </div>
-<div class="lesson-completion"><button aria-pressed="false" class="secondary" data-complete="full-example" type="button">حدّد الدرس كمكتمل</button><span data-step-position="">الدرس 20 من 22</span></div><nav aria-label="التنقل بين الدروس" class="lesson-pagination"><a class="button secondary" href="#functions">→ الدرس السابق</a><a class="button" href="#interactive">الدرس التالي ←</a></nav></section><section class="lesson" data-step="" id="interactive"><h2>مختبر JavaScript</h2><p>تظهر رسائل alert وconsole في مساحة النتيجة، وتدخل قيم prompt سطراً لكل قيمة.</p><a class="button" href="../lab.html?unit=3">تجربة جديدة</a><div class="lesson-completion"><button aria-pressed="false" class="secondary" data-complete="interactive" type="button">حدّد الدرس كمكتمل</button><span data-step-position="">الدرس 21 من 22</span></div><nav aria-label="التنقل بين الدروس" class="lesson-pagination"><a class="button secondary" href="#full-example">→ الدرس السابق</a><a class="button" href="#exercises">الدرس التالي ←</a></nav></section><section class="lesson" data-step="" id="exercises">
+<div class="lesson-completion"><button aria-pressed="false" class="secondary" data-complete="full-example" type="button">حدّد الدرس كمكتمل</button><span data-step-position="">الدرس 20 من 22</span></div><nav aria-label="التنقل بين الدروس" class="lesson-pagination"><a class="button secondary" href="#functions">→ الدرس السابق</a><a class="button" href="#interactive">الدرس التالي ←</a></nav></section><section class="lesson" data-step="" id="interactive"><h2>مختبر <bdi dir="ltr">JavaScript</bdi></h2><p>تظهر رسائل <bdi dir="ltr">alert</bdi> و<bdi dir="ltr">console</bdi> في مساحة النتيجة، وتدخل قيم <bdi dir="ltr">prompt</bdi> سطراً لكل قيمة.</p><a class="button" href="../lab.html?unit=3">تجربة جديدة</a><div class="lesson-completion"><button aria-pressed="false" class="secondary" data-complete="interactive" type="button">حدّد الدرس كمكتمل</button><span data-step-position="">الدرس 21 من 22</span></div><nav aria-label="التنقل بين الدروس" class="lesson-pagination"><a class="button secondary" href="#full-example">→ الدرس السابق</a><a class="button" href="#exercises">الدرس التالي ←</a></nav></section><section class="lesson" data-step="" id="exercises">
 <div class="card-header">
 <div class="section-icon">📝</div>
 <h2>22. التمارين مع الحلول</h2>
@@ -567,7 +567,7 @@ else{
 <details class="exercise">
 <summary>التمرين 5 — تحديد نجاح الطالب</summary>
 <div class="exercise-body">
-<p>إذا كانت الدرجة ≥ 50 يظهر Pass، وإلا Fail.</p>
+<p>إذا كانت الدرجة ≥ 50 يظهر <bdi dir="ltr">Pass</bdi>، وإلا <bdi dir="ltr">Fail</bdi>.</p>
 <div class="code-toolbar"><button data-copy-target="u3-exercises-4" type="button">نسخ الكود</button><a class="button secondary" href="../lab.html?example=u3-exercises-4">جرّب المثال</a></div><pre id="u3-exercises-4">var mark = Number(prompt("Enter student mark"));
 
 if(mark &gt;= 50){
@@ -581,7 +581,7 @@ else{
 <details class="exercise">
 <summary>التمرين 6 — مجموع 1 إلى 10</summary>
 <div class="exercise-body">
-<p>استخدم حلقة for لحساب مجموع الأرقام من 1 إلى 10.</p>
+<p>استخدم حلقة <bdi dir="ltr">for</bdi> لحساب مجموع الأرقام من 1 إلى 10.</p>
 <div class="code-toolbar"><button data-copy-target="u3-exercises-5" type="button">نسخ الكود</button><a class="button secondary" href="../lab.html?example=u3-exercises-5">جرّب المثال</a></div><pre id="u3-exercises-5">var sum = 0;
 
 for(var i = 1; i &lt;= 10; i++){
@@ -592,9 +592,9 @@ alert("Sum = " + sum);</pre>
 </div>
 </details>
 <details class="exercise">
-<summary>التمرين 7 — طباعة 1 إلى 5 بـ while</summary>
+<summary>التمرين 7 — طباعة 1 إلى 5 بـ <bdi dir="ltr">while</bdi></summary>
 <div class="exercise-body">
-<p>استخدم حلقة while لطباعة الأرقام من 1 إلى 5.</p>
+<p>استخدم حلقة <bdi dir="ltr">while</bdi> لطباعة الأرقام من 1 إلى 5.</p>
 <div class="code-toolbar"><button data-copy-target="u3-exercises-6" type="button">نسخ الكود</button><a class="button secondary" href="../lab.html?example=u3-exercises-6">جرّب المثال</a></div><pre id="u3-exercises-6">var i = 1;
 
 while(i &lt;= 5){
@@ -619,7 +619,7 @@ alert("Average = " + avg);</pre>
 <details class="exercise">
 <summary>التمرين 9 — استخدام المصفوفة</summary>
 <div class="exercise-body">
-<p>أنشئ مصفوفة تحتوي أسماء ثلاث مدن واعرضها باستخدام for.</p>
+<p>أنشئ مصفوفة تحتوي أسماء ثلاث مدن واعرضها باستخدام <bdi dir="ltr">for</bdi>.</p>
 <div class="code-toolbar"><button data-copy-target="u3-exercises-8" type="button">نسخ الكود</button><a class="button secondary" href="../lab.html?example=u3-exercises-8">جرّب المثال</a></div><pre id="u3-exercises-8">var cities = ["Hebron", "Jerusalem", "Ramallah"];
 
 for(var i = 0; i &lt; cities.length; i++){
@@ -639,4 +639,4 @@ var result = square(5);
 alert(result);</pre>
 </div>
 </details>
-<div class="lesson-completion"><button aria-pressed="false" class="secondary" data-complete="exercises" type="button">حدّد الدرس كمكتمل</button><span data-step-position="">الدرس 22 من 22</span></div><nav aria-label="التنقل بين الدروس" class="lesson-pagination"><a class="button secondary" href="#interactive">→ الدرس السابق</a><a class="button" href="unit4.html">الوحدة التالية ←</a></nav></section></main></div><p class="learning-wrap save-notice" data-save-status role="status"></p><footer class="learning-footer"><p>جامعة القدس المفتوحة · فرع الخليل · إعداد الأستاذ أحمد عوني النتشة</p><p>موقع تعليمي مساند غير رسمي لا يغني عن الكتاب المعتمد.</p><a href="../index.html">خريطة المقرر</a></footer></body></html>
+<div class="lesson-completion"><button aria-pressed="false" class="secondary" data-complete="exercises" type="button">حدّد الدرس كمكتمل</button><span data-step-position="">الدرس 22 من 22</span></div><nav aria-label="التنقل بين الدروس" class="lesson-pagination"><a class="button secondary" href="#interactive">→ الدرس السابق</a><a class="button" href="unit4.html">الوحدة التالية ←</a></nav></section></main></div><p class="learning-wrap save-notice" data-save-status="" role="status"></p><footer class="learning-footer"><p>جامعة القدس المفتوحة · فرع الخليل · إعداد الأستاذ أحمد عوني النتشة</p><p>موقع تعليمي مساند غير رسمي لا يغني عن الكتاب المعتمد.</p><a href="../index.html">خريطة المقرر</a></footer></body></html>
