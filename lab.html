@@ -1,0 +1,14 @@
+<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>مختبر الأكواد | مقرر 1266</title><link rel="stylesheet" href="assets/css/learning.css"><script src="assets/js/learning.js" defer></script></head><body class="learning-page"><header class="learning-hero"><div class="learning-wrap"><h1>جرّب، عدّل، وشاهد النتيجة</h1><p>مختبر HTML وCSS وJavaScript للوحدات الثانية والثالثة والرابعة.</p></div></header><main class="learning-wrap"><section class="lesson" data-lab><h2>مساحة التجربة</h2><p>الصق صفحة HTML كاملة، أو ابدأ بالمثال. يعمل الكود داخل إطار معزول. تُفقد التعديلات عند إعادة تحميل الصفحة؛ انسخ عملك إلى ملف لحفظه.</p><label for="lab-code">الكود</label><textarea id="lab-code" spellcheck="false" dir="ltr">&lt;!doctype html&gt;
+&lt;html lang=&quot;ar&quot; dir=&quot;rtl&quot;&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;title&gt;تجربتي&lt;/title&gt;
+&lt;style&gt;body {font-family:Tahoma; padding:20px;} button {padding:10px; background:#004d99; color:white;}&lt;/style&gt;
+&lt;h1&gt;مرحباً بك في المختبر&lt;/h1&gt;
+&lt;p id=&quot;message&quot;&gt;غيّر النص أو اللون، ثم شغّل الكود.&lt;/p&gt;
+&lt;button id=&quot;greet&quot;&gt;جرّب التفاعل&lt;/button&gt;
+&lt;script&gt;
+document.querySelector(&#x27;#greet&#x27;).addEventListener(&#x27;click&#x27;, () =&gt; {
+ document.querySelector(&#x27;#message&#x27;).textContent = &#x27;نجح تطبيقك!&#x27;;
+});
+&lt;/script&gt;
+&lt;/html&gt;</textarea><button data-run type="button">تشغيل الكود</button><button data-reset type="button">استعادة المثال</button><h3>النتيجة</h3><iframe sandbox="allow-scripts" title="معاينة نتيجة الكود" referrerpolicy="no-referrer"></iframe><details><summary>تحديات سريعة</summary><ol><li>HTML: أضف قائمة تضم ثلاث هوايات ورابطاً.</li><li>CSS: غيّر لون الزر وحجم العنوان.</li><li>JavaScript: اجعل الزر يعد النقرات بدلاً من عرض رسالة واحدة.</li><li>DOM: أضف حقلاً، واقرأ قيمته عند النقر.</li></ol></details><p class="note">هذه المعاينة لا تنفّذ PHP أو SQL. شغّلهما محلياً وفق تعليمات الوحدة الخامسة. استخدم أمثلة قصيرة؛ قد تؤدي الحلقة غير المنتهية إلى تعليق المعاينة.</p><a href="units/unit5.html">انتقل إلى مختبر PHP وSQL</a></section></main></body></html>

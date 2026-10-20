@@ -887,7 +887,7 @@
     }
     .pptx-link:hover .pptx-dl { background: rgba(208,74,31,0.28); }
   </style>
-</head>
+<link rel="stylesheet" href="../assets/css/learning.css"><script src="../assets/js/learning.js" defer></script></head>
 <body id="top">
 
 <div class="container">
@@ -896,28 +896,7 @@
     <a href="../index.html" class="home-link">
       🏠 الصفحة الرئيسية
     </a>
-    <a href="downloads/unit3/JavaScript_Web_Programming.pptx" class="pptx-link" download>
-      <span class="pptx-icon">
-        <svg width="22" height="22" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect width="32" height="32" rx="7" fill="#D04A1F"/>
-          <path d="M7 8h11l7 7v9a1 1 0 01-1 1H7a1 1 0 01-1-1V9a1 1 0 011-1z" fill="white" fill-opacity="0.15"/>
-          <path d="M18 8l7 7h-6a1 1 0 01-1-1V8z" fill="white" fill-opacity="0.3"/>
-          <rect x="9" y="17" width="14" height="2" rx="1" fill="white"/>
-          <rect x="9" y="21" width="10" height="2" rx="1" fill="white"/>
-          <rect x="9" y="13" width="7" height="2" rx="1" fill="white"/>
-        </svg>
-      </span>
-      <span class="pptx-text">
-        <span class="pptx-label">عرض البوربوينت</span>
-        <span class="pptx-filename">JavaScript_Web_Programming.pptx</span>
-      </span>
-      <span class="pptx-dl">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M12 4v12M6 14l6 6 6-6"/><path d="M4 20h16"/>
-        </svg>
-        تحميل
-      </span>
-    </a>
+
   </div>
 
   <header class="hero">
@@ -1804,7 +1783,7 @@ alert("Hello JavaScript");`;
     const frame = document.getElementById("outputFrame");
     const doc = frame.contentWindow.document;
     doc.open();
-    doc.write(`<!DOCTYPE html><html><head><style>body{font-family:Arial,sans-serif;padding:14px;line-height:1.8;color:#1f2d3d}</style></head><body><script>${code.replace(/<\/script>/gi,"<\\/script>")}<\/script></body></html>`);
+    doc.write(`<!DOCTYPE html><html><head><style>body{font-family:Arial,sans-serif;padding:14px;line-height:1.8;color:#1f2d3d}</style></head><body><script>${code.replace(/<\/script>/gi,"<\\/script>")}<\/script><div class="learning-wrap"><section class="lesson"><h2>مصادر الوحدة والمختبر</h2> <a class="download-link" href="../lab.html?unit=3">جرّب الكود في المختبر</a></section></div></body></html>`);
     doc.close();
   }
 

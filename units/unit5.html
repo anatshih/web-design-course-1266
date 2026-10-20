@@ -1,1 +1,97 @@
-<!-- placeholder -->
+<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>الوحدة 5 | برمجة المواقع بلغة PHP وSQL</title><link rel="stylesheet" href="../assets/css/learning.css"><script src="../assets/js/learning.js" defer></script></head><body class="learning-page"><a href="#content" class="resource-link">انتقل إلى المحتوى</a><header class="learning-hero"><div class="learning-wrap"><p>جامعة القدس المفتوحة · تقنية تصميم صفحات الويب 1266</p><h1>الوحدة 5: برمجة المواقع بلغة PHP وSQL</h1><p>انتقل من صفحات تعمل في المتصفح إلى تطبيق يخزن بياناته في قاعدة، خطوة بخطوة مع مشروع محلي قابل للتنزيل.</p></div></header><div class="learning-wrap learning-layout"><aside class="learning-toc"><strong>مسار الوحدة</strong><a href="#s0">1. خطة العمل وبيئة التشغيل</a><a href="#s1">2. العميل والخادم والبرنامج الأول</a><a href="#s2">3. المتغيرات والأنواع والثوابت</a><a href="#s3">4. التعابير والعوامل</a><a href="#s4">5. الشروط والحلقات وبنى التحكم</a><a href="#s5">6. الدوال وتقسيم الملفات</a><a href="#s6">7. استقبال بيانات النماذج</a><a href="#s7">8. SQL: إنشاء قاعدة وجدول</a><a href="#s8">9. SQL: الإضافة والاستعلام والتعديل والحذف</a><a href="#s9">10. ربط PHP بقاعدة MySQL</a><a href="#s10">11. المشروع التطبيقي: سجل الطلبة</a><a href="#s11">12. مراجعة الوحدة</a></aside><main id="content"><section class="lesson" id="s0"><h2>1. خطة العمل وبيئة التشغيل</h2><p>تتعلم في هذه الوحدة أساسيات PHP والمتغيرات والعوامل وبنى التحكم والدوال، ثم SQL وربط PHP بقاعدة MySQL وتنفيذ الإضافة والعرض والتعديل والحذف.</p><p class="note">أكواد PHP وSQL هنا أمثلة للتشغيل على جهازك. GitHub Pages لا يشغل PHP ولا يوفر قاعدة MySQL. معاينة HTML في المختبر لا تنفذ PHP.</p><ol><li>جهّز بيئة محلية تحتوي PHP وMySQL أو MariaDB وخادم ويب، مثل XAMPP، وشغّل خدمتي الويب وقاعدة البيانات.</li><li>ضع مجلد التدريب في مجلد الويب المحلي، مثل htdocs في XAMPP.</li><li>افتح http://localhost/course/ بدلاً من فتح ملف PHP بالنقر المزدوج.</li><li>استخدم أداة إدارة القاعدة المتاحة لديك لاستيراد schema.sql.</li></ol><p>الملفات المرفقة تستهدف PHP 8 مع امتداد pdo_mysql. إذا اختلف منفذ الخادم فأضفه إلى العنوان. لا تحتاج إلى استضافة مدفوعة لإتمام التدريب.</p><a class="download-link" href="../downloads/unit5/php-sql-lab.zip" download>تحميل مشروع PHP وSQL مع تعليمات التشغيل</a></section><section class="lesson" id="s1"><h2>2. العميل والخادم والبرنامج الأول</h2><p>JavaScript في أمثلة الوحدتين السابقتين يعمل في المتصفح. PHP يعمل في الخادم ويرسل النتيجة إلى المتصفح. لن يظهر كود PHP في مصدر الصفحة الناتجة إذا كانت بيئة الخادم تعمل بصورة صحيحة.</p><p>احفظ المثال باسم hello.php وافتحه عبر localhost. النتيجة المتوقعة عنوان وفقرة بالعربية.</p><button type="button" data-copy>نسخ الكود</button><pre><code>&lt;?php
+$course = &quot;تقنية تصميم صفحات الويب&quot;;
+?&gt;
+&lt;!doctype html&gt;
+&lt;html lang=&quot;ar&quot; dir=&quot;rtl&quot;&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;title&gt;أول برنامج PHP&lt;/title&gt;
+&lt;h1&gt;مرحباً بالطلبة&lt;/h1&gt;
+&lt;p&gt;&lt;?= htmlspecialchars($course, ENT_QUOTES, &quot;UTF-8&quot;) ?&gt;&lt;/p&gt;
+&lt;/html&gt;</code></pre><h3>طبّق بنفسك</h3><p>غيّر اسم المقرر. ماذا يشاهد المتصفح؟</p><details><summary>الحل المقترح</summary><p>يشاهد HTML الناتج بعد تنفيذ PHP، ومنه اسم المقرر الجديد. إذا ظهر النص البرمجي نفسه، فتحقق من امتداد الملف وطريقة تشغيله وخادم PHP.</p></details></section><section class="lesson" id="s2"><h2>3. المتغيرات والأنواع والثوابت</h2><p>تبدأ أسماء المتغيرات بالرمز $ وتراعي حالة الأحرف. الأنواع البسيطة تشمل العدد الصحيح والعشري والنص والمنطقي. المصفوفات تجمع قيماً، والكائنات تمثل بيانات وسلوكاً، وNULL يعني غياب القيمة، وresource يمثل مورداً مثل مقبض ملف.</p><button type="button" data-copy>نسخ الكود</button><pre><code>&lt;?php
+$name = &quot;ليان&quot;;
+$mark = 85;
+$average = 85.5;
+$passed = true;
+$students = [&quot;ليان&quot;, &quot;عمر&quot;];
+$student = [&quot;name&quot; =&gt; &quot;ليان&quot;, &quot;mark&quot; =&gt; 85];
+$missing = null;
+const PASS_MARK = 50;
+echo $student[&quot;name&quot;] . &quot;: &quot; . $student[&quot;mark&quot;];</code></pre><p>النتيجة: ليان: 85. استخدم var_dump أثناء التعلم لفحص النوع والقيمة، ولا تترك بيانات التشخيص الحساسة في صفحة منشورة.</p><h3>طبّق بنفسك</h3><p>أنشئ مصفوفة ترابطية لكتاب فيها title وprice ثم اطبع العنوان.</p><details><summary>الحل المقترح</summary><button type="button" data-copy>نسخ الكود</button><pre><code>&lt;?php
+$book = [&quot;title&quot; =&gt; &quot;تعلم الويب&quot;, &quot;price&quot; =&gt; 25];
+echo $book[&quot;title&quot;];</code></pre></details></section><section class="lesson" id="s3"><h2>4. التعابير والعوامل</h2><p>التعبير ينتج قيمة. من العوامل الحسابية + و- و* و/ و%، والإسناد = و+=، والمقارنة === و!== و&gt;=، والمنطقية &amp;&amp; و|| و!، والربط النصي نقطة. الأقواس توضح ترتيب التنفيذ.</p><button type="button" data-copy>نسخ الكود</button><pre><code>&lt;?php
+$total = 20 + 5 * 2;     // 30
+$grouped = (20 + 5) * 2; // 50
+$mark = 70;
+$passed = $mark &gt;= 50 &amp;&amp; $mark &lt;= 100;
+echo &quot;المجموع: &quot; . $total;
+var_dump(5 === &quot;5&quot;);   // false</code></pre><details><summary>عوامل إضافية يوردها الكتاب</summary><p>++ و-- للزيادة والنقصان، و&amp; و| و^ و&lt;&lt; و&gt;&gt; لعمليات البت. يجمع + مصفوفتين مع الاحتفاظ بمفاتيح اليسرى. instanceof يفحص نوع كائن. يورد الكتاب @ للتحكم برسائل الخطأ وbackticks لتنفيذ أوامر نظام؛ افهم دورهما ولا تستخدمهما لإخفاء أخطاء التطبيق أو لتنفيذ إدخال المستخدم. نستخدم الاستثناءات لمعالجة أخطاء القاعدة.</p></details><h3>طبّق بنفسك</h3><p>توقع ناتج 10 % 3 ونتيجة المقارنة 10 === "10".</p><details><summary>الحل المقترح</summary><p>الباقي 1، والمقارنة false لاختلاف النوع.</p></details></section><section class="lesson" id="s4"><h2>5. الشروط والحلقات وبنى التحكم</h2><p>استخدم if وelseif وelse لاتخاذ قرار، وswitch للاختيار بين حالات. while يفحص الشرط قبل التكرار، وdo…while ينفذ مرة على الأقل، وfor مناسب لعدد معلوم، وforeach لمرور عناصر المصفوفة.</p><button type="button" data-copy>نسخ الكود</button><pre><code>&lt;?php
+$marks = [40, 75, 90];
+foreach ($marks as $mark) {
+    if ($mark &gt;= 50) {
+        echo &quot;ناجح: $mark&lt;br&gt;&quot;;
+    } else {
+        echo &quot;بحاجة إلى مراجعة: $mark&lt;br&gt;&quot;;
+    }
+}
+for ($i = 1; $i &lt;= 3; $i++) {
+    echo $i . &quot; &quot;;
+}</code></pre><p>break يوقف الحلقة أو switch، وcontinue يتجاوز بقية التكرار الحالي. return يعيد نتيجة الدالة وينهيها. declare يحدد توجيهات تنفيذ مثل strict_types. يورد الكتاب goto والصياغة البديلة if: … endif؛ في التطبيقات هنا نستخدم بنى واضحة دون القفز بين السطور.</p><h3>طبّق بنفسك</h3><p>اطبع الأعداد الزوجية من 2 إلى 10 باستخدام for.</p><details><summary>الحل المقترح</summary><button type="button" data-copy>نسخ الكود</button><pre><code>&lt;?php
+for ($i = 2; $i &lt;= 10; $i += 2) {
+    echo $i . &quot; &quot;;
+}</code></pre></details></section><section class="lesson" id="s5"><h2>6. الدوال وتقسيم الملفات</h2><p>الدالة تجمع مهمة قابلة لإعادة الاستخدام. المعاملات مدخلات، وreturn يعيد الناتج. توجد دوال مضمّنة وأخرى تعرفها بنفسك، ويمكن إسناد دالة مجهولة إلى متغير أو استدعاء دالة باسم محفوظ في متغير.</p><button type="button" data-copy>نسخ الكود</button><pre><code>&lt;?php
+function average(array $marks): float {
+    if (count($marks) === 0) {
+        return 0;
+    }
+    return array_sum($marks) / count($marks);
+}
+echo average([70, 80, 90]); // 80
+$double = function ($value) { return $value * 2; };
+echo $double(4); // 8</code></pre><p>include وrequire يضمان ملفاً آخر؛ فشل require يوقف التنفيذ عادة، بينما include يصدر تحذيراً ويمكن أن يستمر. الصيغتان include_once وrequire_once تمنعان تكرار التضمين. استخدم مساراً ثابتاً مثل require_once __DIR__ . "/db.php"، ولا تأخذ مسار الملف من الزائر.</p><h3>طبّق بنفسك</h3><p>اكتب دالة تعيد ناجح إذا كانت العلامة 50 فأكثر.</p><details><summary>الحل المقترح</summary><button type="button" data-copy>نسخ الكود</button><pre><code>&lt;?php
+function result(int $mark): string {
+    return $mark &gt;= 50 ? &quot;ناجح&quot; : &quot;راسب&quot;;
+}
+echo result(65);</code></pre></details></section><section class="lesson" id="s6"><h2>7. استقبال بيانات النماذج</h2><p>يرسل GET قيماً في العنوان، وPOST يرسلها في جسم الطلب. POST وحده لا يشفر البيانات. تحقق في الخادم حتى إذا أضفت تحققاً في JavaScript. htmlspecialchars يعالج النص عند عرضه داخل HTML؛ ولا يحل محل الاستعلامات المحضرة.</p><button type="button" data-copy>نسخ الكود</button><pre><code>&lt;!-- form.html --&gt;
+&lt;form action=&quot;welcome.php&quot; method=&quot;post&quot;&gt;
+  &lt;label&gt;الاسم &lt;input name=&quot;name&quot; required maxlength=&quot;100&quot;&gt;&lt;/label&gt;
+  &lt;button&gt;إرسال&lt;/button&gt;
+&lt;/form&gt;
+
+&lt;!-- welcome.php --&gt;
+&lt;?php
+$raw = $_POST[&quot;name&quot;] ?? &quot;&quot;;
+$name = is_string($raw) ? trim($raw) : &quot;&quot;;
+if ($name === &quot;&quot; || strlen($name) &gt; 400) {
+    http_response_code(422);
+    exit(&quot;أدخل اسماً صالحاً&quot;);
+}
+echo &quot;مرحباً &quot; . htmlspecialchars($name, ENT_QUOTES, &quot;UTF-8&quot;);</code></pre><h3>طبّق بنفسك</h3><p>أرسل اسماً فارغاً بعد تعطيل required. ماذا يجب أن يحدث؟</p><details><summary>الحل المقترح</summary><p>يرفض الخادم القيمة الفارغة. التحقق في المتصفح يساعد المستخدم لكنه لا يكفي لضمان صحة البيانات.</p></details></section><section class="lesson" id="s7"><h2>8. SQL: إنشاء قاعدة وجدول</h2><p>قاعدة البيانات تحتوي جداول، والجدول يتكون من صفوف وأعمدة. المفتاح الأساسي يميز السجل، وAUTO_INCREMENT ينشئ معرفاً متزايداً. اختر utf8mb4 لدعم العربية.</p><button type="button" data-copy>نسخ الكود</button><pre><code>CREATE DATABASE IF NOT EXISTS course1266
+  CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+USE course1266;
+CREATE TABLE IF NOT EXISTS students (
+  id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(100) NOT NULL,
+  mark INT NOT NULL
+);</code></pre><p>نفذ الأوامر في أداة إدارة MySQL. DROP TABLE يحذف الجدول، وDROP DATABASE يحذف القاعدة ومحتوياتها؛ لا تحتاج إلى تشغيلهما لإتمام المختبر.</p><h3>طبّق بنفسك</h3><p>لماذا لا نستخدم اسم الطالب مفتاحاً أساسياً؟</p><details><summary>الحل المقترح</summary><p>قد تتكرر الأسماء أو تتغير. المعرف الرقمي يوفر قيمة مستقلة تميز كل سجل.</p></details></section><section class="lesson" id="s8"><h2>9. SQL: الإضافة والاستعلام والتعديل والحذف</h2><p>ابدأ بقاعدة تدريب فقط. WHERE يحدد السجلات المستهدفة؛ غيابه في UPDATE أو DELETE يؤثر في كل السجلات. ORDER BY يرتب النتائج، وLIMIT يحدد عددها.</p><button type="button" data-copy>نسخ الكود</button><pre><code>INSERT INTO students (name, mark) VALUES (&#x27;ليان&#x27;, 85), (&#x27;عمر&#x27;, 70);
+SELECT id, name, mark FROM students ORDER BY id;
+SELECT name, mark FROM students WHERE mark &gt;= 80 ORDER BY mark DESC LIMIT 5;
+UPDATE students SET mark = 90 WHERE id = 1;
+DELETE FROM students WHERE id = 2;</code></pre><h3>طبّق بنفسك</h3><p>اعرض الطلاب الناجحين مرتبين حسب العلامة تنازلياً.</p><details><summary>الحل المقترح</summary><button type="button" data-copy>نسخ الكود</button><pre><code>SELECT id, name, mark FROM students
+WHERE mark &gt;= 50 ORDER BY mark DESC, id ASC;</code></pre></details></section><section class="lesson" id="s9"><h2>10. ربط PHP بقاعدة MySQL</h2><p>PDO وMySQLi طريقتان للربط. MySQLi مخصص لـMySQL، بينما PDO يوفر واجهة تتعامل مع عدة محركات عبر برامج تشغيل مختلفة. نستخدم PDO واستعلامات محضرة لتمرير القيم منفصلة عن نص SQL.</p><button type="button" data-copy>نسخ الكود</button><pre><code>&lt;?php
+// db.php - بيانات بيئتك المحلية
+$pdo = new PDO(
+    &quot;mysql:host=127.0.0.1;dbname=course1266;charset=utf8mb4&quot;,
+    &quot;course_student&quot;,
+    &quot;change-this-local-password&quot;,
+    [PDO::ATTR_ERRMODE =&gt; PDO::ERRMODE_EXCEPTION,
+     PDO::ATTR_DEFAULT_FETCH_MODE =&gt; PDO::FETCH_ASSOC,
+     PDO::ATTR_EMULATE_PREPARES =&gt; false]
+);</code></pre><button type="button" data-copy>نسخ الكود</button><pre><code>&lt;?php
+require_once __DIR__ . &quot;/db.php&quot;;
+$stmt = $pdo-&gt;prepare(&quot;INSERT INTO students (name, mark) VALUES (:name, :mark)&quot;);
+$stmt-&gt;execute([&quot;name&quot; =&gt; &quot;ليان&quot;, &quot;mark&quot; =&gt; 85]);
+$query = $pdo-&gt;prepare(&quot;SELECT id, name, mark FROM students WHERE mark &gt;= ? ORDER BY id LIMIT 10&quot;);
+$query-&gt;execute([50]);
+foreach ($query as $student) {
+    echo htmlspecialchars($student[&quot;name&quot;], ENT_QUOTES, &quot;UTF-8&quot;) . &quot;&lt;br&gt;&quot;;
+}</code></pre><p>أنشئ مستخدم قاعدة محلياً يملك صلاحيات SELECT وINSERT وUPDATE وDELETE على قاعدة التدريب، ثم عدّل db.php. تشرح تعليمات المشروع ذلك. إذا فشل الاتصال، تحقق من تشغيل الخدمة واسم القاعدة والمنفذ وبيانات المستخدم وامتداد pdo_mysql.</p><p><a href="https://www.php.net/manual/en/pdo.prepared-statements.php">مرجع PHP الرسمي للاستعلامات المحضرة</a></p></section><section class="lesson" id="s10"><h2>11. المشروع التطبيقي: سجل الطلبة</h2><p>حزمة المختبر تحتوي schema.sql وdb.php وindex.php ودليل تشغيل عربي. تنفذ إضافة طالب وعرض السجلات وتعديل العلامة والحذف. يستخدم المشروع جلسة ورمز CSRF مع طلبات POST، ويتحقق من الاسم والعلامة في الخادم.</p><a class="download-link" href="../downloads/unit5/php-sql-lab.zip" download>تحميل الحزمة</a><ol><li>استورد schema.sql وأنشئ مستخدم قاعدة التدريب.</li><li>اضبط بيانات الاتصال في db.php.</li><li>افتح المشروع من localhost وأضف طالباً بعلامة 85.</li><li>عدّل العلامة إلى 90 ثم أعد تحميل الصفحة للتأكد من حفظها.</li><li>جرّب إدخال علامة 120 واسماً فارغاً؛ يجب رفضهما.</li><li>احذف سجلاً تجريبياً وتأكد من اختفائه.</li></ol><p><strong>معايير النجاح:</strong> استمرار البيانات بعد إعادة التحميل، رفض القيم غير الصالحة، عرض العربية سليمة، وعدم تأثر السجلات الأخرى عند التعديل أو الحذف.</p><details><summary>التوسعة المقترحة</summary><p>أضف بحثاً بالاسم باستخدام LIKE ومعامل محضر، ثم أضف ترتيباً ثابتاً وتقسيماً للنتائج. هذه حزمة تدريب محلي، وليست نظام شؤون طلبة جاهزاً للنشر العام.</p></details></section><section class="lesson" id="s11"><h2>12. مراجعة الوحدة</h2><p>تتبع الرحلة كاملة: نموذج HTML ← طلب POST ← تحقق PHP ← استعلام محضر ← MySQL ← HTML الناتج. استخدم هذا التسلسل لتحديد موضع أي مشكلة.</p><form class="quiz"><h2>اختبر فهمك</h2><fieldset><legend>أين ينفذ PHP؟</legend><label><input required type="radio" name="q0" value="wrong"> في DNS</label><label><input required type="radio" name="q0" value="correct"> في الخادم</label><label><input required type="radio" name="q0" value="wrong"> في ملف CSS</label></fieldset><details><summary>تفسير الإجابة</summary><p>الخادم ينفذ PHP ويرسل النتيجة للمتصفح.</p></details><fieldset><legend>ما الوسيلة المناسبة لتمرير اسم طالب إلى SQL؟</legend><label><input required type="radio" name="q1" value="wrong"> دمجه مباشرة في النص</label><label><input required type="radio" name="q1" value="correct"> الاستعلام المحضر ومعاملاته</label><label><input required type="radio" name="q1" value="wrong"> إخفاء رسائل الخطأ فقط</label></fieldset><details><summary>تفسير الإجابة</summary><p>تفصل المعاملات القيم عن تركيب SQL.</p></details><fieldset><legend>ما أثر DELETE FROM students بلا WHERE؟</legend><label><input required type="radio" name="q2" value="wrong"> حذف سجل واحد</label><label><input required type="radio" name="q2" value="correct"> حذف جميع الصفوف</label><label><input required type="radio" name="q2" value="wrong"> عرض السجلات</label></fieldset><details><summary>تفسير الإجابة</summary><p>يبقى الجدول لكن تحذف كل صفوفه.</p></details><fieldset><legend>ما دور htmlspecialchars عند العرض؟</legend><label><input required type="radio" name="q3" value="wrong"> تشفير الاتصال</label><label><input required type="radio" name="q3" value="correct"> تمثيل محارف HTML الخاصة كنص</label><label><input required type="radio" name="q3" value="wrong"> إنشاء قاعدة بيانات</label></fieldset><details><summary>تفسير الإجابة</summary><p>تمنع معاملة النص المعروض كوسوم HTML في موضع النص.</p></details><button>تحقق من الإجابات</button><output aria-live="polite"></output></form></section><section class="lesson"><h2>خطوتك التالية</h2><p>قارن تطبيقك بمعايير النجاح، ثم تابع الوحدة التالية أو عد إلى خريطة المقرر.</p><div class="learning-actions"><a href="../index.html">خريطة المقرر</a><a href="unit4.html">مراجعة الوحدة الرابعة</a><a href="../practical.html">المشروع العملي</a></div></section></main></div><footer class="learning-footer">إعداد الأستاذ أحمد عوني النتشة · موقع تعليمي مساند غير رسمي لا يغني عن الكتاب المعتمد.</footer></body></html>

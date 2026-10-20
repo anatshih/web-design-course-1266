@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>الوحدة الثانية: HTML & CSS - جامعة القدس المفتوحة</title>
-    
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
-    
+
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
@@ -66,7 +66,7 @@
             box-shadow: 0 2px 5px rgba(0,0,0,0.05);
         }
     </style>
-</head>
+<link rel="stylesheet" href="../assets/css/learning.css"><script src="../assets/js/learning.js" defer></script></head>
 <body>
 
     <header class="main-header">
@@ -89,18 +89,18 @@
     <div class="container" style="margin-top: 30px;">
         <div class="note-box" style="width:100%; justify-content: space-between;">
             <div>
-                <strong>ملفات الوحدة:</strong> يمكنك تحميل المحتوى للدراسة بدون إنترنت.
+                <strong>تطبيقات الوحدة:</strong> اقرأ الأمثلة وطبّقها في المختبر.
             </div>
             <div class="download-btns">
-                <a href="../downloads/unit2/الوحدة_2.pdf" class="btn-text" download><i class="fas fa-file-pdf"></i> تحميل PDF</a>
-                <span style="margin: 0 10px;">|</span>
-                <a href="../downloads/unit2/الوحدة_2.pptx" class="btn-text" download><i class="fas fa-file-powerpoint"></i> تحميل PPTX</a>
+
+
+
             </div>
         </div>
     </div>
 
     <main class="container unit-layout">
-        
+
         <aside class="toc-sidebar">
             <h4><i class="fas fa-list-ul"></i> محتويات الوحدة</h4>
             <ul>
@@ -156,13 +156,13 @@
             <section id="structure">
                 <h2>3. الهيكل العام لصفحة HTML</h2>
                 <p>تعمل صفحة الويب مثل الشجرة (DOM Tree)، حيث يوجد جذر رئيسي تتفرع منه باقي العناصر.</p>
-                
-                
+
+
 
                 <div class="example-section">
                     <h3>💡 الكود الهيكلي القياسي</h3>
                     <p>أي صفحة ويب في العالم يجب أن تحتوي على هذا الهيكل لتعمل بشكل صحيح.</p>
-                    
+
                     <div class="code-box">
                         <div class="code-header"><span>HTML Skeleton</span><button class="copy-btn" onclick="copyCode(this)">نسخ الكود</button></div>
 <pre><code>&lt;!DOCTYPE html&gt;   &lt;!-- 1. تعريف نوع الوثيقة --&gt;
@@ -180,7 +180,7 @@
 
 &lt;/html&gt;</code></pre>
                     </div>
-                    
+
                     <div class="code-explanation">
                         <strong>تفكيك الكود (Code Explanation):</strong>
                         <ul>
@@ -190,7 +190,7 @@
                             <li><code>&lt;body&gt;</code>: "المسرح" الذي نضع فيه كل النصوص والصور والأزرار التي يتفاعل معها المستخدم.</li>
                         </ul>
                     </div>
-                    
+
                     <div style="text-align: center;"><a href="https://www.programiz.com/html/online-compiler/" target="_blank" class="try-btn"><i class="fas fa-play-circle"></i> طبق الكود عملياً</a></div>
                 </div>
             </section>
@@ -198,7 +198,7 @@
             <section id="text">
                 <h2>4. تنسيق النصوص (Text Formatting)</h2>
                 <p>توفر HTML نوعين من التنسيق: <strong>منطقي</strong> (يصف المعنى) و <strong>مادي</strong> (يصف الشكل).</p>
-                
+
                 <div class="example-section">
                     <h3>💡 مثال: تنسيقات النصوص المختلفة</h3>
                     <div class="code-box">
@@ -342,7 +342,7 @@
         &lt;td&gt;فيزياء&lt;/td&gt;
         &lt;!-- الخلية الثالثة محذوفة لأن السابقة أخذت مكانها --&gt;
     &lt;/tr&gt
-    
+
     &lt;!-- الصف الثالث --&gt;
     &lt;tr&gt;
         &lt;td&gt;الاثنين&lt;/td&gt;
@@ -366,7 +366,7 @@
 
             <section id="forms">
                 <h2>8. النماذج (Forms)</h2>
-                
+
                 <p>النماذج هي وسيلة التفاعل مع المستخدم لجمع البيانات وإرسالها للسيرفر.</p>
 
                 <div class="example-section">
@@ -374,7 +374,7 @@
                     <div class="code-box">
                         <div class="code-header"><span>Form Elements</span><button class="copy-btn" onclick="copyCode(this)">نسخ الكود</button></div>
 <pre><code>&lt;form action="save.php" method="post"&gt;
-    
+
     &lt;label&gt;الاسم:&lt;/label&gt;
     &lt;input type="text" name="username" placeholder="أدخل اسمك"&gt; &lt;br&gt;&lt;br&gt;
 
@@ -420,7 +420,7 @@
 
             <section id="css-intro">
                 <h2>9. مقدمة في CSS (Cascading Style Sheets)</h2>
-                
+
                 <p>هي اللغة المسؤولة عن "مكياج" وديكور الموقع. يمكن كتابتها بثلاث طرق، سنركز على الطريقتين الأهم.</p>
 
                 <div class="example-section">
