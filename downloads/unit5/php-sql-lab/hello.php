@@ -1,0 +1,1 @@
+<!doctype html><html lang="ar" dir="rtl"><meta charset="utf-8"><title>فحص PHP</title><h1>PHP يعمل بنجاح</h1><p>الإصدار: <?= htmlspecialchars(PHP_VERSION, ENT_QUOTES, 'UTF-8') ?></p><p>انتقل الآن إلى إعداد قاعدة التدريب.</p></html>
