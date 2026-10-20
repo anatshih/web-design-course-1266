@@ -147,3 +147,10 @@ document.addEventListener('DOMContentLoaded',()=>{
     if(window.Prism?.languages?.[language])window.Prism.highlightElement(code);
   });
 });
+
+// Open the selected project's full requirements from its card or a shared URL.
+(() => {
+ const openTarget=()=>{let id;try{id=decodeURIComponent(location.hash.slice(1));}catch{return;}const target=document.getElementById(id);if(target?.matches('details.project-detail'))target.open=true;};
+ document.addEventListener('click',event=>{const link=event.target.closest('a[href^="#project"]');if(!link)return;const target=document.getElementById(link.getAttribute('href').slice(1));if(target?.matches('details.project-detail'))target.open=true;});
+ window.addEventListener('hashchange',openTarget);openTarget();
+})();
